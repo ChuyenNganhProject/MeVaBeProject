@@ -69,7 +69,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(251, 788);
+            this.panel2.Size = new System.Drawing.Size(305, 993);
             this.panel2.TabIndex = 1;
             // 
             // btnDangXuat
@@ -80,9 +80,9 @@
             this.btnDangXuat.ForeColor = System.Drawing.Color.White;
             this.btnDangXuat.Image = ((System.Drawing.Image)(resources.GetObject("btnDangXuat.Image")));
             this.btnDangXuat.ImageOffset = new System.Drawing.Point(50, 20);
-            this.btnDangXuat.Location = new System.Drawing.Point(0, 718);
+            this.btnDangXuat.Location = new System.Drawing.Point(0, 923);
             this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(251, 70);
+            this.btnDangXuat.Size = new System.Drawing.Size(305, 70);
             this.btnDangXuat.TabIndex = 9;
             this.btnDangXuat.TabStop = false;
             this.btnDangXuat.Text = "Đăng xuất";
@@ -98,7 +98,7 @@
             this.btnNhanVien.Location = new System.Drawing.Point(0, 586);
             this.btnNhanVien.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnNhanVien.Name = "btnNhanVien";
-            this.btnNhanVien.Size = new System.Drawing.Size(251, 64);
+            this.btnNhanVien.Size = new System.Drawing.Size(305, 64);
             this.btnNhanVien.TabIndex = 7;
             this.btnNhanVien.TabStop = false;
             this.btnNhanVien.Text = "Nhân viên";
@@ -114,7 +114,7 @@
             this.btnNhapHang.Location = new System.Drawing.Point(0, 522);
             this.btnNhapHang.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnNhapHang.Name = "btnNhapHang";
-            this.btnNhapHang.Size = new System.Drawing.Size(251, 64);
+            this.btnNhapHang.Size = new System.Drawing.Size(305, 64);
             this.btnNhapHang.TabIndex = 6;
             this.btnNhapHang.TabStop = false;
             this.btnNhapHang.Text = "Nhập hàng";
@@ -130,7 +130,7 @@
             this.btnKhachHang.Location = new System.Drawing.Point(0, 458);
             this.btnKhachHang.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnKhachHang.Name = "btnKhachHang";
-            this.btnKhachHang.Size = new System.Drawing.Size(251, 64);
+            this.btnKhachHang.Size = new System.Drawing.Size(305, 64);
             this.btnKhachHang.TabIndex = 5;
             this.btnKhachHang.TabStop = false;
             this.btnKhachHang.Text = "Khách hàng";
@@ -146,7 +146,7 @@
             this.btnHoaDon.Location = new System.Drawing.Point(0, 394);
             this.btnHoaDon.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnHoaDon.Name = "btnHoaDon";
-            this.btnHoaDon.Size = new System.Drawing.Size(251, 64);
+            this.btnHoaDon.Size = new System.Drawing.Size(305, 64);
             this.btnHoaDon.TabIndex = 4;
             this.btnHoaDon.TabStop = false;
             this.btnHoaDon.Text = "Hóa đơn";
@@ -162,7 +162,7 @@
             this.btnSanPham.Location = new System.Drawing.Point(0, 330);
             this.btnSanPham.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSanPham.Name = "btnSanPham";
-            this.btnSanPham.Size = new System.Drawing.Size(251, 64);
+            this.btnSanPham.Size = new System.Drawing.Size(305, 64);
             this.btnSanPham.TabIndex = 3;
             this.btnSanPham.TabStop = false;
             this.btnSanPham.Text = "Sản phẩm";
@@ -178,7 +178,7 @@
             this.btnTonKho.Location = new System.Drawing.Point(0, 266);
             this.btnTonKho.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnTonKho.Name = "btnTonKho";
-            this.btnTonKho.Size = new System.Drawing.Size(251, 64);
+            this.btnTonKho.Size = new System.Drawing.Size(305, 64);
             this.btnTonKho.TabIndex = 2;
             this.btnTonKho.TabStop = false;
             this.btnTonKho.Text = "Tồn kho";
@@ -194,7 +194,7 @@
             this.btnDashboard.Location = new System.Drawing.Point(0, 202);
             this.btnDashboard.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(251, 64);
+            this.btnDashboard.Size = new System.Drawing.Size(305, 64);
             this.btnDashboard.TabIndex = 1;
             this.btnDashboard.TabStop = false;
             this.btnDashboard.Text = "Dashboard";
@@ -206,7 +206,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(251, 202);
+            this.pictureBox1.Size = new System.Drawing.Size(305, 202);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -215,9 +215,9 @@
             // 
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(251, 0);
+            this.panel1.Location = new System.Drawing.Point(305, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(983, 40);
+            this.panel1.Size = new System.Drawing.Size(929, 40);
             this.panel1.TabIndex = 3;
             // 
             // btnClose
@@ -225,7 +225,7 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.btnClose.Location = new System.Drawing.Point(944, 9);
+            this.btnClose.Location = new System.Drawing.Point(890, 9);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(36, 23);
             this.btnClose.TabIndex = 7;
@@ -235,7 +235,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1234, 788);
+            this.ClientSize = new System.Drawing.Size(1234, 993);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
