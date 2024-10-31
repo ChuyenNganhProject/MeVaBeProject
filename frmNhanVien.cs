@@ -25,13 +25,25 @@ namespace MeVaBeProject
         {
             LoadNhanVien();
         }
-
+        public void DatTenCot()
+        {
+            dgvNhanVien.Columns["maNhanVien"].HeaderText = "Mã nhân viên";
+            dgvNhanVien.Columns["tenNhanVien"].HeaderText = "Tên nhân viên";
+            dgvNhanVien.Columns["ngaySinh"].HeaderText = "Ngày sinh";
+            dgvNhanVien.Columns["diaChi"].HeaderText = "Địa chỉ";
+            dgvNhanVien.Columns["soDienThoai"].HeaderText = "Số điện thoại";
+            dgvNhanVien.Columns["tenDangNhap"].HeaderText = "Tên đăng nhập";
+            dgvNhanVien.Columns["luongCoBan"].HeaderText = "Lương cơ bản";
+            dgvNhanVien.Columns["ngayVaoLam"].HeaderText = "Ngày vào làm";
+            dgvNhanVien.Columns["tenLoaiNhanVien"].HeaderText = "Loại nhân viên";
+        }
         public void LoadNhanVien()
         {
             try
             {
                 List<NhanVien> nhanViens = nvbll.LoadNhanVien();
                 dgvNhanVien.DataSource = nhanViens;
+                DatTenCot();
                 if (dgvNhanVien.Columns["LoaiNhanVien"] != null)
                 {
                     dgvNhanVien.Columns["LoaiNhanVien"].Visible = false;

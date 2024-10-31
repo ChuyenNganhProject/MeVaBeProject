@@ -27,7 +27,8 @@ namespace MeVaBeProject
 
         private void BtnDatHang_Click(object sender, EventArgs e)
         {
-            
+            frmDatHang frmDatHang = new frmDatHang();
+            frmDatHang.ShowDialog();
         }
     }
 }
