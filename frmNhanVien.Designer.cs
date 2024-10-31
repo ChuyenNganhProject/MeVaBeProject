@@ -255,9 +255,9 @@
             // 
             // uiPanel2
             // 
+            this.uiPanel2.Controls.Add(this.dateTimePicker1);
+            this.uiPanel2.Controls.Add(this.dtpNgaySinh);
             this.uiPanel2.Controls.Add(this.uiComboBox1);
-            this.uiPanel2.Controls.Add(this.uiDatePicker2);
-            this.uiPanel2.Controls.Add(this.uiDatePicker1);
             this.uiPanel2.Controls.Add(this.uiTextBox3);
             this.uiPanel2.Controls.Add(this.uiTextBox2);
             this.uiPanel2.Controls.Add(this.uiTextBox1);
@@ -555,8 +555,6 @@
         private Sunny.UI.UILabel uiLabel7;
         private Sunny.UI.UILabel uiLabel3;
         private Sunny.UI.UILabel uiLabel2;
-        private Sunny.UI.UIDatePicker uiDatePicker1;
-        private Sunny.UI.UIDatePicker uiDatePicker2;
         private Sunny.UI.UILabel uiLabel6;
         private Sunny.UI.UILabel uiLabel5;
         private Sunny.UI.UIImageButton btnSearch;

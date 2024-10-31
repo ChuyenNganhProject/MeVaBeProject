@@ -250,6 +250,9 @@ CREATE TABLE ChiTietPhieuGiaoHang (
     FOREIGN KEY (maSanPham) REFERENCES SanPham(maSanPham)
 );
 
+ALTER TABLE NhanVien
+ADD CONSTRAINT UQ_tenDangNhap UNIQUE (tenDangNhap);
+
 INSERT INTO LoaiNhanVien (maLoaiNhanVien, tenLoaiNhanVien) 
 VALUES 
 ('QL', N'Quản Lý'),
@@ -262,4 +265,7 @@ INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi,
 VALUES ('NV002', 'QL', N'Đặng Hoàng Phúc', '2003-12-06', N'123 Đường NK, TP.HCM', '0888005346', 'hoangphuc', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01')
 INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
 VALUES ('NV003', 'QL', N'Trương Thị Quí', '2003-01-19', N'123 Đường ABC, TP.HCM', '0901234567', 'truongqui', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01');
+
+INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
+VALUES ('NV004', 'NVBH', N'Phạm Minh Nhật', '2003-11-19', N'254 Đường NVC, TP.HCM', '0775945228', 'nvbhminhnhat', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', '1911'), 2), 20000000, '2024-10-01');
 

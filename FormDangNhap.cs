@@ -41,9 +41,18 @@ namespace MeVaBeProject
             if(nhanVien != null)
             {
                 MessageBox.Show($"Đăng nhập thành công! Xin chào, {nhanVien.tenNhanVien}");
-                frmTrangChu frm = new frmTrangChu();
-                frm.Show();
-                this.Hide();
+                if(nhanVien.maLoaiNhanVien == "QL")
+                {
+                    frmTrangChu frm = new frmTrangChu();
+                    frm.Show();
+                    this.Hide();
+                }
+                else if(nhanVien.maLoaiNhanVien == "NVBH")
+                {
+                    frmBanHang frm = new frmBanHang();
+                    frm.Show();
+                    this.Hide();
+                }
             }
             else
             {
