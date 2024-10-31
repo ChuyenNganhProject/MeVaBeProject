@@ -40,6 +40,10 @@ namespace MeVaBeProject
                 {
                     dgvNhanVien.Columns["maLoaiNhanVien"].Visible = false;
                 }
+                if (dgvNhanVien.Columns["matKhau"] != null)
+                {
+                    dgvNhanVien.Columns["matKhau"].Visible = false;
+                }
                 dgvNhanVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
