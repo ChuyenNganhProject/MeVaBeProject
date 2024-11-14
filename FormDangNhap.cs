@@ -49,9 +49,9 @@ namespace MeVaBeProject
                 }
                 else if(nhanVien.maLoaiNhanVien == "NVBH")
                 {
-                    //frmBanHang frm = new frmBanHang();
-                    //frm.Show();
-                    //this.Hide();
+                    frmBanHang frm = new frmBanHang(nhanVien.maNhanVien);
+                    frm.Show();
+                    this.Hide();
                 }
             }
             else

@@ -25,5 +25,22 @@ namespace BLL
         {
             return nvdal.LoadNhanVien(); 
         }
+
+        public NhanVien LayTTNhanVienTuTenDangNhap(string maNhanVien)
+        {
+            try
+            {
+                return nvdal.LayTTNhanVienTuTenDangNhap(maNhanVien);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Lỗi khi lấy thông tin nhân viên", ex);
+            }
+        }
+
+        public NhanVien LayTTNhanVienTuMa(string ma)
+        {
+            return nvdal.LayTTNhanVienTuMa(ma);
+        }
     }
 }

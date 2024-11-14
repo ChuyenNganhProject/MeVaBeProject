@@ -9,14 +9,17 @@ namespace BLL
 {
     public class LoaiSanPhamBLL
     {
-        private LoaiSanPhamDAL loaiSanPhamDAL;
-        public LoaiSanPhamBLL()
-        {
-            this.loaiSanPhamDAL = new LoaiSanPhamDAL();
-        }
+        LoaiSanPhamDAL lspdal = new LoaiSanPhamDAL();
+        public LoaiSanPhamBLL() { }
+
         public List<LoaiSanPham> LayDanhSachSanPham()
         {
-            return loaiSanPhamDAL.LayDanhSachLoaiSanPham();
+            return lspdal.LoadLoaiSanPham();
+        }
+
+        public LoaiSanPham LayTTLoaiSpTuMaLoaiSp(string ma)
+        {
+            return lspdal.LayTTLoaiSpTuMaLoaiSp(ma);
         }
     }
 }

@@ -9,26 +9,37 @@ namespace BLL
 {
     public class SanPhamBLL
     {
-        private SanPhamDAL sanPhamDAL;
-        public SanPhamBLL()
-        {
-            sanPhamDAL = new SanPhamDAL();
-        }
+        SanPhamDAL spdal = new SanPhamDAL();
+        LoaiSanPhamDAL lspdal = new LoaiSanPhamDAL();
+        public SanPhamBLL() { }
+
         public List<SanPham> LayDanhSachSanPham()
         {
-            return sanPhamDAL.LayDanhSachSanPham();
+            return spdal.LayDanhSachSanPham();
+        }
+
+        public SanPham TimKiemSanPhamTheoMaSP(string ma)
+        {
+            return spdal.TimKiemSanPhamTheoMaSP(ma);
         }
         public List<SanPham> LayDanhSachSanPhamTheoMaLoai(string maLoai)
         {
-            return sanPhamDAL.LayDanhSachSanPhamTheoMaLoai(maLoai);
+            
+            return spdal.LayDanhSachSanPhamTheoMaLoai(maLoai);
         }
-        public SanPham TimKiemSanPhamTheoMaSP(string maSP)
+
+        public List<SanPham> LoadTatCaSanPham()
         {
-            return sanPhamDAL.TimKiemSanPhamTheoMaSP(maSP);
+            return spdal.LayDanhSachSanPham();
         }
+
+        public List<SanPham> LoadSpTheoTenHoacMaSp(string tenHoacMaTimKiem)
+        {
+            return spdal.LoadSpTheoTenHoacMaSp(tenHoacMaTimKiem);
+        }    
         public List<SanPham> TimKiemSanPhamTheoTenSP(string tenSP)
         {
-            return sanPhamDAL.TimKiemSanPhamTheoTenSP(tenSP);
+            return spdal.TimKiemSanPhamTheoTenSP(tenSP);
         }
     }
 }
