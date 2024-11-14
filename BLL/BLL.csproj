@@ -41,14 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChiTietPhieuDatBLL.cs" />
+    <Compile Include="ChiTietHoaDonSanPhamBLL.cs" />
+    <Compile Include="HangThanhVienBLL.cs" />
+    <Compile Include="HoaDonBLL.cs" />
+    <Compile Include="KhachHangBLL.cs" />
     <Compile Include="LoaiSanPhamBLL.cs" />
+    <Compile Include="ChiTietPhieuDatBLL.cs" />
     <Compile Include="NhaCungCapBLL.cs" />
     <Compile Include="NhanVienBLL.cs" />
     <Compile Include="PhieuDatBLL.cs" />
     <Compile Include="PhieuNhapBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SanPhamBLL.cs" />
+    <Compile Include="UuDaiThanhVienBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

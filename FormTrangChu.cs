@@ -24,6 +24,20 @@ namespace MeVaBeProject
             this.btnNhanVien.Click += BtnNhanVien_Click;
             this.btnKhachHang.Click += BtnKhachHang_Click;
             this.maNhanVien = maNhanVien;
+            this.btnHoaDon.Click += BtnHoaDon_Click;
+            this.btnDashboard.Click += BtnDashboard_Click;
+        }
+
+        private void BtnDashboard_Click(object sender, EventArgs e)
+        {
+            frmDashboard frm = new frmDashboard();
+            OpenChildForm(frm);
+        }
+
+        private void BtnHoaDon_Click(object sender, EventArgs e)
+        {
+            frmQLHoaDon frm = new frmQLHoaDon();
+            OpenChildForm(frm);
         }
 
         private void BtnKhachHang_Click(object sender, EventArgs e)

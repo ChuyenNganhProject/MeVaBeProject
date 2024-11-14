@@ -8,14 +8,25 @@ namespace DAL
 {
     public class LoaiSanPhamDAL
     {
-        private MeVaBeDBDataContext dBDataContext;
-        public LoaiSanPhamDAL()
+        MeVaBeDBDataContext db = new MeVaBeDBDataContext();
+        public LoaiSanPhamDAL() { }
+
+        public List<LoaiSanPham> LoadLoaiSanPham()
         {
-            this.dBDataContext = new MeVaBeDBDataContext();
+            return db.LoaiSanPhams.Select(loai => loai).ToList<LoaiSanPham>();
         }
-        public List<LoaiSanPham> LayDanhSachLoaiSanPham()
+
+        public LoaiSanPham LayTTLoaiSpTuMaLoaiSp(string ma)
         {
-            return dBDataContext.LoaiSanPhams.Select(lsp => lsp).ToList<LoaiSanPham>();
+            try
+        {
+                LoaiSanPham loaisp = db.LoaiSanPhams.FirstOrDefault(lsp => lsp.maLoaiSanPham == ma);
+                return loaisp;
+        }
+            catch
+        {
+                return null;
+            }
         }
     }
 }

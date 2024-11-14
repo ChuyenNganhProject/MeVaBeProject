@@ -54,6 +54,7 @@
             this.uiLabel1.Size = new System.Drawing.Size(136, 28);
             this.uiLabel1.TabIndex = 0;
             this.uiLabel1.Text = "Đăng nhập";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtUsername
             // 
@@ -63,8 +64,8 @@
             this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtUsername.MinimumSize = new System.Drawing.Size(1, 13);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtUsername.RectColor = System.Drawing.Color.Fuchsia;
+            this.txtUsername.Padding = new System.Windows.Forms.Padding(5);
+            this.txtUsername.RectColor = System.Drawing.Color.HotPink;
             this.txtUsername.ShowText = false;
             this.txtUsername.Size = new System.Drawing.Size(176, 24);
             this.txtUsername.TabIndex = 1;
@@ -93,7 +94,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.RectColor = System.Drawing.Color.Fuchsia;
+            this.txtPassword.RectColor = System.Drawing.Color.HotPink;
             this.txtPassword.ShowText = false;
             this.txtPassword.Size = new System.Drawing.Size(176, 24);
             this.txtPassword.TabIndex = 3;

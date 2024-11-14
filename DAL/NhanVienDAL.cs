@@ -47,5 +47,31 @@ namespace DAL
             }
             return nhanViens;
         }
+
+        public NhanVien LayTTNhanVienTuTenDangNhap(string maNhanVien) 
+        {
+            try
+            {
+                NhanVien nhanvien = db.NhanViens.FirstOrDefault(nv => nv.maNhanVien == maNhanVien);
+                return nhanvien;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public NhanVien LayTTNhanVienTuMa(string ma)
+        {
+            try
+            {
+                NhanVien nhanVien = db.NhanViens.FirstOrDefault(nv => nv.maNhanVien == ma);
+                return nhanVien;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
