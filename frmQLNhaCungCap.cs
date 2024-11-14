@@ -19,11 +19,9 @@ namespace MeVaBeProject
         public frmQLNhaCungCap()
         {
             InitializeComponent();
-            this.btnClose.Click += BtnClose_Click;
             this.btnThem.Click += BtnThem_Click;
             this.txtSDT.KeyPress += TxtSDT_KeyPress;
         }
-
         private void TxtSDT_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -31,7 +29,117 @@ namespace MeVaBeProject
                 e.Handled = true;
             }
         }
+        private void SetButtonStyle(UIButton button, bool isEnabled)
+        {
+            if (isEnabled)
+            {
+                button.RectColor = System.Drawing.Color.HotPink;
+                button.RectDisableColor = System.Drawing.Color.Fuchsia;
+                button.RectHoverColor = System.Drawing.Color.DeepPink;
+                button.RectPressColor = System.Drawing.Color.DeepPink;
+                button.RectSelectedColor = System.Drawing.Color.FromArgb(255, 128, 255);
+                button.FillColor = System.Drawing.Color.LightPink;
+                button.FillHoverColor = System.Drawing.Color.HotPink;
+                button.FillPressColor = System.Drawing.Color.DeepPink;
+                button.ForeColor = System.Drawing.Color.White; // Màu chữ khi nút được kích hoạt
+            }
+            else
+            {
+                button.RectColor = System.Drawing.Color.DarkGray;
+                button.RectDisableColor = System.Drawing.Color.DarkGray;
+                button.RectHoverColor = System.Drawing.Color.DarkGray;
+                button.RectPressColor = System.Drawing.Color.DarkGray;
+                button.RectSelectedColor = System.Drawing.Color.DarkGray;
+                button.FillColor = System.Drawing.Color.DarkGray;
+                button.FillHoverColor = System.Drawing.Color.DarkGray;
+                button.FillPressColor = System.Drawing.Color.DarkGray;
+                button.ForeColor = System.Drawing.Color.Gray; // Màu chữ khi nút bị vô hiệu hóa
+            }
+        }
+        private void LoadNhaCungCap()
+        {
+            List<NhaCungCap> nccList = nccbll.LoadNhaCungCap();
+            dgvNhaCungCap.DataSource = nccList;
+        }
+        private void ClearForm()
+        {
+            txtMaNCC.Text = "";
+            txtTenNCC.Text = "";
+            txtSDT.Text = "";
+            txtDiaChi.Text = "";
+            txtEmail.Text = "";
+        }
+        private void EnableDataGridView(bool enable)
+        {
+            dgvNhaCungCap.Enabled = enable;
+            dgvNhaCungCap.DefaultCellStyle.BackColor = enable ? Color.White : Color.LightGray;
+        }
+        private void EnableTextBox(bool enable)
+        {
+            txtMaNCC.Enabled = enable;
+            txtTenNCC.Enabled = enable;
+            txtSDT.Enabled = enable;
+            txtDiaChi.Enabled = enable;
+            txtEmail.Enabled = enable;
+        }
+        private bool ValidateInput()
+        {
+            if (string.IsNullOrWhiteSpace(txtMaNCC.Text))
+            {
+                MessageBox.Show("Vui lòng nhập mã nhà cung cấp.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtTenNCC.Text))
+            {
+                MessageBox.Show("Vui lòng nhập tên nhà cung cấp.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtSDT.Text))
+            {
+                MessageBox.Show("Vui lòng nhập số điện thoại.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (txtSDT.Text.Length < 10 || txtSDT.Text.Length > 11)
+            {
+                MessageBox.Show("Vui lòng nhập đúng định dạng số điện thoại.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+        private void frmQLNhaCungCap_Load(object sender, EventArgs e)
+        {
+            LoadNhaCungCap();
+            EnableTextBox(false);
+        }
+        private void dgvNhaCungCap_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex>=0)
+            {
+                txtMaNCC.Text = dgvNhaCungCap.Rows[e.RowIndex].Cells["maNhaCungCap"].Value.ToString();
+                txtTenNCC.Text = dgvNhaCungCap.Rows[e.RowIndex].Cells["tenNhaCungCap"].Value.ToString();
+                txtDiaChi.Text = dgvNhaCungCap.Rows[e.RowIndex].Cells["diaChi"].Value.ToString();
+                txtEmail.Text = dgvNhaCungCap.Rows[e.RowIndex].Cells["email"].Value.ToString();
+                txtSDT.Text = dgvNhaCungCap.Rows[e.RowIndex].Cells["soDienThoai"].Value.ToString();
+            }
+        }
+        private void btnHuyBo_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+            EnableTextBox(false);
 
+            EnableDataGridView(true);
+            btnThem.Enabled = true;
+            SetButtonStyle(btnThem, true);
+            btnSua.Enabled = true;
+            SetButtonStyle(btnSua, true);
+            btnXoa.Enabled = true;
+            SetButtonStyle(btnXoa, true);
+
+            btnThem.Text = "Thêm";
+            btnSua.Text = "Sửa";
+            btnHuyBo.Enabled = false;
+            btnHuyBo.BackColor = Color.DarkGray;
+        }
         private void BtnThem_Click(object sender, EventArgs e)
         {
             if (btnThem.Text == "Thêm")
@@ -46,11 +154,7 @@ namespace MeVaBeProject
                 btnXoa.Enabled = false;
                 SetButtonStyle(btnXoa, false);
 
-                txtMaNCC.Enabled = true;
-                txtTenNCC.Enabled = true;
-                txtSDT.Enabled = true;
-                txtDiaChi.Enabled = true;
-                txtEmail.Enabled = true;
+                EnableTextBox(true);
             }
             else if (btnThem.Text == "Xác nhận")
             {
@@ -89,11 +193,7 @@ namespace MeVaBeProject
                             btnHuyBo.Enabled = false;
                             btnHuyBo.BackColor = Color.DarkGray;
 
-                            txtMaNCC.Enabled = false;
-                            txtTenNCC.Enabled = false;
-                            txtSDT.Enabled = false;
-                            txtDiaChi.Enabled = false;
-                            txtEmail.Enabled = false;
+                            EnableTextBox(false);
                         }
                         else
                         {
@@ -107,85 +207,102 @@ namespace MeVaBeProject
                 }
             }
         }
-
-        private void SetButtonStyle(UIButton button, bool isEnabled)
+        private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (isEnabled)
+            string maNhaCungCap = txtMaNCC.Text;
+            string tenNhaCungCap = txtTenNCC.Text;
+            string soDienThoai = txtSDT.Text;
+            string email = txtEmail.Text;
+            string diaChi = txtDiaChi.Text;
+            DialogResult r = MessageBox.Show(this, "Bạn có chắc chắc muốn xóa nhà cung cấp "+tenNhaCungCap+" này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (r==DialogResult.Yes)
             {
-                button.RectColor = System.Drawing.Color.HotPink;
-                button.RectDisableColor = System.Drawing.Color.Fuchsia;
-                button.RectHoverColor = System.Drawing.Color.DeepPink;
-                button.RectPressColor = System.Drawing.Color.DeepPink;
-                button.RectSelectedColor = System.Drawing.Color.FromArgb(255, 128, 255);
-                button.FillColor = System.Drawing.Color.LightPink;
-                button.FillHoverColor = System.Drawing.Color.HotPink;
-                button.FillPressColor = System.Drawing.Color.DeepPink;
-                button.ForeColor = System.Drawing.Color.Black; // Màu chữ khi nút được kích hoạt
-            }
-            else
-            {
-                button.RectColor = System.Drawing.Color.DarkGray;
-                button.RectDisableColor = System.Drawing.Color.DarkGray;
-                button.RectHoverColor = System.Drawing.Color.DarkGray;
-                button.RectPressColor = System.Drawing.Color.DarkGray;
-                button.RectSelectedColor = System.Drawing.Color.DarkGray;
-                button.FillColor = System.Drawing.Color.DarkGray;
-                button.FillHoverColor = System.Drawing.Color.DarkGray;
-                button.FillPressColor = System.Drawing.Color.DarkGray;
-                button.ForeColor = System.Drawing.Color.Gray; // Màu chữ khi nút bị vô hiệu hóa
+                NhaCungCap nhaCungCap = new NhaCungCap
+                { 
+                    maNhaCungCap=maNhaCungCap,
+                    tenNhaCungCap= tenNhaCungCap,
+                    soDienThoai=soDienThoai,
+                    email=email,
+                    diaChi=diaChi 
+                };
+                bool isSuccess = nccbll.XoaNhaCungCap(nhaCungCap);
+                if (isSuccess)
+                {
+                    MessageBox.Show(this, "Xóa nhà cung cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadNhaCungCap();
+                }
+                else
+                {
+                    MessageBox.Show(this, "Xóa nhà cung cấp thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
-
-        private void BtnClose_Click(object sender, EventArgs e)
+        private void btnSua_Click(object sender, EventArgs e)
         {
-            this.Hide();
-        }
-
-        private void LoadNhaCungCap()
-        {
-            List<NhaCungCap> nccList = nccbll.LoadNhaCungCap();
-            dgvNhaCungCap.DataSource = nccList;
-            dgvNhaCungCap.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        }
-
-        private void ClearForm()
-        {
-            txtMaNCC.Text = "";
-            txtTenNCC.Text = "";
-            txtSDT.Text = "";
-            txtDiaChi.Text = "";
-            txtEmail.Text = "";
-        }
-
-        private void EnableDataGridView(bool enable)
-        {
-            dgvNhaCungCap.Enabled = enable;
-            dgvNhaCungCap.DefaultCellStyle.BackColor = enable ? Color.White : Color.LightGray;
-        }
-
-        private bool ValidateInput()
-        {
-            if (string.IsNullOrWhiteSpace(txtMaNCC.Text))
+            if (btnSua.Text == "Sửa")
             {
-                MessageBox.Show("Vui lòng nhập mã nhà cung cấp.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                EnableDataGridView(false);
+                btnSua.Text = "Xác nhận";
+                btnHuyBo.Enabled = true;
+                btnHuyBo.BackColor = Color.IndianRed;
+                btnThem.Enabled = false;
+                SetButtonStyle(btnThem, false);
+                btnXoa.Enabled = false;
+                SetButtonStyle(btnXoa, false);
+
+                EnableTextBox(true);
+                txtMaNCC.Enabled = false;
             }
-            if (string.IsNullOrWhiteSpace(txtTenNCC.Text))
+            else if (btnSua.Text == "Xác nhận")
             {
-                MessageBox.Show("Vui lòng nhập tên nhà cung cấp.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                if (ValidateInput())
+                {
+                    string maNcc = txtMaNCC.Text.Trim();
+                    string tenNcc = txtTenNCC.Text.Trim();
+                    string sdt = txtSDT.Text.Trim();
+                    string diaChi = txtDiaChi.Text.Trim();
+                    string email = txtEmail.Text.Trim();
+
+                    NhaCungCap newNcc = new NhaCungCap
+                    {
+                        maNhaCungCap = maNcc,
+                        tenNhaCungCap = tenNcc,
+                        soDienThoai = sdt,
+                        email = email,
+                        diaChi = diaChi
+                    };
+                    try
+                    {
+                        bool isSuccess = nccbll.SuaNhaCungCap(newNcc);
+                        if (isSuccess)
+                        {
+                            MessageBox.Show("Sửa nhà cung cấp thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadNhaCungCap();
+
+                            ClearForm();
+                            EnableDataGridView(true);
+                            btnThem.Enabled = true;
+                            SetButtonStyle(btnThem, true);
+                            btnXoa.Enabled = true;
+                            SetButtonStyle(btnXoa, true);
+
+                            btnSua.Text = "Sửa";
+                            btnHuyBo.Enabled = false;
+                            btnHuyBo.BackColor = Color.DarkGray;
+
+                            EnableTextBox(false);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sửa nhà cung cấp thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Lỗi sửa nhà cung cấp: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
-            if (string.IsNullOrWhiteSpace(txtSDT.Text))
-            {
-                MessageBox.Show("Vui lòng nhập số điện thoại.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            if (txtSDT.Text.Length < 10 || txtSDT.Text.Length > 11)
-            {
-                MessageBox.Show("Vui lòng nhập đúng định dạng số điện thoại.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            return true;
         }
     }
 }

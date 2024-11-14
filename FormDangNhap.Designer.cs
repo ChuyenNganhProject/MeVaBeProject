@@ -48,9 +48,10 @@
             // 
             this.uiLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel1.Location = new System.Drawing.Point(702, 122);
+            this.uiLabel1.Location = new System.Drawing.Point(526, 99);
+            this.uiLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(182, 34);
+            this.uiLabel1.Size = new System.Drawing.Size(136, 28);
             this.uiLabel1.TabIndex = 0;
             this.uiLabel1.Text = "Đăng nhập";
             // 
@@ -58,15 +59,16 @@
             // 
             this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtUsername.Location = new System.Drawing.Point(708, 171);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtUsername.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtUsername.Location = new System.Drawing.Point(531, 139);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtUsername.MinimumSize = new System.Drawing.Size(1, 13);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Padding = new System.Windows.Forms.Padding(5);
+            this.txtUsername.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUsername.RectColor = System.Drawing.Color.Fuchsia;
             this.txtUsername.ShowText = false;
-            this.txtUsername.Size = new System.Drawing.Size(234, 29);
+            this.txtUsername.Size = new System.Drawing.Size(176, 24);
             this.txtUsername.TabIndex = 1;
+            this.txtUsername.Text = "hoangphuc";
             this.txtUsername.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtUsername.Watermark = "";
             // 
@@ -74,9 +76,10 @@
             // 
             this.uiLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel2.Location = new System.Drawing.Point(518, 171);
+            this.uiLabel2.Location = new System.Drawing.Point(388, 139);
+            this.uiLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(183, 29);
+            this.uiLabel2.Size = new System.Drawing.Size(137, 24);
             this.uiLabel2.TabIndex = 0;
             this.uiLabel2.Text = "Tên đăng nhập:";
             // 
@@ -84,16 +87,17 @@
             // 
             this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtPassword.Location = new System.Drawing.Point(708, 229);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtPassword.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtPassword.Location = new System.Drawing.Point(531, 186);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPassword.MinimumSize = new System.Drawing.Size(1, 13);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Padding = new System.Windows.Forms.Padding(5);
+            this.txtPassword.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.RectColor = System.Drawing.Color.Fuchsia;
             this.txtPassword.ShowText = false;
-            this.txtPassword.Size = new System.Drawing.Size(234, 29);
+            this.txtPassword.Size = new System.Drawing.Size(176, 24);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.Text = "admin123";
             this.txtPassword.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtPassword.Watermark = "";
             // 
@@ -101,9 +105,10 @@
             // 
             this.uiLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel3.Location = new System.Drawing.Point(518, 229);
+            this.uiLabel3.Location = new System.Drawing.Point(388, 186);
+            this.uiLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.uiLabel3.Name = "uiLabel3";
-            this.uiLabel3.Size = new System.Drawing.Size(183, 29);
+            this.uiLabel3.Size = new System.Drawing.Size(137, 24);
             this.uiLabel3.TabIndex = 2;
             this.uiLabel3.Text = "Mật khẩu:";
             // 
@@ -114,7 +119,8 @@
             this.btnLogin.FillHoverColor = System.Drawing.Color.HotPink;
             this.btnLogin.FillPressColor = System.Drawing.Color.DeepPink;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnLogin.Location = new System.Drawing.Point(708, 292);
+            this.btnLogin.Location = new System.Drawing.Point(531, 237);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogin.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.RectColor = System.Drawing.Color.HotPink;
@@ -122,7 +128,7 @@
             this.btnLogin.RectHoverColor = System.Drawing.Color.DeepPink;
             this.btnLogin.RectPressColor = System.Drawing.Color.DeepPink;
             this.btnLogin.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnLogin.Size = new System.Drawing.Size(150, 40);
+            this.btnLogin.Size = new System.Drawing.Size(112, 32);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -132,9 +138,10 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.btnClose.Location = new System.Drawing.Point(587, 9);
+            this.btnClose.Location = new System.Drawing.Point(439, 7);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(36, 23);
+            this.btnClose.Size = new System.Drawing.Size(27, 19);
             this.btnClose.TabIndex = 6;
             this.btnClose.Text = "X";
             // 
@@ -144,16 +151,18 @@
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(421, 450);
+            this.panel2.Size = new System.Drawing.Size(316, 366);
             this.panel2.TabIndex = 6;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(34, 47);
+            this.pictureBox1.Location = new System.Drawing.Point(26, 38);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(339, 320);
+            this.pictureBox1.Size = new System.Drawing.Size(254, 260);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -161,17 +170,18 @@
             // 
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(421, 0);
+            this.panel1.Location = new System.Drawing.Point(316, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(626, 42);
+            this.panel1.Size = new System.Drawing.Size(469, 34);
             this.panel1.TabIndex = 7;
             // 
             // FormDangNhap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1047, 450);
+            this.ClientSize = new System.Drawing.Size(785, 366);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnLogin);
@@ -181,6 +191,7 @@
             this.Controls.Add(this.uiLabel2);
             this.Controls.Add(this.uiLabel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormDangNhap";
