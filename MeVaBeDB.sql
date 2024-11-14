@@ -358,19 +358,6 @@ INSERT INTO ChiTietPhieuNhap(maPhieuNhap,maPhieuDat,maSanPham,soLuong,donGia,ton
 GO
 CREATE PROCEDURE XoaPhieuDat_Proc @maPhieuDat VARCHAR(50)
 AS
-	DECLARE @maSP VARCHAR(50), @maPN VARCHAR(50)
-	--Xóa phiếu nhập
-	DECLARE CS_DuyetPhieuNhap CURSOR
-	FOR SELECT maPhieuNhap FROM PhieuNhap WHERE maPhieuDat = @maPhieuDat
-	OPEN CS_DuyetPhieuNhap
-	FETCH NEXT FROM CS_DuyetPhieuNhap INTO @maPN
-	WHILE @@FETCH_STATUS = 0 
-	BEGIN
-		EXEC XoaPhieuNhap_Proc @maPN
-		FETCH NEXT FROM CS_DuyetPhieuNhap INTO @maPN
-	END
-	CLOSE CS_DuyetPhieuNhap
-	DEALLOCATE CS_DuyetPhieuNhap
 	--Xóa chi tiết phiếu đặt
 	DELETE ChiTietPhieuDat WHERE maPhieuDat = @maPhieuDat
 	--Xóa phiếu đặt
@@ -394,22 +381,6 @@ AS
 	DEALLOCATE CS_DuyetChiTietPhieuNhap
 	--Xóa phiếu nhập
 	DELETE PhieuNhap WHERE maPhieuNhap = @maPhieuNhap
-GO
-CREATE PROCEDURE XoaChiTietPhieuDat_Proc @maPhieuDat VARCHAR(50), @maSanPham VARCHAR(50)
-AS
-	DECLARE @maPN VARCHAR(50)
-	DECLARE CS_DuyetChiTietPhieuNhap CURSOR 
-	FOR SELECT maPhieuNhap FROM PhieuNhap WHERE maPhieuDat = @maPhieuDat
-	OPEN CS_DuyetChiTietPhieuNhap
-	FETCH NEXT FROM CS_DuyetChiTietPhieuNhap INTO @maPN
-	WHILE @@FETCH_STATUS = 0
-	BEGIN
-		DELETE ChiTietPhieuNhap WHERE maPhieuNhap = @maPN AND maPhieuDat = @maPhieuDat AND maSanPham = @maSanPham
-		FETCH NEXT FROM CS_DuyetChiTietPhieuNhap INTO @maPN
-	END
-	CLOSE CS_DuyetChiTietPhieuNhap
-	DEALLOCATE CS_DuyetChiTietPhieuNhap
-	DELETE ChiTietPhieuDat WHERE maPhieuDat = @maPhieuDat AND maSanPham = @maSanPham
 GO
 CREATE TRIGGER TRG_CapNhatTrangThaiSP ON SanPham
 AFTER UPDATE

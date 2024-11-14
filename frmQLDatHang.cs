@@ -29,7 +29,7 @@ namespace MeVaBeProject
         }
         private void btnTaoPhieuDat_Click(object sender, EventArgs e)
         {
-            frmDatHang frmDatHang = new frmDatHang(maNhanVien,true,string.Empty);
+            frmDatHang frmDatHang = new frmDatHang(maNhanVien,true,string.Empty,string.Empty);
             frmDatHang.ShowDialog();
         }
         private void btnXoaPhieuDat_Click(object sender, EventArgs e)
@@ -69,7 +69,8 @@ namespace MeVaBeProject
                 if (trangThai!="Đã duyệt")
                 {
                     string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
-                    frmDatHang frmDatHang = new frmDatHang(maNhanVien, false, maPhieuDat);
+                    string maNhaCungCap = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maNhaCungCap"].Value.ToString();
+                    frmDatHang frmDatHang = new frmDatHang(maNhanVien, false, maPhieuDat,maNhaCungCap);
                     frmDatHang.ShowDialog();
                 }
                 else

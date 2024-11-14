@@ -273,11 +273,6 @@
       <Association Name="LoaiSanPham_SanPham" Member="LoaiSanPham" ThisKey="maLoaiSanPham" OtherKey="maLoaiSanPham" Type="LoaiSanPham" IsForeignKey="true" />
     </Type>
   </Table>
-  <Function Name="dbo.XoaChiTietPhieuDat_Proc" Method="XoaChiTietPhieuDat_Proc">
-    <Parameter Name="maPhieuDat" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="maSanPham" Type="System.String" DbType="VarChar(50)" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.XoaPhieuDat_Proc" Method="XoaPhieuDat_Proc">
     <Parameter Name="maPhieuDat" Type="System.String" DbType="VarChar(50)" />
     <Return Type="System.Int32" />

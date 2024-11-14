@@ -16,6 +16,7 @@ namespace MeVaBeProject
         #region
         private string maNhanVien;
         private string maPhieuDat;
+        private string maNhaCungCap;
         private bool themPhieu;
         private BindingSource bindingSource;
         private SanPhamBLL sanPhamBLL;
@@ -25,13 +26,14 @@ namespace MeVaBeProject
         private ChiTietPhieuDatBLL chiTietPhieuDatBLL;
         private List<DataGridViewRow> deletedRows;
         #endregion
-        public frmDatHang(string maNhanVien,bool themPhieu,string maPhieuDat)
+        public frmDatHang(string maNhanVien,bool themPhieu,string maPhieuDat,string maNhaCungCap)
         {
-            this.maNhanVien = maNhanVien;
+            this.maNhanVien = maNhanVien;            
             this.themPhieu = themPhieu;
             if (!themPhieu)
             {
                 this.maPhieuDat = maPhieuDat;
+                this.maNhaCungCap = maNhaCungCap;
             }
             this.bindingSource = new BindingSource();
             this.sanPhamBLL = new SanPhamBLL();
@@ -42,7 +44,6 @@ namespace MeVaBeProject
             this.deletedRows = new List<DataGridViewRow>();
             InitializeComponent();
             this.txtSoLuongSanPham.KeyPress += onlyNumericInput;
-            
             this.txtDonGia.KeyPress += onlyNumericInput;
         }
         private void onlyNumericInput(object sender, KeyPressEventArgs e)
@@ -92,7 +93,13 @@ namespace MeVaBeProject
             else
             {
                 txtMaPhieuDat.Text = maPhieuDat;
+                cbNhaCungCap.SelectedValue = maNhaCungCap;
                 dtgvSanPhamTrongPhieuDat.DataSource = chiTietPhieuDatBLL.LayChiTietPhieuDat(maPhieuDat);
+                dtgvSanPhamTrongPhieuDat.Columns["maPhieuDat"].Visible = false;
+                dtgvSanPhamTrongPhieuDat.Columns["PhieuDat"].Visible = false;
+                dtgvSanPhamTrongPhieuDat.Columns["SanPham"].Visible = false;
+                dtgvSanPhamTrongPhieuDat.Columns["donGiaSP"].DefaultCellStyle.Format = "C0";
+                dtgvSanPhamTrongPhieuDat.Columns["thanhTien"].DefaultCellStyle.Format = "C0";
             }
         }
         private void cbLoaiSP_SelectedValueChanged(object sender, EventArgs e)
@@ -116,7 +123,6 @@ namespace MeVaBeProject
             if (rdbtMaSP.Checked)
             {
                 bindingSource.DataSource = sanPhamBLL.TimKiemSanPhamTheoMaSP(txtTimKiem.Text);
-
             }
             else
             {
@@ -142,32 +148,36 @@ namespace MeVaBeProject
                     ngayLap = DateTime.Now,
                     ngayCapNhat = DateTime.Now,
                     soLuong = dtgvSanPhamTrongPhieuDat.RowCount,
-                    tongTien = Decimal.Parse(txtTongTien.Text),
+                    tongTien = Decimal.Parse(txtTongTien.Text.Replace("₫", "").Replace(".", "").Trim()),
                     trangThai = "Chưa duyệt"
                 };
                 bool result = phieuDatBLL.TaoPhieuDat(pPhieuDat);
                 if (result)
                 {
+                    bool resultTaoCTPD = false;
                     foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuDat.Rows)
                     {
+                        string donGia = row.Cells["donGiaSP"].Value.ToString().Replace("₫", "").Replace(".", "").Trim();
+                        string tongTien = row.Cells["thanhTien"].Value.ToString().Replace("₫", "").Replace(".", "").Trim();
                         ChiTietPhieuDat pChiTietPhieuDat = new ChiTietPhieuDat()
                         {
                             maPhieuDat = txtMaPhieuDat.Text,
                             maSanPham = row.Cells["maSP"].Value.ToString(),
                             soLuongDat = int.Parse(row.Cells["soLuongDat"].Value.ToString()),
                             soLuongNhan = int.Parse(row.Cells["soLuongDaNhan"].Value.ToString()),
-                            donGia = int.Parse(row.Cells["donGiaSP"].Value.ToString()),
-                            tongTien = int.Parse(row.Cells["thanhTien"].Value.ToString())
+                            donGia = int.Parse(donGia),
+                            tongTien = int.Parse(tongTien)
                         };
-                        bool resultTaoCTPD = chiTietPhieuDatBLL.ThemChiTietPhieuDat(pChiTietPhieuDat);
-                        if (resultTaoCTPD && result)
-                        {
-                            MessageBox.Show(this, "Tạo phiếu đặt thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
+                        resultTaoCTPD = chiTietPhieuDatBLL.ThemChiTietPhieuDat(pChiTietPhieuDat);
+                        if (!resultTaoCTPD)
+                        {                            
                             MessageBox.Show(this, "Tạo phiếu đặt thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                            break;
+                        }                        
+                    }
+                    if (resultTaoCTPD)
+                    {
+                        MessageBox.Show(this, "Tạo phiếu đặt thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
@@ -206,15 +216,11 @@ namespace MeVaBeProject
                             tongTien = int.Parse(row.Cells["thanhTien"].Value.ToString())
                         };
                         resultSuaCTPD = chiTietPhieuDatBLL.SuaChiTietPhieuDat(pChiTietPhieuDat);
-                        if (resultSuaCTPD && result)
-                        {
-                            MessageBox.Show(this, "Sửa phiếu đặt thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show(this, "Sửa phiếu đặt thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
+                        if (!resultSuaCTPD)
+                        {                            
+                            break;
+                        }                       
+                    }                    
                     //Xóa những sản phẩm khỏi chi tiết phiếu đặt
                     bool xoaSanPham = true;
                     if (deletedRows.Count > 0)
@@ -224,16 +230,20 @@ namespace MeVaBeProject
                             string maPhieuDat = txtMaPhieuDat.Text;
                             string maSanPham = row.Cells["maSP"].Value.ToString();
                             xoaSanPham = chiTietPhieuDatBLL.XoaChiTietPhieuDat(maPhieuDat, maSanPham);
-                            if (resultSuaCTPD && result)
+                            if (!xoaSanPham)
                             {
-                                MessageBox.Show(this, "Sửa phiếu đặt thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show(this, "Sửa phiếu đặt thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                                break;                                
+                            }                           
                         }
-                    }                    
+                    }
+                    if (resultSuaCTPD && xoaSanPham)
+                    {
+                        MessageBox.Show(this, "Sửa phiếu đặt thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, "Sửa phiếu đặt thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
@@ -292,7 +302,7 @@ namespace MeVaBeProject
                 txtTenSanPham.Text = dtgvSanPhamTrongPhieuDat.Rows[e.RowIndex].Cells["tenSP"].Value.ToString();
                 txtSoLuongSanPham.Text = dtgvSanPhamTrongPhieuDat.Rows[e.RowIndex].Cells["soLuongDat"].Value.ToString();
                 string donGia = dtgvSanPhamTrongPhieuDat.Rows[e.RowIndex].Cells["donGiaSP"].Value.ToString();
-                donGia = donGia.Replace("₫", "").Replace(".", "").Trim();
+                donGia = donGia.Replace("₫", "").Replace(".", "").Split(',')[0].Trim();
                 txtDonGia.Text = donGia;
             }
         }
@@ -355,7 +365,7 @@ namespace MeVaBeProject
             foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuDat.Rows)
             {
                 string price = row.Cells["thanhTien"].Value.ToString();
-                price = price.Replace("₫", "").Replace(".", "").Trim();
+                price = price.Replace("₫", "").Replace(".", "").Split(',')[0].Trim();
                 int thanhTien = int.Parse(price);
                 tongTien += thanhTien;
             }
@@ -369,7 +379,7 @@ namespace MeVaBeProject
                 foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuDat.SelectedRows)
                 {
                     string price = row.Cells["donGiaSP"].Value.ToString();
-                    price = price.Replace("₫", "").Replace(".", "").Trim();
+                    price = price.Replace("₫", "").Replace(".", "").Split(',')[0].Trim();
                     int donGia = int.Parse(price);
                     int soLuongDat = int.Parse(row.Cells["soLuongDat"].Value.ToString());
                     int thanhTien = soLuongDat * donGia;

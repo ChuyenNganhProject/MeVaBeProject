@@ -61,12 +61,6 @@ namespace MeVaBeProject
             this.trangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
             this.dtgvSanPhamTrongPhieuDat = new Sunny.UI.UIDataGridView();
-            this.maSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soLuongDat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soLuongDaNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.donGiaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.thanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiPanel2 = new Sunny.UI.UIPanel();
             this.btnPhucHoi = new Sunny.UI.UISymbolButton();
             this.txtTongTien = new Sunny.UI.UITextBox();
@@ -97,6 +91,12 @@ namespace MeVaBeProject
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.cbLoaiSP = new Sunny.UI.UIComboBox();
             this.uiToolTip1 = new Sunny.UI.UIToolTip(this.components);
+            this.maSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soLuongDat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soLuongDaNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.donGiaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.thanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiPanel1.SuspendLayout();
             this.uiGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDanhSachSP)).BeginInit();
@@ -359,58 +359,6 @@ namespace MeVaBeProject
             this.dtgvSanPhamTrongPhieuDat.TabIndex = 1;
             this.dtgvSanPhamTrongPhieuDat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSanPhamTrongPhieuDat_CellClick);
             this.dtgvSanPhamTrongPhieuDat.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSanPhamTrongPhieuDat_CellValueChanged);
-            // 
-            // maSP
-            // 
-            this.maSP.HeaderText = "Mã sản phẩm";
-            this.maSP.Name = "maSP";
-            this.maSP.ReadOnly = true;
-            this.maSP.Width = 129;
-            // 
-            // tenSP
-            // 
-            this.tenSP.HeaderText = "Tên sản phẩm";
-            this.tenSP.Name = "tenSP";
-            this.tenSP.ReadOnly = true;
-            this.tenSP.Width = 134;
-            // 
-            // soLuongDat
-            // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.soLuongDat.DefaultCellStyle = dataGridViewCellStyle10;
-            this.soLuongDat.HeaderText = "Số lượng đặt";
-            this.soLuongDat.Name = "soLuongDat";
-            this.soLuongDat.Width = 123;
-            // 
-            // soLuongDaNhan
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.soLuongDaNhan.DefaultCellStyle = dataGridViewCellStyle11;
-            this.soLuongDaNhan.HeaderText = "Số lượng nhận";
-            this.soLuongDaNhan.Name = "soLuongDaNhan";
-            this.soLuongDaNhan.ReadOnly = true;
-            this.soLuongDaNhan.Width = 136;
-            // 
-            // donGiaSP
-            // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "C0";
-            dataGridViewCellStyle12.NullValue = null;
-            this.donGiaSP.DefaultCellStyle = dataGridViewCellStyle12;
-            this.donGiaSP.HeaderText = "Đơn giá";
-            this.donGiaSP.Name = "donGiaSP";
-            this.donGiaSP.Width = 88;
-            // 
-            // thanhTien
-            // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "C0";
-            dataGridViewCellStyle13.NullValue = null;
-            this.thanhTien.DefaultCellStyle = dataGridViewCellStyle13;
-            this.thanhTien.HeaderText = "Thành tiền";
-            this.thanhTien.Name = "thanhTien";
-            this.thanhTien.ReadOnly = true;
-            this.thanhTien.Width = 108;
             // 
             // uiPanel2
             // 
@@ -847,6 +795,64 @@ namespace MeVaBeProject
             this.uiToolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
             this.uiToolTip1.OwnerDraw = true;
             // 
+            // maSP
+            // 
+            this.maSP.DataPropertyName = "maSanPham";
+            this.maSP.HeaderText = "Mã sản phẩm";
+            this.maSP.Name = "maSP";
+            this.maSP.ReadOnly = true;
+            this.maSP.Width = 129;
+            // 
+            // tenSP
+            // 
+            this.tenSP.DataPropertyName = "tenSanPham";
+            this.tenSP.HeaderText = "Tên sản phẩm";
+            this.tenSP.Name = "tenSP";
+            this.tenSP.ReadOnly = true;
+            this.tenSP.Width = 134;
+            // 
+            // soLuongDat
+            // 
+            this.soLuongDat.DataPropertyName = "soLuongDat";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.soLuongDat.DefaultCellStyle = dataGridViewCellStyle10;
+            this.soLuongDat.HeaderText = "Số lượng đặt";
+            this.soLuongDat.Name = "soLuongDat";
+            this.soLuongDat.Width = 123;
+            // 
+            // soLuongDaNhan
+            // 
+            this.soLuongDaNhan.DataPropertyName = "soLuongNhan";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.soLuongDaNhan.DefaultCellStyle = dataGridViewCellStyle11;
+            this.soLuongDaNhan.HeaderText = "Số lượng nhận";
+            this.soLuongDaNhan.Name = "soLuongDaNhan";
+            this.soLuongDaNhan.ReadOnly = true;
+            this.soLuongDaNhan.Width = 136;
+            // 
+            // donGiaSP
+            // 
+            this.donGiaSP.DataPropertyName = "donGia";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "C0";
+            dataGridViewCellStyle12.NullValue = null;
+            this.donGiaSP.DefaultCellStyle = dataGridViewCellStyle12;
+            this.donGiaSP.HeaderText = "Đơn giá";
+            this.donGiaSP.Name = "donGiaSP";
+            this.donGiaSP.Width = 88;
+            // 
+            // thanhTien
+            // 
+            this.thanhTien.DataPropertyName = "tongTien";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "C0";
+            dataGridViewCellStyle13.NullValue = null;
+            this.thanhTien.DefaultCellStyle = dataGridViewCellStyle13;
+            this.thanhTien.HeaderText = "Thành tiền";
+            this.thanhTien.Name = "thanhTien";
+            this.thanhTien.ReadOnly = true;
+            this.thanhTien.Width = 108;
+            // 
             // frmDatHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -917,12 +923,12 @@ namespace MeVaBeProject
         private System.Windows.Forms.DataGridViewTextBoxColumn hanSuDung;
         private System.Windows.Forms.DataGridViewImageColumn anh;
         private System.Windows.Forms.DataGridViewTextBoxColumn trangThai;
+        private Sunny.UI.UISymbolButton btnPhucHoi;
         private System.Windows.Forms.DataGridViewTextBoxColumn maSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn soLuongDat;
         private System.Windows.Forms.DataGridViewTextBoxColumn soLuongDaNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn donGiaSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn thanhTien;
-        private Sunny.UI.UISymbolButton btnPhucHoi;
     }
 }
