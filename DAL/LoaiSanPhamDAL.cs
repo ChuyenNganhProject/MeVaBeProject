@@ -1,10 +1,9 @@
-﻿using DTO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using DTO;
 namespace DAL
 {
     public class LoaiSanPhamDAL
@@ -20,12 +19,12 @@ namespace DAL
         public LoaiSanPham LayTTLoaiSpTuMaLoaiSp(string ma)
         {
             try
-            {
+        {
                 LoaiSanPham loaisp = db.LoaiSanPhams.FirstOrDefault(lsp => lsp.maLoaiSanPham == ma);
                 return loaisp;
-            }
+        }
             catch
-            {
+        {
                 return null;
             }
         }

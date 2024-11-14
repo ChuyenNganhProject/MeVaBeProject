@@ -43,7 +43,7 @@ namespace MeVaBeProject
                 MessageBox.Show($"Đăng nhập thành công! Xin chào, {nhanVien.tenNhanVien}");
                 if(nhanVien.maLoaiNhanVien == "QL")
                 {
-                    frmTrangChu frm = new frmTrangChu();
+                    frmTrangChu frm = new frmTrangChu(nhanVien.maNhanVien);
                     frm.Show();
                     this.Hide();
                 }

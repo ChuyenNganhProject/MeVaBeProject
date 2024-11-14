@@ -30,5 +30,36 @@ namespace DAL
                 return false;
             }
         }
+        public bool XoaNhaCungCap(NhaCungCap ncc)
+        {
+            try
+            {
+                NhaCungCap nccDeleted = db.NhaCungCaps.Where(nhaCC => nhaCC.maNhaCungCap == ncc.maNhaCungCap).Select(nhaCC => nhaCC).First();
+                db.NhaCungCaps.DeleteOnSubmit(nccDeleted);
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool SuaNhaCungCap(NhaCungCap ncc)
+        {
+            try
+            {
+                NhaCungCap nccEdited = db.NhaCungCaps.Where(nhaCC => nhaCC.maNhaCungCap == ncc.maNhaCungCap).Select(nhaCC => nhaCC).First();
+                nccEdited.tenNhaCungCap = ncc.tenNhaCungCap;
+                nccEdited.diaChi = ncc.diaChi;
+                nccEdited.email = ncc.email;
+                nccEdited.soDienThoai = ncc.soDienThoai;
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

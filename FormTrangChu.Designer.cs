@@ -30,25 +30,27 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTrangChu));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnDangXuat = new Sunny.UI.UIImageButton();
             this.btnNhanVien = new Sunny.UI.UIImageButton();
+            this.btnDatHang = new Sunny.UI.UIImageButton();
+            this.btnDangXuat = new Sunny.UI.UIImageButton();
             this.btnNhapHang = new Sunny.UI.UIImageButton();
             this.btnKhachHang = new Sunny.UI.UIImageButton();
             this.btnHoaDon = new Sunny.UI.UIImageButton();
             this.btnSanPham = new Sunny.UI.UIImageButton();
-            this.btnTonKho = new Sunny.UI.UIImageButton();
+            this.btnQLNhaCungCap = new Sunny.UI.UIImageButton();
             this.btnDashboard = new Sunny.UI.UIImageButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnClose = new Sunny.UI.UILabel();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNhanVien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDatHang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNhapHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnKhachHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSanPham)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnTonKho)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnQLNhaCungCap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDashboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -57,13 +59,14 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(70)))), ((int)(((byte)(158)))));
-            this.panel2.Controls.Add(this.btnDangXuat);
             this.panel2.Controls.Add(this.btnNhanVien);
+            this.panel2.Controls.Add(this.btnDatHang);
+            this.panel2.Controls.Add(this.btnDangXuat);
             this.panel2.Controls.Add(this.btnNhapHang);
             this.panel2.Controls.Add(this.btnKhachHang);
             this.panel2.Controls.Add(this.btnHoaDon);
             this.panel2.Controls.Add(this.btnSanPham);
-            this.panel2.Controls.Add(this.btnTonKho);
+            this.panel2.Controls.Add(this.btnQLNhaCungCap);
             this.panel2.Controls.Add(this.btnDashboard);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -71,6 +74,39 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(249, 788);
             this.panel2.TabIndex = 1;
+            // 
+            // btnNhanVien
+            // 
+            this.btnNhanVien.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNhanVien.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNhanVien.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhanVien.ForeColor = System.Drawing.Color.White;
+            this.btnNhanVien.Image = ((System.Drawing.Image)(resources.GetObject("btnNhanVien.Image")));
+            this.btnNhanVien.ImageOffset = new System.Drawing.Point(40, 15);
+            this.btnNhanVien.Location = new System.Drawing.Point(0, 650);
+            this.btnNhanVien.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnNhanVien.Name = "btnNhanVien";
+            this.btnNhanVien.Size = new System.Drawing.Size(249, 64);
+            this.btnNhanVien.TabIndex = 12;
+            this.btnNhanVien.TabStop = false;
+            this.btnNhanVien.Text = "Nhân viên";
+            // 
+            // btnDatHang
+            // 
+            this.btnDatHang.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDatHang.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDatHang.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDatHang.ForeColor = System.Drawing.Color.White;
+            this.btnDatHang.Image = ((System.Drawing.Image)(resources.GetObject("btnDatHang.Image")));
+            this.btnDatHang.ImageOffset = new System.Drawing.Point(40, 15);
+            this.btnDatHang.Location = new System.Drawing.Point(0, 586);
+            this.btnDatHang.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnDatHang.Name = "btnDatHang";
+            this.btnDatHang.Size = new System.Drawing.Size(249, 64);
+            this.btnDatHang.TabIndex = 11;
+            this.btnDatHang.TabStop = false;
+            this.btnDatHang.Text = "Đặt hàng";
+            this.btnDatHang.Click += new System.EventHandler(this.btnDatHang_Click);
             // 
             // btnDangXuat
             // 
@@ -86,22 +122,6 @@
             this.btnDangXuat.TabIndex = 9;
             this.btnDangXuat.TabStop = false;
             this.btnDangXuat.Text = "Đăng xuất";
-            // 
-            // btnNhanVien
-            // 
-            this.btnNhanVien.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNhanVien.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNhanVien.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhanVien.ForeColor = System.Drawing.Color.White;
-            this.btnNhanVien.Image = ((System.Drawing.Image)(resources.GetObject("btnNhanVien.Image")));
-            this.btnNhanVien.ImageOffset = new System.Drawing.Point(40, 15);
-            this.btnNhanVien.Location = new System.Drawing.Point(0, 586);
-            this.btnNhanVien.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnNhanVien.Name = "btnNhanVien";
-            this.btnNhanVien.Size = new System.Drawing.Size(249, 64);
-            this.btnNhanVien.TabIndex = 7;
-            this.btnNhanVien.TabStop = false;
-            this.btnNhanVien.Text = "Nhân viên";
             // 
             // btnNhapHang
             // 
@@ -167,21 +187,22 @@
             this.btnSanPham.TabStop = false;
             this.btnSanPham.Text = "Sản phẩm";
             // 
-            // btnTonKho
+            // btnQLNhaCungCap
             // 
-            this.btnTonKho.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTonKho.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTonKho.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTonKho.ForeColor = System.Drawing.Color.White;
-            this.btnTonKho.Image = ((System.Drawing.Image)(resources.GetObject("btnTonKho.Image")));
-            this.btnTonKho.ImageOffset = new System.Drawing.Point(40, 15);
-            this.btnTonKho.Location = new System.Drawing.Point(0, 266);
-            this.btnTonKho.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnTonKho.Name = "btnTonKho";
-            this.btnTonKho.Size = new System.Drawing.Size(249, 64);
-            this.btnTonKho.TabIndex = 2;
-            this.btnTonKho.TabStop = false;
-            this.btnTonKho.Text = "Tồn kho";
+            this.btnQLNhaCungCap.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQLNhaCungCap.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnQLNhaCungCap.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLNhaCungCap.ForeColor = System.Drawing.Color.White;
+            this.btnQLNhaCungCap.Image = ((System.Drawing.Image)(resources.GetObject("btnQLNhaCungCap.Image")));
+            this.btnQLNhaCungCap.ImageOffset = new System.Drawing.Point(40, 15);
+            this.btnQLNhaCungCap.Location = new System.Drawing.Point(0, 266);
+            this.btnQLNhaCungCap.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnQLNhaCungCap.Name = "btnQLNhaCungCap";
+            this.btnQLNhaCungCap.Size = new System.Drawing.Size(249, 64);
+            this.btnQLNhaCungCap.TabIndex = 2;
+            this.btnQLNhaCungCap.TabStop = false;
+            this.btnQLNhaCungCap.Text = "Nhà cung cấp";
+            this.btnQLNhaCungCap.Click += new System.EventHandler(this.btnQLNhaCungCap_Click);
             // 
             // btnDashboard
             // 
@@ -246,13 +267,14 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNhanVien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDatHang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNhapHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnKhachHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHoaDon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSanPham)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnTonKho)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnQLNhaCungCap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDashboard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -270,8 +292,9 @@
         private Sunny.UI.UIImageButton btnKhachHang;
         private Sunny.UI.UIImageButton btnHoaDon;
         private Sunny.UI.UIImageButton btnSanPham;
-        private Sunny.UI.UIImageButton btnTonKho;
-        private Sunny.UI.UIImageButton btnNhanVien;
+        private Sunny.UI.UIImageButton btnQLNhaCungCap;
         private Sunny.UI.UIImageButton btnDangXuat;
+        private Sunny.UI.UIImageButton btnNhanVien;
+        private Sunny.UI.UIImageButton btnDatHang;
     }
 }

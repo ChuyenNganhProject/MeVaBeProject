@@ -7,28 +7,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using BLL;
+using DTO;
 namespace MeVaBeProject
 {
     public partial class frmNhapHang : Form
     {
-        public frmNhapHang()
+        private NhaCungCapBLL nhaCungCapBLL;
+        private string maNhanVien;
+        public frmNhapHang(string maNhanVien)
         {
+            this.nhaCungCapBLL = new NhaCungCapBLL();
+            this.maNhanVien = maNhanVien;
             InitializeComponent();
-            this.btnDatHang.Click += BtnDatHang_Click;
-            this.btnQLNhaCungCap.Click += BtnQLNhaCungCap_Click;
+            this.btnTaoPhieuNhap.Click += BtnDatHang_Click;
         }
 
         private void BtnQLNhaCungCap_Click(object sender, EventArgs e)
         {
-            frmQLNhaCungCap frm = new frmQLNhaCungCap();
-            frm.ShowDialog();
+
         }
 
         private void BtnDatHang_Click(object sender, EventArgs e)
         {
-            frmDatHang frmDatHang = new frmDatHang();
-            frmDatHang.ShowDialog();
+
+        }
+
+        private void frmNhapHang_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
