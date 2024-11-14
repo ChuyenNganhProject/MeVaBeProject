@@ -13,7 +13,8 @@ using Sunny;
 using Sunny.UI;
 using CustomControl;
 using System.Globalization;
-
+using BLL;
+using DTO;
 namespace MeVaBeProject
 {
     public partial class frmBanHang : Form

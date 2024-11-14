@@ -387,17 +387,15 @@ VALUES
     ('UD001', N'Giảm giá 10% toàn bộ sản phẩm', 10, 'VIPGOLD'),
 	('UD002', N'Giảm giá 15% toàn bộ sản phẩm', 15, 'VIPDIAMOND')
 GO
-
-
 INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALUES('NCC001',N'Nhà cung cấp sữa','0888003346',N'469/32 Nguyễn Kiệm','hoangPhuc@gmail.com')
 INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALUES('NCC002',N'Nhà cung cấp đồ chơi','0888003345',N'180 Hoa Lan','hoangMy@gmail.com')
 INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALUES('NCC003',N'Nhà cung cấp tã','0888003347',N'160 Lê Trọng Tấn','minhNhat@gmail.com')
 INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALUES('NCC004',N'Nhà cung cấp quần áo','0888003348',N'47 Hoa Lan','aiDo@gmail.com')
 INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALUES('NCC005',N'Nhà cung cấp thuốc','0888003349',N'360 Nguyễn Thái Sơn','khongBiet@gmail.com')
 GO
-INSERT INTO PhieuDat(maPhieuDat,maNhaCungCap,maNhanVien,ngayLap,soLuong,tongTien,trangThai) VALUES('PD000000001','NCC001','NV001','11/11/2024',2,0,0)
+INSERT INTO PhieuDat(maPhieuDat,maNhaCungCap,maNhanVien,ngayLap,soLuong,tongTien) VALUES('PD000000001','NCC001','NV001','11/11/2024',2,0)
 
-INSERT INTO PhieuDat(maPhieuDat,maNhaCungCap,maNhanVien,ngayLap,soLuong,tongTien,trangThai) VALUES('PD000000002','NCC002','NV002','11/11/2024',2,0,0)
+INSERT INTO PhieuDat(maPhieuDat,maNhaCungCap,maNhanVien,ngayLap,soLuong,tongTien) VALUES('PD000000002','NCC002','NV002','11/11/2024',2,0)
 GO
 INSERT INTO ChiTietPhieuDat(maPhieuDat,maSanPham,soLuongDat,donGia,tongTien) VALUES('PD000000001','SP001',100,1000000,100000000)
 INSERT INTO ChiTietPhieuDat(maPhieuDat,maSanPham,soLuongDat,donGia,tongTien) VALUES('PD000000001','SP002',100,1000000,100000000)
