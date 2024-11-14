@@ -48,11 +48,12 @@
             // 
             this.uiLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel1.Location = new System.Drawing.Point(702, 122);
+            this.uiLabel1.Location = new System.Drawing.Point(660, 122);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(182, 34);
             this.uiLabel1.TabIndex = 0;
             this.uiLabel1.Text = "Đăng nhập";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtUsername
             // 
@@ -63,7 +64,7 @@
             this.txtUsername.MinimumSize = new System.Drawing.Size(1, 16);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Padding = new System.Windows.Forms.Padding(5);
-            this.txtUsername.RectColor = System.Drawing.Color.Fuchsia;
+            this.txtUsername.RectColor = System.Drawing.Color.HotPink;
             this.txtUsername.ShowText = false;
             this.txtUsername.Size = new System.Drawing.Size(234, 29);
             this.txtUsername.TabIndex = 1;
@@ -90,7 +91,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Padding = new System.Windows.Forms.Padding(5);
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.RectColor = System.Drawing.Color.Fuchsia;
+            this.txtPassword.RectColor = System.Drawing.Color.HotPink;
             this.txtPassword.ShowText = false;
             this.txtPassword.Size = new System.Drawing.Size(234, 29);
             this.txtPassword.TabIndex = 3;
@@ -114,7 +115,7 @@
             this.btnLogin.FillHoverColor = System.Drawing.Color.HotPink;
             this.btnLogin.FillPressColor = System.Drawing.Color.DeepPink;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnLogin.Location = new System.Drawing.Point(708, 292);
+            this.btnLogin.Location = new System.Drawing.Point(678, 301);
             this.btnLogin.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.RectColor = System.Drawing.Color.HotPink;

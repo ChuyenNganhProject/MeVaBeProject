@@ -43,18 +43,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ucDangNhap.cs">
+    <Compile Include="GioHangItemControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucDangNhap.Designer.cs">
-      <DependentUpon>ucDangNhap.cs</DependentUpon>
+    <Compile Include="GioHangItemControl.Designer.cs">
+      <DependentUpon>GioHangItemControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SanPhamItemControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SanPhamItemControl.Designer.cs">
+      <DependentUpon>SanPhamItemControl.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ucDangNhap.resx">
-      <DependentUpon>ucDangNhap.cs</DependentUpon>
+    <EmbeddedResource Include="GioHangItemControl.resx">
+      <DependentUpon>GioHangItemControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SanPhamItemControl.resx">
+      <DependentUpon>SanPhamItemControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{28d55dec-c889-4690-bcbc-e92dcf717bcc}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{76071d20-a689-4206-ab53-56b44d0fbe01}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
