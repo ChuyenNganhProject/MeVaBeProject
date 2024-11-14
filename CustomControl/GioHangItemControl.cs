@@ -64,7 +64,7 @@ namespace CustomControl
         // Thêm sản phẩm vào giỏ hàng
         public void CapNhatGioHang(string maSp, string tenSp, decimal donGia, int soLuong)
         {   
-            this.numericSoLuongSp.Maximum = spbll.LaySanPhamTheoMa(maSp).soLuong.Value;
+            this.numericSoLuongSp.Maximum = spbll.TimKiemSanPhamTheoMaSP(maSp).soLuong.Value;
             this.MaSanPham = maSp;
             this.TenSanPham = tenSp;
             this.SoLuong = soLuong;

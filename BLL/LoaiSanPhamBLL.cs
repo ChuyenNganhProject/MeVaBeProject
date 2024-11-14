@@ -12,7 +12,7 @@ namespace BLL
         LoaiSanPhamDAL lspdal = new LoaiSanPhamDAL();
         public LoaiSanPhamBLL() { }
 
-        public List<LoaiSanPham> LoadLoaiSanPham()
+        public List<LoaiSanPham> LayDanhSachSanPham()
         {
             return lspdal.LoadLoaiSanPham();
         }

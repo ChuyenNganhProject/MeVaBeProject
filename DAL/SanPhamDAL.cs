@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,37 +15,42 @@ namespace DAL
             this.dataContext = new MeVaBeDBDataContext();
         }
         public List<SanPham> LayDanhSachSanPham()
-
-        public List<SanPham> LoadSanPhamByLoaiSp(LoaiSanPham loaisp)
         {
-            List<SanPham> danhSachSanPham= dataContext.SanPhams.Select(sp => sp).ToList<SanPham>();
-            foreach(SanPham sp in danhSachSanPham)
-            var listSp = db.SanPhams.Where(sp => sp.maLoaiSanPham == loaisp.maLoaiSanPham).Select(sp => sp).ToList();
-            return listSp;
-        }
-
-        public SanPham LaySanPhamTheoMa(string ma)
+            List<SanPham> danhSachSanPham = dataContext.SanPhams.Select(sp => sp).ToList<SanPham>();
+            foreach (SanPham sp in danhSachSanPham)
             {
                 sp.tenLoaiSanPham = dataContext.LoaiSanPhams.Where(lsp => lsp.maLoaiSanPham == sp.maLoaiSanPham).Select(lsp => lsp.tenLoaiSanPham).FirstOrDefault();
-            try
-            {
-                SanPham sanPham = db.SanPhams.FirstOrDefault(sp => sp.maSanPham == ma);
-                return sanPham;
             }
             return danhSachSanPham;
-            catch 
-            {
-                return null;
         }
+
         public List<SanPham> LayDanhSachSanPhamTheoMaLoai(string maLoai)
-        }
-
-        public List<SanPham> LoadTatCaSanPham()
         {
-            var listSp = db.SanPhams.Select(sp => sp).ToList();
-            return listSp;
+            List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp => sp.maLoaiSanPham == maLoai).Select(sp => sp).ToList<SanPham>();
+            foreach (SanPham sp in danhSachSanPham)
+            {
+                sp.tenLoaiSanPham = dataContext.LoaiSanPhams.Where(lsp => lsp.maLoaiSanPham == sp.maLoaiSanPham).Select(lsp => lsp.tenLoaiSanPham).FirstOrDefault();
+
+            }
+            return danhSachSanPham;
+        }
+        public SanPham TimKiemSanPhamTheoMaSP(string maSP)
+        {
+            SanPham sp = dataContext.SanPhams.Where(sanPham => sanPham.maSanPham == maSP).Select(sanPham => sanPham).FirstOrDefault();
+            sp.tenLoaiSanPham = dataContext.LoaiSanPhams.Where(lsp => lsp.maLoaiSanPham == sp.maLoaiSanPham).Select(lsp => lsp.tenLoaiSanPham).FirstOrDefault();
+            return sp;
+        }
+        public List<SanPham> TimKiemSanPhamTheoTenSP(string tenSP)
+        {
+            List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp => sp.tenSanPham.Contains(tenSP)).Select(sp => sp).ToList<SanPham>();
+            foreach (SanPham sp in danhSachSanPham)
+            {
+                sp.tenLoaiSanPham = dataContext.LoaiSanPhams.Where(lsp => lsp.maLoaiSanPham == sp.maLoaiSanPham).Select(lsp => lsp.tenLoaiSanPham).FirstOrDefault();
+            }
+            return danhSachSanPham;
         }
 
+        // Nhật
         public static string RemoveVietnameseDaus(string input)
         {
             if (string.IsNullOrEmpty(input)) return input;
@@ -61,41 +67,26 @@ namespace DAL
             };
 
             foreach (var dau in daus)
-        {
-            List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp=>sp.maLoaiSanPham==maLoai).Select(sp => sp).ToList<SanPham>();
-            foreach (SanPham sp in danhSachSanPham)
-                foreach (var ch in dau.Skip(1))
             {
-                sp.tenLoaiSanPham = dataContext.LoaiSanPhams.Where(lsp => lsp.maLoaiSanPham == sp.maLoaiSanPham).Select(lsp => lsp.tenLoaiSanPham).FirstOrDefault();
+                foreach (var ch in dau.Skip(1))
+                {
                     input = input.Replace(ch, dau[0]);
+                }
             }
-            return danhSachSanPham;
-        }
-        public SanPham TimKiemSanPhamTheoMaSP(string maSP)
-        {
-            SanPham sp = dataContext.SanPhams.Where(sanPham => sanPham.maSanPham == maSP).Select(sanPham => sanPham).FirstOrDefault();
-            sp.tenLoaiSanPham= dataContext.LoaiSanPhams.Where(lsp => lsp.maLoaiSanPham == sp.maLoaiSanPham).Select(lsp => lsp.tenLoaiSanPham).FirstOrDefault();
-            return sp;
 
             return input;
         }
-        public List<SanPham> TimKiemSanPhamTheoTenSP(string tenSP)
-
         public List<SanPham> LoadSpTheoTenHoacMaSp(string tenHoacMaTimKiem)
         {
-            List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp => sp.tenSanPham.Contains(tenSP)).Select(sp => sp).ToList<SanPham>();
-            foreach (SanPham sp in danhSachSanPham)
-            if(string.IsNullOrWhiteSpace(tenHoacMaTimKiem))
+            if (string.IsNullOrWhiteSpace(tenHoacMaTimKiem))
             {
-                sp.tenLoaiSanPham = dataContext.LoaiSanPhams.Where(lsp => lsp.maLoaiSanPham == sp.maLoaiSanPham).Select(lsp => lsp.tenLoaiSanPham).FirstOrDefault();
-                return db.SanPhams.ToList(); 
+                return dataContext.SanPhams.ToList();
             }
-            return danhSachSanPham;
 
-            var listSp = db.SanPhams.ToList();
+            var listSp = dataContext.SanPhams.ToList();
             string normalizedTenTimKiem = RemoveVietnameseDaus(tenHoacMaTimKiem.ToLower());
 
-            var listSpLoc = listSp.Where(sp => 
+            var listSpLoc = listSp.Where(sp =>
                 RemoveVietnameseDaus(sp.tenSanPham.ToLower()).Contains(normalizedTenTimKiem) ||
                 RemoveVietnameseDaus(sp.maSanPham.ToLower()).Contains(normalizedTenTimKiem))
                 .ToList();
@@ -103,3 +94,5 @@ namespace DAL
         }
     }
 }
+
+

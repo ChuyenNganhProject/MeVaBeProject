@@ -93,7 +93,7 @@ namespace CustomControl
             labelMaSp.Text = maSp;
             labelTenSp.Text = tenSp;
             labelGiaSanPham.Text = giaSp.HasValue ? giaSp.Value.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ" : "N/A";
-            lblSoLuong.Text = "SL: " + spbll.LaySanPhamTheoMa(maSp).soLuong.Value;
+            lblSoLuong.Text = "SL: " + spbll.TimKiemSanPhamTheoMaSP(maSp).soLuong.Value;
         }
 
     }

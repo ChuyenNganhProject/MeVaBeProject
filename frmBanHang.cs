@@ -271,7 +271,7 @@ namespace MeVaBeProject
 
                                     foreach (var item in gioHangItems)
                                     {
-                                        var sanPham = spbll.LaySanPhamTheoMa(item.MaSanPham);
+                                        var sanPham = spbll.TimKiemSanPhamTheoMaSP(item.MaSanPham);
                                         if (sanPham == null)
                                         {
                                             MessageBox.Show($"Sản phẩm với mã {item.MaSanPham} không tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -356,7 +356,7 @@ namespace MeVaBeProject
 
                                 foreach (var item in gioHangItems)
                                 {
-                                    var sanPham = spbll.LaySanPhamTheoMa(item.MaSanPham);
+                                    var sanPham = spbll.TimKiemSanPhamTheoMaSP(item.MaSanPham);
                                     if (sanPham == null)
                                     {
                                         MessageBox.Show($"Sản phẩm với mã {item.MaSanPham} không tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -448,7 +448,7 @@ namespace MeVaBeProject
 
                                     foreach (var item in gioHangItems)
                                     {
-                                        var sanPham = spbll.LaySanPhamTheoMa(item.MaSanPham);
+                                        var sanPham = spbll.TimKiemSanPhamTheoMaSP(item.MaSanPham);
                                         if (sanPham == null)
                                         {
                                             MessageBox.Show($"Sản phẩm với mã {item.MaSanPham} không tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -522,7 +522,7 @@ namespace MeVaBeProject
 
                                 foreach (var item in gioHangItems)
                                 {
-                                    var sanPham = spbll.LaySanPhamTheoMa(item.MaSanPham);
+                                    var sanPham = spbll.TimKiemSanPhamTheoMaSP(item.MaSanPham);
                                     if (sanPham == null)
                                     {
                                         MessageBox.Show($"Sản phẩm với mã {item.MaSanPham} không tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -799,7 +799,7 @@ namespace MeVaBeProject
 
         private void LoadLoaiSanPham()
         {
-            List<LoaiSanPham> loaiSanPhams = lspbll.LoadLoaiSanPham();
+            List<LoaiSanPham> loaiSanPhams = lspbll.LayDanhSachSanPham();
 
             foreach (var loaisp in loaiSanPhams)
             {
@@ -874,7 +874,7 @@ namespace MeVaBeProject
 
             sanPhamPanel.Visible = false;
             this.sanPhamPanel.BackColor = Color.HotPink;
-            List<SanPham> sanPhams = spbll.LoadSanPhamByLoaiSp(maLoaiSanPham);
+            List<SanPham> sanPhams = spbll.LayDanhSachSanPhamTheoMaLoai(maLoaiSanPham);
 
             sanPhamPanel.Controls.Clear();
 
