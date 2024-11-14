@@ -12,7 +12,8 @@ namespace MeVaBeProject
 {
     public partial class frmTrangChu : Form
     {
-        public frmTrangChu()
+        private string maNhanVien;
+        public frmTrangChu(string maNhanVien)
         {
             InitializeComponent();
             this.btnClose.Click += BtnClose_Click;
@@ -22,6 +23,7 @@ namespace MeVaBeProject
             this.Load += FrmTrangChu_Load;
             this.btnNhanVien.Click += BtnNhanVien_Click;
             this.btnKhachHang.Click += BtnKhachHang_Click;
+            this.maNhanVien = maNhanVien;
         }
 
         private void BtnKhachHang_Click(object sender, EventArgs e)
@@ -62,13 +64,17 @@ namespace MeVaBeProject
             this.btnSanPham.MouseDown += (s, e) => btnSanPham.BackColor = System.Drawing.Color.HotPink;
             this.btnSanPham.MouseLeave += (s, e) => btnSanPham.BackColor = System.Drawing.Color.FromArgb(255, 70, 158);
 
-            this.btnTonKho.MouseHover += (s, e) => btnTonKho.BackColor = System.Drawing.Color.LightPink;
-            this.btnTonKho.MouseDown += (s, e) => btnTonKho.BackColor = System.Drawing.Color.HotPink;
-            this.btnTonKho.MouseLeave += (s, e) => btnTonKho.BackColor = System.Drawing.Color.FromArgb(255, 70, 158);
+            this.btnQLNhaCungCap.MouseHover += (s, e) => btnQLNhaCungCap.BackColor = System.Drawing.Color.LightPink;
+            this.btnQLNhaCungCap.MouseDown += (s, e) => btnQLNhaCungCap.BackColor = System.Drawing.Color.HotPink;
+            this.btnQLNhaCungCap.MouseLeave += (s, e) => btnQLNhaCungCap.BackColor = System.Drawing.Color.FromArgb(255, 70, 158);
 
             this.btnDashboard.MouseHover += (s, e) => btnDashboard.BackColor = System.Drawing.Color.LightPink;
             this.btnDashboard.MouseDown += (s, e) => btnDashboard.BackColor = System.Drawing.Color.HotPink;
             this.btnDashboard.MouseLeave += (s, e) => btnDashboard.BackColor = System.Drawing.Color.FromArgb(255, 70, 158);
+
+            this.btnDatHang.MouseHover += (s, e) => btnDatHang.BackColor = System.Drawing.Color.LightPink;
+            this.btnDatHang.MouseDown += (s, e) => btnDatHang.BackColor = System.Drawing.Color.HotPink;
+            this.btnDatHang.MouseLeave += (s, e) => btnDatHang.BackColor = System.Drawing.Color.FromArgb(255, 70, 158);
         }
 
         private void BtnDangXuat_Click(object sender, EventArgs e)
@@ -90,7 +96,7 @@ namespace MeVaBeProject
 
         private void BtnNhapHang_Click(object sender, EventArgs e)
         {
-            frmNhapHang frm = new frmNhapHang();
+            frmNhapHang frm = new frmNhapHang(maNhanVien);
             OpenChildForm(frm);
         }
 
@@ -113,6 +119,18 @@ namespace MeVaBeProject
             childForm.MdiParent = this;
             childForm.Dock = DockStyle.Fill;
             childForm.Show();
+        }
+
+        private void btnDatHang_Click(object sender, EventArgs e)
+        {
+            frmQLDatHang frmQLDatHang = new frmQLDatHang(maNhanVien);
+            OpenChildForm(frmQLDatHang);
+        }
+
+        private void btnQLNhaCungCap_Click(object sender, EventArgs e)
+        {
+            frmQLNhaCungCap frmQLNhaCungCap = new frmQLNhaCungCap();
+            OpenChildForm(frmQLNhaCungCap);
         }
     }
 }

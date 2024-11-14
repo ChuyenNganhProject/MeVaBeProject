@@ -40,6 +40,7 @@
       <HintPath>packages\SunnyUI.Common.3.7.2\lib\net472\SunnyUI.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Web.Extensions" />
@@ -90,6 +91,12 @@
     <Compile Include="frmNhapHang.Designer.cs">
       <DependentUpon>frmNhapHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmQLDatHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQLDatHang.Designer.cs">
+      <DependentUpon>frmQLDatHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmQLNhaCungCap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNhapHang.resx">
       <DependentUpon>frmNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQLDatHang.resx">
+      <DependentUpon>frmQLDatHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQLNhaCungCap.resx">
       <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
@@ -171,8 +181,12 @@
     <Content Include="Pic\employee.png" />
     <Content Include="Pic\logout.png" />
     <Content Include="Pic\monitoring.png" />
+    <Content Include="Pic\process.png" />
     <Content Include="Pic\search.png" />
+    <Content Include="Pic\SP001.jfif" />
+    <Content Include="Pic\SP002.jpg" />
     <Content Include="Pic\warehouse.png" />
+    <Content Include="Pic\writing.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

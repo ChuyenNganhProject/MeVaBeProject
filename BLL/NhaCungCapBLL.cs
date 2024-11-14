@@ -22,5 +22,13 @@ namespace BLL
         {
             return nccdal.LoadNhaCungCap();
         }
+        public bool SuaNhaCungCap(NhaCungCap ncc)
+        {
+            return nccdal.SuaNhaCungCap(ncc);
+        }
+        public bool XoaNhaCungCap(NhaCungCap ncc)
+        {
+            return nccdal.XoaNhaCungCap(ncc);
+        }
     }
 }
