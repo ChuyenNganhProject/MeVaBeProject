@@ -41,13 +41,13 @@ namespace MeVaBeProject
             if(nhanVien != null)
             {
                 MessageBox.Show($"Đăng nhập thành công! Xin chào, {nhanVien.tenNhanVien}");
-                if(nhanVien.maLoaiNhanVien == "QL")
+                if(nhanVien.maLoaiNhanVien == "LNV001")
                 {
-                    frmTrangChu frm = new frmTrangChu(nhanVien.maNhanVien);
+                    frmTrangChu frm = new frmTrangChu(nhanVien);
                     frm.Show();
                     this.Hide();
                 }
-                else if(nhanVien.maLoaiNhanVien == "NVBH")
+                else if(nhanVien.maLoaiNhanVien == "LNV002")
                 {
                     frmBanHang frm = new frmBanHang(nhanVien.maNhanVien);
                     frm.Show();
@@ -58,6 +58,13 @@ namespace MeVaBeProject
             {
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        private void chkhienmk_CheckedChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.PasswordChar == '*')
+                txtPassword.PasswordChar = '\0';
+            else
+                txtPassword.PasswordChar = '*';
         }
     }
 }

@@ -15,7 +15,11 @@ namespace BLL
         {
 
         }
+        public string MaHoaMatKhauKieuSha256Hash(string pass)
+        {
+            return nvdal.MaHoaMatKhauKieuSha256Hash(pass);
 
+        }
         public NhanVien DangNhap(string username, string pass)
         {
             return nvdal.DangNhap(username, pass);
@@ -41,6 +45,34 @@ namespace BLL
         public NhanVien LayTTNhanVienTuMa(string ma)
         {
             return nvdal.LayTTNhanVienTuMa(ma);
+        }
+        public bool IsTaiKhoanDuplicate(string tk)
+        {
+            return nvdal.IsTaiKhoanDuplicate(tk);
+        }
+        public bool IsSDTDuplicate(string sdt)
+        {
+            return nvdal.IsSDTDuplicate(sdt);
+        }
+        public bool InsertNhanVien(NhanVien nv)
+        {
+            return nvdal.InsertNhanVien(nv);
+        }
+        public bool DeleteNhanVien(string nv)
+        {
+            return nvdal.DeleteNhanVien(nv);
+        }
+        public bool UpdateNhanVien(NhanVien nv)
+        {
+            return nvdal.UpdateNhanVien(nv);
+        }
+        public List<NhanVien> SearchNhanVien(string nv)
+        {
+            return nvdal.SearchNhanVien(nv);
+        }
+        public string GetPhoneNumberById(string maNhanVien)
+        {
+            return nvdal.GetPhoneNumberById(maNhanVien);
         }
     }
 }

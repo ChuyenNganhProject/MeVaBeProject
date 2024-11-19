@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,8 @@ namespace MeVaBeProject
 {
     public partial class frmTrangChu : Form
     {
-        private string maNhanVien;
-        public frmTrangChu(string maNhanVien)
+        private NhanVien nhanVien;
+        public frmTrangChu(NhanVien nhanVien)
         {
             InitializeComponent();
             this.btnClose.Click += BtnClose_Click;
@@ -23,7 +24,7 @@ namespace MeVaBeProject
             this.Load += FrmTrangChu_Load;
             this.btnNhanVien.Click += BtnNhanVien_Click;
             this.btnKhachHang.Click += BtnKhachHang_Click;
-            this.maNhanVien = maNhanVien;
+            this.nhanVien = nhanVien;
             this.btnHoaDon.Click += BtnHoaDon_Click;
             this.btnDashboard.Click += BtnDashboard_Click;
         }
@@ -54,6 +55,15 @@ namespace MeVaBeProject
 
         private void FrmTrangChu_Load(object sender, EventArgs a)
         {
+            if (nhanVien != null)
+            {
+                // Hiển thị tên nhân viên
+                lbTenNV.Text = $"Xin Chào: {nhanVien.tenNhanVien}";
+
+                // Hiển thị tên loại nhân viên (chức vụ)
+                lbChucVu.Text = $"Chức vụ: {nhanVien.tenLoaiNhanVien}";
+            }
+
             this.btnDangXuat.MouseHover += (s, e) => btnDangXuat.BackColor = System.Drawing.Color.LightPink;
             this.btnDangXuat.MouseDown += (s, e) => btnDangXuat.BackColor = System.Drawing.Color.HotPink;
             this.btnDangXuat.MouseLeave += (s, e) => btnDangXuat.BackColor = System.Drawing.Color.FromArgb(255, 70, 158);
@@ -110,7 +120,7 @@ namespace MeVaBeProject
 
         private void BtnNhapHang_Click(object sender, EventArgs e)
         {
-            frmNhapHang frm = new frmNhapHang(maNhanVien);
+            frmQLNhapHang frm = new frmQLNhapHang(nhanVien.maNhanVien);
             OpenChildForm(frm);
         }
 
@@ -137,7 +147,7 @@ namespace MeVaBeProject
 
         private void btnDatHang_Click(object sender, EventArgs e)
         {
-            frmQLDatHang frmQLDatHang = new frmQLDatHang(maNhanVien);
+            frmQLDatHang frmQLDatHang = new frmQLDatHang(nhanVien.maNhanVien);
             OpenChildForm(frmQLDatHang);
         }
 

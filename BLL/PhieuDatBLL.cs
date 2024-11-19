@@ -18,6 +18,10 @@ namespace BLL
         {
             return phieuDatDAL.LayDanhSachPhieuDat();
         }
+        public List<PhieuDat> LayDanhSachPhieuDatDaDuyet()
+        {
+            return phieuDatDAL.LayDanhSachPhieuDatDuocDuyet();
+        }
         public List<PhieuDat> LocDanhSachPhieuDatTheoNgayLap(DateTime ngayLap)
         {
             return phieuDatDAL.LocDanhSachPhieuDatTheoNgayLap(ngayLap);
@@ -44,9 +48,13 @@ namespace BLL
         {
             return phieuDatDAL.SuaPhieuDat(pPhieuDat);
         }
-        public bool DuyetPhieuDat(string maPhieuDat)
+        public bool DuyetPhieuDat(string maPhieuDat,string trangThai)
         {
-            return phieuDatDAL.DuyetPhieuDat(maPhieuDat);
+            return phieuDatDAL.DuyetPhieuDat(maPhieuDat,trangThai);
+        }
+        public bool XacNhanPhieuDat(string maPhieuDat,string trangThai)
+        {
+            return phieuDatDAL.XacNhanPhieuDat(maPhieuDat, trangThai);
         }
         public bool XoaPhieuDat(PhieuDat pPhieuDat)
         {
