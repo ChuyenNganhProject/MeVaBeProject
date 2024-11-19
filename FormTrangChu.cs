@@ -120,7 +120,7 @@ namespace MeVaBeProject
 
         private void BtnNhapHang_Click(object sender, EventArgs e)
         {
-            frmNhapHang frm = new frmNhapHang(nhanVien.maNhanVien);
+            frmQLNhapHang frm = new frmQLNhapHang(nhanVien.maNhanVien);
             OpenChildForm(frm);
         }
 

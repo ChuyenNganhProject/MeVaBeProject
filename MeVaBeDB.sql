@@ -1,6 +1,6 @@
-﻿CREATE DATABASE MeVaBeDB1
+﻿CREATE DATABASE MeVaBeDB
 GO
-USE MeVaBeDB1
+USE MeVaBeDB
 GO
 CREATE TABLE HangThanhVien (
     maHang VARCHAR(10) PRIMARY KEY,
@@ -70,7 +70,7 @@ CREATE TABLE SanPham (
     hinhAnh NVARCHAR(255),
     trangThai NVARCHAR(50),
     FOREIGN KEY (maLoaiSanPham) REFERENCES LoaiSanPham(maLoaiSanPham)
---);
+);
 --ALTER TABLE SanPham
 --ADD donViTinh NVARCHAR(30)
 --CREATE TABLE SanPham_NhaCungCap (
@@ -430,6 +430,7 @@ INSERT INTO ChiTietPhieuNhap(maPhieuNhap,maPhieuDat,maSanPham,soLuong,donGia,ton
 GO
 
 SELECT * FROM SanPham
+GO
 CREATE TRIGGER trg_DeleteHoaDonOnKhachHangDelete
 ON KhachHang
 AFTER DELETE
@@ -439,8 +440,9 @@ BEGIN
     DELETE FROM HoaDon
     WHERE maKhachHang IN (SELECT maKhachHang FROM deleted);
 END;
+GO
 SELECT * FROM KhachHang
-
+GO
 CREATE PROCEDURE XoaPhieuDat_Proc @maPhieuDat VARCHAR(50)
 AS
 	--Xóa chi tiết phiếu đặt
@@ -604,7 +606,6 @@ BEGIN
 	SET diemTichLuy = 0
 	WHERE DATEDIFF(YEAR, ngayCapNhatDiem, GETDATE()) >= 1
 END
-
 GO
 CREATE TRIGGER TRG_CapNhatSoLuongSanPhamSauKhiThanhToan
 ON ChiTietHoaDonSanPham
@@ -617,7 +618,7 @@ BEGIN
     FROM inserted i
     WHERE SanPham.maSanPham = i.maSanPham;
 END;
-
+GO
 CREATE TRIGGER trg_UpdateHangThanhVien
 ON HoaDon
 AFTER INSERT, UPDATE, DELETE
@@ -652,8 +653,8 @@ BEGIN
     -- Kiểm tra nếu tổng chi tiêu nằm trong khoảng mục tiêu đầu tư và mục tiêu kết thúc của từng hạng thành viên
     SELECT TOP 1 @maHangMoi = maHang
     FROM HangThanhVien
-    WHERE @tongChiTieu >= mucTieuDauTu AND @tongChiTieu <= mucTieuKetThuc
-    ORDER BY mucTieuDauTu ASC; -- Lấy hạng phù hợp nhất từ đầu đến cuối (nếu có)
+    WHERE @tongChiTieu >= mucTieuBatDau AND @tongChiTieu <= mucTieuKetThuc
+    ORDER BY mucTieuBatDau ASC; -- Lấy hạng phù hợp nhất từ đầu đến cuối (nếu có)
 
     -- Nếu không có hạng nào trong phạm vi chi tiêu, chọn hạng đầu tiên hoặc cuối cùng
     IF @maHangMoi IS NULL
@@ -661,7 +662,7 @@ BEGIN
         -- Nếu tổng chi tiêu nhỏ hơn mức tiêu chí của hạng đầu tiên, gán hạng đầu tiên
         SELECT TOP 1 @maHangMoi = maHang
         FROM HangThanhVien
-        ORDER BY mucTieuDauTu ASC; -- Lấy hạng đầu tiên
+        ORDER BY mucTieuBatDau ASC; -- Lấy hạng đầu tiên
 
         -- Nếu tổng chi tiêu lớn hơn hoặc bằng mức tiêu chí cuối cùng, gán hạng cuối cùng
         IF @tongChiTieu >= (SELECT MAX(mucTieuKetThuc) FROM HangThanhVien)
