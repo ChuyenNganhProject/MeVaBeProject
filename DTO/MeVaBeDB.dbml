@@ -127,27 +127,6 @@
       <Association Name="HangThanhVien_KhachHang" Member="HangThanhVien" ThisKey="maHang" OtherKey="maHang" Type="HangThanhVien" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.KhuyenMai" Member="KhuyenMais">
-    <Type Name="KhuyenMai">
-      <Column Name="maKhuyenMai" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="tenKhuyenMai" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="moTa" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="ngayBatDau" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="ngayKetThuc" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="trangThai" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="KhuyenMai_KhuyenMaiSanPham" Member="KhuyenMaiSanPhams" ThisKey="maKhuyenMai" OtherKey="maKhuyenMai" Type="KhuyenMaiSanPham" />
-    </Type>
-  </Table>
-  <Table Name="dbo.KhuyenMaiSanPham" Member="KhuyenMaiSanPhams">
-    <Type Name="KhuyenMaiSanPham">
-      <Column Name="maKhuyenMai" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="maSanPham" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="phanTramGiam" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="trangThai" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="KhuyenMai_KhuyenMaiSanPham" Member="KhuyenMai" ThisKey="maKhuyenMai" OtherKey="maKhuyenMai" Type="KhuyenMai" IsForeignKey="true" />
-      <Association Name="SanPham_KhuyenMaiSanPham" Member="SanPham" ThisKey="maSanPham" OtherKey="maSanPham" Type="SanPham" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.LoaiNhanVien" Member="LoaiNhanViens">
     <Type Name="LoaiNhanVien">
       <Column Name="maLoaiNhanVien" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -272,6 +251,28 @@
       <Association Name="SanPham_ChiTietPhieuThanhLy" Member="ChiTietPhieuThanhLies" ThisKey="maSanPham" OtherKey="maSanPham" Type="ChiTietPhieuThanhLy" />
       <Association Name="SanPham_KhuyenMaiSanPham" Member="KhuyenMaiSanPhams" ThisKey="maSanPham" OtherKey="maSanPham" Type="KhuyenMaiSanPham" />
       <Association Name="LoaiSanPham_SanPham" Member="LoaiSanPham" ThisKey="maLoaiSanPham" OtherKey="maLoaiSanPham" Type="LoaiSanPham" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KhuyenMaiSanPham" Member="KhuyenMaiSanPhams">
+    <Type Name="KhuyenMaiSanPham">
+      <Column Name="maKhuyenMai" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="maSanPham" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="phanTramGiam" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="trangThai" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="soLuongToiDa" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SanPham_KhuyenMaiSanPham" Member="SanPham" ThisKey="maSanPham" OtherKey="maSanPham" Type="SanPham" IsForeignKey="true" />
+      <Association Name="KhuyenMai_KhuyenMaiSanPham" Member="KhuyenMai" ThisKey="maKhuyenMai" OtherKey="maKhuyenMai" Type="KhuyenMai" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KhuyenMai" Member="KhuyenMais">
+    <Type Name="KhuyenMai">
+      <Column Name="maKhuyenMai" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenKhuyenMai" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="moTa" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ngayBatDau" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ngayKetThuc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="trangThai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="KhuyenMai_KhuyenMaiSanPham" Member="KhuyenMaiSanPhams" ThisKey="maKhuyenMai" OtherKey="maKhuyenMai" Type="KhuyenMaiSanPham" />
     </Type>
   </Table>
   <Function Name="dbo.XoaPhieuDat_Proc" Method="XoaPhieuDat_Proc">

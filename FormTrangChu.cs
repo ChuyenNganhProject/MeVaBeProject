@@ -104,7 +104,7 @@ namespace MeVaBeProject
 
         private void BtnSanPham_Click(object sender, EventArgs e)
         {
-            frmSanPham frm = new frmSanPham();
+            frmSanPham frm = new frmSanPham(this);
             OpenChildForm(frm);
         }
 
@@ -123,7 +123,7 @@ namespace MeVaBeProject
             }
         }
 
-        private void OpenChildForm(Form childForm)
+        public void OpenChildForm(Form childForm)
         {
             foreach (Form form in this.MdiChildren)
             {

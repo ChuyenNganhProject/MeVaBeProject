@@ -151,6 +151,12 @@
     <Compile Include="frmQLDatHang.Designer.cs">
       <DependentUpon>frmQLDatHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmQLKhuyenMai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQLKhuyenMai.Designer.cs">
+      <DependentUpon>frmQLKhuyenMai.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmQLNhaCungCap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,18 @@
     </Compile>
     <Compile Include="frmSanPham.Designer.cs">
       <DependentUpon>frmSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTaoKhuyenMai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTaoKhuyenMai.Designer.cs">
+      <DependentUpon>frmTaoKhuyenMai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThemSanPhamKhuyenMai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThemSanPhamKhuyenMai.Designer.cs">
+      <DependentUpon>frmThemSanPhamKhuyenMai.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -205,11 +223,20 @@
     <EmbeddedResource Include="frmQLDatHang.resx">
       <DependentUpon>frmQLDatHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmQLKhuyenMai.resx">
+      <DependentUpon>frmQLKhuyenMai.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmQLNhaCungCap.resx">
       <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSanPham.resx">
       <DependentUpon>frmSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTaoKhuyenMai.resx">
+      <DependentUpon>frmTaoKhuyenMai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThemSanPhamKhuyenMai.resx">
+      <DependentUpon>frmThemSanPhamKhuyenMai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HoaDonMuaHang.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

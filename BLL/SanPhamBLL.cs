@@ -41,5 +41,10 @@ namespace BLL
         {
             return spdal.TimKiemSanPhamTheoTenSP(tenSP);
         }
+
+        public bool CapNhatSanPham(SanPham sanPham)
+        {
+            return spdal.CapNhatSanPham(sanPham);
+        }
     }
 }

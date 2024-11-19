@@ -19,16 +19,14 @@ namespace DAL
                 var sanPhamTonTai = db.SanPhams.Any(sp => sp.maSanPham.Trim() == cthd.maSanPham.Trim());
                 if (!sanPhamTonTai)
                 {
-                    Console.WriteLine("Sản phẩm với mã " + cthd.maSanPham + " không tồn tại.");
                     return false;
                 }
                 db.ChiTietHoaDonSanPhams.InsertOnSubmit(cthd);
                 db.SubmitChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine("Error: " + ex.Message);
                 return false;
             }
         }

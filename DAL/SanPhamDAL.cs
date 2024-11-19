@@ -92,6 +92,34 @@ namespace DAL
                 .ToList();
             return listSpLoc;
         }
+
+        public bool CapNhatSanPham(SanPham sanPham)
+        {
+            try
+            {
+                SanPham updatedSanPham = dataContext.SanPhams.FirstOrDefault(sp => sp.maSanPham == sanPham.maSanPham);
+                if (updatedSanPham != null)
+                {
+                    updatedSanPham.tenSanPham = sanPham.tenSanPham;
+                    updatedSanPham.donGiaBan = sanPham.donGiaBan;
+                    updatedSanPham.donGiaSale = sanPham.donGiaSale;
+                    updatedSanPham.hanSuDung = sanPham.hanSuDung;
+                    updatedSanPham.hinhAnh = sanPham.hinhAnh;
+                    updatedSanPham.ngaySanXuat = sanPham.ngaySanXuat;
+                    updatedSanPham.soLuong = sanPham.soLuong;
+                    updatedSanPham.trangThai = sanPham.trangThai;
+                    
+                    dataContext.SubmitChanges();
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Lỗi sửa thông tin sản phẩm: " + ex.Message, ex);
+            }
+        }
     }
 }
 
