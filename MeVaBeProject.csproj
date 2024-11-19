@@ -141,7 +141,7 @@
     </Compile>
     <Compile Include="frmLoaiNV.designer.cs">
       <DependentUpon>frmLoaiNV.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="frmGhiChu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,7 +254,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLoaiNV.resx">
       <DependentUpon>frmLoaiNV.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGhiChu.resx">
       <DependentUpon>frmGhiChu.cs</DependentUpon>
     </EmbeddedResource>
@@ -326,20 +326,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="BLL\BLL.csproj">
-      <Project>{28d55dec-c889-4690-bcbc-e92dcf717bcc}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="CustomControl\CustomControl.csproj">
-      <Project>{bfbb9513-ff44-4e4e-a717-459735adf262}</Project>
-      <Name>CustomControl</Name>
-    </ProjectReference>
-    <ProjectReference Include="DTO\DTO.csproj">
-      <Project>{76071d20-a689-4206-ab53-56b44d0fbe01}</Project>
-      <Name>DTO</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="PicSanPham\" />
   </ItemGroup>
   <ItemGroup>
@@ -358,6 +344,20 @@
     <Content Include="Pic\SP002.jpg" />
     <Content Include="Pic\warehouse.png" />
     <Content Include="Pic\writing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="BLL\BLL.csproj">
+      <Project>{28d55dec-c889-4690-bcbc-e92dcf717bcc}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="CustomControl\CustomControl.csproj">
+      <Project>{bfbb9513-ff44-4e4e-a717-459735adf262}</Project>
+      <Name>CustomControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="DTO\DTO.csproj">
+      <Project>{76071d20-a689-4206-ab53-56b44d0fbe01}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
