@@ -30,7 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTrangChu));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lbChucVu = new Sunny.UI.UILabel();
             this.btnNhanVien = new Sunny.UI.UIImageButton();
+            this.lbTenNV = new Sunny.UI.UILabel();
             this.btnDatHang = new Sunny.UI.UIImageButton();
             this.btnDangXuat = new Sunny.UI.UIImageButton();
             this.btnNhapHang = new Sunny.UI.UIImageButton();
@@ -59,7 +61,9 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(70)))), ((int)(((byte)(158)))));
+            this.panel2.Controls.Add(this.lbChucVu);
             this.panel2.Controls.Add(this.btnNhanVien);
+            this.panel2.Controls.Add(this.lbTenNV);
             this.panel2.Controls.Add(this.btnDatHang);
             this.panel2.Controls.Add(this.btnDangXuat);
             this.panel2.Controls.Add(this.btnNhapHang);
@@ -74,6 +78,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(249, 788);
             this.panel2.TabIndex = 1;
+            // 
+            // lbChucVu
+            // 
+            this.lbChucVu.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbChucVu.ForeColor = System.Drawing.Color.Snow;
+            this.lbChucVu.Location = new System.Drawing.Point(3, 174);
+            this.lbChucVu.Name = "lbChucVu";
+            this.lbChucVu.Size = new System.Drawing.Size(243, 28);
+            this.lbChucVu.TabIndex = 13;
+            this.lbChucVu.Text = "Chức vụ: ";
             // 
             // btnNhanVien
             // 
@@ -90,6 +104,16 @@
             this.btnNhanVien.TabIndex = 12;
             this.btnNhanVien.TabStop = false;
             this.btnNhanVien.Text = "Nhân viên";
+            // 
+            // lbTenNV
+            // 
+            this.lbTenNV.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTenNV.ForeColor = System.Drawing.Color.Snow;
+            this.lbTenNV.Location = new System.Drawing.Point(3, 129);
+            this.lbTenNV.Name = "lbTenNV";
+            this.lbTenNV.Size = new System.Drawing.Size(246, 28);
+            this.lbTenNV.TabIndex = 12;
+            this.lbTenNV.Text = "Xin chào: ";
             // 
             // btnDatHang
             // 
@@ -296,5 +320,7 @@
         private Sunny.UI.UIImageButton btnDangXuat;
         private Sunny.UI.UIImageButton btnNhanVien;
         private Sunny.UI.UIImageButton btnDatHang;
+        private Sunny.UI.UILabel lbChucVu;
+        private Sunny.UI.UILabel lbTenNV;
     }
 }

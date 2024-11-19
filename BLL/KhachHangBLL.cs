@@ -17,7 +17,14 @@ namespace BLL
         {
             return khdal.ThemKhachHang(kh);
         }
-
+        public List<KhachHang> LoadKhachHang()
+        {
+            return khdal.LoadKhachHang();
+        }
+        public List<KhachHang> SearchKhachHang(string keyword)
+        {
+            return khdal.SearchKhachHang(keyword);
+        }
         public string TaoMaKhachHangTuDong()
         {
             return khdal.TaoMaKhachHangTuDong();
@@ -26,10 +33,21 @@ namespace BLL
         {
             return khdal.LayKhachHangTheoSoDienThoai(sdt);
         }
-
+        public bool IsSDTDuplicate(string sdt)
+        {
+            return khdal.IsSDTDuplicate(sdt);
+        }
+        public string GetTenHangFromMaHang(string maHang)
+        {
+            return khdal.GetTenHangFromMaHang(maHang);
+        }
         public bool CapNhatKhachHang(KhachHang khachhang)
         {
             return khdal.CapNhatKhachHang(khachhang);
+        }
+        public bool DeleteKhachHang(string khId)
+        {
+            return khdal.DeleteKhachHang(khId);
         }
 
         public KhachHang LayKHTheoMa(string ma)
@@ -41,5 +59,6 @@ namespace BLL
         {
             return khdal.TongSoKhachHang();
         }
+
     }
 }

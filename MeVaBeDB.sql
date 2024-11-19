@@ -1,6 +1,6 @@
-﻿CREATE DATABASE MeVaBeDB
+﻿CREATE DATABASE MeVaBeDB1
 GO
-USE MeVaBeDB
+USE MeVaBeDB1
 GO
 CREATE TABLE HangThanhVien (
     maHang VARCHAR(10) PRIMARY KEY,
@@ -293,18 +293,18 @@ ADD CONSTRAINT SoLuongNhanDefault DEFAULT 0 FOR soLuongNhan
 GO
 INSERT INTO LoaiNhanVien (maLoaiNhanVien, tenLoaiNhanVien) 
 VALUES 
-('QL', N'Quản Lý'),
-('NVBH', N'Nhân Viên Bán Hàng'),
-('NVK', N'Nhân Viên Kho');
+    (N'LNV001', N'Quản Lý'),
+    (N'LNV002', N'Nhân Viên Bán Hàng'),
+    (N'LNV003', N'Nhân Viên Kho')
 GO
 INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
-VALUES ('NV001', 'QL', N'Phạm Minh Nhật', '2003-11-19', N'254 Đường NVC, TP.HCM', '0775945228', 'minhnhat', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01')
+VALUES ('NV001', 'LNV001', N'Phạm Minh Nhật', '2003-11-19', N'254 Đường NVC, TP.HCM', '0775945228', 'minhnhat', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01')
 INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
-VALUES ('NV002', 'QL', N'Đặng Hoàng Phúc', '2003-12-06', N'123 Đường NK, TP.HCM', '0888005346', 'hoangphuc', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01')
+VALUES ('NV002', 'LNV001', N'Đặng Hoàng Phúc', '2003-12-06', N'123 Đường NK, TP.HCM', '0888005346', 'hoangphuc', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01')
 INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
-VALUES ('NV003', 'QL', N'Trương Thị Quí', '2003-01-19', N'123 Đường ABC, TP.HCM', '0901234567', 'truongqui', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01');
+VALUES ('NV003', 'LNV001', N'Trương Thị Quí', '2003-01-19', N'123 Đường ABC, TP.HCM', '0901234567', 'truongqui', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01');
 INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
-VALUES ('NV004', 'NVBH', N'Phạm Minh Nhật', '2003-11-19', N'254 Đường NVC, TP.HCM', '0775945228', 'nvbhminhnhat', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', '1911'), 2), 20000000, '2024-10-01');
+VALUES ('NV004', 'LNV002', N'Phạm Minh Nhật', '2003-11-19', N'254 Đường NVC, TP.HCM', '0775945228', 'nvbhminhnhat', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', '1911'), 2), 20000000, '2024-10-01');
 GO
 
 
@@ -383,16 +383,23 @@ VALUES
 
 INSERT INTO HangThanhVien (maHang, tenHang, mucTieuBatDau, mucTieuKetThuc, ghiChu)
 VALUES 
-('MEMBER', N'Thành viên thường', 0, 9999999, N'Không yêu cầu chi tiêu cụ thể'),
-('VIPGOLD', N'VIP GOLD', 10000000, 39999999, N'Yêu cầu chi tiêu từ 10-40 triệu trong 1 năm'),
-('VIPDIAMOND', N'VIP DIAMOND', 40000000, NULL, N'Chi tiêu 40 triệu hoặc thêm 30 triệu từ VIP GOLD');
+    ('HTV001', N'Hạng Thường', 10000, 50000, N'Hạng dành cho khách hàng thường xuyên'),
+    ('HTV002', N'Hạng Bạc', 50000, 200000, N'Hạng dành cho khách hàng VIP Bạc'),
+    ('HTV003', N'Hạng Vàng', 200000, 500000, N'Hạng dành cho khách hàng VIP Vàng'),
+    ('HTV004', N'Hạng Kim Cương', 500000, 1000000, N'Hạng dành cho khách hàng VIP Kim Cương');
 
 -- Thêm dữ liệu vào bảng UuDaiThanhVien
 INSERT INTO UuDaiThanhVien (maUuDai, tenUuDai, phanTramGiam, maHang)
 VALUES 
-    ('UD001', N'Giảm giá 10% toàn bộ sản phẩm', 10, 'VIPGOLD'),
-	('UD002', N'Giảm giá 15% toàn bộ sản phẩm', 15, 'VIPDIAMOND')
+    ('UD001', N'Giảm giá 10% toàn bộ sản phẩm', 10, 'HTV003'),
+	('UD002', N'Giảm giá 15% toàn bộ sản phẩm', 15, 'HTV004')
 GO
+INSERT INTO KhachHang (maKhachHang, tenKhachHang, soDienThoai,maHang)
+VALUES
+    ('KH000001', N'Nguyễn Văn A', '0912345678','HTV001'),
+    ('KH000002', N'Lê Thị B', '0912345679','HTV001'),
+    ('KH000003', N'Trần Văn C', '0912345680','HTV001');
+    
 INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALUES('NCC001',N'Nhà cung cấp sữa','0888003346',N'469/32 Nguyễn Kiệm','hoangPhuc@gmail.com')
 INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALUES('NCC002',N'Nhà cung cấp đồ chơi','0888003345',N'180 Hoa Lan','hoangMy@gmail.com')
 INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALUES('NCC003',N'Nhà cung cấp tã','0888003347',N'160 Lê Trọng Tấn','minhNhat@gmail.com')
@@ -423,6 +430,15 @@ INSERT INTO ChiTietPhieuNhap(maPhieuNhap,maPhieuDat,maSanPham,soLuong,donGia,ton
 GO
 
 SELECT * FROM SanPham
+CREATE TRIGGER trg_DeleteHoaDonOnKhachHangDelete
+ON KhachHang
+AFTER DELETE
+AS
+BEGIN
+    -- Delete related records in DonHang
+    DELETE FROM HoaDon
+    WHERE maKhachHang IN (SELECT maKhachHang FROM deleted);
+END;
 SELECT * FROM KhachHang
 
 CREATE PROCEDURE XoaPhieuDat_Proc @maPhieuDat VARCHAR(50)
@@ -600,4 +616,68 @@ BEGIN
     SET soLuong = SanPham.soLuong - i.soLuong
     FROM inserted i
     WHERE SanPham.maSanPham = i.maSanPham;
+END;
+
+CREATE TRIGGER trg_UpdateHangThanhVien
+ON HoaDon
+AFTER INSERT, UPDATE, DELETE
+AS
+BEGIN
+    DECLARE @maKhachHang VARCHAR(20);
+    DECLARE @tongChiTieu DECIMAL(18, 2);
+    DECLARE @maHangMoi VARCHAR(10);
+    DECLARE @mucTieuDauTu DECIMAL(18, 2);
+    DECLARE @mucTieuKetThuc DECIMAL(18, 2);
+    
+    -- Lấy mã khách hàng từ hóa đơn đã thêm, sửa hoặc xóa
+    SELECT @maKhachHang = maKhachHang FROM inserted; -- Đối với INSERT và UPDATE
+    -- Trong trường hợp DELETE, lấy từ deleted
+    IF (@maKhachHang IS NULL)
+    BEGIN
+        SELECT @maKhachHang = maKhachHang FROM deleted;
+    END
+
+    -- Tính tổng chi tiêu của khách hàng dựa trên tất cả hóa đơn của họ (chỉ tính các hóa đơn đã hoàn tất)
+    SELECT @tongChiTieu = SUM(tongTien)
+    FROM HoaDon
+    WHERE maKhachHang = @maKhachHang AND trangThai = 1; -- Chỉ tính hóa đơn đã hoàn tất
+
+    -- Nếu tổng chi tiêu là NULL (không có hóa đơn hợp lệ), gán giá trị là 0
+    IF @tongChiTieu IS NULL
+    BEGIN
+        SET @tongChiTieu = 0;
+    END
+
+    -- Lấy thông tin các hạng thành viên từ bảng HangThanhVien
+    -- Kiểm tra nếu tổng chi tiêu nằm trong khoảng mục tiêu đầu tư và mục tiêu kết thúc của từng hạng thành viên
+    SELECT TOP 1 @maHangMoi = maHang
+    FROM HangThanhVien
+    WHERE @tongChiTieu >= mucTieuDauTu AND @tongChiTieu <= mucTieuKetThuc
+    ORDER BY mucTieuDauTu ASC; -- Lấy hạng phù hợp nhất từ đầu đến cuối (nếu có)
+
+    -- Nếu không có hạng nào trong phạm vi chi tiêu, chọn hạng đầu tiên hoặc cuối cùng
+    IF @maHangMoi IS NULL
+    BEGIN
+        -- Nếu tổng chi tiêu nhỏ hơn mức tiêu chí của hạng đầu tiên, gán hạng đầu tiên
+        SELECT TOP 1 @maHangMoi = maHang
+        FROM HangThanhVien
+        ORDER BY mucTieuDauTu ASC; -- Lấy hạng đầu tiên
+
+        -- Nếu tổng chi tiêu lớn hơn hoặc bằng mức tiêu chí cuối cùng, gán hạng cuối cùng
+        IF @tongChiTieu >= (SELECT MAX(mucTieuKetThuc) FROM HangThanhVien)
+        BEGIN
+            SELECT TOP 1 @maHangMoi = maHang
+            FROM HangThanhVien
+            ORDER BY mucTieuKetThuc DESC; -- Lấy hạng cuối cùng
+        END
+    END
+
+    -- Kiểm tra nếu hạng thành viên mới khác hạng cũ, thì cập nhật hạng thành viên cho khách hàng
+    IF @maHangMoi IS NOT NULL
+    BEGIN
+        -- Cập nhật hạng thành viên chỉ khi cần thiết (không ghi đè nếu hạng cũ đã đúng)
+        UPDATE KhachHang
+        SET maHang = @maHangMoi
+        WHERE maKhachHang = @maKhachHang AND maHang <> @maHangMoi;
+    END
 END;

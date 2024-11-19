@@ -238,7 +238,7 @@ namespace MeVaBeProject
                         tenKhachHang = txtTenKH.Text.Trim(),
                         soDienThoai = sdt,
                         diemTichLuy = 0,
-                        maHang = "MEMBER"
+                        maHang = "HTV001"
                     };
                     khbll.ThemKhachHang(kh);
                 }
@@ -1041,5 +1041,7 @@ namespace MeVaBeProject
                 this.Hide();
             }
         }
+
+      
     }
 }

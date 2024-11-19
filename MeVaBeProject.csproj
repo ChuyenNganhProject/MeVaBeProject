@@ -133,9 +133,14 @@
     <Compile Include="frmKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmKhachHang.Designer.cs">
+    <Compile Include="frmKhachHang.designer.cs">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLoaiNV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoaiNV.designer.cs">
+      <DependentUpon>frmLoaiNV.cs</DependentUpon>
     <Compile Include="frmGhiChu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,7 +150,7 @@
     <Compile Include="frmNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNhanVien.Designer.cs">
+    <Compile Include="frmNhanVien.designer.cs">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="frmNhapHang.cs">
@@ -228,6 +233,8 @@
     <EmbeddedResource Include="frmKhachHang.resx">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLoaiNV.resx">
+      <DependentUpon>frmLoaiNV.cs</DependentUpon>
     <EmbeddedResource Include="frmGhiChu.resx">
       <DependentUpon>frmGhiChu.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,6 +314,7 @@
     <Folder Include="PicSanPham\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pic\Anh_nen.jpg" />
     <Content Include="Pic\baby-products.png" />
     <Content Include="Pic\bill.png" />
     <Content Include="Pic\concunglogo.png" />
