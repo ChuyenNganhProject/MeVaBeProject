@@ -322,7 +322,7 @@ VALUES
 ('SP001', 'LSP001', N'Robot nhảy múa và xoay chong chóng có nhạc đèn', 215000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Robot_nhay_mua_YN382700_C407.jpg', N'Còn hàng'),
 ('SP002', 'LSP001', N'Bộ mô hình xe, máy bay và biển báo', 175000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Bo_mohinhxe_maybay_va_bien_bao_HW24031178_C407.jpg', N'Còn hàng'),
 ('SP003', 'LSP001', N'Thú bông capybara cầm lá cây ngộ nghĩnh', 185000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Thu_bong_capybara_cam_la_cay_ngo_nghinh_C407.jpg', N'Còn hàng'),
-('SP004', 'LSP001', N'Bộ đồ chơi nhà tắm', 99000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Bo_đo_choi_nha_tam_9pcs_JS048059.jpg', N'Còn hàng'),
+('SP004', 'LSP001', N'Bộ đồ chơi nhà tắm', 99000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Bo_do_choi_nha_tam_9pcs_JS048059.jpg', N'Còn hàng'),
 ('SP005', 'LSP001', N'Bảng vẽ học tập và bàn chơi cờ', 285000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Bangve_hoctap_va_ban_choi_co_JS028150.jpg', N'Còn hàng'),
 ('SP006', 'LSP001', N'Xe lắc cao cấp có nhạc đèn', 765000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Xe_lac_cao_cap_co_nhac_den_QT8068.jpg', N'Còn hàng'),
 ('SP007', 'LSP001', N'Xe chòi chân, thăng bằng 4 bánh Animo', 565000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Xe_choi_chan_thang_bang_4_banh_Animo_M5910.jpg', N'Còn hàng'),
@@ -399,6 +399,8 @@ INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALU
 INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALUES('NCC004',N'Nhà cung cấp quần áo','0888003348',N'47 Hoa Lan','aiDo@gmail.com')
 INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALUES('NCC005',N'Nhà cung cấp thuốc','0888003349',N'360 Nguyễn Thái Sơn','khongBiet@gmail.com')
 GO
+-- Chưa cần insert
+INSERT INTO PhieuDat(maPhieuDat,maNhaCungCap,maNhanVien,ngayLap,soLuong,tongTien,trangThai) VALUES('PD000000001','NCC001','NV001','11/11/2024',2,0,0)
 INSERT INTO PhieuDat(maPhieuDat,maNhaCungCap,maNhanVien,ngayLap,ngayCapNhat,soLuong,tongTien) VALUES('PD000000001','NCC001','NV001','11/11/2024','11/11/2024',2,0)
 
 INSERT INTO PhieuDat(maPhieuDat,maNhaCungCap,maNhanVien,ngayLap,ngayCapNhat,soLuong,tongTien) VALUES('PD000000002','NCC002','NV002','11/11/2024','11/11/2024',2,0)
@@ -421,6 +423,7 @@ INSERT INTO ChiTietPhieuNhap(maPhieuNhap,maPhieuDat,maSanPham,soLuong,donGia,ton
 GO
 
 SELECT * FROM SanPham
+SELECT * FROM KhachHang
 
 CREATE PROCEDURE XoaPhieuDat_Proc @maPhieuDat VARCHAR(50)
 AS
