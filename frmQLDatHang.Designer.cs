@@ -53,12 +53,26 @@ namespace MeVaBeProject
             this.tenNhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenNhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ngayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngayCapNhat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.soLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trangThaiXacNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ghiChuKhongDuyet = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabChiTiet = new System.Windows.Forms.TabPage();
             this.dtgvChiTietPhieuDat = new Sunny.UI.UIDataGridView();
+            this.maPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soLuongDat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soLuongNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.donGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.thanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiGroupBox4 = new Sunny.UI.UIGroupBox();
+            this.btnKoDuyet = new Sunny.UI.UIButton();
+            this.btnKhongXacNhan = new Sunny.UI.UIButton();
+            this.btnXacNhan = new Sunny.UI.UIButton();
+            this.btnDuyetPhieuDat = new Sunny.UI.UIButton();
             this.btnInPhieuDat = new Sunny.UI.UIButton();
             this.btnSuaPhieuDat = new Sunny.UI.UIButton();
             this.btnXoaPhieuDat = new Sunny.UI.UIButton();
@@ -69,14 +83,6 @@ namespace MeVaBeProject
             this.txtTimKiem = new Sunny.UI.UITextBox();
             this.btnTimKiem = new Sunny.UI.UISymbolButton();
             this.uiToolTip1 = new Sunny.UI.UIToolTip(this.components);
-            this.maPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.maSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soLuongDat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soLuongNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.donGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.thanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDuyetPhieuDat = new Sunny.UI.UIButton();
             this.uiPanel2.SuspendLayout();
             this.tabControlPhieuDat.SuspendLayout();
             this.tabDanhSach.SuspendLayout();
@@ -120,15 +126,16 @@ namespace MeVaBeProject
             // 
             this.tabControlPhieuDat.Controls.Add(this.tabDanhSach);
             this.tabControlPhieuDat.Controls.Add(this.tabChiTiet);
+            this.tabControlPhieuDat.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabControlPhieuDat.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControlPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.tabControlPhieuDat.ItemSize = new System.Drawing.Size(150, 40);
-            this.tabControlPhieuDat.Location = new System.Drawing.Point(3, 142);
+            this.tabControlPhieuDat.Location = new System.Drawing.Point(0, 142);
             this.tabControlPhieuDat.MainPage = "";
             this.tabControlPhieuDat.MenuStyle = Sunny.UI.UIMenuStyle.White;
             this.tabControlPhieuDat.Name = "tabControlPhieuDat";
             this.tabControlPhieuDat.SelectedIndex = 0;
-            this.tabControlPhieuDat.Size = new System.Drawing.Size(1113, 532);
+            this.tabControlPhieuDat.Size = new System.Drawing.Size(1113, 535);
             this.tabControlPhieuDat.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControlPhieuDat.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tabControlPhieuDat.TabIndex = 9;
@@ -142,7 +149,7 @@ namespace MeVaBeProject
             this.tabDanhSach.Controls.Add(this.dtgvDanhSachPhieuDat);
             this.tabDanhSach.Location = new System.Drawing.Point(0, 40);
             this.tabDanhSach.Name = "tabDanhSach";
-            this.tabDanhSach.Size = new System.Drawing.Size(1113, 492);
+            this.tabDanhSach.Size = new System.Drawing.Size(1113, 495);
             this.tabDanhSach.TabIndex = 0;
             this.tabDanhSach.Text = "Danh sách";
             this.tabDanhSach.UseVisualStyleBackColor = true;
@@ -153,7 +160,8 @@ namespace MeVaBeProject
             this.dtgvDanhSachPhieuDat.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.dtgvDanhSachPhieuDat.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgvDanhSachPhieuDat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvDanhSachPhieuDat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dtgvDanhSachPhieuDat.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtgvDanhSachPhieuDat.BackgroundColor = System.Drawing.Color.White;
             this.dtgvDanhSachPhieuDat.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -171,15 +179,19 @@ namespace MeVaBeProject
             this.tenNhanVien,
             this.tenNhaCungCap,
             this.ngayLap,
+            this.ngayCapNhat,
             this.soLuong,
             this.tongTien,
-            this.trangThai});
+            this.trangThai,
+            this.trangThaiXacNhan,
+            this.ghiChuKhongDuyet});
             this.dtgvDanhSachPhieuDat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgvDanhSachPhieuDat.EnableHeadersVisualStyles = false;
             this.dtgvDanhSachPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.dtgvDanhSachPhieuDat.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.dtgvDanhSachPhieuDat.Location = new System.Drawing.Point(0, 0);
             this.dtgvDanhSachPhieuDat.Name = "dtgvDanhSachPhieuDat";
+            this.dtgvDanhSachPhieuDat.ReadOnly = true;
             this.dtgvDanhSachPhieuDat.RectColor = System.Drawing.Color.HotPink;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
@@ -195,35 +207,52 @@ namespace MeVaBeProject
             this.dtgvDanhSachPhieuDat.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dtgvDanhSachPhieuDat.RowTemplate.Height = 24;
             this.dtgvDanhSachPhieuDat.SelectedIndex = -1;
-            this.dtgvDanhSachPhieuDat.Size = new System.Drawing.Size(1113, 492);
+            this.dtgvDanhSachPhieuDat.Size = new System.Drawing.Size(1113, 495);
             this.dtgvDanhSachPhieuDat.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.dtgvDanhSachPhieuDat.TabIndex = 8;
             this.dtgvDanhSachPhieuDat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDanhSachPhieuDat_CellClick);
             this.dtgvDanhSachPhieuDat.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDanhSachPhieuDat_CellDoubleClick);
+            this.dtgvDanhSachPhieuDat.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgvDanhSachPhieuDat_CellFormatting);
             // 
             // maPhieuDat
             // 
             this.maPhieuDat.DataPropertyName = "maPhieuDat";
             this.maPhieuDat.HeaderText = "Mã phiếu đặt";
             this.maPhieuDat.Name = "maPhieuDat";
+            this.maPhieuDat.ReadOnly = true;
+            this.maPhieuDat.Width = 125;
             // 
             // tenNhanVien
             // 
             this.tenNhanVien.DataPropertyName = "tenNhanVien";
             this.tenNhanVien.HeaderText = "Tên nhân viên";
             this.tenNhanVien.Name = "tenNhanVien";
+            this.tenNhanVien.ReadOnly = true;
+            this.tenNhanVien.Width = 132;
             // 
             // tenNhaCungCap
             // 
             this.tenNhaCungCap.DataPropertyName = "tenNhaCungCap";
             this.tenNhaCungCap.HeaderText = "Nhà cung cấp";
             this.tenNhaCungCap.Name = "tenNhaCungCap";
+            this.tenNhaCungCap.ReadOnly = true;
+            this.tenNhaCungCap.Width = 131;
             // 
             // ngayLap
             // 
             this.ngayLap.DataPropertyName = "ngayLap";
             this.ngayLap.HeaderText = "Ngày lập";
             this.ngayLap.Name = "ngayLap";
+            this.ngayLap.ReadOnly = true;
+            this.ngayLap.Width = 94;
+            // 
+            // ngayCapNhat
+            // 
+            this.ngayCapNhat.DataPropertyName = "ngayCapNhat";
+            this.ngayCapNhat.HeaderText = "Ngày cập nhật";
+            this.ngayCapNhat.Name = "ngayCapNhat";
+            this.ngayCapNhat.ReadOnly = true;
+            this.ngayCapNhat.Width = 135;
             // 
             // soLuong
             // 
@@ -232,6 +261,8 @@ namespace MeVaBeProject
             this.soLuong.DefaultCellStyle = dataGridViewCellStyle3;
             this.soLuong.HeaderText = "Số lượng";
             this.soLuong.Name = "soLuong";
+            this.soLuong.ReadOnly = true;
+            this.soLuong.Width = 96;
             // 
             // tongTien
             // 
@@ -241,19 +272,41 @@ namespace MeVaBeProject
             this.tongTien.DefaultCellStyle = dataGridViewCellStyle4;
             this.tongTien.HeaderText = "Tổng tiền";
             this.tongTien.Name = "tongTien";
+            this.tongTien.ReadOnly = true;
+            this.tongTien.Width = 99;
             // 
             // trangThai
             // 
             this.trangThai.DataPropertyName = "trangThai";
             this.trangThai.HeaderText = "Trạng thái";
             this.trangThai.Name = "trangThai";
+            this.trangThai.ReadOnly = true;
+            this.trangThai.Width = 104;
+            // 
+            // trangThaiXacNhan
+            // 
+            this.trangThaiXacNhan.DataPropertyName = "trangThaiXacNhan";
+            this.trangThaiXacNhan.HeaderText = "Trạng thái xác nhận";
+            this.trangThaiXacNhan.Name = "trangThaiXacNhan";
+            this.trangThaiXacNhan.ReadOnly = true;
+            this.trangThaiXacNhan.Width = 172;
+            // 
+            // ghiChuKhongDuyet
+            // 
+            this.ghiChuKhongDuyet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ghiChuKhongDuyet.HeaderText = "Ghi chú";
+            this.ghiChuKhongDuyet.Name = "ghiChuKhongDuyet";
+            this.ghiChuKhongDuyet.ReadOnly = true;
+            this.ghiChuKhongDuyet.Text = "Xem chi tiết";
+            this.ghiChuKhongDuyet.UseColumnTextForButtonValue = true;
+            this.ghiChuKhongDuyet.Width = 69;
             // 
             // tabChiTiet
             // 
             this.tabChiTiet.Controls.Add(this.dtgvChiTietPhieuDat);
             this.tabChiTiet.Location = new System.Drawing.Point(0, 40);
             this.tabChiTiet.Name = "tabChiTiet";
-            this.tabChiTiet.Size = new System.Drawing.Size(1113, 492);
+            this.tabChiTiet.Size = new System.Drawing.Size(1113, 495);
             this.tabChiTiet.TabIndex = 1;
             this.tabChiTiet.Text = "Chi tiết";
             this.tabChiTiet.UseVisualStyleBackColor = true;
@@ -291,6 +344,7 @@ namespace MeVaBeProject
             this.dtgvChiTietPhieuDat.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.dtgvChiTietPhieuDat.Location = new System.Drawing.Point(0, 0);
             this.dtgvChiTietPhieuDat.Name = "dtgvChiTietPhieuDat";
+            this.dtgvChiTietPhieuDat.ReadOnly = true;
             this.dtgvChiTietPhieuDat.RectColor = System.Drawing.Color.HotPink;
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
@@ -306,13 +360,75 @@ namespace MeVaBeProject
             this.dtgvChiTietPhieuDat.RowsDefaultCellStyle = dataGridViewCellStyle14;
             this.dtgvChiTietPhieuDat.RowTemplate.Height = 24;
             this.dtgvChiTietPhieuDat.SelectedIndex = -1;
-            this.dtgvChiTietPhieuDat.Size = new System.Drawing.Size(1113, 492);
+            this.dtgvChiTietPhieuDat.Size = new System.Drawing.Size(1113, 495);
             this.dtgvChiTietPhieuDat.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.dtgvChiTietPhieuDat.TabIndex = 9;
+            // 
+            // maPD
+            // 
+            this.maPD.DataPropertyName = "maPhieuDat";
+            this.maPD.HeaderText = "Mã phiếu đặt";
+            this.maPD.Name = "maPD";
+            this.maPD.ReadOnly = true;
+            // 
+            // maSanPham
+            // 
+            this.maSanPham.DataPropertyName = "maSanPham";
+            this.maSanPham.HeaderText = "Mã sản phẩm";
+            this.maSanPham.Name = "maSanPham";
+            this.maSanPham.ReadOnly = true;
+            // 
+            // tenSanPham
+            // 
+            this.tenSanPham.DataPropertyName = "tenSanPham";
+            this.tenSanPham.HeaderText = "Tên sản phẩm";
+            this.tenSanPham.Name = "tenSanPham";
+            this.tenSanPham.ReadOnly = true;
+            // 
+            // soLuongDat
+            // 
+            this.soLuongDat.DataPropertyName = "soLuongDat";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.soLuongDat.DefaultCellStyle = dataGridViewCellStyle9;
+            this.soLuongDat.HeaderText = "Số lượng đặt";
+            this.soLuongDat.Name = "soLuongDat";
+            this.soLuongDat.ReadOnly = true;
+            // 
+            // soLuongNhan
+            // 
+            this.soLuongNhan.DataPropertyName = "soLuongNhan";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.soLuongNhan.DefaultCellStyle = dataGridViewCellStyle10;
+            this.soLuongNhan.HeaderText = "Số lượng nhận";
+            this.soLuongNhan.Name = "soLuongNhan";
+            this.soLuongNhan.ReadOnly = true;
+            // 
+            // donGia
+            // 
+            this.donGia.DataPropertyName = "donGia";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "C0";
+            this.donGia.DefaultCellStyle = dataGridViewCellStyle11;
+            this.donGia.HeaderText = "Đơn giá";
+            this.donGia.Name = "donGia";
+            this.donGia.ReadOnly = true;
+            // 
+            // thanhTien
+            // 
+            this.thanhTien.DataPropertyName = "tongTien";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "C0";
+            this.thanhTien.DefaultCellStyle = dataGridViewCellStyle12;
+            this.thanhTien.HeaderText = "Thành tiền";
+            this.thanhTien.Name = "thanhTien";
+            this.thanhTien.ReadOnly = true;
             // 
             // uiGroupBox4
             // 
             this.uiGroupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiGroupBox4.Controls.Add(this.btnKoDuyet);
+            this.uiGroupBox4.Controls.Add(this.btnKhongXacNhan);
+            this.uiGroupBox4.Controls.Add(this.btnXacNhan);
             this.uiGroupBox4.Controls.Add(this.btnDuyetPhieuDat);
             this.uiGroupBox4.Controls.Add(this.btnInPhieuDat);
             this.uiGroupBox4.Controls.Add(this.btnSuaPhieuDat);
@@ -329,14 +445,66 @@ namespace MeVaBeProject
             this.uiGroupBox4.Text = "Thao tác";
             this.uiGroupBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // btnKoDuyet
+            // 
+            this.btnKoDuyet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnKoDuyet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnKoDuyet.Location = new System.Drawing.Point(482, 35);
+            this.btnKoDuyet.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnKoDuyet.Name = "btnKoDuyet";
+            this.btnKoDuyet.Size = new System.Drawing.Size(150, 36);
+            this.btnKoDuyet.TabIndex = 11;
+            this.btnKoDuyet.Text = "Không duyệt";
+            this.btnKoDuyet.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnKoDuyet.Click += new System.EventHandler(this.btnKoDuyet_Click);
+            // 
+            // btnKhongXacNhan
+            // 
+            this.btnKhongXacNhan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnKhongXacNhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnKhongXacNhan.Location = new System.Drawing.Point(482, 79);
+            this.btnKhongXacNhan.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnKhongXacNhan.Name = "btnKhongXacNhan";
+            this.btnKhongXacNhan.Size = new System.Drawing.Size(150, 36);
+            this.btnKhongXacNhan.TabIndex = 10;
+            this.btnKhongXacNhan.Text = "Không xác nhận";
+            this.btnKhongXacNhan.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnKhongXacNhan.Click += new System.EventHandler(this.btnKhongXacNhan_Click);
+            // 
+            // btnXacNhan
+            // 
+            this.btnXacNhan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnXacNhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnXacNhan.Location = new System.Drawing.Point(326, 79);
+            this.btnXacNhan.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnXacNhan.Name = "btnXacNhan";
+            this.btnXacNhan.Size = new System.Drawing.Size(150, 36);
+            this.btnXacNhan.TabIndex = 9;
+            this.btnXacNhan.Text = "Xác nhận";
+            this.btnXacNhan.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
+            // 
+            // btnDuyetPhieuDat
+            // 
+            this.btnDuyetPhieuDat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDuyetPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnDuyetPhieuDat.Location = new System.Drawing.Point(326, 35);
+            this.btnDuyetPhieuDat.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnDuyetPhieuDat.Name = "btnDuyetPhieuDat";
+            this.btnDuyetPhieuDat.Size = new System.Drawing.Size(150, 36);
+            this.btnDuyetPhieuDat.TabIndex = 8;
+            this.btnDuyetPhieuDat.Text = "Duyệt";
+            this.btnDuyetPhieuDat.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnDuyetPhieuDat.Click += new System.EventHandler(this.btnDuyetPhieuDat_Click);
+            // 
             // btnInPhieuDat
             // 
             this.btnInPhieuDat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnInPhieuDat.Location = new System.Drawing.Point(386, 34);
+            this.btnInPhieuDat.Location = new System.Drawing.Point(170, 79);
             this.btnInPhieuDat.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnInPhieuDat.Name = "btnInPhieuDat";
-            this.btnInPhieuDat.Size = new System.Drawing.Size(118, 36);
+            this.btnInPhieuDat.Size = new System.Drawing.Size(150, 36);
             this.btnInPhieuDat.TabIndex = 7;
             this.btnInPhieuDat.Text = "In phiếu đặt";
             this.btnInPhieuDat.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
@@ -346,10 +514,10 @@ namespace MeVaBeProject
             // 
             this.btnSuaPhieuDat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSuaPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnSuaPhieuDat.Location = new System.Drawing.Point(138, 35);
+            this.btnSuaPhieuDat.Location = new System.Drawing.Point(14, 79);
             this.btnSuaPhieuDat.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSuaPhieuDat.Name = "btnSuaPhieuDat";
-            this.btnSuaPhieuDat.Size = new System.Drawing.Size(118, 36);
+            this.btnSuaPhieuDat.Size = new System.Drawing.Size(150, 36);
             this.btnSuaPhieuDat.TabIndex = 6;
             this.btnSuaPhieuDat.Text = "Sửa phiếu đặt";
             this.btnSuaPhieuDat.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
@@ -359,10 +527,10 @@ namespace MeVaBeProject
             // 
             this.btnXoaPhieuDat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnXoaPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnXoaPhieuDat.Location = new System.Drawing.Point(262, 34);
+            this.btnXoaPhieuDat.Location = new System.Drawing.Point(170, 35);
             this.btnXoaPhieuDat.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnXoaPhieuDat.Name = "btnXoaPhieuDat";
-            this.btnXoaPhieuDat.Size = new System.Drawing.Size(118, 36);
+            this.btnXoaPhieuDat.Size = new System.Drawing.Size(150, 36);
             this.btnXoaPhieuDat.TabIndex = 5;
             this.btnXoaPhieuDat.Text = "Xóa phiếu đặt";
             this.btnXoaPhieuDat.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
@@ -375,7 +543,7 @@ namespace MeVaBeProject
             this.btnTaoPhieuDat.Location = new System.Drawing.Point(14, 35);
             this.btnTaoPhieuDat.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnTaoPhieuDat.Name = "btnTaoPhieuDat";
-            this.btnTaoPhieuDat.Size = new System.Drawing.Size(118, 36);
+            this.btnTaoPhieuDat.Size = new System.Drawing.Size(150, 36);
             this.btnTaoPhieuDat.TabIndex = 4;
             this.btnTaoPhieuDat.Text = "Tạo phiếu đặt";
             this.btnTaoPhieuDat.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
@@ -453,71 +621,6 @@ namespace MeVaBeProject
             this.uiToolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
             this.uiToolTip1.OwnerDraw = true;
             // 
-            // maPD
-            // 
-            this.maPD.DataPropertyName = "maPhieuDat";
-            this.maPD.HeaderText = "Mã phiếu đặt";
-            this.maPD.Name = "maPD";
-            // 
-            // maSanPham
-            // 
-            this.maSanPham.DataPropertyName = "maSanPham";
-            this.maSanPham.HeaderText = "Mã sản phẩm";
-            this.maSanPham.Name = "maSanPham";
-            // 
-            // tenSanPham
-            // 
-            this.tenSanPham.DataPropertyName = "tenSanPham";
-            this.tenSanPham.HeaderText = "Tên sản phẩm";
-            this.tenSanPham.Name = "tenSanPham";
-            // 
-            // soLuongDat
-            // 
-            this.soLuongDat.DataPropertyName = "soLuongDat";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.soLuongDat.DefaultCellStyle = dataGridViewCellStyle9;
-            this.soLuongDat.HeaderText = "Số lượng đặt";
-            this.soLuongDat.Name = "soLuongDat";
-            // 
-            // soLuongNhan
-            // 
-            this.soLuongNhan.DataPropertyName = "soLuongNhan";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.soLuongNhan.DefaultCellStyle = dataGridViewCellStyle10;
-            this.soLuongNhan.HeaderText = "Số lượng nhận";
-            this.soLuongNhan.Name = "soLuongNhan";
-            // 
-            // donGia
-            // 
-            this.donGia.DataPropertyName = "donGia";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "C0";
-            this.donGia.DefaultCellStyle = dataGridViewCellStyle11;
-            this.donGia.HeaderText = "Đơn giá";
-            this.donGia.Name = "donGia";
-            // 
-            // thanhTien
-            // 
-            this.thanhTien.DataPropertyName = "tongTien";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "C0";
-            this.thanhTien.DefaultCellStyle = dataGridViewCellStyle12;
-            this.thanhTien.HeaderText = "Thành tiền";
-            this.thanhTien.Name = "thanhTien";
-            // 
-            // btnDuyetPhieuDat
-            // 
-            this.btnDuyetPhieuDat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDuyetPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnDuyetPhieuDat.Location = new System.Drawing.Point(510, 35);
-            this.btnDuyetPhieuDat.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnDuyetPhieuDat.Name = "btnDuyetPhieuDat";
-            this.btnDuyetPhieuDat.Size = new System.Drawing.Size(118, 36);
-            this.btnDuyetPhieuDat.TabIndex = 8;
-            this.btnDuyetPhieuDat.Text = "Duyệt phiếu đặt";
-            this.btnDuyetPhieuDat.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnDuyetPhieuDat.Click += new System.EventHandler(this.btnDuyetPhieuDat_Click);
-            // 
             // frmQLDatHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -561,13 +664,6 @@ namespace MeVaBeProject
         private System.Windows.Forms.TabPage tabDanhSach;
         private System.Windows.Forms.TabPage tabChiTiet;
         private Sunny.UI.UIDataGridView dtgvChiTietPhieuDat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maPhieuDat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenNhanVien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenNhaCungCap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ngayLap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn soLuong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tongTien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn trangThai;
         private System.Windows.Forms.DataGridViewTextBoxColumn maPD;
         private System.Windows.Forms.DataGridViewTextBoxColumn maSanPham;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenSanPham;
@@ -576,5 +672,18 @@ namespace MeVaBeProject
         private System.Windows.Forms.DataGridViewTextBoxColumn donGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn thanhTien;
         private Sunny.UI.UIButton btnDuyetPhieuDat;
+        private Sunny.UI.UIButton btnXacNhan;
+        private Sunny.UI.UIButton btnKhongXacNhan;
+        private Sunny.UI.UIButton btnKoDuyet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maPhieuDat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenNhanVien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenNhaCungCap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngayLap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngayCapNhat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn soLuong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tongTien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn trangThai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn trangThaiXacNhan;
+        private System.Windows.Forms.DataGridViewButtonColumn ghiChuKhongDuyet;
     }
 }

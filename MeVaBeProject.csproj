@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props" Condition="Exists('packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,8 +51,8 @@
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    <Reference Include="Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.160.1000.6\lib\net462\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="SunnyUI, Version=3.7.2.0, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb, processorArchitecture=MSIL">
       <HintPath>packages\SunnyUI.3.7.2\lib\net472\SunnyUI.dll</HintPath>
@@ -109,6 +112,12 @@
     <Compile Include="frmCTHD.Designer.cs">
       <DependentUpon>frmCTHD.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDanhSachPhieuDat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDanhSachPhieuDat.Designer.cs">
+      <DependentUpon>frmDanhSachPhieuDat.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +136,12 @@
     <Compile Include="frmKhachHang.Designer.cs">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmGhiChu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGhiChu.Designer.cs">
+      <DependentUpon>frmGhiChu.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +153,24 @@
     </Compile>
     <Compile Include="frmNhapHang.Designer.cs">
       <DependentUpon>frmNhapHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQLNhapHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQLNhapHang.Designer.cs">
+      <DependentUpon>frmQLNhapHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhieuDatHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhieuDatHang.Designer.cs">
+      <DependentUpon>frmPhieuDatHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhieuNhapHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhieuNhapHang.Designer.cs">
+      <DependentUpon>frmPhieuNhapHang.cs</DependentUpon>
     </Compile>
     <Compile Include="frmQLHoaDon.cs">
       <SubType>Form</SubType>
@@ -165,7 +198,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -184,6 +216,9 @@
     <EmbeddedResource Include="frmCTHD.resx">
       <DependentUpon>frmCTHD.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDanhSachPhieuDat.resx">
+      <DependentUpon>frmDanhSachPhieuDat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,11 +228,23 @@
     <EmbeddedResource Include="frmKhachHang.resx">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmGhiChu.resx">
+      <DependentUpon>frmGhiChu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmNhanVien.resx">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNhapHang.resx">
       <DependentUpon>frmNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQLNhapHang.resx">
+      <DependentUpon>frmQLNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhieuDatHang.resx">
+      <DependentUpon>frmPhieuDatHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhieuNhapHang.resx">
+      <DependentUpon>frmPhieuNhapHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQLHoaDon.resx">
       <DependentUpon>frmQLHoaDon.cs</DependentUpon>
@@ -214,6 +261,8 @@
     <EmbeddedResource Include="HoaDonMuaHang.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="PhieuDatHang.rdlc" />
+    <EmbeddedResource Include="PhieuNhapHang.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -225,6 +274,8 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DTO.ChiTietHoaDonSanPham.datasource" />
+    <None Include="Properties\DataSources\DTO.ChiTietPhieuDat.datasource" />
+    <None Include="Properties\DataSources\DTO.ChiTietPhieuNhap.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -270,19 +321,12 @@
     <Content Include="Pic\SP002.jpg" />
     <Content Include="Pic\warehouse.png" />
     <Content Include="Pic\writing.png" />
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props'))" />
+  </Target>
 </Project>

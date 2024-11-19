@@ -16,7 +16,10 @@ namespace DAL
         {
             return db.NhaCungCaps.Select(ncc => ncc).ToList<NhaCungCap>();
         }
-
+        public NhaCungCap TimNhaCungCapTheoMa(string maNhaCungCap)
+        {
+            return db.NhaCungCaps.Where(ncc => ncc.maNhaCungCap == maNhaCungCap).Select(ncc => ncc).FirstOrDefault();
+        }
         public bool ThemNhaCungCap(NhaCungCap ncc)
         {
             try
