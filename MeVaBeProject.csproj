@@ -141,6 +141,7 @@
     </Compile>
     <Compile Include="frmLoaiNV.designer.cs">
       <DependentUpon>frmLoaiNV.cs</DependentUpon>
+	</Compile>
     <Compile Include="frmGhiChu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +236,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLoaiNV.resx">
       <DependentUpon>frmLoaiNV.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="frmGhiChu.resx">
       <DependentUpon>frmGhiChu.cs</DependentUpon>
     </EmbeddedResource>
