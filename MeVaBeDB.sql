@@ -61,6 +61,7 @@ CREATE TABLE SanPham (
     maSanPham VARCHAR(50) PRIMARY KEY,
     maLoaiSanPham VARCHAR(10),
     tenSanPham NVARCHAR(100),
+	--donViTinh NVARCHAR(30),
     donGiaBan DECIMAL(18, 2),
 	donGiaSale DECIMAL(18, 2),
     soLuong INT,
@@ -69,8 +70,9 @@ CREATE TABLE SanPham (
     hinhAnh NVARCHAR(255),
     trangThai NVARCHAR(50),
     FOREIGN KEY (maLoaiSanPham) REFERENCES LoaiSanPham(maLoaiSanPham)
-);
-
+--);
+--ALTER TABLE SanPham
+--ADD donViTinh NVARCHAR(30)
 --CREATE TABLE SanPham_NhaCungCap (
 --    maSanPham VARCHAR(50),
 --    maNhaCungCap VARCHAR(10),
@@ -178,6 +180,8 @@ CREATE TABLE PhieuDat (
 	soLuong INT,
     tongTien DECIMAL(18, 2),
 	trangThai NVARCHAR(20),
+	trangThaiXacNhan NVARCHAR(20),
+	ghiChu NVARCHAR(255),
     FOREIGN KEY (maNhanVien) REFERENCES NhanVien(maNhanVien),
 	FOREIGN KEY (maNhaCungCap) REFERENCES NhaCungCap(maNhaCungCap)
 );
@@ -255,10 +259,12 @@ GO
 CREATE TABLE PhieuNhap (
     maPhieuNhap VARCHAR(50) PRIMARY KEY,
 	maPhieuDat VARCHAR(50),
+	maNhanVien VARCHAR(50),
     ngayNhap DATE,
 	soLan INT,
 	tongTien DECIMAL(18,2),
-	FOREIGN KEY (maPhieuDat) REFERENCES PhieuDat(maPhieuDat)
+	FOREIGN KEY (maPhieuDat) REFERENCES PhieuDat(maPhieuDat),
+	FOREIGN KEY (maNhanVien) REFERENCES NhanVien(maNhanVien)
 );
 GO
 CREATE TABLE ChiTietPhieuNhap (
@@ -393,9 +399,9 @@ INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALU
 INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALUES('NCC004',N'Nhà cung cấp quần áo','0888003348',N'47 Hoa Lan','aiDo@gmail.com')
 INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALUES('NCC005',N'Nhà cung cấp thuốc','0888003349',N'360 Nguyễn Thái Sơn','khongBiet@gmail.com')
 GO
-INSERT INTO PhieuDat(maPhieuDat,maNhaCungCap,maNhanVien,ngayLap,soLuong,tongTien) VALUES('PD000000001','NCC001','NV001','11/11/2024',2,0)
+INSERT INTO PhieuDat(maPhieuDat,maNhaCungCap,maNhanVien,ngayLap,ngayCapNhat,soLuong,tongTien) VALUES('PD000000001','NCC001','NV001','11/11/2024','11/11/2024',2,0)
 
-INSERT INTO PhieuDat(maPhieuDat,maNhaCungCap,maNhanVien,ngayLap,soLuong,tongTien) VALUES('PD000000002','NCC002','NV002','11/11/2024',2,0)
+INSERT INTO PhieuDat(maPhieuDat,maNhaCungCap,maNhanVien,ngayLap,ngayCapNhat,soLuong,tongTien) VALUES('PD000000002','NCC002','NV002','11/11/2024','11/11/2024',2,0)
 GO
 INSERT INTO ChiTietPhieuDat(maPhieuDat,maSanPham,soLuongDat,donGia,tongTien) VALUES('PD000000001','SP001',100,1000000,100000000)
 INSERT INTO ChiTietPhieuDat(maPhieuDat,maSanPham,soLuongDat,donGia,tongTien) VALUES('PD000000001','SP002',100,1000000,100000000)
@@ -404,8 +410,8 @@ INSERT INTO ChiTietPhieuDat(maPhieuDat,maSanPham,soLuongDat,donGia,tongTien) VAL
 INSERT INTO ChiTietPhieuDat(maPhieuDat,maSanPham,soLuongDat,donGia,tongTien) VALUES('PD000000002','SP004',100,1000000,100000000)
 GO
 SET DATEFORMAT DMY
-INSERT INTO PhieuNhap(maPhieuNhap,maPhieuDat,ngayNhap,tongTien,soLan) VALUES ('PN000000001','PD000000001','12/11/2024',0,1)
-INSERT INTO PhieuNhap(maPhieuNhap,maPhieuDat,ngayNhap,tongTien,soLan) VALUES ('PN000000002','PD000000001','13/11/2024',0,2)
+INSERT INTO PhieuNhap(maPhieuNhap,maPhieuDat,maNhanVien,ngayNhap,tongTien,soLan) VALUES ('PN000000001','PD000000001','NV001','12/11/2024',0,1)
+INSERT INTO PhieuNhap(maPhieuNhap,maPhieuDat,maNhanVien,ngayNhap,tongTien,soLan) VALUES ('PN000000002','PD000000001','NV001','13/11/2024',0,2)
 GO
 INSERT INTO ChiTietPhieuNhap(maPhieuNhap,maPhieuDat,maSanPham,soLuong,donGia,tongTien) VALUES('PN000000001','PD000000001','SP001',10,1000000,10000000)
 INSERT INTO ChiTietPhieuNhap(maPhieuNhap,maPhieuDat,maSanPham,soLuong,donGia,tongTien) VALUES('PN000000001','PD000000001','SP002',10,1000000,10000000)
@@ -472,10 +478,12 @@ CREATE TRIGGER TRG_TaoPhieuNhap ON PhieuNhap
 AFTER INSERT
 AS
 BEGIN
-	DECLARE @maPD VARCHAR(50), @ngayLapPhieuNhap DATE, @ngayLapPhieuDat DATE, @trangThai BIT
+	DECLARE @maPD VARCHAR(50), @ngayLapPhieuNhap DATE, @ngayLapPhieuDat DATE, @trangThai NVARCHAR(20), @trangThaiXacNhan NVARCHAR(20)
 	SELECT @maPD = maPhieuDat, @ngayLapPhieuNhap = ngayNhap FROM INSERTED
-	SELECT @ngayLapPhieuDat = ngayLap, @trangThai = trangThai FROM PhieuDat WHERE maPhieuDat = @maPD
-	IF(@trangThai = N'Chưa duyệt')
+	SELECT @ngayLapPhieuDat = ngayLap, @trangThai = trangThai, @trangThaiXacNhan = trangThaiXacNhan FROM PhieuDat WHERE maPhieuDat = @maPD
+	IF(@trangThai = N'Chưa duyệt' OR @trangThai = N'Không duyệt')
+		ROLLBACK
+	IF(@trangThai = N'Đã duyệt' AND @trangThaiXacNhan = N'Chưa chấp thuận')
 		ROLLBACK
 	IF(@ngayLapPhieuDat >= @ngayLapPhieuNhap)
 		ROLLBACK
@@ -547,26 +555,26 @@ BEGIN
 	WHERE maPhieuDat = @maPD AND maSanPham = @maSP
 END
 GO
-CREATE TRIGGER TRG_CapNhatXoaPhieuDat ON PhieuDat
-AFTER UPDATE ,DELETE
+CREATE TRIGGER TRG_CapNhat_XoaPhieuDat ON PhieuDat
+AFTER  UPDATE ,DELETE
 AS
 BEGIN
-	DECLARE @trangThai NVARCHAR(20)
-	SELECT @trangThai = trangThai FROM deleted
-	IF(@trangThai = N'Đã duyệt')
+	DECLARE @trangThai NVARCHAR(20), @trangThaiXacNhan NVARCHAR(20)
+	SELECT @trangThai = trangThai, @trangThaiXacNhan = trangThaiXacNhan FROM deleted
+	IF(@trangThai = N'Đã duyệt' AND @trangThaiXacNhan = N'Đã chấp thuận')
 		ROLLBACK
 END
-GO
-CREATE TRIGGER TRG_XoaChiTietPhieuDat ON ChiTietPhieuDat
-AFTER INSERT, UPDATE, DELETE
-AS
-BEGIN
-	DECLARE @maPD VARCHAR(50),@trangThai NVARCHAR(20)
-	SELECT @maPD = maPhieuDat FROM deleted
-	SELECT @trangThai = trangThai FROM PhieuDat WHERE maPhieuDat = @maPD
-	IF(@trangThai = N'Đã duyệt')
-		ROLLBACK
-END
+--GO
+--CREATE TRIGGER TRG_XoaChiTietPhieuDat ON ChiTietPhieuDat
+--AFTER INSERT, UPDATE, DELETE
+--AS
+--BEGIN
+--	DECLARE @maPD VARCHAR(50),@trangThai NVARCHAR(20),@trangThaiXacNhan NVARCHAR(20)
+--	SELECT @maPD = maPhieuDat FROM deleted
+--	SELECT @trangThai = trangThai, @trangThaiXacNhan = trangThaiXacNhan FROM PhieuDat WHERE maPhieuDat = @maPD
+--	IF(@trangThai = N'Đã duyệt' AND @trangThaiXacNhan = N'Đã chấp thuận')
+--		ROLLBACK
+--END
 GO
 CREATE TRIGGER TRG_ResetDiemTichLuySau1Nam
 ON KhachHang

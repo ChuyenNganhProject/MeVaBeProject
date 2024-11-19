@@ -26,7 +26,7 @@ namespace MeVaBeProject
             this.bindingSource = new BindingSource();
             this.bindingSourceCTPD = new BindingSource();
             InitializeComponent();
-        }
+        }        
         private void btnTaoPhieuDat_Click(object sender, EventArgs e)
         {
             frmDatHang frmDatHang = new frmDatHang(maNhanVien,true,string.Empty,string.Empty);
@@ -37,7 +37,16 @@ namespace MeVaBeProject
             if (dtgvDanhSachPhieuDat.SelectedRows.Count>0)
             {
                 string trangThai = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["trangThai"].Value.ToString();
-                if (trangThai != "Đã duyệt")
+                string trangThaiXacNhan;
+                if (dtgvDanhSachPhieuDat.SelectedRows[0].Cells["trangThaiXacNhan"].Value != null)
+                {
+                    trangThaiXacNhan = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["trangThaiXacNhan"].Value.ToString();
+                }
+                else
+                {
+                    trangThaiXacNhan = null;
+                }
+                if (trangThai != "Đã duyệt" && trangThaiXacNhan !="Đã chấp thuận")
                 {
                     string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
                     DialogResult r = MessageBox.Show(this, "Bạn có chắc chắn muốn xóa phiếu đặt này không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -66,7 +75,16 @@ namespace MeVaBeProject
             if (dtgvDanhSachPhieuDat.SelectedRows.Count>0)
             {
                 string trangThai = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["trangThai"].Value.ToString();
-                if (trangThai!="Đã duyệt")
+                string trangThaiXacNhan;
+                if (dtgvDanhSachPhieuDat.SelectedRows[0].Cells["trangThaiXacNhan"].Value != null)
+                {
+                    trangThaiXacNhan = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["trangThaiXacNhan"].Value.ToString();
+                }
+                else
+                {
+                    trangThaiXacNhan = null;
+                }                 
+                if (trangThai!="Đã duyệt" && trangThaiXacNhan != "Đã chấp thuận")
                 {
                     string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
                     string maNhaCungCap = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maNhaCungCap"].Value.ToString();
@@ -83,15 +101,18 @@ namespace MeVaBeProject
         {
             List<PhieuDat> phieuDats = phieuDatBLL.LayDanhSachPhieuDat();
             bindingSource.DataSource = phieuDats;
-            dtgvDanhSachPhieuDat.DataSource = bindingSource;
-            dtgvDanhSachPhieuDat.Columns["maNhaCungCap"].Visible = false;
-            dtgvDanhSachPhieuDat.Columns["NhaCungCap"].Visible = false;
-            dtgvDanhSachPhieuDat.Columns["maNhanVien"].Visible = false;
-            dtgvDanhSachPhieuDat.Columns["NhanVien"].Visible = false;
         }
         private void frmQLDatHang_Load(object sender, EventArgs e)
         {
             LoadData();
+            dtgvDanhSachPhieuDat.DataSource = bindingSource;
+            dtgvDanhSachPhieuDat.AutoGenerateColumns = false;
+            dtgvDanhSachPhieuDat.Columns["maNhaCungCap"].Visible = false;
+            dtgvDanhSachPhieuDat.Columns["NhaCungCap"].Visible = false;
+            dtgvDanhSachPhieuDat.Columns["maNhanVien"].Visible = false;
+            dtgvDanhSachPhieuDat.Columns["NhanVien"].Visible = false;
+            dtgvDanhSachPhieuDat.Columns["ghiChu"].Visible = false;
+            dtgvDanhSachPhieuDat.Columns["ghiChuKhongDuyet"].DisplayIndex = dtgvDanhSachPhieuDat.Columns.Count - 1;
         }
         private void dtNgayTaoPhieuNhap_ValueChanged(object sender, EventArgs e)
         {
@@ -99,17 +120,17 @@ namespace MeVaBeProject
         }
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string maPhieuDat = txtTimKiem.Text;
+            string maPhieuDat = txtTimKiem.Text.Trim();
             bindingSource.DataSource = phieuDatBLL.TimKiemPhieuDatTheoMaPhieuDat(maPhieuDat);
         }
         private void dtgvDanhSachPhieuDat_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             tabControlPhieuDat.SelectedTab = tabChiTiet;
-            string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
+            string maPhieuDat = dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["maPhieuDat"].Value.ToString();
             bindingSourceCTPD.DataSource = chiTietPhieuDatBLL.LayChiTietPhieuDat(maPhieuDat);
             dtgvChiTietPhieuDat.DataSource = bindingSourceCTPD;
             dtgvChiTietPhieuDat.Columns["PhieuDat"].Visible = false;
-            dtgvChiTietPhieuDat.Columns["SanPham"].Visible = false;           
+            dtgvChiTietPhieuDat.Columns["SanPham"].Visible = false;              
         }
         private void tabControlPhieuDat_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -122,7 +143,101 @@ namespace MeVaBeProject
         {
             if (dtgvDanhSachPhieuDat.SelectedRows.Count>0)
             {
-
+                string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
+                frmPhieuDatHang frmPhieuDat = new frmPhieuDatHang(maPhieuDat);
+                frmPhieuDat.ShowDialog();
+            }
+        }        
+        private void dtgvDanhSachPhieuDat_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex>=0)
+            {
+                string maPhieuDat = dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["maPhieuDat"].Value.ToString();
+                if (e.ColumnIndex == dtgvDanhSachPhieuDat.Columns["ghiChuKhongDuyet"].Index)
+                {
+                    frmGhiChu frmGhiChu = new frmGhiChu(maPhieuDat);
+                    frmGhiChu.ShowDialog();
+                }
+                string trangThai = dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["trangThai"].Value.ToString();
+                if (trangThai!="Đã duyệt")
+                {
+                    btnDuyetPhieuDat.Enabled = true;
+                    btnKoDuyet.Enabled = true;
+                    btnXacNhan.Enabled = false;
+                    btnKhongXacNhan.Enabled = false;
+                }                
+                else if(trangThai == "Đã duyệt")
+                {
+                    btnDuyetPhieuDat.Enabled = false;
+                    btnKoDuyet.Enabled = false;
+                }
+                string trangThaiXacNhan;
+                if (dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["trangThaiXacNhan"].Value != null)
+                {
+                    trangThaiXacNhan = dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["trangThaiXacNhan"].Value.ToString();
+                }
+                else
+                {
+                    trangThaiXacNhan = null;
+                }
+                if (trangThaiXacNhan == "Không chấp thuận")
+                {
+                    btnXacNhan.Enabled = false;
+                    btnKhongXacNhan.Enabled = false;
+                }    
+                else if(trangThaiXacNhan == null && trangThai == "Đã duyệt")
+                {
+                    btnXacNhan.Enabled = true;
+                    btnKhongXacNhan.Enabled = true;
+                }
+                else if (trangThaiXacNhan == null && trangThai != "Đã duyệt")
+                {
+                    btnXacNhan.Enabled = false;
+                    btnKhongXacNhan.Enabled = false;
+                }
+                else if(trangThaiXacNhan == "Đã chấp thuận")
+                {
+                    btnXacNhan.Enabled = false;
+                    btnKhongXacNhan.Enabled = false;
+                    btnKoDuyet.Enabled = false;
+                }
+                
+            }
+        }
+        private void btnXacNhan_Click(object sender, EventArgs e)
+        {
+            if (dtgvDanhSachPhieuDat.SelectedRows.Count > 0)
+            {
+                string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
+                bool result = phieuDatBLL.XacNhanPhieuDat(maPhieuDat,"Đã chấp thuận");
+                if (result)
+                {
+                    MessageBox.Show(this, "Xác nhận phiếu đặt thành công", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show(this, "Xác nhận phiếu đặt thất bại", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                }
+            }
+        }
+        private void btnKhongXacNhan_Click(object sender, EventArgs e)
+        {
+            if (dtgvDanhSachPhieuDat.SelectedRows.Count > 0)
+            {
+                
+                string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
+                bool resultKoDuyet = phieuDatBLL.DuyetPhieuDat(maPhieuDat,"Chưa duyệt");
+                bool result = phieuDatBLL.XacNhanPhieuDat(maPhieuDat, "Không chấp thuận");                
+                if (result)
+                {
+                    MessageBox.Show(this, "Xác nhận phiếu đặt thành công", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show(this, "Xác nhận phiếu đặt thất bại", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                }
             }
         }
         private void btnDuyetPhieuDat_Click(object sender, EventArgs e)
@@ -130,7 +245,7 @@ namespace MeVaBeProject
             if (dtgvDanhSachPhieuDat.SelectedRows.Count > 0)
             {
                 string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
-                bool result = phieuDatBLL.DuyetPhieuDat(maPhieuDat);
+                bool result = phieuDatBLL.DuyetPhieuDat(maPhieuDat,"Đã duyệt");
                 if (result)
                 {
                     MessageBox.Show(this, "Duyệt phiếu đặt thành công", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
@@ -142,19 +257,34 @@ namespace MeVaBeProject
                 }
             }
         }
-        private void dtgvDanhSachPhieuDat_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void btnKoDuyet_Click(object sender, EventArgs e)
         {
-            if (e.RowIndex>=0)
+            if (dtgvDanhSachPhieuDat.SelectedRows.Count > 0)
             {
-                string trangThai = dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["trangThai"].Value.ToString();
-                if (trangThai!="Đã duyệt")
+                string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
+                bool result = phieuDatBLL.DuyetPhieuDat(maPhieuDat,"Không duyệt");
+                if (result)
                 {
-                    btnDuyetPhieuDat.Enabled = true;
+                    MessageBox.Show(this, "Không duyệt phiếu đặt thành công", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    frmGhiChu frmGhiChu = new frmGhiChu(maPhieuDat);
+                    frmGhiChu.ShowDialog();
+                    LoadData();
                 }
                 else
                 {
-                    btnDuyetPhieuDat.Enabled = false;
+                    MessageBox.Show(this, "Không duyệt phiếu đặt thất bại", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 }
+            }
+        }
+        private void dtgvDanhSachPhieuDat_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dtgvDanhSachPhieuDat.Columns[e.ColumnIndex].Name == "ghiChuKhongDuyet" && e.Value != null)
+            {
+                e.CellStyle.BackColor = Color.Green;   // Màu nền nút
+                e.CellStyle.ForeColor = Color.White;  // Màu chữ nút
+
+                e.CellStyle.SelectionBackColor = Color.Green;
+                e.CellStyle.SelectionForeColor = Color.White;
             }
         }
     }
