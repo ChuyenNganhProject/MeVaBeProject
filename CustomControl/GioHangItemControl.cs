@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,9 +19,13 @@ namespace CustomControl
         public event EventHandler XoaSanPhamKhoiGioHang;
 
         SanPhamBLL spbll = new SanPhamBLL();
+        KhuyenMaiSanPhamBLL kmspbll = new KhuyenMaiSanPhamBLL();
+        KhuyenMaiBLL kmbll = new KhuyenMaiBLL();
         public string MaSanPham { get; private set; }
         public int SoLuong { get; private set; }
-        public decimal DonGia { get; private set; }
+        public decimal DonGiaBan { get; private set; }
+        public decimal DonGiaGoc { get; private set; }
+        public decimal TongTienTruocKhiGiamGiaSp { get; private set; }
         public decimal TongGiaTri { get; private set; }
         public string TenSanPham { get; private set; }
 
@@ -47,10 +52,15 @@ namespace CustomControl
 
         private void NumericSoLuongSp_ValueChanged(object sender, EventArgs e)
         {
-            string donGiaText = this.labelDonGia.Text.Replace("đ", "").Trim();
+            string donGiaText = this.labelGiaTinhTien.Text.Replace("đ", "").Trim();
             if (decimal.TryParse(donGiaText, NumberStyles.Number, CultureInfo.GetCultureInfo("vi-VN"), out decimal donGia))
             {
                 int soLuong = (int)this.numericSoLuongSp.Value;
+                int max = int.Parse(numericSoLuongSp.Maximum.ToString());
+                if(soLuong > max)
+                {
+                    MessageBox.Show("Số lượng sản phẩm hiện tại: " + max, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
                 this.SoLuong = soLuong;
                 this.TongGiaTri = donGia * soLuong;
@@ -62,18 +72,55 @@ namespace CustomControl
         }
 
         // Thêm sản phẩm vào giỏ hàng
-        public void CapNhatGioHang(string maSp, string tenSp, decimal donGia, int soLuong)
-        {   
-            this.numericSoLuongSp.Maximum = spbll.TimKiemSanPhamTheoMaSP(maSp).soLuong.Value;
+        public void CapNhatGioHang(string maSp, string tenSp, decimal donGia, decimal donGiaSale, int soLuong)
+        {
+            SanPham sanPham = spbll.TimKiemSanPhamTheoMaSP(maSp);
+            this.TongTienTruocKhiGiamGiaSp = soLuong * donGia;
+            this.numericSoLuongSp.Maximum = sanPham.soLuong.Value;
             this.MaSanPham = maSp;
             this.TenSanPham = tenSp;
             this.SoLuong = soLuong;
-            this.DonGia = donGia;
-            this.TongGiaTri = soLuong * donGia;
+            this.DonGiaGoc = donGia;
+            this.lblGiaGoc.Text = donGia.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
+
+            KhuyenMaiSanPham kmsp = kmspbll.LayKhuyenMaiTheoSanPham(maSp);
+            if(kmsp != null)
+            {
+                KhuyenMai km = kmbll.LayTTKhuyenMaiTuMaKM(kmsp.maKhuyenMai);
+
+                if (km.trangThai == "Đang diễn ra" && donGiaSale != 0)
+                {
+                    this.DonGiaBan = donGiaSale;
+                    this.labelGiaTinhTien.Text = donGiaSale.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
+                    this.lblGiaGoc.Font = new Font(lblGiaGoc.Font, FontStyle.Strikeout);
+                    this.lblGiaGoc.Visible = true;
+                    this.TongGiaTri = soLuong * donGiaSale;
+
+                    KhuyenMaiSanPham sanPhamKhuyenMai = kmspbll.LayTTSanPhamCuaKhuyenMai(kmsp.maKhuyenMai, maSp);
+                    decimal phanTramGiamSp = sanPhamKhuyenMai.phanTramGiam.Value;
+                    this.lblPhanTramGiamSp.Text = "(-" + phanTramGiamSp + "%)";
+                    this.lblPhanTramGiamSp.Visible = true;
+                }
+                else if (km.trangThai == "Chưa diễn ra" && donGiaSale != 0)
+                {
+                    this.DonGiaBan = donGia;
+                    this.labelGiaTinhTien.Text = donGia.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
+                    this.TongGiaTri = soLuong * donGia;
+                    this.lblPhanTramGiamSp.Visible = false;
+                    this.lblGiaGoc.Visible = false;
+                }
+            }
+            else
+            {
+                this.DonGiaBan = donGia;
+                this.labelGiaTinhTien.Text = donGia.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
+                this.TongGiaTri = soLuong * donGia;
+                this.lblPhanTramGiamSp.Visible = false;
+                this.lblGiaGoc.Visible = false;
+            }
             this.labelTenSp.Text = tenSp;
-            this.labelDonGia.Text = donGia.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
             this.numericSoLuongSp.Value = soLuong;
-            this.labelTongGiaTri.Text = (donGia * soLuong).ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
+            this.labelTongGiaTri.Text = this.TongGiaTri.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
         }
     }
 }

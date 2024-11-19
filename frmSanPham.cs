@@ -12,9 +12,18 @@ namespace MeVaBeProject
 {
     public partial class frmSanPham : Form
     {
-        public frmSanPham()
+        private frmTrangChu parentfrm;
+        public frmSanPham(frmTrangChu parentfrm)
         {
             InitializeComponent();
+            this.parentfrm = parentfrm;
+            this.btnKhuyenMai.Click += BtnKhuyenMai_Click;
+        }
+
+        private void BtnKhuyenMai_Click(object sender, EventArgs e)
+        {
+            frmQLKhuyenMai frm = new frmQLKhuyenMai(parentfrm);
+            parentfrm.OpenChildForm(frm);
         }
     }
 }
