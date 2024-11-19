@@ -683,7 +683,7 @@ namespace MeVaBeProject
         {
             decimal tongTien = 0;
             decimal tongTienTruocKhiGiam = 0;
-            decimal tienSanPhamDuocGiamGia = 0;
+            decimal tienSanPhamDuocGiamGia;
 
             foreach (GioHangItemControl item in gioHangItems)
             {
