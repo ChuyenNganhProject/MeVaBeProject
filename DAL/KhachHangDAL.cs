@@ -62,7 +62,7 @@ namespace DAL
         public KhachHang LayKhachHangTheoSoDienThoai(string sdt)
         {
             try
-            {
+            { 
                 KhachHang khachHang = db.KhachHangs.FirstOrDefault(kh => kh.soDienThoai == sdt);
                 khachHang.tenHang = db.HangThanhViens.Where(h => h.maHang == khachHang.maHang).Select(h => h.tenHang).First();
                 return khachHang;

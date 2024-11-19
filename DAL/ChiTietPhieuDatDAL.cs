@@ -39,14 +39,14 @@ namespace DAL
         {
             try
             {
-                ChiTietPhieuDat chiTietPhieuDatEdited = MeVaBeDBDataContext.ChiTietPhieuDats.Where(ctpd => ctpd.maPhieuDat == pChiTietPhieuDat.maPhieuDat && ctpd.maSanPham == pChiTietPhieuDat.maSanPham).Select(ctpd => ctpd).FirstOrDefault();
+                ChiTietPhieuDat chiTietPhieuDatEdited = MeVaBeDBDataContext.ChiTietPhieuDats.Where(ctpd => ctpd.maPhieuDat == pChiTietPhieuDat.maPhieuDat && ctpd.maSanPham == pChiTietPhieuDat.maSanPham).Select(ctpd => ctpd).FirstOrDefault();                
                 chiTietPhieuDatEdited.soLuongDat = pChiTietPhieuDat.soLuongDat;
                 chiTietPhieuDatEdited.donGia = pChiTietPhieuDat.donGia;
                 chiTietPhieuDatEdited.tongTien = pChiTietPhieuDat.tongTien;
                 MeVaBeDBDataContext.SubmitChanges();
                 return true;
             }
-            catch
+            catch(Exception)
             {
                 return false;
             }

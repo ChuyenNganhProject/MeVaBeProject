@@ -75,7 +75,6 @@ namespace MeVaBeProject
             this.btnLuu = new Sunny.UI.UISymbolButton();
             this.btnThemSPVaoPhieuDat = new Sunny.UI.UISymbolButton();
             this.btnXoaSPTrongPhieuDat = new Sunny.UI.UISymbolButton();
-            this.btnInPhieuDat = new Sunny.UI.UISymbolButton();
             this.uiGroupBox4 = new Sunny.UI.UIGroupBox();
             this.txtDonGia = new Sunny.UI.UITextBox();
             this.uiLabel8 = new Sunny.UI.UILabel();
@@ -358,10 +357,12 @@ namespace MeVaBeProject
             this.dtgvSanPhamTrongPhieuDat.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.dtgvSanPhamTrongPhieuDat.TabIndex = 1;
             this.dtgvSanPhamTrongPhieuDat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSanPhamTrongPhieuDat_CellClick);
+            this.dtgvSanPhamTrongPhieuDat.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgvSanPhamTrongPhieuDat_CellFormatting);
             this.dtgvSanPhamTrongPhieuDat.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSanPhamTrongPhieuDat_CellValueChanged);
             // 
             // maSP
             // 
+            this.maSP.DataPropertyName = "maSanPham";
             this.maSP.HeaderText = "Mã sản phẩm";
             this.maSP.Name = "maSP";
             this.maSP.ReadOnly = true;
@@ -369,6 +370,7 @@ namespace MeVaBeProject
             // 
             // tenSP
             // 
+            this.tenSP.DataPropertyName = "tenSanPham";
             this.tenSP.HeaderText = "Tên sản phẩm";
             this.tenSP.Name = "tenSP";
             this.tenSP.ReadOnly = true;
@@ -376,6 +378,7 @@ namespace MeVaBeProject
             // 
             // soLuongDat
             // 
+            this.soLuongDat.DataPropertyName = "soLuongDat";
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.soLuongDat.DefaultCellStyle = dataGridViewCellStyle10;
             this.soLuongDat.HeaderText = "Số lượng đặt";
@@ -384,6 +387,7 @@ namespace MeVaBeProject
             // 
             // soLuongDaNhan
             // 
+            this.soLuongDaNhan.DataPropertyName = "soLuongNhan";
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.soLuongDaNhan.DefaultCellStyle = dataGridViewCellStyle11;
             this.soLuongDaNhan.HeaderText = "Số lượng nhận";
@@ -393,8 +397,8 @@ namespace MeVaBeProject
             // 
             // donGiaSP
             // 
+            this.donGiaSP.DataPropertyName = "donGia";
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "C0";
             dataGridViewCellStyle12.NullValue = null;
             this.donGiaSP.DefaultCellStyle = dataGridViewCellStyle12;
             this.donGiaSP.HeaderText = "Đơn giá";
@@ -403,8 +407,8 @@ namespace MeVaBeProject
             // 
             // thanhTien
             // 
+            this.thanhTien.DataPropertyName = "tongTien";
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "C0";
             dataGridViewCellStyle13.NullValue = null;
             this.thanhTien.DefaultCellStyle = dataGridViewCellStyle13;
             this.thanhTien.HeaderText = "Thành tiền";
@@ -422,7 +426,6 @@ namespace MeVaBeProject
             this.uiPanel2.Controls.Add(this.btnLuu);
             this.uiPanel2.Controls.Add(this.btnThemSPVaoPhieuDat);
             this.uiPanel2.Controls.Add(this.btnXoaSPTrongPhieuDat);
-            this.uiPanel2.Controls.Add(this.btnInPhieuDat);
             this.uiPanel2.Controls.Add(this.uiGroupBox2);
             this.uiPanel2.Controls.Add(this.uiGroupBox4);
             this.uiPanel2.Controls.Add(this.uiGroupBox3);
@@ -443,7 +446,7 @@ namespace MeVaBeProject
             // 
             this.btnPhucHoi.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPhucHoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnPhucHoi.Location = new System.Drawing.Point(510, 359);
+            this.btnPhucHoi.Location = new System.Drawing.Point(511, 415);
             this.btnPhucHoi.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnPhucHoi.Name = "btnPhucHoi";
             this.btnPhucHoi.Size = new System.Drawing.Size(77, 35);
@@ -500,7 +503,7 @@ namespace MeVaBeProject
             // 
             this.btnLuu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnLuu.Location = new System.Drawing.Point(510, 485);
+            this.btnLuu.Location = new System.Drawing.Point(511, 509);
             this.btnLuu.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(77, 35);
@@ -514,7 +517,7 @@ namespace MeVaBeProject
             // 
             this.btnThemSPVaoPhieuDat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnThemSPVaoPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnThemSPVaoPhieuDat.Location = new System.Drawing.Point(511, 222);
+            this.btnThemSPVaoPhieuDat.Location = new System.Drawing.Point(511, 235);
             this.btnThemSPVaoPhieuDat.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnThemSPVaoPhieuDat.Name = "btnThemSPVaoPhieuDat";
             this.btnThemSPVaoPhieuDat.Size = new System.Drawing.Size(77, 35);
@@ -528,7 +531,7 @@ namespace MeVaBeProject
             // 
             this.btnXoaSPTrongPhieuDat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnXoaSPTrongPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnXoaSPTrongPhieuDat.Location = new System.Drawing.Point(510, 292);
+            this.btnXoaSPTrongPhieuDat.Location = new System.Drawing.Point(511, 325);
             this.btnXoaSPTrongPhieuDat.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnXoaSPTrongPhieuDat.Name = "btnXoaSPTrongPhieuDat";
             this.btnXoaSPTrongPhieuDat.Size = new System.Drawing.Size(77, 35);
@@ -537,19 +540,6 @@ namespace MeVaBeProject
             this.btnXoaSPTrongPhieuDat.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.uiToolTip1.SetToolTip(this.btnXoaSPTrongPhieuDat, "Xóa sản phẩm");
             this.btnXoaSPTrongPhieuDat.Click += new System.EventHandler(this.btnXoaSPTrongPhieuDat_Click);
-            // 
-            // btnInPhieuDat
-            // 
-            this.btnInPhieuDat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnInPhieuDat.Location = new System.Drawing.Point(510, 424);
-            this.btnInPhieuDat.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnInPhieuDat.Name = "btnInPhieuDat";
-            this.btnInPhieuDat.Size = new System.Drawing.Size(77, 35);
-            this.btnInPhieuDat.Symbol = 61487;
-            this.btnInPhieuDat.TabIndex = 17;
-            this.btnInPhieuDat.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.uiToolTip1.SetToolTip(this.btnInPhieuDat, "In phiếu nhập");
             // 
             // uiGroupBox4
             // 
@@ -884,7 +874,6 @@ namespace MeVaBeProject
         private Sunny.UI.UIComboBox cbLoaiSP;
         private Sunny.UI.UISymbolButton btnTimKiem;
         private Sunny.UI.UITextBox txtTimKiem;
-        private Sunny.UI.UISymbolButton btnInPhieuDat;
         private Sunny.UI.UIGroupBox uiGroupBox4;
         private Sunny.UI.UISymbolButton btnThemSPVaoPhieuDat;
         private Sunny.UI.UISymbolButton btnXoaSPTrongPhieuDat;
@@ -917,12 +906,12 @@ namespace MeVaBeProject
         private System.Windows.Forms.DataGridViewTextBoxColumn hanSuDung;
         private System.Windows.Forms.DataGridViewImageColumn anh;
         private System.Windows.Forms.DataGridViewTextBoxColumn trangThai;
+        private Sunny.UI.UISymbolButton btnPhucHoi;
         private System.Windows.Forms.DataGridViewTextBoxColumn maSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn soLuongDat;
         private System.Windows.Forms.DataGridViewTextBoxColumn soLuongDaNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn donGiaSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn thanhTien;
-        private Sunny.UI.UISymbolButton btnPhucHoi;
     }
 }
