@@ -11,16 +11,18 @@ namespace BLL
     public class NhaCungCapBLL
     {
         NhaCungCapDAL nccdal = new NhaCungCapDAL();
-        public NhaCungCapBLL() { }  
-
-        public bool ThemNhaCungCap(NhaCungCap ncc)
-        {
-            return nccdal.ThemNhaCungCap(ncc);
-        }
-
+        public NhaCungCapBLL() { }
         public List<NhaCungCap> LoadNhaCungCap()
         {
             return nccdal.LoadNhaCungCap();
+        }
+        public NhaCungCap TimNhaCungCapTheoMa(string maNhaCungCap)
+        {
+            return nccdal.TimNhaCungCapTheoMa(maNhaCungCap);
+        }
+        public bool ThemNhaCungCap(NhaCungCap ncc)
+        {
+            return nccdal.ThemNhaCungCap(ncc);
         }
         public bool SuaNhaCungCap(NhaCungCap ncc)
         {
