@@ -293,12 +293,6 @@ ALTER TABLE ChiTietPhieuDat
 ADD CONSTRAINT SoLuongNhanDefault DEFAULT 0 FOR soLuongNhan
 GO
 
-ALTER TABLE KhuyenMaiSanPham ADD soLuongToiDa INT
-
-ALTER TABLE KhuyenMai ALTER COLUMN ngayBatDau DATETIME
-ALTER TABLE KhuyenMai ALTER COLUMN ngayKetThuc DATETIME
-ALTER TABLE KhuyenMai ALTER COLUMN trangThai NVARCHAR(50)
-
 INSERT INTO LoaiNhanVien (maLoaiNhanVien, tenLoaiNhanVien) 
 VALUES 
     (N'LNV001', N'Quản Lý'),
@@ -324,7 +318,7 @@ INSERT INTO LoaiSanPham (maLoaiSanPham, tenLoaiSanPham) VALUES ('LSP005', N'Th�
  
 GO
 SET DATEFORMAT DMY
--- LSP006: Đồ chơi, học tập
+-- LSP001: Đồ chơi, học tập
 INSERT INTO SanPham (maSanPham,maLoaiSanPham,tenSanPham,donGiaBan,soLuong,ngaySanXuat,hanSuDung,hinhAnh,trangThai)
 VALUES 
 ('SP001', 'LSP001', N'Robot nhảy múa và xoay chong chóng có nhạc đèn', 215000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Robot_nhay_mua_YN382700_C407.jpg', N'Còn hàng'),
@@ -338,7 +332,7 @@ VALUES
 ('SP009', 'LSP001', N'Gối ôm thú bông chó con tinh nghịch (xanh)', 199000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Goi_om_thu_bong_cho_con_tinh_nghich_xanh.jpg', N'Còn hàng'),
 ('SP010', 'LSP001', N'Gặm nướu silicone hình thú Animo (Hình gà con) (Vàng)', 149000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Gam_nuou_silicone_hinh_thu_Animo_Hinh_ga_con_Vang.jpg', N'Còn hàng')
 
--- LSP007: Vitamin - sức khỏe
+-- LSP002: Vitamin - sức khỏe
 INSERT INTO SanPham (maSanPham,maLoaiSanPham,tenSanPham,donGiaBan,soLuong,ngaySanXuat,hanSuDung,hinhAnh,trangThai)
 VALUES 
 ('SP011', 'LSP002', N'Thực phẩm bảo vệ sức khoẻ Herbs of Gold Ginkgo Biloba 6000', 450000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/herbs_of_gold_ginkgo_biloba_6000.jpg', N'Còn hàng'),
@@ -352,7 +346,7 @@ VALUES
 ('SP019', 'LSP002', N'Siro Tăng Đề Kháng Bé GADOPAX FORTE', 279000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/siro_tang_de_khang_be_gadopax_forte.jpg', N'Còn hàng'),
 ('SP020', 'LSP002', N'Biolizin', 295000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/biolizin.jpg', N'Còn hàng')
 
--- LSP008: Thời trang - phụ kiện
+-- LSP003: Thời trang - phụ kiện
 INSERT INTO SanPham (maSanPham,maLoaiSanPham,tenSanPham,donGiaBan,soLuong,ngaySanXuat,hanSuDung,hinhAnh,trangThai)
 VALUES 
 ('SP021', 'LSP003', N'Ba lô trẻ em Space Animo A2307_MN013 (Xanh)', 299000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/balo_tre_em_space_animo_a2307_mn013_xanh.jpg', N'Còn hàng'),
@@ -366,7 +360,7 @@ VALUES
 ('SP029', 'LSP003', N'Đầm bé gái Hoa và Bướm Animo VD1223056', 259000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/dam_be_gai_hoa_va_buom_animo_vd1223056.jpg', N'Còn hàng'),
 ('SP030', 'LSP003', N'Giày bé gái búp bê Animo A2205_MN001', 269000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/giay_be_gai_bup_be_animo_a2205_mn001.jpg', N'Còn hàng')
 
--- LSP009: Giặt xả quần áo
+-- LSP004: Giặt xả quần áo
 INSERT INTO SanPham (maSanPham,maLoaiSanPham,tenSanPham,donGiaBan,soLuong,ngaySanXuat,hanSuDung,hinhAnh,trangThai)
 VALUES 
 ('SP031', 'LSP004', N'Nước xả vải Hàn Quốc ConCung Gentle Care hương tươi mát, chai 3L', 185000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_xa_vai_hanquoc_concung_gentle_care_huong_tuoi_mat_chai_3l.jpg', N'Còn hàng'),
@@ -377,7 +371,7 @@ VALUES
 ('SP036', 'LSP004', N'Nước giặt xả MaxKleen hương sớm mai túi 3.8kg', 210000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_giat_xa_maxkleen_huong_som_mai_tui_3_8kg.jpg', N'Còn hàng'),
 ('SP037', 'LSP004', N'Nước xả Downy Hương nắng mai túi 3L', 236500, 250, '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_xa_downy_huong_nang_mai_tui_3l.jpg', N'Còn hàng'),
 ('SP038', 'LSP004', N'Nước xả vải Comfort Đậm đặc Hương nước hoa thiên nhiên Bella túi 3.2L', 219000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_xa_vai_comfort_dam_dac_bella.jpg', N'Còn hàng')
--- LSP010: Thực phẩm chế biến
+-- LSP005: Thực phẩm chế biến
 INSERT INTO SanPham (maSanPham,maLoaiSanPham,tenSanPham,donGiaBan,soLuong,ngaySanXuat,hanSuDung,hinhAnh,trangThai)
 VALUES 
 ('SP039', 'LSP005', N'Rong biển hữu cơ tách muối cho bé BeBecook', 135000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/rong_bien_huu_co_tach_muoi_cho_be_bebecook.jpg', N'Còn hàng'),
@@ -437,8 +431,6 @@ INSERT INTO ChiTietPhieuNhap(maPhieuNhap,maPhieuDat,maSanPham,soLuong,donGia,ton
 INSERT INTO ChiTietPhieuNhap(maPhieuNhap,maPhieuDat,maSanPham,soLuong,donGia,tongTien) VALUES('PN000000002','PD000000001','SP002',50,1000000,50000000)
 GO
 
-SELECT * FROM SanPham
-GO
 CREATE TRIGGER trg_DeleteHoaDonOnKhachHangDelete
 ON KhachHang
 AFTER DELETE
@@ -449,8 +441,7 @@ BEGIN
     WHERE maKhachHang IN (SELECT maKhachHang FROM deleted);
 END;
 GO
-SELECT * FROM KhachHang
-GO
+
 CREATE PROCEDURE XoaPhieuDat_Proc @maPhieuDat VARCHAR(50)
 AS
 	--Xóa chi tiết phiếu đặt
@@ -491,18 +482,7 @@ BEGIN
 		END
 END
 GO
-CREATE TRIGGER TRG_ThemChiTietHoaDon ON ChiTietHoaDonSanPham
-AFTER INSERT
-AS
-BEGIN
-	DECLARE @maSP VARCHAR(50), @soLuong INT
-	SELECT @maSP = maSanPham, @soLuong = soLuong FROM inserted
-	--Cập nhật số lượng
-	UPDATE SanPham
-	SET soLuong = soLuong - @soLuong
-	WHERE maSanPham = @maSP
-END
-GO
+
 CREATE TRIGGER TRG_TaoPhieuNhap ON PhieuNhap
 AFTER INSERT
 AS
