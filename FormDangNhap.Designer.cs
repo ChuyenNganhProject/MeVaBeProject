@@ -29,191 +29,221 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDangNhap));
-            this.uiLabel1 = new Sunny.UI.UILabel();
-            this.txtUsername = new Sunny.UI.UITextBox();
-            this.uiLabel2 = new Sunny.UI.UILabel();
-            this.txtPassword = new Sunny.UI.UITextBox();
-            this.uiLabel3 = new Sunny.UI.UILabel();
-            this.btnLogin = new Sunny.UI.UIButton();
             this.btnClose = new Sunny.UI.UILabel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.uiPanel1 = new Sunny.UI.UIPanel();
+            this.chkhienmk = new Sunny.UI.UICheckBox();
+            this.btnLogin = new Sunny.UI.UIButton();
+            this.txtPassword = new Sunny.UI.UITextBox();
+            this.lblmatkhau = new Sunny.UI.UILabel();
+            this.txtUsername = new Sunny.UI.UITextBox();
+            this.lbltendangnhap = new Sunny.UI.UILabel();
+            this.uiLabel4 = new Sunny.UI.UILabel();
+            this.uiLabel5 = new Sunny.UI.UILabel();
             this.panel1.SuspendLayout();
+            this.uiPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // uiLabel1
-            // 
-            this.uiLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel1.Location = new System.Drawing.Point(526, 99);
-            this.uiLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(136, 28);
-            this.uiLabel1.TabIndex = 0;
-            this.uiLabel1.Text = "Đăng nhập";
-            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtUsername.Location = new System.Drawing.Point(531, 139);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtUsername.MinimumSize = new System.Drawing.Size(1, 13);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Padding = new System.Windows.Forms.Padding(5);
-            this.txtUsername.RectColor = System.Drawing.Color.HotPink;
-            this.txtUsername.ShowText = false;
-            this.txtUsername.Size = new System.Drawing.Size(176, 24);
-            this.txtUsername.TabIndex = 1;
-            this.txtUsername.Text = "hoangphuc";
-            this.txtUsername.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txtUsername.Watermark = "";
-            // 
-            // uiLabel2
-            // 
-            this.uiLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel2.Location = new System.Drawing.Point(388, 139);
-            this.uiLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(137, 24);
-            this.uiLabel2.TabIndex = 0;
-            this.uiLabel2.Text = "Tên đăng nhập:";
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtPassword.Location = new System.Drawing.Point(531, 186);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPassword.MinimumSize = new System.Drawing.Size(1, 13);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.RectColor = System.Drawing.Color.HotPink;
-            this.txtPassword.ShowText = false;
-            this.txtPassword.Size = new System.Drawing.Size(176, 24);
-            this.txtPassword.TabIndex = 3;
-            this.txtPassword.Text = "admin123";
-            this.txtPassword.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txtPassword.Watermark = "";
-            // 
-            // uiLabel3
-            // 
-            this.uiLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel3.Location = new System.Drawing.Point(388, 186);
-            this.uiLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.uiLabel3.Name = "uiLabel3";
-            this.uiLabel3.Size = new System.Drawing.Size(137, 24);
-            this.uiLabel3.TabIndex = 2;
-            this.uiLabel3.Text = "Mật khẩu:";
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogin.FillColor = System.Drawing.Color.LightPink;
-            this.btnLogin.FillHoverColor = System.Drawing.Color.HotPink;
-            this.btnLogin.FillPressColor = System.Drawing.Color.DeepPink;
-            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnLogin.Location = new System.Drawing.Point(531, 237);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnLogin.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.RectColor = System.Drawing.Color.HotPink;
-            this.btnLogin.RectDisableColor = System.Drawing.Color.Fuchsia;
-            this.btnLogin.RectHoverColor = System.Drawing.Color.DeepPink;
-            this.btnLogin.RectPressColor = System.Drawing.Color.DeepPink;
-            this.btnLogin.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnLogin.Size = new System.Drawing.Size(112, 32);
-            this.btnLogin.TabIndex = 4;
-            this.btnLogin.Text = "Đăng nhập";
-            this.btnLogin.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.btnClose.Location = new System.Drawing.Point(439, 7);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.btnClose.Location = new System.Drawing.Point(728, 21);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(27, 19);
+            this.btnClose.Size = new System.Drawing.Size(38, 32);
             this.btnClose.TabIndex = 6;
             this.btnClose.Text = "X";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.HotPink;
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(316, 366);
-            this.panel2.TabIndex = 6;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(26, 38);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(254, 260);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(316, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(469, 34);
+            this.panel1.Size = new System.Drawing.Size(778, 64);
             this.panel1.TabIndex = 7;
+            // 
+            // uiPanel1
+            // 
+            this.uiPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.uiPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.uiPanel1.Controls.Add(this.chkhienmk);
+            this.uiPanel1.Controls.Add(this.btnLogin);
+            this.uiPanel1.Controls.Add(this.txtPassword);
+            this.uiPanel1.Controls.Add(this.lblmatkhau);
+            this.uiPanel1.Controls.Add(this.txtUsername);
+            this.uiPanel1.Controls.Add(this.lbltendangnhap);
+            this.uiPanel1.Controls.Add(this.uiLabel4);
+            this.uiPanel1.Controls.Add(this.uiLabel5);
+            this.uiPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
+            this.uiPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.uiPanel1.Location = new System.Drawing.Point(184, 102);
+            this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPanel1.Name = "uiPanel1";
+            this.uiPanel1.Radius = 25;
+            this.uiPanel1.RectColor = System.Drawing.Color.Transparent;
+            this.uiPanel1.Size = new System.Drawing.Size(405, 401);
+            this.uiPanel1.TabIndex = 9;
+            this.uiPanel1.Text = null;
+            this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chkhienmk
+            // 
+            this.chkhienmk.CheckBoxColor = System.Drawing.Color.Gray;
+            this.chkhienmk.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkhienmk.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkhienmk.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.chkhienmk.Location = new System.Drawing.Point(165, 245);
+            this.chkhienmk.MinimumSize = new System.Drawing.Size(1, 1);
+            this.chkhienmk.Name = "chkhienmk";
+            this.chkhienmk.Size = new System.Drawing.Size(159, 29);
+            this.chkhienmk.TabIndex = 7;
+            this.chkhienmk.Text = "Hiện mật khẩu";
+            this.chkhienmk.CheckedChanged += new System.EventHandler(this.chkhienmk_CheckedChanged);
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogin.FillColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnLogin.FillColor2 = System.Drawing.Color.Green;
+            this.btnLogin.FillPressColor = System.Drawing.Color.Transparent;
+            this.btnLogin.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Location = new System.Drawing.Point(24, 280);
+            this.btnLogin.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Radius = 25;
+            this.btnLogin.RectColor = System.Drawing.Color.Transparent;
+            this.btnLogin.RectHoverColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogin.RectPressColor = System.Drawing.Color.White;
+            this.btnLogin.RectSelectedColor = System.Drawing.Color.White;
+            this.btnLogin.Size = new System.Drawing.Size(246, 35);
+            this.btnLogin.TabIndex = 6;
+            this.btnLogin.Text = "Đăng nhập";
+            this.btnLogin.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtPassword.ForeColor = System.Drawing.Color.White;
+            this.txtPassword.Location = new System.Drawing.Point(24, 202);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPassword.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Padding = new System.Windows.Forms.Padding(5);
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Radius = 20;
+            this.txtPassword.RectColor = System.Drawing.Color.Black;
+            this.txtPassword.ShowText = false;
+            this.txtPassword.Size = new System.Drawing.Size(246, 35);
+            this.txtPassword.TabIndex = 5;
+            this.txtPassword.Text = "admin123";
+            this.txtPassword.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtPassword.Watermark = "";
+            // 
+            // lblmatkhau
+            // 
+            this.lblmatkhau.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
+            this.lblmatkhau.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmatkhau.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblmatkhau.Location = new System.Drawing.Point(20, 170);
+            this.lblmatkhau.Name = "lblmatkhau";
+            this.lblmatkhau.Size = new System.Drawing.Size(125, 27);
+            this.lblmatkhau.TabIndex = 4;
+            this.lblmatkhau.Text = "Mật khẩu :";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtUsername.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtUsername.ForeColor = System.Drawing.Color.White;
+            this.txtUsername.Location = new System.Drawing.Point(24, 124);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtUsername.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Padding = new System.Windows.Forms.Padding(5);
+            this.txtUsername.Radius = 20;
+            this.txtUsername.RectColor = System.Drawing.Color.Black;
+            this.txtUsername.ShowText = false;
+            this.txtUsername.Size = new System.Drawing.Size(246, 35);
+            this.txtUsername.TabIndex = 3;
+            this.txtUsername.Text = "ttq";
+            this.txtUsername.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtUsername.Watermark = "";
+            // 
+            // lbltendangnhap
+            // 
+            this.lbltendangnhap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
+            this.lbltendangnhap.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltendangnhap.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lbltendangnhap.Location = new System.Drawing.Point(20, 92);
+            this.lbltendangnhap.Name = "lbltendangnhap";
+            this.lbltendangnhap.Size = new System.Drawing.Size(174, 27);
+            this.lbltendangnhap.TabIndex = 2;
+            this.lbltendangnhap.Text = "Tên đăng nhập :";
+            // 
+            // uiLabel4
+            // 
+            this.uiLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
+            this.uiLabel4.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiLabel4.ForeColor = System.Drawing.Color.DarkGray;
+            this.uiLabel4.Location = new System.Drawing.Point(17, 48);
+            this.uiLabel4.Name = "uiLabel4";
+            this.uiLabel4.Size = new System.Drawing.Size(253, 27);
+            this.uiLabel4.TabIndex = 1;
+            this.uiLabel4.Text = "Chào mừng phiên đăng nhập mới !";
+            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiLabel5
+            // 
+            this.uiLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
+            this.uiLabel5.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiLabel5.ForeColor = System.Drawing.Color.White;
+            this.uiLabel5.Location = new System.Drawing.Point(101, 20);
+            this.uiLabel5.Name = "uiLabel5";
+            this.uiLabel5.Size = new System.Drawing.Size(159, 28);
+            this.uiLabel5.TabIndex = 0;
+            this.uiLabel5.Text = "XIN CHÀO!";
             // 
             // FormDangNhap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AcceptButton = this.btnLogin;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(785, 366);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(778, 565);
+            this.Controls.Add(this.uiPanel1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.uiLabel3);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.uiLabel2);
-            this.Controls.Add(this.uiLabel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormDangNhap";
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.uiPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Sunny.UI.UILabel uiLabel1;
-        private Sunny.UI.UITextBox txtUsername;
-        private Sunny.UI.UILabel uiLabel2;
-        private Sunny.UI.UITextBox txtPassword;
-        private Sunny.UI.UILabel uiLabel3;
-        private Sunny.UI.UIButton btnLogin;
         private Sunny.UI.UILabel btnClose;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private Sunny.UI.UIPanel uiPanel1;
+        private Sunny.UI.UICheckBox chkhienmk;
+        private Sunny.UI.UIButton btnLogin;
+        private Sunny.UI.UITextBox txtPassword;
+        private Sunny.UI.UILabel lblmatkhau;
+        private Sunny.UI.UITextBox txtUsername;
+        private Sunny.UI.UILabel lbltendangnhap;
+        private Sunny.UI.UILabel uiLabel4;
+        private Sunny.UI.UILabel uiLabel5;
     }
 }
