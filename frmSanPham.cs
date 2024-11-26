@@ -23,12 +23,21 @@ namespace MeVaBeProject
         private string selectedFilePath;
         private string saveFilePath;
         private string imagePath;
-        public frmSanPham()
+        private frmTrangChu parentfrm;
+
+        public frmSanPham(frmTrangChu parentfrm)
         {
             InitializeComponent();
+            this.parentfrm = parentfrm;
+            this.btnKhuyenMai.Click += BtnKhuyenMai_Click;
             this.sanPhamBLL = new SanPhamBLL();
             this.loaiSanPhamBLL = new LoaiSanPhamBLL();
             this.bindingSource = new BindingSource();
+        }
+        private void BtnKhuyenMai_Click(object sender, EventArgs e)
+        {
+            frmQLKhuyenMai frm = new frmQLKhuyenMai(parentfrm);
+            parentfrm.OpenChildForm(frm);
         }
         private void SetHinhAnh(List<SanPham> danhSachSanPham)
         {

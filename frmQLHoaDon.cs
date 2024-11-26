@@ -22,7 +22,7 @@ namespace MeVaBeProject
             this.Load += FrmQLHoaDon_Load;
             this.dtpNgayBatDau.Value = dtpNgayKetThuc.Value;
 
-            this.btnReset.Click += BtnReset_Click; ;
+            this.btnReset.Click += BtnReset_Click;
             this.btnTimKiem.Click += BtnTimKiem_Click;
             this.cboTieuChi.SelectedIndexChanged += CboTieuChi_SelectedIndexChanged;
             this.btnLocTheoNgay.Click += BtnLocTheoNgay_Click;

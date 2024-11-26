@@ -79,6 +79,7 @@
             this.uiLabel3 = new Sunny.UI.UILabel();
             this.uiLabel5 = new Sunny.UI.UILabel();
             this.uiLabel2 = new Sunny.UI.UILabel();
+            this.btnKhuyenMai = new Sunny.UI.UIButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.uiPanel1.SuspendLayout();
             this.uiGroupBox1.SuspendLayout();
@@ -93,7 +94,7 @@
             this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel1.Location = new System.Drawing.Point(0, 0);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(1068, 51);
+            this.uiLabel1.Size = new System.Drawing.Size(1424, 51);
             this.uiLabel1.TabIndex = 0;
             this.uiLabel1.Text = "Danh sách sản phẩm";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -278,7 +279,7 @@
             this.uiPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.uiPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiPanel1.Location = new System.Drawing.Point(0, 0);
-            this.uiPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel1.Name = "uiPanel1";
             this.uiPanel1.Size = new System.Drawing.Size(1068, 435);
@@ -454,7 +455,7 @@
             this.btnHuyBo.RectHoverColor = System.Drawing.Color.Gray;
             this.btnHuyBo.RectPressColor = System.Drawing.Color.DarkGray;
             this.btnHuyBo.RectSelectedColor = System.Drawing.Color.DarkGray;
-            this.btnHuyBo.Size = new System.Drawing.Size(112, 32);
+            this.btnHuyBo.Size = new System.Drawing.Size(149, 39);
             this.btnHuyBo.TabIndex = 12;
             this.btnHuyBo.Text = "Hủy bỏ";
             this.btnHuyBo.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -476,7 +477,7 @@
             this.btnSua.RectHoverColor = System.Drawing.Color.DeepPink;
             this.btnSua.RectPressColor = System.Drawing.Color.DeepPink;
             this.btnSua.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnSua.Size = new System.Drawing.Size(112, 32);
+            this.btnSua.Size = new System.Drawing.Size(149, 39);
             this.btnSua.TabIndex = 13;
             this.btnSua.Text = "Sửa";
             this.btnSua.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -498,7 +499,7 @@
             this.btnXoa.RectHoverColor = System.Drawing.Color.DeepPink;
             this.btnXoa.RectPressColor = System.Drawing.Color.DeepPink;
             this.btnXoa.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnXoa.Size = new System.Drawing.Size(112, 32);
+            this.btnXoa.Size = new System.Drawing.Size(149, 39);
             this.btnXoa.TabIndex = 11;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -520,7 +521,7 @@
             this.btnThem.RectHoverColor = System.Drawing.Color.DeepPink;
             this.btnThem.RectPressColor = System.Drawing.Color.DeepPink;
             this.btnThem.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnThem.Size = new System.Drawing.Size(112, 32);
+            this.btnThem.Size = new System.Drawing.Size(149, 39);
             this.btnThem.TabIndex = 10;
             this.btnThem.Text = "Thêm";
             this.btnThem.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -775,16 +776,28 @@
             this.uiLabel2.TabIndex = 6;
             this.uiLabel2.Text = "Mã sản phẩm:";
             // 
+            // btnKhuyenMai
+            // 
+            this.btnKhuyenMai.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnKhuyenMai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnKhuyenMai.Location = new System.Drawing.Point(501, 67);
+            this.btnKhuyenMai.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnKhuyenMai.Name = "btnKhuyenMai";
+            this.btnKhuyenMai.Size = new System.Drawing.Size(177, 35);
+            this.btnKhuyenMai.TabIndex = 13;
+            this.btnKhuyenMai.Text = "Xem khuyến mãi";
+            this.btnKhuyenMai.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            // 
             // frmSanPham
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1068, 720);
+            this.ClientSize = new System.Drawing.Size(1424, 886);
             this.Controls.Add(this.uiPanel2);
             this.Controls.Add(this.uiPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmSanPham";
             this.Text = "frmSanPham";
             this.Load += new System.EventHandler(this.frmSanPham_Load);
@@ -842,5 +855,6 @@
         private Sunny.UI.UIGroupBox uiGroupBox1;
         private Sunny.UI.UIComboBox cbLocTheoLoai;
         private Sunny.UI.UILabel uiLabel9;
+        private Sunny.UI.UIButton btnKhuyenMai;
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="MeVaBeDB.cs">
       <DependentUpon>MeVaBeDB.dbml</DependentUpon>
     </Compile>
+    <Compile Include="KhuyenMaiSanPham.cs" />
     <Compile Include="MeVaBeDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

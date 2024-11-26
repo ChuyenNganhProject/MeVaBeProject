@@ -73,7 +73,7 @@ namespace MeVaBeProject
                     if (decimal.TryParse(phanTramGiamText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal phanTramGiam))
                     {
                         decimal tienBiGiam = tongTien * (phanTramGiam / 100);
-                        lblTienSeTru.Text = "-" + tienBiGiam.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"));
+                        lblTienGiamGiaVip.Text = "-" + tienBiGiam.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"));
                     }
                 }
             }
@@ -95,10 +95,10 @@ namespace MeVaBeProject
             lblTenHangKH.Text = "";
             lblPhanTramGiam.Visible = false;
             lblPhanTramGiam.Text = "";
-            lblTienSeTru.Visible = false;
-            lblTienSeTru.Text = "";
+            lblTienGiamGiaVip.Visible = false;
+            lblTienGiamGiaVip.Text = "";
             decimal tienBiGiam = 0;
-            lblTienSeTru.Text = "-" + tienBiGiam.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"));
+            lblTienGiamGiaVip.Text = "-" + tienBiGiam.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"));
             CapNhatTongTien();
         }
 
@@ -151,13 +151,13 @@ namespace MeVaBeProject
                         decimal phanTramGiam = uubll.GetPhanTramGiam(kh.maHang);
                         lblMucGiam.Visible = true;
                         lblPhanTramGiam.Visible = true;
-                        lblTienSeTru.Visible = true;
+                        lblTienGiamGiaVip.Visible = true;
                         lblPhanTramGiam.Text = phanTramGiam.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "%)";
                         string tongTienText = lblTongTien.Text.Replace("đ", "").Trim();
                         if (decimal.TryParse(tongTienText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tongTien))
                         {
                             decimal tienBiGiam = tongTien * (phanTramGiam / 100);
-                            lblTienSeTru.Text = "-" + tienBiGiam.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"));
+                            lblTienGiamGiaVip.Text = "-" + tienBiGiam.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"));
                         }
                         CapNhatTongTien();
                     }
@@ -169,8 +169,8 @@ namespace MeVaBeProject
                         lblTenHangKH.Text = "";
                         lblPhanTramGiam.Visible = false;
                         lblPhanTramGiam.Text = "";
-                        lblTienSeTru.Visible = false;
-                        lblTienSeTru.Text = "";
+                        lblTienGiamGiaVip.Visible = false;
+                        lblTienGiamGiaVip.Text = "";
                         CapNhatTongTien();
                     }
                     txtTenKH.Enabled = false;
@@ -185,8 +185,8 @@ namespace MeVaBeProject
                     lblTenHangKH.Text = "";
                     lblPhanTramGiam.Visible = false;
                     lblPhanTramGiam.Text = "";
-                    lblTienSeTru.Visible = false;
-                    lblTienSeTru.Text = "";
+                    lblTienGiamGiaVip.Visible = false;
+                    lblTienGiamGiaVip.Text = "";
                     CapNhatTongTien();
                 }
             }
@@ -201,8 +201,8 @@ namespace MeVaBeProject
                 lblTenHangKH.Text = "";
                 lblPhanTramGiam.Visible = false;
                 lblPhanTramGiam.Text = "";
-                lblTienSeTru.Visible = false;
-                lblTienSeTru.Text = "";
+                lblTienGiamGiaVip.Visible = false;
+                lblTienGiamGiaVip.Text = "";
                 CapNhatTongTien();
             }
         }
@@ -212,7 +212,7 @@ namespace MeVaBeProject
             NhanVien nv = nvbll.LayTTNhanVienTuTenDangNhap(maNhanVien);
             string tienTruocKhiGiamText = lblTongTien.Text.Replace("đ", "");
             string tongTienThanhToanText = lblTienThanhToan.Text.Replace("đ", "");
-            string tienBiGiamText = lblTienSeTru.Text.Trim();
+            string tienBiGiamText = lblTienGiamGiaVip.Text.Trim();
             string hangThanhVienText = lblTenHangKH.Text.Trim();
             string phanTramGiamText = "";
             if (!string.IsNullOrEmpty(lblPhanTramGiam.Text))
@@ -282,7 +282,7 @@ namespace MeVaBeProject
                                             maHoaDon = hd.maHoaDon,
                                             maSanPham = item.MaSanPham,
                                             soLuong = item.SoLuong,
-                                            donGia = item.DonGia,
+                                            donGia = item.DonGiaBan,
                                             tongTien = item.TongGiaTri,
                                             tenSanPham = item.TenSanPham
                                         };
@@ -367,7 +367,7 @@ namespace MeVaBeProject
                                         maHoaDon = hd.maHoaDon,
                                         maSanPham = item.MaSanPham,
                                         soLuong = item.SoLuong,
-                                        donGia = item.DonGia,
+                                        donGia = item.DonGiaBan,
                                         tongTien = item.TongGiaTri,
                                         tenSanPham = item.TenSanPham
                                     };
@@ -459,7 +459,7 @@ namespace MeVaBeProject
                                             maHoaDon = hd.maHoaDon,
                                             maSanPham = item.MaSanPham,
                                             soLuong = item.SoLuong,
-                                            donGia = item.DonGia,
+                                            donGia = item.DonGiaBan,
                                             tongTien = item.TongGiaTri,
                                             tenSanPham = item.TenSanPham
                                         };
@@ -533,7 +533,7 @@ namespace MeVaBeProject
                                         maHoaDon = hd.maHoaDon,
                                         maSanPham = item.MaSanPham,
                                         soLuong = item.SoLuong,
-                                        donGia = item.DonGia,
+                                        donGia = item.DonGiaBan,
                                         tongTien = item.TongGiaTri,
                                         tenSanPham = item.TenSanPham
                                     };
@@ -588,8 +588,8 @@ namespace MeVaBeProject
             lblMucTenHang.Visible = false;
             lblTenHangKH.Visible = false;
             lblPhanTramGiam.Visible = false;
-            lblTienSeTru.Visible = false;
-            lblTienSeTru.Text = "";
+            lblTienGiamGiaVip.Visible = false;
+            lblTienGiamGiaVip.Text = "";
             lblTenHangKH.Text = "";
             lblPhanTramGiam.Text = "";
             ResetGioHang();
@@ -634,15 +634,18 @@ namespace MeVaBeProject
                 string maSp = sanPhamItem.labelMaSp.Text;
                 string tenSp = sanPhamItem.labelTenSp.Text;
                 string giaSanPhamText = sanPhamItem.labelGiaSanPham.Text.Replace("đ", "").Trim();
+                SanPham sp = spbll.TimKiemSanPhamTheoMaSP(maSp);
+                
                 if(decimal.TryParse(giaSanPhamText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal donGiaBan))
                 {
                     int soLuong = 1;
-                    ThemSpVaoGioHang(maSp, tenSp, donGiaBan, soLuong);
+                    decimal donGiaSale = sp.donGiaSale.HasValue ? sp.donGiaSale.Value : 0;
+                    ThemSpVaoGioHang(maSp, tenSp, donGiaBan, donGiaSale, soLuong);
                 }
             }
         }
 
-        private void ThemSpVaoGioHang(string maSp, string tenSp, decimal donGia, int soLuong)
+        private void ThemSpVaoGioHang(string maSp, string tenSp, decimal donGiaBan, decimal donGiaSale, int soLuong)
         {
             foreach(GioHangItemControl item in gioHangItems)
             {
@@ -655,7 +658,7 @@ namespace MeVaBeProject
                 }
             }
             GioHangItemControl gioHangItem = new GioHangItemControl();
-            gioHangItem.CapNhatGioHang(maSp, tenSp, donGia, soLuong);
+            gioHangItem.CapNhatGioHang(maSp, tenSp, donGiaBan, donGiaSale, soLuong);
             gioHangItem.SoLuongThayDoi += GioHangItem_SoLuongThayDoi;
             gioHangItem.XoaSanPhamKhoiGioHang += GioHangItem_XoaSanPhamKhoiGioHang;
             gioHangPanel.Controls.Add(gioHangItem);
@@ -679,6 +682,9 @@ namespace MeVaBeProject
         private void CapNhatTongTien()
         {
             decimal tongTien = 0;
+            decimal tongTienTruocKhiGiam = 0;
+            decimal tienSanPhamDuocGiamGia;
+
             foreach (GioHangItemControl item in gioHangItems)
             {
                 string tongGiaTriText = item.labelTongGiaTri.Text.Replace("đ", "").Trim();
@@ -686,7 +692,10 @@ namespace MeVaBeProject
                 {
                     tongTien += tongGiaTri;
                 }
+
+                tongTienTruocKhiGiam += item.TongTienTruocKhiGiamGiaSp;
             }
+
             this.lblTongTien.Text = tongTien.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
             decimal tongTienThanhToan = 0;
             if(!lblPhanTramGiam.Visible)
@@ -695,13 +704,20 @@ namespace MeVaBeProject
             }
             else
             {
-                string tienBiGiamText = lblTienSeTru.Text.Replace("-", "").Trim();
-                if (decimal.TryParse(tienBiGiamText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tienBiGiam))
+                string TienGiamGiaVipText = lblTienGiamGiaVip.Text.Replace("-", "").Trim();
+                if (decimal.TryParse(TienGiamGiaVipText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal TienGiamGiaVip))
                 { 
-                    tongTienThanhToan = tongTien - tienBiGiam;
+                    tongTienThanhToan = tongTien - TienGiamGiaVip;
                 }
             }
             this.lblTienThanhToan.Text = tongTienThanhToan.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
+            tienSanPhamDuocGiamGia = tongTienTruocKhiGiam - tongTien;
+            if(tienSanPhamDuocGiamGia != 0)
+            {
+                lblGiamGiaSanPham.Text = tienSanPhamDuocGiamGia.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
+                lblMucGiamGiaSanPham.Visible = true;
+                lblGiamGiaSanPham.Visible = true;
+            }
         }
 
         private void GioHangItem_XoaSanPhamKhoiGioHang(object sender, EventArgs e)

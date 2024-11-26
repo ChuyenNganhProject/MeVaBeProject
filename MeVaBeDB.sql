@@ -189,15 +189,16 @@ CREATE TABLE KhuyenMai (
     maKhuyenMai VARCHAR(50) PRIMARY KEY,
     tenKhuyenMai NVARCHAR(100),
     moTa NVARCHAR(255),
-    ngayBatDau DATE,
-    ngayKetThuc DATE,
-    trangThai BIT
+    ngayBatDau DATETIME,
+    ngayKetThuc DATETIME,
+    trangThai NVARCHAR(50)
 );
 GO
 CREATE TABLE KhuyenMaiSanPham (
     maKhuyenMai VARCHAR(50),
     maSanPham VARCHAR(50),
     phanTramGiam DECIMAL(18, 2),
+	soLuongToiDa INT,
     trangThai BIT,
     PRIMARY KEY (maKhuyenMai, maSanPham),
     FOREIGN KEY (maKhuyenMai) REFERENCES KhuyenMai(maKhuyenMai),
@@ -292,6 +293,7 @@ VALUES
 	('Q0015',N'Quyền lập phiếu thanh lý'),
 	('Q0016',N'Quyền lập phiếu giao hàng')
 GO
+
 INSERT INTO LoaiNhanVien (maLoaiNhanVien, tenLoaiNhanVien) 
 VALUES 
     (N'LNV001', N'Quản Lý'),
@@ -533,6 +535,53 @@ BEGIN
     FROM inserted i
     WHERE SanPham.maSanPham = i.maSanPham;
 END;
+
+GO
+CREATE PROCEDURE sp_UpdateTrangThaiKhuyenMai
+AS
+BEGIN
+    DECLARE @tgHienTai DATETIME = GETDATE();
+
+    -- Cập nhật trạng thái của khuyến mãi
+    UPDATE KhuyenMai
+    SET trangThai = N'Đang diễn ra'
+    WHERE @tgHienTai >= ngayBatDau AND @tgHienTai <= ngayKetThuc;
+
+    UPDATE KhuyenMai
+    SET trangThai = N'Chưa diễn ra'
+    WHERE @tgHienTai < ngayBatDau;
+
+    UPDATE KhuyenMai
+    SET trangThai = N'Đã kết thúc'
+    WHERE @tgHienTai > ngayKetThuc;
+
+    -- Cập nhật trạng thái của KhuyenMaiSanPham khi KhuyenMai chuyển sang 'Đã kết thúc'
+    UPDATE KhuyenMaiSanPham
+    SET trangThai = 0
+    WHERE maKhuyenMai IN (
+        SELECT maKhuyenMai
+        FROM KhuyenMai
+        WHERE trangThai = N'Đã kết thúc'
+    );
+	
+    -- Cập nhật donGiaSale của SanPham thành NULL khi KhuyenMai kết thúc
+    UPDATE SanPham
+    SET donGiaSale = NULL
+    WHERE maSanPham IN (
+        SELECT kmsp.maSanPham
+        FROM KhuyenMaiSanPham kmsp
+        LEFT JOIN KhuyenMai km ON kmsp.maKhuyenMai = km.maKhuyenMai
+        WHERE kmsp.trangThai = 0
+        AND NOT EXISTS (
+            SELECT 1
+            FROM KhuyenMaiSanPham kmsp2
+            JOIN KhuyenMai km2 ON kmsp2.maKhuyenMai = km2.maKhuyenMai
+            WHERE kmsp2.maSanPham = kmsp.maSanPham
+            AND km2.trangThai IN (N'Đang diễn ra', N'Chưa diễn ra')
+        )
+    );
+END
+GO
 GO
 CREATE TRIGGER trg_UpdateHangThanhVien
 ON HoaDon
