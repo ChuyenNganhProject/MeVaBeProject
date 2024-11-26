@@ -1,6 +1,6 @@
 ﻿namespace MeVaBeProject
 {
-    partial class frmBill
+    partial class frmPhieuGiaoHang
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.hoaDonReport = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.rptPhieuGiaoHang = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
-            // hoaDonReport
+            // rptPhieuGiaoHang
             // 
-            this.hoaDonReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hoaDonReport.Location = new System.Drawing.Point(0, 0);
-            this.hoaDonReport.Name = "hoaDonReport";
-            this.hoaDonReport.ServerReport.BearerToken = null;
-            this.hoaDonReport.Size = new System.Drawing.Size(800, 853);
-            this.hoaDonReport.TabIndex = 0;
+            this.rptPhieuGiaoHang.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rptPhieuGiaoHang.Location = new System.Drawing.Point(0, 0);
+            this.rptPhieuGiaoHang.Name = "rptPhieuGiaoHang";
+            this.rptPhieuGiaoHang.ServerReport.BearerToken = null;
+            this.rptPhieuGiaoHang.Size = new System.Drawing.Size(800, 450);
+            this.rptPhieuGiaoHang.TabIndex = 0;
             // 
-            // frmBill
+            // frmPhieuGiaoHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 853);
-            this.Controls.Add(this.hoaDonReport);
-            this.Name = "frmBill";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmBill";
-            this.Load += new System.EventHandler(this.frmBill_Load);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rptPhieuGiaoHang);
+            this.Name = "frmPhieuGiaoHang";
+            this.Text = "frmPhieuGiaoHang";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer hoaDonReport;
+        private Microsoft.Reporting.WinForms.ReportViewer rptPhieuGiaoHang;
     }
 }

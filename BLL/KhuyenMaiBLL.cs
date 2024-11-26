@@ -47,5 +47,10 @@ namespace BLL
         {
             kmdal.UpdateTrangThaiKhuyenMai();
         }
+
+        public bool KiemTraThoiGianKhuyenMaiTruocKhiSua(string maKM, DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            return kmdal.KiemTraThoiGianKhuyenMaiTruocKhiSua(maKM, ngayBatDau, ngayKetThuc);
+        }
     }
 }

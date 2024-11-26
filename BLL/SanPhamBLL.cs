@@ -58,6 +58,21 @@ namespace BLL
         {
             return spdal.TimKiemSanPhamTheoTenSP(tenSP);
         }
+
+        public int TongSoLuongSanPham()
+        {
+            return spdal.TongSoLuongSanPham();
+        }
+
+        public Dictionary<string, (string TenSanPham, int? SoLuongBan)> ThongKeTop5SanPhamBanChayNhat(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            return spdal.ThongKeTop5SanPhamBanChayNhat(ngayBatDau, ngayKetThuc);
+        }
+
+        public List<(string TenSanPham, int? SoLuong)> ThongKeDanhSachSanPhamDuoiMucToiThieu()
+        {
+            return spdal.ThongKeDanhSachSanPhamDuoiMucToiThieu();
+        }
         public bool ThemSanPham(SanPham pSanPham)
         {
             return spdal.ThemSanPham(pSanPham);

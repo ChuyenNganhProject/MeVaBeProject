@@ -67,8 +67,9 @@ namespace MeVaBeProject
                 if (khuyenMai.trangThai != "Đã kết thúc")
                 {
                     khuyenMai.trangThai = "Đã kết thúc";
-                    if (khuyenMai.trangThai == "Đã kết thúc")
+                    if (kmbll.CapNhatKhuyenMai(khuyenMai))
                     {
+                        kmspbll.CapNhatTrangThaiSanPhamTrongKhuyenMai(MaKM, "Hết hiệu lực");
                         MessageBox.Show("Đã dừng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnDungKM.Enabled = false;
                         btnThemSanPham.Enabled = false;
@@ -253,6 +254,12 @@ namespace MeVaBeProject
                     }
                     else
                     {
+                        if (!kmbll.KiemTraThoiGianKhuyenMaiTruocKhiSua(MaKM, ngayBatDau, ngayKetThuc))
+                        {
+                            MessageBox.Show("Thời gian khuyến mãi không được trùng với khuyến mãi khác chứa sản phẩm này.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
                         KhuyenMai khuyenMai = new KhuyenMai
                         {
                             maKhuyenMai = MaKM,
@@ -269,7 +276,7 @@ namespace MeVaBeProject
                             txtMoTa.Enabled = false;
                             dtpTGBatDau.Enabled = false;
                             dtpTGKetThuc.Enabled = false;
-
+                            btnHuySua.Enabled = false;
                             btnXacNhan.Text = "Sửa";
                         }
                         else

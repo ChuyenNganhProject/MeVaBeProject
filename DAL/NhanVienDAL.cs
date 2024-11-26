@@ -228,5 +228,10 @@ namespace DAL
                 return null;
             }
         }
+
+        public int TongSoLuongNhanVien()
+        {
+            return db.NhanViens.Count();
+        }
     }
 }

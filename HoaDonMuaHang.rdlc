@@ -125,7 +125,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>5.55329cm</Top>
+            <Top>6.63929cm</Top>
             <Left>1.71781cm</Left>
             <Height>0.6cm</Height>
             <Width>2.627cm</Width>
@@ -158,7 +158,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>6.57409cm</Top>
+            <Top>7.66009cm</Top>
             <Left>1.71781cm</Left>
             <Height>0.6cm</Height>
             <Width>2.627cm</Width>
@@ -188,7 +188,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TenKhachHang</rd:DefaultName>
-            <Top>5.55329cm</Top>
+            <Top>6.63929cm</Top>
             <Left>4.5212cm</Left>
             <Height>0.6cm</Height>
             <Width>4.63783cm</Width>
@@ -221,7 +221,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TenNhanVien</rd:DefaultName>
-            <Top>6.57409cm</Top>
+            <Top>7.66009cm</Top>
             <Left>4.5212cm</Left>
             <Height>0.6cm</Height>
             <Width>4.63783cm</Width>
@@ -297,7 +297,7 @@
             </Style>
           </Line>
           <Line Name="Line2">
-            <Top>7.64286cm</Top>
+            <Top>8.72886cm</Top>
             <Left>1.71781cm</Left>
             <Height>0cm</Height>
             <Width>11.58054cm</Width>
@@ -625,7 +625,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>ChiTietHoaDonSanPhamDataSet</DataSetName>
-            <Top>8.1424cm</Top>
+            <Top>9.2284cm</Top>
             <Left>1.71781cm</Left>
             <Height>1.55983cm</Height>
             <Width>11.58054cm</Width>
@@ -657,7 +657,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
-            <Top>14.91656cm</Top>
+            <Top>16.00256cm</Top>
             <Left>8.40176cm</Left>
             <Height>0.76933cm</Height>
             <Width>4.93187cm</Width>
@@ -673,7 +673,7 @@
             </Style>
           </Textbox>
           <Line Name="Line3">
-            <Top>10.24636cm</Top>
+            <Top>11.33236cm</Top>
             <Left>1.71781cm</Left>
             <Height>0cm</Height>
             <Width>11.58054cm</Width>
@@ -702,7 +702,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox34</rd:DefaultName>
-            <Top>14.91656cm</Top>
+            <Top>16.00256cm</Top>
             <Left>1.75309cm</Left>
             <Height>0.6cm</Height>
             <Width>3.59598cm</Width>
@@ -734,7 +734,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>10.42275cm</Top>
+            <Top>11.50875cm</Top>
             <Left>9.55885cm</Left>
             <Height>0.6cm</Height>
             <Width>3.7395cm</Width>
@@ -766,7 +766,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TienBiGiam</rd:DefaultName>
-            <Top>14.02784cm</Top>
+            <Top>15.11384cm</Top>
             <Left>9.59413cm</Left>
             <Height>0.6cm</Height>
             <Width>3.7395cm</Width>
@@ -799,7 +799,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>HangThanhVien</rd:DefaultName>
-            <Top>13.28673cm</Top>
+            <Top>14.37273cm</Top>
             <Left>1.75309cm</Left>
             <Height>0.6cm</Height>
             <Width>3.59598cm</Width>
@@ -832,7 +832,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>PhanTramGiam</rd:DefaultName>
-            <Top>14.02784cm</Top>
+            <Top>15.11384cm</Top>
             <Left>1.75309cm</Left>
             <Height>0.6cm</Height>
             <Width>3.59598cm</Width>
@@ -867,7 +867,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox34</rd:DefaultName>
-            <Top>10.39284cm</Top>
+            <Top>11.47884cm</Top>
             <Left>1.75309cm</Left>
             <Height>0.6cm</Height>
             <Width>3.5607cm</Width>
@@ -929,7 +929,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>11.13395cm</Top>
+            <Top>12.21995cm</Top>
             <Left>1.75309cm</Left>
             <Height>0.6cm</Height>
             <Width>3.5607cm</Width>
@@ -959,7 +959,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>DiemTichLuyDuocCong</rd:DefaultName>
-            <Top>11.87506cm</Top>
+            <Top>12.96106cm</Top>
             <Left>1.75309cm</Left>
             <Height>0.6cm</Height>
             <Width>6.78277cm</Width>
@@ -992,7 +992,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TongDiemTichluy</rd:DefaultName>
-            <Top>12.58089cm</Top>
+            <Top>13.66689cm</Top>
             <Left>1.75309cm</Left>
             <Height>0.6cm</Height>
             <Width>6.78277cm</Width>
@@ -1010,8 +1010,71 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Hình thức trả:</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>5.69411cm</Top>
+            <Left>1.75309cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.627cm</Width>
+            <ZIndex>22</ZIndex>
+            <Visibility>
+              <Hidden>=IIf(IsNothing(Parameters!TenKhachHang.Value) Or Parameters!TenKhachHang.Value = "", True, False)</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="HinhThucTra">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!HinhThucTra.Value</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>HinhThucTra</rd:DefaultName>
+            <Top>5.69411cm</Top>
+            <Left>4.5212cm</Left>
+            <Height>0.6cm</Height>
+            <Width>4.63783cm</Width>
+            <ZIndex>23</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>6.53644in</Height>
+        <Height>6.60311in</Height>
         <Style />
       </Body>
       <Width>6.21982in</Width>
@@ -1069,6 +1132,10 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="DiemTichLuyDuocCong">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="HinhThucTra">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -1132,6 +1199,11 @@
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>2</RowIndex>
           <ParameterName>DiemTichLuyDuocCong</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>HinhThucTra</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

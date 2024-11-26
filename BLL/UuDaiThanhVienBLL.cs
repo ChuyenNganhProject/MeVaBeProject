@@ -17,5 +17,10 @@ namespace BLL
         {
             return uuddal.GetPhanTramGiam(ma);
         }
+
+        public bool CoUuDaiChoHang(string maHang)
+        {
+            return uuddal.CoUuDaiChoHang(maHang);
+        }
     }
 }

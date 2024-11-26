@@ -30,6 +30,7 @@ namespace MeVaBeProject
         private string maNhanVien;
         private string currentLoaiSp;
         private string currentTenTimKiem;
+        private string hinhThucTra;
         public frmBanHang(string maNhanVien)
         {
             InitializeComponent();
@@ -56,10 +57,28 @@ namespace MeVaBeProject
             // Tính tiền
             this.lblTongTien.TextChanged += LblTongTien_TextChanged;
             this.btnThanhToan.Click += BtnThanhToan_Click;
+            this.rdoTienMat.CheckedChanged += RdoTienMat_CheckedChanged;
+            this.rdoChuyenKhoan.CheckedChanged += RdoChuyenKhoan_CheckedChanged;
 
             // Nút bấm loại sản phẩm
             this.btnTatCaSanPham.Click += BtnTatCaSanPham_Click;
             LoadLoaiSanPham();
+        }
+
+        private void RdoChuyenKhoan_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rdoChuyenKhoan.Checked)
+            {
+                this.hinhThucTra = "Chuyển khoản";
+            }
+        }
+
+        private void RdoTienMat_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rdoTienMat.Checked)
+            {
+                this.hinhThucTra = "Tiền mặt";
+            }
         }
 
         private void LblTongTien_TextChanged(object sender, EventArgs e)
@@ -142,7 +161,7 @@ namespace MeVaBeProject
                 if (kh != null)
                 {
                     txtTenKH.Text = kh.tenKhachHang;
-                    if (kh.maHang != "MEMBER")
+                    if (uubll.CoUuDaiChoHang(kh.maHang))
                     {
                         string tenHang = kh.tenHang.ToString();
                         lblMucTenHang.Visible = true;
@@ -156,7 +175,7 @@ namespace MeVaBeProject
                         string tongTienText = lblTongTien.Text.Replace("đ", "").Trim();
                         if (decimal.TryParse(tongTienText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tongTien))
                         {
-                            decimal tienBiGiam = tongTien * (phanTramGiam / 100);
+                            decimal tienBiGiam = tongTien * ((decimal)phanTramGiam / 100);
                             lblTienGiamGiaVip.Text = "-" + tienBiGiam.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"));
                         }
                         CapNhatTongTien();
@@ -215,6 +234,7 @@ namespace MeVaBeProject
             string tienBiGiamText = lblTienGiamGiaVip.Text.Trim();
             string hangThanhVienText = lblTenHangKH.Text.Trim();
             string phanTramGiamText = "";
+            string diemTichLuyDuocCongText = "";
             if (!string.IsNullOrEmpty(lblPhanTramGiam.Text))
             {
                 phanTramGiamText = lblMucGiam.Text.Trim() + " " + lblPhanTramGiam.Text;
@@ -225,33 +245,47 @@ namespace MeVaBeProject
                 MessageBox.Show("Giỏ hàng không có sản phẩm nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if(txtSdt.Enabled && KiemTraTruocKhiThanhToan())
+
+            if (string.IsNullOrEmpty(hinhThucTra))
             {
-                string sdt = txtSdt.Text;
-                KhachHang kh = khbll.LayKhachHangTheoSoDienThoai(sdt);
+                MessageBox.Show("Vui lòng chọn hình thức thanh toán.");
+                return;
+            }
 
-                if (kh == null)
+            if (decimal.TryParse(tienTruocKhiGiamText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tongTien))
+            {
+                if (decimal.TryParse(tongTienThanhToanText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tongTienThanhToan))
                 {
-                    kh = new KhachHang
+                    if(rdoChuyenKhoan.Checked)
                     {
-                        maKhachHang = khbll.TaoMaKhachHangTuDong(),
-                        tenKhachHang = txtTenKH.Text.Trim(),
-                        soDienThoai = sdt,
-                        diemTichLuy = 0,
-                        maHang = "HTV001"
-                    };
-                    khbll.ThemKhachHang(kh);
-                }
+                        frmQRCodeThanhToan frm = new frmQRCodeThanhToan(tongTienThanhToan);
+                        frm.ShowDialog();
+                        if (frm.DialogResult != DialogResult.OK) return;
+                    }
+                    if (txtSdt.Enabled && KiemTraTruocKhiThanhToan())
+                    {
+                        string sdt = txtSdt.Text;
+                        KhachHang kh = khbll.LayKhachHangTheoSoDienThoai(sdt);
 
-                if (decimal.TryParse(tienTruocKhiGiamText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tongTien))
-                {
-                    if(!string.IsNullOrEmpty(tienBiGiamText))
-                    {
-                        tienBiGiamText = tienBiGiamText.Replace("-", "");
-                        if (decimal.TryParse(tienBiGiamText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tienDuocGiam))
+                        if (kh == null)
                         {
-                            if (decimal.TryParse(tongTienThanhToanText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tongTienThanhToan))
+                            kh = new KhachHang
                             {
+                                maKhachHang = khbll.TaoMaKhachHangTuDong(),
+                                tenKhachHang = txtTenKH.Text.Trim(),
+                                soDienThoai = sdt,
+                                diemTichLuy = 0,
+                                maHang = "HTV001"
+                            };
+                            khbll.ThemKhachHang(kh);
+                        }
+
+                        if (!string.IsNullOrEmpty(tienBiGiamText))
+                        {
+                            tienBiGiamText = tienBiGiamText.Replace("-", "");
+                            if (decimal.TryParse(tienBiGiamText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tienDuocGiam))
+                            {
+
                                 HoaDon hd = new HoaDon
                                 {
                                     maHoaDon = hdbll.TaoMaHoaDonTuDong(),
@@ -261,7 +295,8 @@ namespace MeVaBeProject
                                     tongTien = tongTien,
                                     tienDuocGiam = tienDuocGiam,
                                     tongTienSauGiam = tongTienThanhToan,
-                                    trangThai = true // Đã thanh toán
+                                    trangThai = true, // Đã thanh toán
+                                    hinhThucTra = this.hinhThucTra
                                 };
 
                                 if (hdbll.ThemHoaDon(hd))
@@ -298,16 +333,17 @@ namespace MeVaBeProject
                                     {
                                         kh.diemTichLuy = 0;
                                     }
-                                    kh.diemTichLuy = hdbll.tongTienTatCaHoaDonCuaKH(kh);
+                                    decimal diemTichLuy = ((decimal)1 / 100) * tongTienThanhToan;
+                                    kh.diemTichLuy += diemTichLuy;
                                     kh.ngayCapNhatDiem = DateTime.Now;
                                     if (kh.diemTichLuy.HasValue)
                                     {
-                                        decimal diemTichLuy = kh.diemTichLuy.Value;
-                                        kh.maHang = htvbll.GetMaHangThanhVienTheoDiemTichLuy(diemTichLuy);
+                                        decimal diemTichLuyCuaKhach = kh.diemTichLuy.Value;
+                                        kh.maHang = htvbll.GetMaHangThanhVienTheoDiemTichLuy(diemTichLuyCuaKhach);
                                     }
                                     khbll.CapNhatKhachHang(kh);
-                                    tienBiGiamText = "-" + tienBiGiamText;
-                                    frmBill frmBill = new frmBill(hd, chiTietHoaDons, tienBiGiamText, tienTruocKhiGiamText, hangThanhVienText, phanTramGiamText);
+                                    diemTichLuyDuocCongText = diemTichLuy.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"));
+                                    frmBill frmBill = new frmBill(hd, chiTietHoaDons, tienBiGiamText, tienTruocKhiGiamText, hangThanhVienText, phanTramGiamText, diemTichLuyDuocCongText, hinhThucTra);
                                     frmBill.ShowDialog();
 
                                     MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -332,10 +368,7 @@ namespace MeVaBeProject
                                 }
                             }
                         }
-                    }
-                    else
-                    {
-                        if (decimal.TryParse(tongTienThanhToanText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tongTienThanhToan))
+                        else
                         {
                             HoaDon hd = new HoaDon
                             {
@@ -346,7 +379,8 @@ namespace MeVaBeProject
                                 tongTien = tongTien,
                                 tienDuocGiam = 0,
                                 tongTienSauGiam = tongTienThanhToan,
-                                trangThai = true // Đã thanh toán
+                                trangThai = true, // Đã thanh toán
+                                hinhThucTra = this.hinhThucTra
                             };
 
                             if (hdbll.ThemHoaDon(hd))
@@ -383,15 +417,17 @@ namespace MeVaBeProject
                                 {
                                     kh.diemTichLuy = 0;
                                 }
-                                kh.diemTichLuy = hdbll.tongTienTatCaHoaDonCuaKH(kh);
+                                decimal diemTichLuy = ((decimal)1 / 100) * tongTienThanhToan;
+                                kh.diemTichLuy += diemTichLuy;
                                 kh.ngayCapNhatDiem = DateTime.Now;
                                 if (kh.diemTichLuy.HasValue)
                                 {
-                                    decimal diemTichLuy = kh.diemTichLuy.Value;
-                                    kh.maHang = htvbll.GetMaHangThanhVienTheoDiemTichLuy(diemTichLuy);
+                                    decimal diemTichLuyCuaKhach = kh.diemTichLuy.Value;
+                                    kh.maHang = htvbll.GetMaHangThanhVienTheoDiemTichLuy(diemTichLuyCuaKhach);
                                 }
                                 khbll.CapNhatKhachHang(kh);
-                                frmBill frmBill = new frmBill(hd, chiTietHoaDons, tienBiGiamText, tienTruocKhiGiamText, hangThanhVienText, phanTramGiamText);
+                                diemTichLuyDuocCongText = diemTichLuy.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"));
+                                frmBill frmBill = new frmBill(hd, chiTietHoaDons, tienBiGiamText, tienTruocKhiGiamText, hangThanhVienText, phanTramGiamText, diemTichLuyDuocCongText, hinhThucTra);
                                 frmBill.ShowDialog();
 
                                 MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -416,158 +452,75 @@ namespace MeVaBeProject
                             }
                         }
                     }
-                }
-            }
-            else if(!txtSdt.Enabled)
-            {
-                if (decimal.TryParse(tienTruocKhiGiamText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tongTien))
-                {
-                    if(!string.IsNullOrEmpty(tienBiGiamText))
+                    else if (!txtSdt.Enabled)
                     {
-                        tienBiGiamText = tienBiGiamText.Replace("-", "");
-                        if (decimal.TryParse(tienBiGiamText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tienDuocGiam))
+                        HoaDon hd = new HoaDon
                         {
-                            if (decimal.TryParse(tongTienThanhToanText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tongTienThanhToan))
+                            maHoaDon = hdbll.TaoMaHoaDonTuDong(),
+                            maKhachHang = null,
+                            maNhanVien = nv.maNhanVien,
+                            ngayLap = DateTime.Now,
+                            tongTien = tongTien,
+                            tienDuocGiam = 0,
+                            tongTienSauGiam = tongTienThanhToan,
+                            trangThai = true, // Đã thanh toán
+                            hinhThucTra = this.hinhThucTra
+                        };
+
+                        if (hdbll.ThemHoaDon(hd))
+                        {
+                            ChiTietHoaDonSanPhamBLL cthdspBLL = new ChiTietHoaDonSanPhamBLL();
+                            List<ChiTietHoaDonSanPham> chiTietHoaDons = new List<ChiTietHoaDonSanPham>();
+
+                            foreach (var item in gioHangItems)
                             {
-                                HoaDon hd = new HoaDon
+                                var sanPham = spbll.TimKiemSanPhamTheoMaSP(item.MaSanPham);
+                                if (sanPham == null)
                                 {
-                                    maHoaDon = hdbll.TaoMaHoaDonTuDong(),
-                                    maKhachHang = null,
-                                    maNhanVien = nv.maNhanVien,
-                                    ngayLap = DateTime.Now,
-                                    tongTien = tongTien,
-                                    tienDuocGiam = tienDuocGiam,
-                                    tongTienSauGiam = tongTienThanhToan,
-                                    trangThai = true // Đã thanh toán
+                                    MessageBox.Show($"Sản phẩm với mã {item.MaSanPham} không tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                ChiTietHoaDonSanPham cthd = new ChiTietHoaDonSanPham
+                                {
+                                    maHoaDon = hd.maHoaDon,
+                                    maSanPham = item.MaSanPham,
+                                    soLuong = item.SoLuong,
+                                    donGia = item.DonGiaBan,
+                                    tongTien = item.TongGiaTri,
+                                    tenSanPham = item.TenSanPham
                                 };
+                                chiTietHoaDons.Add(cthd);
 
-                                if (hdbll.ThemHoaDon(hd))
+                                if (!cthdspBLL.ThemChiTietHoaDonSanPham(cthd))
                                 {
-                                    ChiTietHoaDonSanPhamBLL cthdspBLL = new ChiTietHoaDonSanPhamBLL();
-                                    List<ChiTietHoaDonSanPham> chiTietHoaDons = new List<ChiTietHoaDonSanPham>();
-
-                                    foreach (var item in gioHangItems)
-                                    {
-                                        var sanPham = spbll.TimKiemSanPhamTheoMaSP(item.MaSanPham);
-                                        if (sanPham == null)
-                                        {
-                                            MessageBox.Show($"Sản phẩm với mã {item.MaSanPham} không tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            return;
-                                        }
-                                        ChiTietHoaDonSanPham cthd = new ChiTietHoaDonSanPham
-                                        {
-                                            maHoaDon = hd.maHoaDon,
-                                            maSanPham = item.MaSanPham,
-                                            soLuong = item.SoLuong,
-                                            donGia = item.DonGiaBan,
-                                            tongTien = item.TongGiaTri,
-                                            tenSanPham = item.TenSanPham
-                                        };
-                                        chiTietHoaDons.Add(cthd);
-
-                                        if (!cthdspBLL.ThemChiTietHoaDonSanPham(cthd))
-                                        {
-                                            MessageBox.Show("Lỗi khi thêm chi tiết hóa đơn", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            return;
-                                        }
-                                    }
-
-                                    tienBiGiamText = "-" + tienBiGiamText;
-                                    frmBill frmBill = new frmBill(hd, chiTietHoaDons, tienBiGiamText, tienTruocKhiGiamText, hangThanhVienText, phanTramGiamText);
-                                    frmBill.ShowDialog();
-
-                                    MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    ResetForm();
-
-                                    if (!string.IsNullOrEmpty(currentLoaiSp))
-                                    {
-                                        LoadSanPhamTheoLoai(currentLoaiSp);
-                                    }
-                                    else if (!string.IsNullOrEmpty(currentTenTimKiem))
-                                    {
-                                        LoadTatCaSanPhamTheoTenHoacMaSp(currentTenTimKiem);
-                                    }
-                                    else
-                                    {
-                                        LoadTatCaSanPham();
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Thanh toán thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Lỗi khi thêm chi tiết hóa đơn", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
                                 }
                             }
-                        }
-                    }
-                    else
-                    {
-                        if (decimal.TryParse(tongTienThanhToanText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tongTienThanhToan))
-                        {
-                            HoaDon hd = new HoaDon
+
+                            tienBiGiamText = "-" + tienBiGiamText;
+                            frmBill frmBill = new frmBill(hd, chiTietHoaDons, tienBiGiamText, tienTruocKhiGiamText, hangThanhVienText, phanTramGiamText, diemTichLuyDuocCongText, hinhThucTra);
+                            frmBill.ShowDialog();
+
+                            MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ResetForm();
+
+                            if (!string.IsNullOrEmpty(currentLoaiSp))
                             {
-                                maHoaDon = hdbll.TaoMaHoaDonTuDong(),
-                                maKhachHang = null,
-                                maNhanVien = nv.maNhanVien,
-                                ngayLap = DateTime.Now,
-                                tongTien = tongTien,
-                                tienDuocGiam = 0,
-                                tongTienSauGiam = tongTienThanhToan,
-                                trangThai = true // Đã thanh toán
-                            };
-
-                            if (hdbll.ThemHoaDon(hd))
+                                LoadSanPhamTheoLoai(currentLoaiSp);
+                            }
+                            else if (!string.IsNullOrEmpty(currentTenTimKiem))
                             {
-                                ChiTietHoaDonSanPhamBLL cthdspBLL = new ChiTietHoaDonSanPhamBLL();
-                                List<ChiTietHoaDonSanPham> chiTietHoaDons = new List<ChiTietHoaDonSanPham>();
-
-                                foreach (var item in gioHangItems)
-                                {
-                                    var sanPham = spbll.TimKiemSanPhamTheoMaSP(item.MaSanPham);
-                                    if (sanPham == null)
-                                    {
-                                        MessageBox.Show($"Sản phẩm với mã {item.MaSanPham} không tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                                    ChiTietHoaDonSanPham cthd = new ChiTietHoaDonSanPham
-                                    {
-                                        maHoaDon = hd.maHoaDon,
-                                        maSanPham = item.MaSanPham,
-                                        soLuong = item.SoLuong,
-                                        donGia = item.DonGiaBan,
-                                        tongTien = item.TongGiaTri,
-                                        tenSanPham = item.TenSanPham
-                                    };
-                                    chiTietHoaDons.Add(cthd);
-
-                                    if (!cthdspBLL.ThemChiTietHoaDonSanPham(cthd))
-                                    {
-                                        MessageBox.Show("Lỗi khi thêm chi tiết hóa đơn", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                                }
-                                frmBill frmBill = new frmBill(hd, chiTietHoaDons, tienBiGiamText, tienTruocKhiGiamText, hangThanhVienText, phanTramGiamText);
-                                frmBill.ShowDialog();
-
-                                MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                ResetForm();
-
-                                if (!string.IsNullOrEmpty(currentLoaiSp))
-                                {
-                                    LoadSanPhamTheoLoai(currentLoaiSp);
-                                }
-                                else if (!string.IsNullOrEmpty(currentTenTimKiem))
-                                {
-                                    LoadTatCaSanPhamTheoTenHoacMaSp(currentTenTimKiem);
-                                }
-                                else
-                                {
-                                    LoadTatCaSanPham();
-                                }
+                                LoadTatCaSanPhamTheoTenHoacMaSp(currentTenTimKiem);
                             }
                             else
                             {
-                                MessageBox.Show("Thanh toán thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                LoadTatCaSanPham();
                             }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Thanh toán thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -634,18 +587,16 @@ namespace MeVaBeProject
                 string maSp = sanPhamItem.labelMaSp.Text;
                 string tenSp = sanPhamItem.labelTenSp.Text;
                 string giaSanPhamText = sanPhamItem.labelGiaSanPham.Text.Replace("đ", "").Trim();
-                SanPham sp = spbll.TimKiemSanPhamTheoMaSP(maSp);
                 
                 if(decimal.TryParse(giaSanPhamText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal donGiaBan))
                 {
                     int soLuong = 1;
-                    decimal donGiaSale = sp.donGiaSale.HasValue ? sp.donGiaSale.Value : 0;
-                    ThemSpVaoGioHang(maSp, tenSp, donGiaBan, donGiaSale, soLuong);
+                    ThemSpVaoGioHang(maSp, tenSp, donGiaBan, soLuong);
                 }
             }
         }
 
-        private void ThemSpVaoGioHang(string maSp, string tenSp, decimal donGiaBan, decimal donGiaSale, int soLuong)
+        private void ThemSpVaoGioHang(string maSp, string tenSp, decimal donGiaBan, int soLuong)
         {
             foreach(GioHangItemControl item in gioHangItems)
             {
@@ -658,7 +609,7 @@ namespace MeVaBeProject
                 }
             }
             GioHangItemControl gioHangItem = new GioHangItemControl();
-            gioHangItem.CapNhatGioHang(maSp, tenSp, donGiaBan, donGiaSale, soLuong);
+            gioHangItem.CapNhatGioHang(maSp, tenSp, donGiaBan, soLuong);
             gioHangItem.SoLuongThayDoi += GioHangItem_SoLuongThayDoi;
             gioHangItem.XoaSanPhamKhoiGioHang += GioHangItem_XoaSanPhamKhoiGioHang;
             gioHangPanel.Controls.Add(gioHangItem);
@@ -683,10 +634,12 @@ namespace MeVaBeProject
         {
             decimal tongTien = 0;
             decimal tongTienTruocKhiGiam = 0;
-            decimal tienSanPhamDuocGiamGia;
+            decimal tienSanPhamDuocGiamGia = 0;
 
             foreach (GioHangItemControl item in gioHangItems)
             {
+                decimal tienGiamMotSanPham = item.DonGiaGoc - item.DonGiaBan; // Giá giảm trên mỗi sản phẩm
+                tienSanPhamDuocGiamGia += tienGiamMotSanPham * item.SoLuong;
                 string tongGiaTriText = item.labelTongGiaTri.Text.Replace("đ", "").Trim();
                 if (decimal.TryParse(tongGiaTriText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tongGiaTri))
                 {
@@ -694,8 +647,8 @@ namespace MeVaBeProject
                 }
 
                 tongTienTruocKhiGiam += item.TongTienTruocKhiGiamGiaSp;
-            }
 
+            }
             this.lblTongTien.Text = tongTien.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
             decimal tongTienThanhToan = 0;
             if(!lblPhanTramGiam.Visible)
@@ -711,12 +664,17 @@ namespace MeVaBeProject
                 }
             }
             this.lblTienThanhToan.Text = tongTienThanhToan.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
-            tienSanPhamDuocGiamGia = tongTienTruocKhiGiam - tongTien;
-            if(tienSanPhamDuocGiamGia != 0)
+            
+            if(tienSanPhamDuocGiamGia > 0)
             {
                 lblGiamGiaSanPham.Text = tienSanPhamDuocGiamGia.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
                 lblMucGiamGiaSanPham.Visible = true;
                 lblGiamGiaSanPham.Visible = true;
+            }
+            else
+            {
+                lblMucGiamGiaSanPham.Visible = false;
+                lblGiamGiaSanPham.Visible = false;
             }
         }
 

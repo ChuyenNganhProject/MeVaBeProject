@@ -126,6 +126,38 @@ namespace DAL
                 .ToList();
             return listSpLoc;
         }
+
+        public int TongSoLuongSanPham()
+        {
+            return dataContext.SanPhams.Count();
+        }
+
+        public Dictionary<string, (string TenSanPham, int? SoLuongBan)> ThongKeTop5SanPhamBanChayNhat(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            var topSanPham = dataContext.ChiTietHoaDonSanPhams
+                                .Where(ct => ct.HoaDon.ngayLap.Value.Date >= ngayBatDau.Date && ct.HoaDon.ngayLap.Value.Date <= ngayKetThuc.Date)
+                                .GroupBy(ct => ct.maSanPham)
+                                .Select(tk => new
+                                {
+                                    MaSanPham = tk.Key,
+                                    TongSoLuong = tk.Sum(ct => ct.soLuong)
+                                })
+                                .OrderByDescending(tk => tk.TongSoLuong)
+                                .Take(5)
+                                .Join(dataContext.SanPhams, tk => tk.MaSanPham, sp => sp.maSanPham, (tk, sp) => new
+                                {
+                                    MaSanPham = sp.maSanPham,
+                                    TenSanPham = sp.tenSanPham,
+                                    SoLuongBan = tk.TongSoLuong
+                                })
+                                .ToList();
+
+            if (!topSanPham.Any())
+            {
+                return new Dictionary<string, (string, int?)>(); // Trả về dictionary rỗng
+            }
+            return topSanPham.ToDictionary(sp => sp.MaSanPham, sp => (sp.TenSanPham, sp.SoLuongBan));
+        }
         public bool KhoiPhucSanPham(string maSanPham)
         {
             try
@@ -199,6 +231,23 @@ namespace DAL
             {
                 return false;
             }
+
+            
+        }
+
+
+        public List<(string TenSanPham, int? SoLuong)> ThongKeDanhSachSanPhamDuoiMucToiThieu()
+        {
+            var sanPhamDuoiMucToiThieu = dataContext.SanPhams
+                                .Where(sp => sp.soLuong < 40)
+                                .Select(sp => new
+                                {
+                                    TenSanPham = sp.tenSanPham,
+                                    SoLuong = sp.soLuong
+                                })
+                                .ToList();
+
+            return sanPhamDuoiMucToiThieu.Select(sp => (sp.TenSanPham, sp.SoLuong)).ToList();
         }
     }
 }

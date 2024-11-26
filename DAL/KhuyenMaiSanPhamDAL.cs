@@ -16,7 +16,10 @@ namespace DAL
         {
             try
             {
-                var listSp = db.KhuyenMaiSanPhams.Where(km => km.maKhuyenMai == maKhuyenMai).Select(sp => sp).ToList();
+                var listSp = db.KhuyenMaiSanPhams
+                                        .Where(kmsp => kmsp.maKhuyenMai == maKhuyenMai && kmsp.trangThai != "Đã hủy")
+                                        .Select(sp => sp)
+                                        .ToList();
                 foreach (var spkm in listSp)
                 {
                     spkm.tenSanPham = db.SanPhams.Where(sp => sp.maSanPham == spkm.maSanPham).Select(sp => sp.tenSanPham).FirstOrDefault();
@@ -29,28 +32,21 @@ namespace DAL
             }
         }
 
-        public bool ThemHoacCapNhatSanPhamVaoCTKhuyenMai(string maKhuyenMai, string maSanPham, decimal phanTramGiam, int soLuongToiDa)
+        public bool ThemHoacCapNhatSanPhamVaoCTKhuyenMai(KhuyenMaiSanPham kmspham)
         {
             try
             {
-                var sanPhamKM = db.KhuyenMaiSanPhams.FirstOrDefault(kmsp => kmsp.maKhuyenMai == maKhuyenMai && kmsp.maSanPham == maSanPham);
+                var sanPhamKM = db.KhuyenMaiSanPhams.FirstOrDefault(kmsp => kmsp.maKhuyenMai == kmspham.maKhuyenMai 
+                                                                && kmsp.maSanPham == kmspham.maSanPham);
                 if (sanPhamKM == null)
                 {
-                    KhuyenMaiSanPham kmSanPham = new KhuyenMaiSanPham
-                    {
-                        maKhuyenMai = maKhuyenMai,
-                        maSanPham = maSanPham,
-                        phanTramGiam = phanTramGiam,
-                        soLuongToiDa = soLuongToiDa,
-                        trangThai = true
-                    };
-
-                    db.KhuyenMaiSanPhams.InsertOnSubmit(kmSanPham);
+                    db.KhuyenMaiSanPhams.InsertOnSubmit(kmspham);
                 }
                 else
                 {
-                    sanPhamKM.phanTramGiam = phanTramGiam;
-                    sanPhamKM.soLuongToiDa = soLuongToiDa;
+                    sanPhamKM.phanTramGiam = kmspham.phanTramGiam;
+                    sanPhamKM.soLuongToiDa = kmspham.soLuongToiDa;
+                    sanPhamKM.trangThai = kmspham.trangThai;
                 }
 
                 db.SubmitChanges();
@@ -62,23 +58,19 @@ namespace DAL
             }
         }
 
-        public KhuyenMaiSanPham LayKhuyenMaiTheoSanPham(string maSanPham)
+        public List<KhuyenMaiSanPham> LayKhuyenMaiTheoSanPham(string maSanPham)
         {
-            var khuyenMaiSanPham = db.KhuyenMaiSanPhams
-                                    .Where(kmsp => kmsp.maSanPham == maSanPham && kmsp.trangThai == true)
-                                    .Select(kmsp => kmsp)
-                                    .FirstOrDefault();
-            if(khuyenMaiSanPham != null)
-            {
-                return khuyenMaiSanPham;
-            }
-            return null;
+            var khuyenMaiSanPhams = db.KhuyenMaiSanPhams
+                .Where(kmsp => kmsp.maSanPham == maSanPham && kmsp.trangThai == "Có hiệu lực")
+                .ToList();
+
+            return khuyenMaiSanPhams;
         }
 
         public KhuyenMaiSanPham LayTTSanPhamCuaKhuyenMai(string maKhuyenMai, string maSanPham)
         {
             var khuyenMaiSanPham = db.KhuyenMaiSanPhams
-                                    .Where(kmsp => kmsp.maSanPham == maSanPham && kmsp.maKhuyenMai == maKhuyenMai && kmsp.trangThai == true)
+                                    .Where(kmsp => kmsp.maSanPham == maSanPham && kmsp.maKhuyenMai == maKhuyenMai && kmsp.trangThai == "Có hiệu lực")
                                     .Select(kmsp => kmsp)
                                     .FirstOrDefault();
             if (khuyenMaiSanPham != null)
@@ -86,6 +78,45 @@ namespace DAL
                 return khuyenMaiSanPham;
             }
             return null;
+        }
+
+        // Kiểm tra xem sản phẩm có thuộc khuyến mãi nào trùng thời gian không
+        public bool KiemTraSanPhamTrongKhoangThoiGianKhuyenMai(string maKM, string maSanPham)
+        {
+            var khuyenMaiMoi = db.KhuyenMais.FirstOrDefault(km => km.maKhuyenMai == maKM);
+            if (khuyenMaiMoi == null)
+            {
+                return false;
+            }
+            // Kiểm tra có khuyến mãi khác trùng thời gian
+            var khuyenMaiTrung = db.KhuyenMaiSanPhams
+                .Where(kmsp => kmsp.maSanPham == maSanPham
+                            && kmsp.maKhuyenMai != maKM
+                            && db.KhuyenMais.Any(km =>
+                                km.maKhuyenMai == kmsp.maKhuyenMai &&
+                                km.ngayBatDau < khuyenMaiMoi.ngayKetThuc &&
+                                km.ngayKetThuc > khuyenMaiMoi.ngayBatDau && km.trangThai != "Đã kết thúc"))
+                .FirstOrDefault();
+
+            return khuyenMaiTrung == null; // Trả về true nếu không có khuyến mãi trùng
+        }
+
+        public bool CapNhatTrangThaiSanPhamTrongKhuyenMai(string maKhuyenMai, string trangThai)
+        {
+            try
+            {
+                var sanPhamKM = db.KhuyenMaiSanPhams.Where(kmsp => kmsp.maKhuyenMai == maKhuyenMai);
+                foreach(var sp in sanPhamKM)
+                {
+                    sp.trangThai = trangThai == "Có hiệu lực" ? "Có hiệu lực" : "Hết hiệu lực";
+                }
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -165,9 +165,6 @@ namespace MeVaBeProject
 
         private void CboTieuChi_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cboTieuChi.BackColor = System.Drawing.Color.White;
-            cboTieuChi.ForeColor = System.Drawing.Color.Black;
-
             if (cboTieuChi.SelectedItem.ToString() == "Các tiêu chí")
             {
                 txtTimKiem.Enabled = false;

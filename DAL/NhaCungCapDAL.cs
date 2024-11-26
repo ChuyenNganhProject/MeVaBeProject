@@ -73,5 +73,10 @@ namespace DAL
                 return false;
             }
         }
+
+        public int TongSoLuongNhaCungCap()
+        {
+            return db.NhaCungCaps.Count();
+        }
     }
 }
