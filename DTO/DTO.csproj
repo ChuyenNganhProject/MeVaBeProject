@@ -46,9 +46,13 @@
     <Compile Include="Bank.cs" />
     <Compile Include="ChiTietHoaDonSanPham.cs" />
     <Compile Include="ChiTietPhieuNhap.cs" />
+    <Compile Include="ChiTietQuyenCuaLoaiNhanVien.cs" />
     <Compile Include="HoaDon.cs" />
     <Compile Include="KhachHang.cs" />
     <Compile Include="ChiTietPhieuDat.cs" />
+    <Compile Include="MeVaBeDB.cs">
+      <DependentUpon>MeVaBeDB.dbml</DependentUpon>
+    </Compile>
     <Compile Include="KhuyenMaiSanPham.cs" />
     <Compile Include="MeVaBeDB.designer.cs">
       <AutoGen>True</AutoGen>

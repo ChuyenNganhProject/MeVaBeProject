@@ -44,17 +44,9 @@ namespace BLL
         {
             return phieuNhapDAL.TaoPhieuNhap(pPhieuNhap);
         }
-        public bool SuaPhieuNhap(PhieuNhap pPhieuNhap)
+        public bool XoaPhieuNhap(string maPhieuNhap,int? soLan)
         {
-            return phieuNhapDAL.SuaPhieuNhap(pPhieuNhap);
-        }
-        public bool XoaPhieuNhap(PhieuNhap pPhieuNhap)
-        {
-            return phieuNhapDAL.XoaPhieuNhap(pPhieuNhap);
-        }
-        public bool XoaPhieuNhap(string maPhieuNhap)
-        {
-            return phieuNhapDAL.XoaPhieuNhap(maPhieuNhap);
+            return phieuNhapDAL.XoaPhieuNhap(maPhieuNhap,soLan);
         }
 
     }

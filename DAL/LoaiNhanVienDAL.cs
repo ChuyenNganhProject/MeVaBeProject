@@ -17,8 +17,6 @@ namespace DAL
         {
 
         }
-
-
         public List<LoaiNhanVien> LoadLoaiNhanVien()
         {
 

@@ -1,10 +1,12 @@
-﻿using DTO;
+﻿using BLL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +16,8 @@ namespace MeVaBeProject
     public partial class frmTrangChu : Form
     {
         private NhanVien nhanVien;
+        private ChiTietQuyenCuaLoaiNVBLL ctQuyen;
+        private List<ChiTietQuyenCuaLoaiNhanVien> quyens;
         public frmTrangChu(NhanVien nhanVien)
         {
             InitializeComponent();
@@ -25,6 +29,8 @@ namespace MeVaBeProject
             this.btnNhanVien.Click += BtnNhanVien_Click;
             this.btnKhachHang.Click += BtnKhachHang_Click;
             this.nhanVien = nhanVien;
+            this.ctQuyen = new ChiTietQuyenCuaLoaiNVBLL();
+            this.quyens = new List<ChiTietQuyenCuaLoaiNhanVien>();
             this.btnHoaDon.Click += BtnHoaDon_Click;
             this.btnDashboard.Click += BtnDashboard_Click;
         }
@@ -62,7 +68,38 @@ namespace MeVaBeProject
 
                 // Hiển thị tên loại nhân viên (chức vụ)
                 lbChucVu.Text = $"Chức vụ: {nhanVien.tenLoaiNhanVien}";
+                quyens = ctQuyen.LayDanhSachQuyenCuaLoaiNhanVien(nhanVien.maLoaiNhanVien);
+                foreach(ChiTietQuyenCuaLoaiNhanVien item in quyens)
+                {
+                    switch (item.maQuyen)
+                    {
+                        case "Q0001":
+                            btnKhachHang.Enabled = true;
+                            break;
+                        case "Q0004":
+                            btnNhanVien.Enabled = true;
+                            break;
+                        case "Q0005":
+                            btnQLNhaCungCap.Enabled= true;
+                            break;
+                        case "Q0007":
+                            btnSanPham.Enabled = true;
+                            break;
+                        case "Q0009":
+                            btnDatHang.Enabled= true;
+                            break;
+                        case "Q0010":
+                            btnNhapHang.Enabled= true;
+                            break;
+                        case "Q0012":
+                            btnDashboard.Enabled= true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
+
 
             this.btnDangXuat.MouseHover += (s, e) => btnDangXuat.BackColor = System.Drawing.Color.LightPink;
             this.btnDangXuat.MouseDown += (s, e) => btnDangXuat.BackColor = System.Drawing.Color.HotPink;

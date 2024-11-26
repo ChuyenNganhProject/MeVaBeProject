@@ -16,6 +16,16 @@ namespace BLL
         {
             return nccdal.LoadNhaCungCap();
         }
+        public string TaoMaNhaCungCap()
+        {
+            string maNhaCungCap = nccdal.TaoMaNhaCungCap();
+            string prefixPart = maNhaCungCap.Substring(0, 3);
+            string numberPart = maNhaCungCap.Substring(3);
+            int number = int.Parse(numberPart) + 1;
+            string newNumberPart = number.ToString("D" + numberPart.Length);
+            string newMaNhaCungCap = prefixPart + newNumberPart;
+            return newMaNhaCungCap;
+        }
         public NhaCungCap TimNhaCungCapTheoMa(string maNhaCungCap)
         {
             return nccdal.TimNhaCungCapTheoMa(maNhaCungCap);

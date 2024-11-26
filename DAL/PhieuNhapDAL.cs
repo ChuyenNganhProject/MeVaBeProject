@@ -82,40 +82,11 @@ namespace DAL
                 return false;
             }
         }
-        public bool SuaPhieuNhap(PhieuNhap pPhieuNhap)
+        public bool XoaPhieuNhap(string maPhieuNhap,int? soLan)
         {
             try
             {
-                PhieuNhap phieuNhapEdited = MeVaBeDBDataContext.PhieuNhaps.Where(pn => pn.maPhieuNhap == pPhieuNhap.maPhieuNhap).Select(pn => pn).FirstOrDefault();
-                //phieuNhapEdited.soLuong = pPhieuNhap.soLuong;
-                phieuNhapEdited.tongTien = pPhieuNhap.tongTien;
-                MeVaBeDBDataContext.SubmitChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-        public bool XoaPhieuNhap(PhieuNhap pPhieuNhap)
-        {
-            try
-            {
-                PhieuNhap phieuNhapDeleted = MeVaBeDBDataContext.PhieuNhaps.Where(pn => pn.maPhieuNhap == pPhieuNhap.maPhieuNhap).Select(pn => pn).FirstOrDefault();
-                MeVaBeDBDataContext.PhieuNhaps.DeleteOnSubmit(phieuNhapDeleted);
-                MeVaBeDBDataContext.SubmitChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-        public bool XoaPhieuNhap(string maPhieuNhap)
-        {
-            try
-            {
-                PhieuNhap phieuNhapDeleted = MeVaBeDBDataContext.PhieuNhaps.Where(pn => pn.maPhieuNhap == maPhieuNhap).Select(pn => pn).FirstOrDefault();
+                PhieuNhap phieuNhapDeleted = MeVaBeDBDataContext.PhieuNhaps.Where(pn => pn.maPhieuNhap == maPhieuNhap && pn.soLan == soLan).Select(pn => pn).FirstOrDefault();
                 MeVaBeDBDataContext.PhieuNhaps.DeleteOnSubmit(phieuNhapDeleted);
                 MeVaBeDBDataContext.SubmitChanges();
                 return true;

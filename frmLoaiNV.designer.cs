@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiTableLayoutPanel1 = new Sunny.UI.UITableLayoutPanel();
@@ -55,6 +55,7 @@
             this.uiTableLayoutPanel3 = new Sunny.UI.UITableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.uiPanel1 = new Sunny.UI.UIPanel();
+            this.btnPhanQuyen = new Sunny.UI.UISymbolButton();
             this.uiPanel3 = new Sunny.UI.UIPanel();
             this.uiTableLayoutPanel1.SuspendLayout();
             this.uiTableLayoutPanel2.SuspendLayout();
@@ -73,7 +74,7 @@
             this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel1.Location = new System.Drawing.Point(3, 92);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(116, 31);
+            this.uiLabel1.Size = new System.Drawing.Size(135, 31);
             this.uiLabel1.TabIndex = 15;
             this.uiLabel1.Text = "Tên loại nhân viên:";
             // 
@@ -83,7 +84,7 @@
             this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel2.Location = new System.Drawing.Point(3, 0);
             this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(116, 48);
+            this.uiLabel2.Size = new System.Drawing.Size(135, 48);
             this.uiLabel2.TabIndex = 12;
             this.uiLabel2.Text = "Mã loại nhân viên:";
             // 
@@ -91,18 +92,18 @@
             // 
             this.uiTableLayoutPanel1.BackColor = System.Drawing.SystemColors.HighlightText;
             this.uiTableLayoutPanel1.ColumnCount = 2;
-            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.08934F));
-            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.91066F));
+            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.uiTableLayoutPanel1.Controls.Add(this.uiLabel1, 0, 1);
             this.uiTableLayoutPanel1.Controls.Add(this.txtMaLoaiNV, 1, 0);
-            this.uiTableLayoutPanel1.Controls.Add(this.uiLabel2, 0, 0);
             this.uiTableLayoutPanel1.Controls.Add(this.txtTenLoaiNV, 1, 1);
-            this.uiTableLayoutPanel1.Location = new System.Drawing.Point(24, 51);
+            this.uiTableLayoutPanel1.Controls.Add(this.uiLabel2, 0, 0);
+            this.uiTableLayoutPanel1.Location = new System.Drawing.Point(3, 51);
             this.uiTableLayoutPanel1.Name = "uiTableLayoutPanel1";
             this.uiTableLayoutPanel1.RowCount = 2;
             this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.uiTableLayoutPanel1.Size = new System.Drawing.Size(452, 185);
+            this.uiTableLayoutPanel1.Size = new System.Drawing.Size(473, 185);
             this.uiTableLayoutPanel1.TabIndex = 0;
             this.uiTableLayoutPanel1.TagString = null;
             // 
@@ -110,7 +111,7 @@
             // 
             this.txtMaLoaiNV.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMaLoaiNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtMaLoaiNV.Location = new System.Drawing.Point(126, 5);
+            this.txtMaLoaiNV.Location = new System.Drawing.Point(145, 5);
             this.txtMaLoaiNV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMaLoaiNV.MinimumSize = new System.Drawing.Size(1, 16);
             this.txtMaLoaiNV.Name = "txtMaLoaiNV";
@@ -127,7 +128,7 @@
             // 
             this.txtTenLoaiNV.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTenLoaiNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtTenLoaiNV.Location = new System.Drawing.Point(126, 97);
+            this.txtTenLoaiNV.Location = new System.Drawing.Point(145, 97);
             this.txtTenLoaiNV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTenLoaiNV.MinimumSize = new System.Drawing.Size(1, 16);
             this.txtTenLoaiNV.Name = "txtTenLoaiNV";
@@ -236,7 +237,7 @@
             this.uiTableLayoutPanel2.Controls.Add(this.btnThem, 0, 0);
             this.uiTableLayoutPanel2.Controls.Add(this.btnXoa, 0, 1);
             this.uiTableLayoutPanel2.Controls.Add(this.btnLamMoi, 1, 1);
-            this.uiTableLayoutPanel2.Location = new System.Drawing.Point(32, 18);
+            this.uiTableLayoutPanel2.Location = new System.Drawing.Point(40, 21);
             this.uiTableLayoutPanel2.Name = "uiTableLayoutPanel2";
             this.uiTableLayoutPanel2.RowCount = 2;
             this.uiTableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -278,12 +279,13 @@
             this.btnSearch.FillHoverColor = System.Drawing.Color.LightPink;
             this.btnSearch.FillPressColor = System.Drawing.Color.DeepPink;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnSearch.Location = new System.Drawing.Point(353, 3);
+            this.btnSearch.Location = new System.Drawing.Point(264, 2);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearch.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.RectColor = System.Drawing.Color.LightPink;
             this.btnSearch.RectSelectedColor = System.Drawing.Color.DeepPink;
-            this.btnSearch.Size = new System.Drawing.Size(76, 40);
+            this.btnSearch.Size = new System.Drawing.Size(57, 32);
             this.btnSearch.Symbol = 61442;
             this.btnSearch.TabIndex = 17;
             this.btnSearch.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
@@ -295,12 +297,12 @@
             this.uiPanel2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiPanel2.FillColor = System.Drawing.Color.White;
             this.uiPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.uiPanel2.Location = new System.Drawing.Point(28, 374);
+            this.uiPanel2.Location = new System.Drawing.Point(28, 334);
             this.uiPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel2.Name = "uiPanel2";
             this.uiPanel2.RectColor = System.Drawing.Color.HotPink;
-            this.uiPanel2.Size = new System.Drawing.Size(674, 182);
+            this.uiPanel2.Size = new System.Drawing.Size(476, 140);
             this.uiPanel2.TabIndex = 15;
             this.uiPanel2.Text = null;
             this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -309,15 +311,15 @@
             // 
             this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(4, 5);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtSearch.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtSearch.Location = new System.Drawing.Point(3, 4);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSearch.MinimumSize = new System.Drawing.Size(1, 13);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Padding = new System.Windows.Forms.Padding(5);
+            this.txtSearch.Padding = new System.Windows.Forms.Padding(4);
             this.txtSearch.Radius = 29;
             this.txtSearch.RectColor = System.Drawing.Color.HotPink;
             this.txtSearch.ShowText = false;
-            this.txtSearch.Size = new System.Drawing.Size(342, 40);
+            this.txtSearch.Size = new System.Drawing.Size(256, 32);
             this.txtSearch.TabIndex = 14;
             this.txtSearch.Text = "Nhập tên loại nhân viên ";
             this.txtSearch.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -333,70 +335,72 @@
             this.uiTableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.94737F));
             this.uiTableLayoutPanel4.Controls.Add(this.txtSearch, 0, 0);
             this.uiTableLayoutPanel4.Controls.Add(this.btnSearch, 1, 0);
-            this.uiTableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.uiTableLayoutPanel4.Location = new System.Drawing.Point(2, 2);
+            this.uiTableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.uiTableLayoutPanel4.Name = "uiTableLayoutPanel4";
             this.uiTableLayoutPanel4.RowCount = 1;
             this.uiTableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.uiTableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.uiTableLayoutPanel4.Size = new System.Drawing.Size(432, 74);
+            this.uiTableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.uiTableLayoutPanel4.Size = new System.Drawing.Size(324, 60);
             this.uiTableLayoutPanel4.TabIndex = 15;
             this.uiTableLayoutPanel4.TagString = null;
             // 
             // dgvLoaiNhanVien
             // 
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.LavenderBlush;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Pink;
-            this.dgvLoaiNhanVien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.LavenderBlush;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Pink;
+            this.dgvLoaiNhanVien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvLoaiNhanVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLoaiNhanVien.BackgroundColor = System.Drawing.Color.White;
             this.dgvLoaiNhanVien.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLoaiNhanVien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.HotPink;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.HotPink;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLoaiNhanVien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvLoaiNhanVien.ColumnHeadersHeight = 32;
             this.dgvLoaiNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvLoaiNhanVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.maLoaiNhanVien,
             this.tenLoaiNhanVien});
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLoaiNhanVien.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.HotPink;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLoaiNhanVien.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvLoaiNhanVien.EnableHeadersVisualStyles = false;
             this.dgvLoaiNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.dgvLoaiNhanVien.GridColor = System.Drawing.Color.White;
-            this.dgvLoaiNhanVien.Location = new System.Drawing.Point(3, 86);
+            this.dgvLoaiNhanVien.Location = new System.Drawing.Point(2, 69);
+            this.dgvLoaiNhanVien.Margin = new System.Windows.Forms.Padding(2);
             this.dgvLoaiNhanVien.Name = "dgvLoaiNhanVien";
             this.dgvLoaiNhanVien.RectColor = System.Drawing.Color.Pink;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.LavenderBlush;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLoaiNhanVien.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LavenderBlush;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.HotPink;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLoaiNhanVien.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvLoaiNhanVien.RowHeadersWidth = 51;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Pink;
-            this.dgvLoaiNhanVien.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Pink;
+            this.dgvLoaiNhanVien.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvLoaiNhanVien.RowTemplate.Height = 24;
             this.dgvLoaiNhanVien.ScrollBarColor = System.Drawing.Color.White;
             this.dgvLoaiNhanVien.ScrollBarRectColor = System.Drawing.Color.Pink;
             this.dgvLoaiNhanVien.ScrollBarStyleInherited = false;
             this.dgvLoaiNhanVien.SelectedIndex = -1;
             this.dgvLoaiNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLoaiNhanVien.Size = new System.Drawing.Size(432, 500);
+            this.dgvLoaiNhanVien.Size = new System.Drawing.Size(324, 406);
             this.dgvLoaiNhanVien.StripeOddColor = System.Drawing.Color.LavenderBlush;
             this.dgvLoaiNhanVien.TabIndex = 3;
             this.dgvLoaiNhanVien.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvLoaiNhanVien_CellBeginEdit);
@@ -426,13 +430,13 @@
             this.uiGroupBox1.Controls.Add(this.uiTableLayoutPanel1);
             this.uiGroupBox1.FillColor = System.Drawing.Color.White;
             this.uiGroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.uiGroupBox1.Location = new System.Drawing.Point(28, 56);
+            this.uiGroupBox1.Location = new System.Drawing.Point(28, 54);
             this.uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox1.Name = "uiGroupBox1";
             this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox1.RectColor = System.Drawing.Color.HotPink;
-            this.uiGroupBox1.Size = new System.Drawing.Size(674, 308);
+            this.uiGroupBox1.Size = new System.Drawing.Size(476, 268);
             this.uiGroupBox1.TabIndex = 14;
             this.uiGroupBox1.Text = "Loại nhân viên ";
             this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -443,13 +447,14 @@
             this.uiTableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.uiTableLayoutPanel3.Controls.Add(this.dgvLoaiNhanVien, 0, 1);
             this.uiTableLayoutPanel3.Controls.Add(this.uiTableLayoutPanel4, 0, 0);
-            this.uiTableLayoutPanel3.Location = new System.Drawing.Point(12, 70);
+            this.uiTableLayoutPanel3.Location = new System.Drawing.Point(9, 57);
+            this.uiTableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.uiTableLayoutPanel3.Name = "uiTableLayoutPanel3";
             this.uiTableLayoutPanel3.RowCount = 2;
             this.uiTableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.12319F));
             this.uiTableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.87682F));
-            this.uiTableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.uiTableLayoutPanel3.Size = new System.Drawing.Size(438, 589);
+            this.uiTableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.uiTableLayoutPanel3.Size = new System.Drawing.Size(328, 479);
             this.uiTableLayoutPanel3.TabIndex = 1;
             this.uiTableLayoutPanel3.TagString = null;
             // 
@@ -460,58 +465,82 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.02042F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.97958F));
             this.tableLayoutPanel1.Controls.Add(this.uiPanel1, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 65);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(9, 53);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1160, 607);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 493F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(870, 493);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // uiPanel1
             // 
             this.uiPanel1.BackColor = System.Drawing.Color.White;
+            this.uiPanel1.Controls.Add(this.btnPhanQuyen);
             this.uiPanel1.Controls.Add(this.uiSymbolButton1);
             this.uiPanel1.Controls.Add(this.uiPanel2);
             this.uiPanel1.Controls.Add(this.uiGroupBox1);
             this.uiPanel1.FillColor = System.Drawing.Color.White;
             this.uiPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.uiPanel1.Location = new System.Drawing.Point(445, 5);
-            this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel1.Location = new System.Drawing.Point(333, 4);
+            this.uiPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel1.Name = "uiPanel1";
             this.uiPanel1.RectColor = System.Drawing.Color.HotPink;
             this.uiPanel1.RectDisableColor = System.Drawing.Color.White;
-            this.uiPanel1.Size = new System.Drawing.Size(711, 589);
+            this.uiPanel1.Size = new System.Drawing.Size(533, 479);
             this.uiPanel1.TabIndex = 2;
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnPhanQuyen
+            // 
+            this.btnPhanQuyen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPhanQuyen.FillColor = System.Drawing.Color.HotPink;
+            this.btnPhanQuyen.FillColor2 = System.Drawing.Color.Fuchsia;
+            this.btnPhanQuyen.FillHoverColor = System.Drawing.Color.LightPink;
+            this.btnPhanQuyen.FillPressColor = System.Drawing.Color.DeepPink;
+            this.btnPhanQuyen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnPhanQuyen.Location = new System.Drawing.Point(28, 16);
+            this.btnPhanQuyen.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnPhanQuyen.Name = "btnPhanQuyen";
+            this.btnPhanQuyen.RectColor = System.Drawing.Color.LightPink;
+            this.btnPhanQuyen.RectSelectedColor = System.Drawing.Color.DeepPink;
+            this.btnPhanQuyen.Size = new System.Drawing.Size(131, 34);
+            this.btnPhanQuyen.Symbol = 57454;
+            this.btnPhanQuyen.TabIndex = 19;
+            this.btnPhanQuyen.Text = "Phân quyền";
+            this.btnPhanQuyen.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnPhanQuyen.Click += new System.EventHandler(this.btnPhanQuyen_Click);
             // 
             // uiPanel3
             // 
             this.uiPanel3.BackColor = System.Drawing.Color.DeepPink;
             this.uiPanel3.FillColor = System.Drawing.Color.HotPink;
             this.uiPanel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.uiPanel3.Location = new System.Drawing.Point(-1, 36);
-            this.uiPanel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel3.Location = new System.Drawing.Point(-1, 29);
+            this.uiPanel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uiPanel3.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel3.Name = "uiPanel3";
-            this.uiPanel3.Radius = 3;
+            this.uiPanel3.Radius = 2;
             this.uiPanel3.RectColor = System.Drawing.Color.HotPink;
-            this.uiPanel3.Size = new System.Drawing.Size(1233, 3);
+            this.uiPanel3.Size = new System.Drawing.Size(925, 2);
             this.uiPanel3.TabIndex = 2;
+            this.uiPanel3.Text = null;
             this.uiPanel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmLoaiNV
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(1188, 696);
+            this.ClientSize = new System.Drawing.Size(891, 566);
             this.Controls.Add(this.uiPanel3);
             this.Controls.Add(this.uiTableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmLoaiNV";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmLoaiNVcs";
@@ -554,5 +583,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn maLoaiNhanVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenLoaiNhanVien;
         private Sunny.UI.UIPanel uiPanel3;
+        private Sunny.UI.UISymbolButton btnPhanQuyen;
     }
 }

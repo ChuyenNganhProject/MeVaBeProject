@@ -349,7 +349,7 @@ namespace MeVaBeProject
 
         private void LoadLoaiSanPham()
         {
-            List<LoaiSanPham> loaiSanPhams = lspbll.LayDanhSachSanPham();
+            List<LoaiSanPham> loaiSanPhams = lspbll.LayDanhSachLoaiSanPham();
 
             foreach (var loaisp in loaiSanPhams)
             {
