@@ -14,7 +14,16 @@ namespace DAL
         {
             this.dataContext = new MeVaBeDBDataContext();
         }
-        public List<SanPham> LayDanhSachSanPham()
+        public string TaoMaSanPham()
+        {
+            string maSanPham = dataContext.SanPhams.OrderByDescending(sp => sp.maSanPham).Select(sp=> sp.maSanPham).First();
+            if (maSanPham == null)
+            {
+                return "SP000";
+            }
+            return maSanPham;
+        }
+        public List<SanPham> LayTatCaSanPham()
         {
             List<SanPham> danhSachSanPham = dataContext.SanPhams.Select(sp => sp).ToList<SanPham>();
             foreach (SanPham sp in danhSachSanPham)
@@ -23,14 +32,30 @@ namespace DAL
             }
             return danhSachSanPham;
         }
-
-        public List<SanPham> LayDanhSachSanPhamTheoMaLoai(string maLoai)
+        public List<SanPham> LayDanhSachSanPham()
         {
-            List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp => sp.maLoaiSanPham == maLoai).Select(sp => sp).ToList<SanPham>();
+            List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp=>sp.trangThai == "Còn hàng").Select(sp => sp).ToList<SanPham>();
             foreach (SanPham sp in danhSachSanPham)
             {
                 sp.tenLoaiSanPham = dataContext.LoaiSanPhams.Where(lsp => lsp.maLoaiSanPham == sp.maLoaiSanPham).Select(lsp => lsp.tenLoaiSanPham).FirstOrDefault();
-
+            }
+            return danhSachSanPham;
+        }
+        public List<SanPham> LayDanhSachSanPhamTheoMaLoai(string maLoai)
+        {
+            List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp => sp.maLoaiSanPham == maLoai && sp.trangThai == "Còn hàng").Select(sp => sp).ToList<SanPham>();
+            foreach (SanPham sp in danhSachSanPham)
+            {
+                sp.tenLoaiSanPham = dataContext.LoaiSanPhams.Where(lsp => lsp.maLoaiSanPham == sp.maLoaiSanPham).Select(lsp => lsp.tenLoaiSanPham).FirstOrDefault();
+            }
+            return danhSachSanPham;
+        }
+        public List<SanPham> LayDanhSachSanPhamTheoTrangThai(string trangThai)
+        {
+            List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp => sp.trangThai == trangThai).Select(sp => sp).ToList<SanPham>();
+            foreach (SanPham sp in danhSachSanPham)
+            {
+                sp.tenLoaiSanPham = dataContext.LoaiSanPhams.Where(lsp => lsp.maLoaiSanPham == sp.maLoaiSanPham).Select(lsp => lsp.tenLoaiSanPham).FirstOrDefault();
             }
             return danhSachSanPham;
         }
@@ -43,6 +68,15 @@ namespace DAL
         public List<SanPham> TimKiemSanPhamTheoTenSP(string tenSP)
         {
             List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp => sp.tenSanPham.Contains(tenSP)).Select(sp => sp).ToList<SanPham>();
+            foreach (SanPham sp in danhSachSanPham)
+            {
+                sp.tenLoaiSanPham = dataContext.LoaiSanPhams.Where(lsp => lsp.maLoaiSanPham == sp.maLoaiSanPham).Select(lsp => lsp.tenLoaiSanPham).FirstOrDefault();
+            }
+            return danhSachSanPham;
+        }
+        public List<SanPham> TimKiemSanPham(string tuKhoa)
+        {
+            List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp => sp.tenSanPham.Contains(tuKhoa) || sp.maSanPham == tuKhoa).Select(sp => sp).ToList<SanPham>();
             foreach (SanPham sp in danhSachSanPham)
             {
                 sp.tenLoaiSanPham = dataContext.LoaiSanPhams.Where(lsp => lsp.maLoaiSanPham == sp.maLoaiSanPham).Select(lsp => lsp.tenLoaiSanPham).FirstOrDefault();
@@ -92,32 +126,78 @@ namespace DAL
                 .ToList();
             return listSpLoc;
         }
-
-        public bool CapNhatSanPham(SanPham sanPham)
+        public bool KhoiPhucSanPham(string maSanPham)
         {
             try
             {
-                SanPham updatedSanPham = dataContext.SanPhams.FirstOrDefault(sp => sp.maSanPham == sanPham.maSanPham);
-                if (updatedSanPham != null)
-                {
-                    updatedSanPham.tenSanPham = sanPham.tenSanPham;
-                    updatedSanPham.donGiaBan = sanPham.donGiaBan;
-                    updatedSanPham.donGiaSale = sanPham.donGiaSale;
-                    updatedSanPham.hanSuDung = sanPham.hanSuDung;
-                    updatedSanPham.hinhAnh = sanPham.hinhAnh;
-                    updatedSanPham.ngaySanXuat = sanPham.ngaySanXuat;
-                    updatedSanPham.soLuong = sanPham.soLuong;
-                    updatedSanPham.trangThai = sanPham.trangThai;
-                    
-                    dataContext.SubmitChanges();
-                    return true;
-                }
-
+                SanPham sanPhamEdited = dataContext.SanPhams.Where(sp => sp.maSanPham == maSanPham).FirstOrDefault();
+                sanPhamEdited.trangThai = "Còn hàng";
+                dataContext.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
                 return false;
             }
-            catch (Exception ex)
+        }
+        public bool ThemSanPham(SanPham pSanPham)
+        {
+            try
             {
-                throw new ApplicationException("Lỗi sửa thông tin sản phẩm: " + ex.Message, ex);
+                dataContext.SanPhams.InsertOnSubmit(pSanPham);
+                dataContext.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool SuaSanPham(SanPham pSanPham)
+        {
+            try
+            {
+                SanPham sanPhamEdited = dataContext.SanPhams.Where(sp => sp.maSanPham == pSanPham.maSanPham).FirstOrDefault();
+                sanPhamEdited.tenSanPham = pSanPham.tenSanPham;
+                sanPhamEdited.maLoaiSanPham = pSanPham.maLoaiSanPham;
+                sanPhamEdited.donGiaBan = pSanPham.donGiaBan;
+                sanPhamEdited.hinhAnh = pSanPham.hinhAnh;
+                sanPhamEdited.ngaySanXuat = pSanPham.ngaySanXuat;
+                sanPhamEdited.hanSuDung = pSanPham.hanSuDung;                
+                dataContext.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool XoaSanPham(SanPham pSanPham)
+        {
+            try
+            {
+                SanPham sanPhamDeleted = dataContext.SanPhams.Where(sp => sp.maSanPham == pSanPham.maSanPham).FirstOrDefault();
+                sanPhamDeleted.trangThai = "Không tồn tại";
+                dataContext.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool XoaSanPham(string maSanPham)
+        {
+            try
+            {
+                SanPham sanPhamDeleted = dataContext.SanPhams.Where(sp => sp.maSanPham == maSanPham).FirstOrDefault();
+                sanPhamDeleted.trangThai = "Không tồn tại";
+                dataContext.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

@@ -30,7 +30,15 @@ namespace MeVaBeProject
         private void btnTaoPhieuDat_Click(object sender, EventArgs e)
         {
             frmDatHang frmDatHang = new frmDatHang(maNhanVien,true,string.Empty,string.Empty);
+            frmDatHang.DongForm += FormDatHang_Closed;
             frmDatHang.ShowDialog();
+        }
+        private void FormDatHang_Closed(bool loadData)
+        {
+            if (loadData)
+            {
+                LoadData();
+            }            
         }
         private void btnXoaPhieuDat_Click(object sender, EventArgs e)
         {
@@ -89,6 +97,7 @@ namespace MeVaBeProject
                     string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
                     string maNhaCungCap = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maNhaCungCap"].Value.ToString();
                     frmDatHang frmDatHang = new frmDatHang(maNhanVien, false, maPhieuDat,maNhaCungCap);
+                    frmDatHang.DongForm += FormDatHang_Closed;
                     frmDatHang.ShowDialog();
                 }
                 else

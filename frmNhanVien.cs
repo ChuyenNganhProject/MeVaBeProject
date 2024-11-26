@@ -377,7 +377,6 @@ namespace MeVaBeProject
 
         public void LoadNhanVien()
         {
-
             try
             {
                 // Tải dữ liệu từ BLL
@@ -399,12 +398,6 @@ namespace MeVaBeProject
                 MessageBox.Show($"Lỗi tải nhân viên: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void dgvNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thêm nhân viên?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -451,7 +444,6 @@ namespace MeVaBeProject
 
             btnThem.Enabled = false;
         }
-
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             ClearForm();
@@ -466,7 +458,6 @@ namespace MeVaBeProject
             //load db 
             LoadNhanVien();
         }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa nhân viên này ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -493,7 +484,6 @@ namespace MeVaBeProject
                 SetForm();
             }
         }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn sửa nhân viên này ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -602,9 +592,6 @@ namespace MeVaBeProject
             //}
 
         }
-
-
-
         private void dgvNhanVien_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             dgvNhanVien.ReadOnly = false;
@@ -637,17 +624,13 @@ namespace MeVaBeProject
                 SetDataGirdView();
             }
         }
-
         private void uiSymbolButton6_Click_1(object sender, EventArgs e)
         {
             frmLoaiNV loaiNhanVienForm = new frmLoaiNV();
-            loaiNhanVienForm.ShowDialog();
-            
+            loaiNhanVienForm.ShowDialog();            
         }
-
         private void uiSymbolButton3_Click(object sender, EventArgs e)
         {
-
             // Lấy kết quả tìm kiếm từ BLL
             var results = nvbll.SearchNhanVien(txtSearch.Text.Trim());
 
@@ -666,7 +649,6 @@ namespace MeVaBeProject
                 dgvNhanVien.DataSource = null;
             }
         }
-
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Kiểm tra xem phím nhấn có phải là Enter không
@@ -679,19 +661,14 @@ namespace MeVaBeProject
                 e.Handled = true;
             }
         }
-
         private void uiSymbolButton1_Click(object sender, EventArgs e)
-        {
-           
-                txtMatKhau.Enabled = !txtMatKhau.Enabled;
-
+        {           
+            txtMatKhau.Enabled = !txtMatKhau.Enabled;
         }
-
         private void txtNgaySinh_ValueChanged(object sender, DateTime value)
         {
 
         }
-
         private void txtSearch_Enter(object sender, EventArgs e)
         {
             if (txtSearch.Text == "Nhập tên, địa chỉ, hoặc số điện thoại để tìm kiếm")
@@ -701,7 +678,6 @@ namespace MeVaBeProject
                 txtSearch.Font = new Font(txtSearch.Font, FontStyle.Regular);
             }
         }
-
         private void txtSearch_Leave(object sender, EventArgs e)
         {
             if (txtSearch.Text == "")
@@ -710,12 +686,7 @@ namespace MeVaBeProject
                 txtSearch.ForeColor = Color.Silver;
                 txtSearch.Font = new Font(txtSearch.Font, FontStyle.Italic);
                 LoadNhanVien();
-
             }
         }
-
-      
     }
-
-        
-    }
+}

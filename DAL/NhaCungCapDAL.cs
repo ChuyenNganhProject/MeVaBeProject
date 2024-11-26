@@ -20,6 +20,15 @@ namespace DAL
         {
             return db.NhaCungCaps.Where(ncc => ncc.maNhaCungCap == maNhaCungCap).Select(ncc => ncc).FirstOrDefault();
         }
+        public string TaoMaNhaCungCap()
+        {
+            string maNhaCungCap = db.NhaCungCaps.OrderByDescending(ncc => ncc.maNhaCungCap).Select(ncc => ncc.maNhaCungCap).FirstOrDefault();
+            if (maNhaCungCap== null)
+            {
+                return "NCC000";
+            }
+            return maNhaCungCap;
+        }
         public bool ThemNhaCungCap(NhaCungCap ncc)
         {
             try

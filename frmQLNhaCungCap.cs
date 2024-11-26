@@ -75,8 +75,7 @@ namespace MeVaBeProject
             dgvNhaCungCap.DefaultCellStyle.BackColor = enable ? Color.White : Color.LightGray;
         }
         private void EnableTextBox(bool enable)
-        {
-            txtMaNCC.Enabled = enable;
+        {         
             txtTenNCC.Enabled = enable;
             txtSDT.Enabled = enable;
             txtDiaChi.Enabled = enable;
@@ -153,7 +152,7 @@ namespace MeVaBeProject
                 SetButtonStyle(btnSua, false);
                 btnXoa.Enabled = false;
                 SetButtonStyle(btnXoa, false);
-
+                txtMaNCC.Text = nccbll.TaoMaNhaCungCap();
                 EnableTextBox(true);
             }
             else if (btnThem.Text == "Xác nhận")
@@ -209,100 +208,106 @@ namespace MeVaBeProject
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string maNhaCungCap = txtMaNCC.Text;
-            string tenNhaCungCap = txtTenNCC.Text;
-            string soDienThoai = txtSDT.Text;
-            string email = txtEmail.Text;
-            string diaChi = txtDiaChi.Text;
-            DialogResult r = MessageBox.Show(this, "Bạn có chắc chắc muốn xóa nhà cung cấp "+tenNhaCungCap+" này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (r==DialogResult.Yes)
+            if (txtMaNCC.Text!=string.Empty)
             {
-                NhaCungCap nhaCungCap = new NhaCungCap
-                { 
-                    maNhaCungCap=maNhaCungCap,
-                    tenNhaCungCap= tenNhaCungCap,
-                    soDienThoai=soDienThoai,
-                    email=email,
-                    diaChi=diaChi 
-                };
-                bool isSuccess = nccbll.XoaNhaCungCap(nhaCungCap);
-                if (isSuccess)
+                string maNhaCungCap = txtMaNCC.Text;
+                string tenNhaCungCap = txtTenNCC.Text;
+                string soDienThoai = txtSDT.Text;
+                string email = txtEmail.Text;
+                string diaChi = txtDiaChi.Text;
+                DialogResult r = MessageBox.Show(this, "Bạn có chắc chắc muốn xóa nhà cung cấp " + tenNhaCungCap + " này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (r == DialogResult.Yes)
                 {
-                    MessageBox.Show(this, "Xóa nhà cung cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadNhaCungCap();
-                }
-                else
-                {
-                    MessageBox.Show(this, "Xóa nhà cung cấp thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    NhaCungCap nhaCungCap = new NhaCungCap
+                    {
+                        maNhaCungCap = maNhaCungCap,
+                        tenNhaCungCap = tenNhaCungCap,
+                        soDienThoai = soDienThoai,
+                        email = email,
+                        diaChi = diaChi
+                    };
+                    bool isSuccess = nccbll.XoaNhaCungCap(nhaCungCap);
+                    if (isSuccess)
+                    {
+                        MessageBox.Show(this, "Xóa nhà cung cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadNhaCungCap();
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, "Xóa nhà cung cấp thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (btnSua.Text == "Sửa")
+            if (txtMaNCC.Text!=string.Empty)
             {
-                EnableDataGridView(false);
-                btnSua.Text = "Xác nhận";
-                btnHuyBo.Enabled = true;
-                btnHuyBo.BackColor = Color.IndianRed;
-                btnThem.Enabled = false;
-                SetButtonStyle(btnThem, false);
-                btnXoa.Enabled = false;
-                SetButtonStyle(btnXoa, false);
-
-                EnableTextBox(true);
-                txtMaNCC.Enabled = false;
-            }
-            else if (btnSua.Text == "Xác nhận")
-            {
-                if (ValidateInput())
+                if (btnSua.Text == "Sửa")
                 {
-                    string maNcc = txtMaNCC.Text.Trim();
-                    string tenNcc = txtTenNCC.Text.Trim();
-                    string sdt = txtSDT.Text.Trim();
-                    string diaChi = txtDiaChi.Text.Trim();
-                    string email = txtEmail.Text.Trim();
+                    EnableDataGridView(false);
+                    btnSua.Text = "Xác nhận";
+                    btnHuyBo.Enabled = true;
+                    btnHuyBo.BackColor = Color.IndianRed;
+                    btnThem.Enabled = false;
+                    SetButtonStyle(btnThem, false);
+                    btnXoa.Enabled = false;
+                    SetButtonStyle(btnXoa, false);
 
-                    NhaCungCap newNcc = new NhaCungCap
+                    EnableTextBox(true);
+                }
+                else if (btnSua.Text == "Xác nhận")
+                {
+                    if (ValidateInput())
                     {
-                        maNhaCungCap = maNcc,
-                        tenNhaCungCap = tenNcc,
-                        soDienThoai = sdt,
-                        email = email,
-                        diaChi = diaChi
-                    };
-                    try
-                    {
-                        bool isSuccess = nccbll.SuaNhaCungCap(newNcc);
-                        if (isSuccess)
+                        string maNcc = txtMaNCC.Text.Trim();
+                        string tenNcc = txtTenNCC.Text.Trim();
+                        string sdt = txtSDT.Text.Trim();
+                        string diaChi = txtDiaChi.Text.Trim();
+                        string email = txtEmail.Text.Trim();
+
+                        NhaCungCap newNcc = new NhaCungCap
                         {
-                            MessageBox.Show("Sửa nhà cung cấp thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadNhaCungCap();
-
-                            ClearForm();
-                            EnableDataGridView(true);
-                            btnThem.Enabled = true;
-                            SetButtonStyle(btnThem, true);
-                            btnXoa.Enabled = true;
-                            SetButtonStyle(btnXoa, true);
-
-                            btnSua.Text = "Sửa";
-                            btnHuyBo.Enabled = false;
-                            btnHuyBo.BackColor = Color.DarkGray;
-
-                            EnableTextBox(false);
-                        }
-                        else
+                            maNhaCungCap = maNcc,
+                            tenNhaCungCap = tenNcc,
+                            soDienThoai = sdt,
+                            email = email,
+                            diaChi = diaChi
+                        };
+                        try
                         {
-                            MessageBox.Show("Sửa nhà cung cấp thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            bool isSuccess = nccbll.SuaNhaCungCap(newNcc);
+                            if (isSuccess)
+                            {
+                                MessageBox.Show("Sửa nhà cung cấp thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                LoadNhaCungCap();
+
+                                ClearForm();
+                                EnableDataGridView(true);
+                                btnThem.Enabled = true;
+                                SetButtonStyle(btnThem, true);
+                                btnXoa.Enabled = true;
+                                SetButtonStyle(btnXoa, true);
+
+                                btnSua.Text = "Sửa";
+                                btnHuyBo.Enabled = false;
+                                btnHuyBo.BackColor = Color.DarkGray;
+
+                                EnableTextBox(false);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Sửa nhà cung cấp thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Lỗi sửa nhà cung cấp: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Lỗi sửa nhà cung cấp: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
         }
+
     }
 }

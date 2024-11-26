@@ -18,6 +18,10 @@ namespace BLL
         {
             return chiTietPhieuDatDAL.LayChiTietPhieuDat(maPhieuDat);
         }
+        public bool KiemTraTonTaiChiTietPhieuDat(ChiTietPhieuDat pChiTietPhieuDat)
+        {
+            return chiTietPhieuDatDAL.KiemTraTonTaiChiTietPhieuDat(pChiTietPhieuDat);
+        }
         public bool ThemChiTietPhieuDat(ChiTietPhieuDat pChiTietPhieuDat)
         {
             return chiTietPhieuDatDAL.TaoChiTietPhieuDat(pChiTietPhieuDat);
