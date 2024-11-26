@@ -155,6 +155,9 @@ namespace DAL
             if (!topSanPham.Any())
             {
                 return new Dictionary<string, (string, int?)>(); // Trả về dictionary rỗng
+            }
+            return topSanPham.ToDictionary(sp => sp.MaSanPham, sp => (sp.TenSanPham, sp.SoLuongBan));
+        }
         public bool KhoiPhucSanPham(string maSanPham)
         {
             try
@@ -229,7 +232,7 @@ namespace DAL
                 return false;
             }
 
-            return topSanPham.ToDictionary(sp => sp.MaSanPham, sp => (sp.TenSanPham, sp.SoLuongBan));
+            
         }
 
 

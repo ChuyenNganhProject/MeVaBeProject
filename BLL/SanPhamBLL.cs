@@ -72,6 +72,7 @@ namespace BLL
         public List<(string TenSanPham, int? SoLuong)> ThongKeDanhSachSanPhamDuoiMucToiThieu()
         {
             return spdal.ThongKeDanhSachSanPhamDuoiMucToiThieu();
+        }
         public bool ThemSanPham(SanPham pSanPham)
         {
             return spdal.ThemSanPham(pSanPham);

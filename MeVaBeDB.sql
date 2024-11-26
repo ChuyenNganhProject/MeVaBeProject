@@ -622,12 +622,6 @@ SELECT * FROM KhuyenMai
 SELECT * FROM KhuyenMaiSanPham
 SELECT * FROM KhachHang
 
-ALTER TABLE KhuyenMaiSanPham
-ALTER COLUMN trangThai NVARCHAR(50)
-
-ALTER TABLE HoaDon
-ADD hinhThucTra NVARCHAR(50)
-
 GO
 --CREATE TRIGGER trg_UpdateHangThanhVien
 --ON HoaDon

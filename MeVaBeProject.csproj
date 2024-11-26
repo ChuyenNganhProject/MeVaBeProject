@@ -213,6 +213,7 @@
     </Compile>
     <Compile Include="frmPhieuGiaoHang.Designer.cs">
       <DependentUpon>frmPhieuGiaoHang.cs</DependentUpon>
+	</Compile>
     <Compile Include="frmQLLoaiSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,6 +267,7 @@
     </Compile>
     <Compile Include="frmQRCodeThanhToan.Designer.cs">
       <DependentUpon>frmQRCodeThanhToan.cs</DependentUpon>
+	</Compile>
     <Compile Include="frmQLPhanQuyen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -339,6 +341,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPhieuGiaoHang.resx">
       <DependentUpon>frmPhieuGiaoHang.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="frmQLLoaiSanPham.resx">
       <DependentUpon>frmQLLoaiSanPham.cs</DependentUpon>
     </EmbeddedResource>
@@ -365,6 +368,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQRCodeThanhToan.resx">
       <DependentUpon>frmQRCodeThanhToan.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="frmQLPhanQuyen.resx">
       <DependentUpon>frmQLPhanQuyen.cs</DependentUpon>
     </EmbeddedResource>
