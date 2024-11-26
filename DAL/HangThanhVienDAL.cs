@@ -15,7 +15,7 @@ namespace DAL
         public string GetMaHangThanhVienTheoDiemTichLuy(decimal diemTichLuy)
         {
             var hangThanhVien = db.HangThanhViens
-                .Where(h => h.mucTieuBatDau <= diemTichLuy && (diemTichLuy <= h.mucTieuKetThuc || h.mucTieuKetThuc == null)) // GOLD || DIAMOND
+                .Where(h => h.mucTieuBatDau <= diemTichLuy && (diemTichLuy < h.mucTieuKetThuc || h.mucTieuKetThuc == null)) // GOLD || DIAMOND
                 .FirstOrDefault();
             return hangThanhVien != null ? hangThanhVien.maHang : "HTV001";
         }

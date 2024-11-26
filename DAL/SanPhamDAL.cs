@@ -93,32 +93,52 @@ namespace DAL
             return listSpLoc;
         }
 
-        public bool CapNhatSanPham(SanPham sanPham)
+        public int TongSoLuongSanPham()
         {
-            try
-            {
-                SanPham updatedSanPham = dataContext.SanPhams.FirstOrDefault(sp => sp.maSanPham == sanPham.maSanPham);
-                if (updatedSanPham != null)
-                {
-                    updatedSanPham.tenSanPham = sanPham.tenSanPham;
-                    updatedSanPham.donGiaBan = sanPham.donGiaBan;
-                    updatedSanPham.donGiaSale = sanPham.donGiaSale;
-                    updatedSanPham.hanSuDung = sanPham.hanSuDung;
-                    updatedSanPham.hinhAnh = sanPham.hinhAnh;
-                    updatedSanPham.ngaySanXuat = sanPham.ngaySanXuat;
-                    updatedSanPham.soLuong = sanPham.soLuong;
-                    updatedSanPham.trangThai = sanPham.trangThai;
-                    
-                    dataContext.SubmitChanges();
-                    return true;
-                }
+            return dataContext.SanPhams.Count();
+        }
 
-                return false;
-            }
-            catch (Exception ex)
+        public Dictionary<string, (string TenSanPham, int? SoLuongBan)> ThongKeTop5SanPhamBanChayNhat(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            var topSanPham = dataContext.ChiTietHoaDonSanPhams
+                                .Where(ct => ct.HoaDon.ngayLap.Value.Date >= ngayBatDau.Date && ct.HoaDon.ngayLap.Value.Date <= ngayKetThuc.Date)
+                                .GroupBy(ct => ct.maSanPham)
+                                .Select(tk => new
+                                {
+                                    MaSanPham = tk.Key,
+                                    TongSoLuong = tk.Sum(ct => ct.soLuong)
+                                })
+                                .OrderByDescending(tk => tk.TongSoLuong)
+                                .Take(5)
+                                .Join(dataContext.SanPhams, tk => tk.MaSanPham, sp => sp.maSanPham, (tk, sp) => new
+                                {
+                                    MaSanPham = sp.maSanPham,
+                                    TenSanPham = sp.tenSanPham,
+                                    SoLuongBan = tk.TongSoLuong
+                                })
+                                .ToList();
+
+            if (!topSanPham.Any())
             {
-                throw new ApplicationException("Lỗi sửa thông tin sản phẩm: " + ex.Message, ex);
+                return new Dictionary<string, (string, int?)>(); // Trả về dictionary rỗng
             }
+
+            return topSanPham.ToDictionary(sp => sp.MaSanPham, sp => (sp.TenSanPham, sp.SoLuongBan));
+        }
+
+
+        public List<(string TenSanPham, int? SoLuong)> ThongKeDanhSachSanPhamDuoiMucToiThieu()
+        {
+            var sanPhamDuoiMucToiThieu = dataContext.SanPhams
+                                .Where(sp => sp.soLuong < 40)
+                                .Select(sp => new
+                                {
+                                    TenSanPham = sp.tenSanPham,
+                                    SoLuong = sp.soLuong
+                                })
+                                .ToList();
+
+            return sanPhamDuoiMucToiThieu.Select(sp => (sp.TenSanPham, sp.SoLuong)).ToList();
         }
     }
 }

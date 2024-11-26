@@ -18,11 +18,11 @@ namespace BLL
             return kmspdal.LoadSanPhamTheoKhuyenMai(maKhuyenMai);
         }
 
-        public bool ThemHoacCapNhatSanPhamVaoCTKhuyenMai(string maKhuyenMai, string maSanPham, decimal phanTramGiam, int soLuongToiDa)
+        public bool ThemHoacCapNhatSanPhamVaoCTKhuyenMai(KhuyenMaiSanPham kmsp)
         {
-            return kmspdal.ThemHoacCapNhatSanPhamVaoCTKhuyenMai(maKhuyenMai, maSanPham, phanTramGiam, soLuongToiDa);
+            return kmspdal.ThemHoacCapNhatSanPhamVaoCTKhuyenMai(kmsp);
         }
-        public KhuyenMaiSanPham LayKhuyenMaiTheoSanPham(string maSanPham)
+        public List<KhuyenMaiSanPham> LayKhuyenMaiTheoSanPham(string maSanPham)
         {
             return kmspdal.LayKhuyenMaiTheoSanPham(maSanPham);
         }
@@ -30,6 +30,16 @@ namespace BLL
         public KhuyenMaiSanPham LayTTSanPhamCuaKhuyenMai(string maKhuyenMai, string maSanPham)
         {
             return kmspdal.LayTTSanPhamCuaKhuyenMai(maKhuyenMai, maSanPham);
+        }
+
+        public bool KiemTraSanPhamTrongKhoangThoiGianKhuyenMai(string maKM, string maSanPham)
+        {
+            return kmspdal.KiemTraSanPhamTrongKhoangThoiGianKhuyenMai(maKM, maSanPham);
+        }
+
+        public bool CapNhatTrangThaiSanPhamTrongKhuyenMai(string maKhuyenMai, string trangThai)
+        {
+            return kmspdal.CapNhatTrangThaiSanPhamTrongKhuyenMai(maKhuyenMai, trangThai);
         }
     }
 }

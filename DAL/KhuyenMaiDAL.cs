@@ -17,7 +17,7 @@ namespace DAL
         {
             try
             {
-                return db.KhuyenMais.Select(km => km).ToList();
+                return db.KhuyenMais.Select(km => km).OrderByDescending(km => km.maKhuyenMai).ToList();
             }
             catch
             {
@@ -111,6 +111,40 @@ namespace DAL
             {
                 throw new ApplicationException("Lỗi khi cập nhật trạng thái khuyến mãi: " + ex.Message, ex);
             }
+        }
+
+        public bool KiemTraThoiGianKhuyenMaiTruocKhiSua(string maKM, DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            var sanPhamHienTai = db.KhuyenMaiSanPhams
+                                    .Where(kmsp => kmsp.maKhuyenMai == maKM && kmsp.trangThai == "Có hiệu lực")
+                                    .Select(kmsp => kmsp.maSanPham)
+                                    .ToList();
+
+            // Lấy danh sách khuyến mãi khác có trạng thái "Chưa diễn ra" hoặc "Đang diễn ra"
+            var khuyenMaisKhac = db.KhuyenMais
+                .Where(km => km.maKhuyenMai != maKM && (km.trangThai == "Chưa diễn ra" || km.trangThai == "Đang diễn ra"))
+                .ToList();
+
+            foreach (var km in khuyenMaisKhac)
+            {
+                var sanPhamKhuyenMaiKhac = db.KhuyenMaiSanPhams
+                    .Where(kmsp => kmsp.maKhuyenMai == km.maKhuyenMai && kmsp.trangThai == "Có hiệu lực")
+                    .Select(kmsp => kmsp.maSanPham)
+                    .ToList();
+
+                // Kiểm tra sản phẩm trùng
+                var sanPhamTrung = sanPhamHienTai.Intersect(sanPhamKhuyenMaiKhac).Any();
+
+                if (sanPhamTrung)
+                {
+                    // Kiểm tra thời gian có bị trùng
+                    if (ngayBatDau < km.ngayKetThuc && ngayKetThuc > km.ngayBatDau)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
     }
 }

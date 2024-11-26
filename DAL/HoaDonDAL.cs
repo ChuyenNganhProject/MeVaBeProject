@@ -69,13 +69,6 @@ namespace DAL
             return "HD00001";
         }
 
-        public decimal tongTienTatCaHoaDonCuaKH(KhachHang khachhang)
-        {
-            return db.HoaDons
-                .Where(hd => hd.maKhachHang == khachhang.maKhachHang)
-                .Sum(hd => hd.tongTien ?? 0);
-        }
-
         public static string RemoveVietnameseDaus(string input)
         {
             if (string.IsNullOrEmpty(input)) return input;
@@ -183,85 +176,6 @@ namespace DAL
         {
             return db.HoaDons.Count();
         }
-
-        // Năm này
-        public decimal TinhDoanhThuNamNay()
-        {
-            return db.HoaDons
-                .Where(hd => hd.ngayLap.Value.Year == DateTime.Now.Year)
-                .Sum(hd => hd.tongTienSauGiam) ?? 0;
-        }
-
-        public int TongHoaDonNamNay()
-        {
-            return db.HoaDons
-                .Where(hd => hd.ngayLap.Value.Year == DateTime.Now.Year)
-                .Count();
-        }
-
-        // Tháng này
-        public decimal TinhDoanhThuThangNay()
-        {
-            return db.HoaDons
-                .Where(hd => hd.ngayLap.Value.Month == DateTime.Now.Month && hd.ngayLap.Value.Year == DateTime.Now.Year)
-                .Sum(hd => hd.tongTienSauGiam) ?? 0;
-        }
-
-        public int TongHoaDonThangNay()
-        {
-            return db.HoaDons
-                .Where(hd => hd.ngayLap.Value.Month == DateTime.Now.Month && hd.ngayLap.Value.Year == DateTime.Now.Year)
-                .Count();
-        }
-
-        // 30 ngày qua
-        public decimal TinhDoanhThu30NgayQua()
-        {
-            DateTime BaMuoiNgayQua = DateTime.Now.AddDays(-30);
-            return db.HoaDons
-                .Where(hd => hd.ngayLap.Value >= BaMuoiNgayQua && hd.ngayLap.Value <= DateTime.Now)
-                .Sum(hd => hd.tongTienSauGiam) ?? 0;
-        }
-        public int TongHoaDon30NgayQua()
-        {
-            DateTime BaMuoiNgayQua = DateTime.Now.AddDays(-30);
-            return db.HoaDons
-                .Where(hd => hd.ngayLap.Value >= BaMuoiNgayQua && hd.ngayLap.Value <= DateTime.Now)
-                .Count();
-        }
-
-        // 7 ngày qua
-        public decimal TinhDoanhThu7NgayQua()
-        {
-            DateTime BayNgayQua = DateTime.Now.AddDays(-7);
-            return db.HoaDons
-                .Where(hd => hd.ngayLap.Value.Date >= BayNgayQua.Date && hd.ngayLap.Value <= DateTime.Now)
-                .Sum(hd => hd.tongTienSauGiam) ?? 0;
-        }
-        public int TongHoaDon7NgayQua()
-        {
-            DateTime BayNgayQua = DateTime.Now.AddDays(-7);
-            return db.HoaDons
-                .Where(hd => hd.ngayLap.Value.Date >= BayNgayQua.Date && hd.ngayLap.Value <= DateTime.Now)
-                .Count();
-        }
-
-        // Hôm nay
-        public decimal TinhDoanhThuHomNay()
-        {
-            DateTime HomNay = DateTime.Now;
-            return db.HoaDons
-                .Where(hd => hd.ngayLap.Value.Date == HomNay.Date)
-                .Sum(hd => hd.tongTienSauGiam) ?? 0;
-        }
-        public int TongHoaDonHomNay()
-        {
-            DateTime HomNay = DateTime.Now;
-            return db.HoaDons
-                .Where(hd => hd.ngayLap.Value.Date == HomNay.Date)
-                .Count();
-        }
-
         // Custom
         public List<HoaDon> LoadDanhSachHoaDonTheoNgayLoc(DateTime ngayBatDau, DateTime ngayKetThuc)
         {
@@ -312,5 +226,47 @@ namespace DAL
                 .Where(hd => hd.ngayLap.Value.Date >= batDau.Date && hd.ngayLap.Value.Date <= ketThuc.Date)
                 .Count();
         }
+
+        public Dictionary<DateTime?, decimal> ThongKeTongDoanhThuCuaTungNgay(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            var doanhThuTheoNgay = db.HoaDons
+                                    .Where(hd => hd.ngayLap.Value.Date >= ngayBatDau.Date && hd.ngayLap.Value.Date <= ngayKetThuc.Date)
+                                    .GroupBy(hd => hd.ngayLap.Value.Date)
+                                    .Select(tk => new
+                                    {
+                                        Ngay = tk.Key,
+                                        TongDoanhThu = tk.Sum(hd => hd.tongTienSauGiam) ?? 0
+                                    }).ToDictionary(x => (DateTime?)x.Ngay, x => x.TongDoanhThu);
+            return doanhThuTheoNgay;
+        }
+
+        // Lọc hôm nay
+        public Dictionary<int, decimal> ThongKeTongDoanhThuTheoGioTrongNgay(DateTime ngay)
+        {
+            var doanhThuTheoGio = db.HoaDons
+                                    .Where(hd => hd.ngayLap.Value.Date == ngay.Date)
+                                    .GroupBy(hd => hd.ngayLap.Value.Hour)
+                                    .Select(tk => new
+                                    {
+                                        Gio = tk.Key,
+                                        TongDoanhThu = tk.Sum(hd => hd.tongTienSauGiam) ?? 0
+                                    }).ToDictionary(x => x.Gio, x => x.TongDoanhThu);
+            return doanhThuTheoGio;
+        }
+
+        // Lọc năm nay
+        public Dictionary<DateTime?, decimal> ThongKeTongDoanhThuTheoThangTrongNam(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            var doanhThuTheoThang = db.HoaDons
+                                      .Where(hd => hd.ngayLap.Value.Date >= ngayBatDau.Date && hd.ngayLap.Value.Date <= ngayKetThuc.Date)
+                                      .GroupBy(hd => new { hd.ngayLap.Value.Year, hd.ngayLap.Value.Month })
+                                      .Select(tk => new
+                                      {
+                                          Thang = new DateTime(tk.Key.Year, tk.Key.Month, 1),
+                                          TongDoanhThu = tk.Sum(hd => hd.tongTienSauGiam) ?? 0
+                                      }).ToDictionary(x => (DateTime?)x.Thang, x => x.TongDoanhThu);
+            return doanhThuTheoThang;
+        }
+
     }
 }

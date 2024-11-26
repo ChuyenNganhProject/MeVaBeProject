@@ -74,5 +74,10 @@ namespace BLL
         {
             return nvdal.GetPhoneNumberById(maNhanVien);
         }
+
+        public int TongSoLuongNhanVien()
+        {
+            return nvdal.TongSoLuongNhanVien();
+        }
     }
 }

@@ -107,6 +107,7 @@ CREATE TABLE HoaDon (
 	tienDuocGiam DECIMAL(18, 2),
 	tongTienSauGiam DECIMAL(18, 2),
     trangThai BIT,
+	hinhThucTra NVARCHAR(50),
     FOREIGN KEY (maKhachHang) REFERENCES KhachHang(maKhachHang),
     FOREIGN KEY (maNhanVien) REFERENCES NhanVien(maNhanVien)
 );
@@ -231,7 +232,7 @@ CREATE TABLE KhuyenMaiSanPham (
     maSanPham VARCHAR(50),
     phanTramGiam DECIMAL(18, 2),
 	soLuongToiDa INT,
-    trangThai BIT,
+    trangThai NVARCHAR(50),
     PRIMARY KEY (maKhuyenMai, maSanPham),
     FOREIGN KEY (maKhuyenMai) REFERENCES KhuyenMai(maKhuyenMai),
     FOREIGN KEY (maSanPham) REFERENCES SanPham(maSanPham)
@@ -613,107 +614,152 @@ AS
 BEGIN
     DECLARE @tgHienTai DATETIME = GETDATE();
 
-    -- Cập nhật trạng thái của khuyến mãi
+    -- Cập nhật trạng thái của khuyến mãi, bỏ qua khuyến mãi đã có trạng thái 'Đã kết thúc'
     UPDATE KhuyenMai
-    SET trangThai = N'Đang diễn ra'
-    WHERE @tgHienTai >= ngayBatDau AND @tgHienTai <= ngayKetThuc;
+	SET trangThai = N'Đang diễn ra'
+	WHERE @tgHienTai >= ngayBatDau 
+	  AND @tgHienTai <= ngayKetThuc 
+	  AND (trangThai IS NULL OR trangThai NOT IN (N'Đã kết thúc'));
 
-    UPDATE KhuyenMai
-    SET trangThai = N'Chưa diễn ra'
-    WHERE @tgHienTai < ngayBatDau;
+	UPDATE KhuyenMai
+	SET trangThai = N'Chưa diễn ra'
+	WHERE @tgHienTai < ngayBatDau
+	  AND (trangThai IS NULL OR trangThai NOT IN (N'Đã kết thúc'));
 
-    UPDATE KhuyenMai
-    SET trangThai = N'Đã kết thúc'
-    WHERE @tgHienTai > ngayKetThuc;
+	UPDATE KhuyenMai
+	SET trangThai = N'Đã kết thúc'
+	WHERE @tgHienTai > ngayKetThuc
+	  AND (trangThai IS NULL OR trangThai NOT IN (N'Đã kết thúc'));
+
 
     -- Cập nhật trạng thái của KhuyenMaiSanPham khi KhuyenMai chuyển sang 'Đã kết thúc'
     UPDATE KhuyenMaiSanPham
-    SET trangThai = 0
+    SET trangThai = N'Hết hiệu lực'
     WHERE maKhuyenMai IN (
         SELECT maKhuyenMai
         FROM KhuyenMai
         WHERE trangThai = N'Đã kết thúc'
     );
-	
-    -- Cập nhật donGiaSale của SanPham thành NULL khi KhuyenMai kết thúc
-    UPDATE SanPham
-    SET donGiaSale = NULL
-    WHERE maSanPham IN (
-        SELECT kmsp.maSanPham
-        FROM KhuyenMaiSanPham kmsp
-        LEFT JOIN KhuyenMai km ON kmsp.maKhuyenMai = km.maKhuyenMai
-        WHERE kmsp.trangThai = 0
-        AND NOT EXISTS (
-            SELECT 1
-            FROM KhuyenMaiSanPham kmsp2
-            JOIN KhuyenMai km2 ON kmsp2.maKhuyenMai = km2.maKhuyenMai
-            WHERE kmsp2.maSanPham = kmsp.maSanPham
-            AND km2.trangThai IN (N'Đang diễn ra', N'Chưa diễn ra')
-        )
+
+    -- Cập nhật trạng thái của KhuyenMaiSanPham khi KhuyenMai chuyển sang 'Đang diễn ra'
+    UPDATE KhuyenMaiSanPham
+    SET trangThai = N'Có hiệu lực'
+    WHERE maKhuyenMai IN (
+        SELECT maKhuyenMai
+        FROM KhuyenMai
+        WHERE trangThai = N'Đang diễn ra'
     );
+
+    -- Cập nhật donGiaSale cho sản phẩm thuộc khuyến mãi đang diễn ra
+    UPDATE SanPham
+    SET donGiaSale = donGiaBan - (donGiaBan * kmsp.phanTramGiam / 100)
+    FROM SanPham sp
+    JOIN KhuyenMaiSanPham kmsp ON sp.maSanPham = kmsp.maSanPham
+    JOIN KhuyenMai km ON kmsp.maKhuyenMai = km.maKhuyenMai
+    WHERE km.trangThai = N'Đang diễn ra';
+
+    -- Cập nhật donGiaSale của SanPham thành NULL khi KhuyenMai kết thúc
+	UPDATE SanPham
+	SET donGiaSale = NULL
+	WHERE maSanPham IN (
+    SELECT kmsp.maSanPham
+    FROM KhuyenMaiSanPham kmsp
+    LEFT JOIN KhuyenMai km ON kmsp.maKhuyenMai = km.maKhuyenMai
+    WHERE kmsp.maSanPham = SanPham.maSanPham
+      AND NOT EXISTS (
+          SELECT 1
+          FROM KhuyenMai km2
+          JOIN KhuyenMaiSanPham kmsp2 ON km2.maKhuyenMai = kmsp2.maKhuyenMai
+          WHERE km2.trangThai = N'Đang diễn ra'
+            AND kmsp2.maSanPham = kmsp.maSanPham
+      )
+	);
 END
 GO
-GO
-CREATE TRIGGER trg_UpdateHangThanhVien
-ON HoaDon
-AFTER INSERT, UPDATE, DELETE
+
+CREATE TRIGGER TRG_UpdateDonGiaSaleKhiDungThuCong
+ON KhuyenMai
+AFTER UPDATE
 AS
 BEGIN
-    DECLARE @maKhachHang VARCHAR(20);
-    DECLARE @tongChiTieu DECIMAL(18, 2);
-    DECLARE @maHangMoi VARCHAR(10);
-    DECLARE @mucTieuDauTu DECIMAL(18, 2);
-    DECLARE @mucTieuKetThuc DECIMAL(18, 2);
+	UPDATE SanPham
+	SET donGiaSale = NULL
+	FROM inserted i
+	WHERE i.trangThai = N'Đã kết thúc'
+END
+
+SELECT * FROM SanPham
+SELECT * FROM KhuyenMai
+SELECT * FROM KhuyenMaiSanPham
+SELECT * FROM KhachHang
+
+ALTER TABLE KhuyenMaiSanPham
+ALTER COLUMN trangThai NVARCHAR(50)
+
+ALTER TABLE HoaDon
+ADD hinhThucTra NVARCHAR(50)
+
+GO
+--CREATE TRIGGER trg_UpdateHangThanhVien
+--ON HoaDon
+--AFTER INSERT, UPDATE, DELETE
+--AS
+--BEGIN
+--    DECLARE @maKhachHang VARCHAR(20);
+--    DECLARE @tongChiTieu DECIMAL(18, 2);
+--    DECLARE @maHangMoi VARCHAR(10);
+--    DECLARE @mucTieuDauTu DECIMAL(18, 2);
+--    DECLARE @mucTieuKetThuc DECIMAL(18, 2);
     
-    -- Lấy mã khách hàng từ hóa đơn đã thêm, sửa hoặc xóa
-    SELECT @maKhachHang = maKhachHang FROM inserted; -- Đối với INSERT và UPDATE
-    -- Trong trường hợp DELETE, lấy từ deleted
-    IF (@maKhachHang IS NULL)
-    BEGIN
-        SELECT @maKhachHang = maKhachHang FROM deleted;
-    END
+--    -- Lấy mã khách hàng từ hóa đơn đã thêm, sửa hoặc xóa
+--    SELECT @maKhachHang = maKhachHang FROM inserted; -- Đối với INSERT và UPDATE
+--    -- Trong trường hợp DELETE, lấy từ deleted
+--    IF (@maKhachHang IS NULL)
+--    BEGIN
+--        SELECT @maKhachHang = maKhachHang FROM deleted;
+--    END
 
-    -- Tính tổng chi tiêu của khách hàng dựa trên tất cả hóa đơn của họ (chỉ tính các hóa đơn đã hoàn tất)
-    SELECT @tongChiTieu = SUM(tongTien)
-    FROM HoaDon
-    WHERE maKhachHang = @maKhachHang AND trangThai = 1; -- Chỉ tính hóa đơn đã hoàn tất
+--    -- Tính tổng chi tiêu của khách hàng dựa trên tất cả hóa đơn của họ (chỉ tính các hóa đơn đã hoàn tất)
+--    SELECT @tongChiTieu = SUM(tongTien)
+--    FROM HoaDon
+--    WHERE maKhachHang = @maKhachHang AND trangThai = 1; -- Chỉ tính hóa đơn đã hoàn tất
 
-    -- Nếu tổng chi tiêu là NULL (không có hóa đơn hợp lệ), gán giá trị là 0
-    IF @tongChiTieu IS NULL
-    BEGIN
-        SET @tongChiTieu = 0;
-    END
+--    -- Nếu tổng chi tiêu là NULL (không có hóa đơn hợp lệ), gán giá trị là 0
+--    IF @tongChiTieu IS NULL
+--    BEGIN
+--        SET @tongChiTieu = 0;
+--    END
 
-    -- Lấy thông tin các hạng thành viên từ bảng HangThanhVien
-    -- Kiểm tra nếu tổng chi tiêu nằm trong khoảng mục tiêu đầu tư và mục tiêu kết thúc của từng hạng thành viên
-    SELECT TOP 1 @maHangMoi = maHang
-    FROM HangThanhVien
-    WHERE @tongChiTieu >= mucTieuBatDau AND @tongChiTieu <= mucTieuKetThuc
-    ORDER BY mucTieuBatDau ASC; -- Lấy hạng phù hợp nhất từ đầu đến cuối (nếu có)
+--    -- Lấy thông tin các hạng thành viên từ bảng HangThanhVien
+--    -- Kiểm tra nếu tổng chi tiêu nằm trong khoảng mục tiêu đầu tư và mục tiêu kết thúc của từng hạng thành viên
+--    SELECT TOP 1 @maHangMoi = maHang
+--    FROM HangThanhVien
+--    WHERE @tongChiTieu >= mucTieuBatDau AND @tongChiTieu <= mucTieuKetThuc
+--    ORDER BY mucTieuBatDau ASC; -- Lấy hạng phù hợp nhất từ đầu đến cuối (nếu có)
 
-    -- Nếu không có hạng nào trong phạm vi chi tiêu, chọn hạng đầu tiên hoặc cuối cùng
-    IF @maHangMoi IS NULL
-    BEGIN
-        -- Nếu tổng chi tiêu nhỏ hơn mức tiêu chí của hạng đầu tiên, gán hạng đầu tiên
-        SELECT TOP 1 @maHangMoi = maHang
-        FROM HangThanhVien
-        ORDER BY mucTieuBatDau ASC; -- Lấy hạng đầu tiên
+--    -- Nếu không có hạng nào trong phạm vi chi tiêu, chọn hạng đầu tiên hoặc cuối cùng
+--    IF @maHangMoi IS NULL
+--    BEGIN
+--        -- Nếu tổng chi tiêu nhỏ hơn mức tiêu chí của hạng đầu tiên, gán hạng đầu tiên
+--        SELECT TOP 1 @maHangMoi = maHang
+--        FROM HangThanhVien
+--        ORDER BY mucTieuBatDau ASC; -- Lấy hạng đầu tiên
 
-        -- Nếu tổng chi tiêu lớn hơn hoặc bằng mức tiêu chí cuối cùng, gán hạng cuối cùng
-        IF @tongChiTieu >= (SELECT MAX(mucTieuKetThuc) FROM HangThanhVien)
-        BEGIN
-            SELECT TOP 1 @maHangMoi = maHang
-            FROM HangThanhVien
-            ORDER BY mucTieuKetThuc DESC; -- Lấy hạng cuối cùng
-        END
-    END
+--        -- Nếu tổng chi tiêu lớn hơn hoặc bằng mức tiêu chí cuối cùng, gán hạng cuối cùng
+--        IF @tongChiTieu >= (SELECT MAX(mucTieuKetThuc) FROM HangThanhVien)
+--        BEGIN
+--            SELECT TOP 1 @maHangMoi = maHang
+--            FROM HangThanhVien
+--            ORDER BY mucTieuKetThuc DESC; -- Lấy hạng cuối cùng
+--        END
+--    END
 
-    -- Kiểm tra nếu hạng thành viên mới khác hạng cũ, thì cập nhật hạng thành viên cho khách hàng
-    IF @maHangMoi IS NOT NULL
-    BEGIN
-        -- Cập nhật hạng thành viên chỉ khi cần thiết (không ghi đè nếu hạng cũ đã đúng)
-        UPDATE KhachHang
-        SET maHang = @maHangMoi
-        WHERE maKhachHang = @maKhachHang AND maHang <> @maHangMoi;
-    END
-END;
+--    -- Kiểm tra nếu hạng thành viên mới khác hạng cũ, thì cập nhật hạng thành viên cho khách hàng
+--    IF @maHangMoi IS NOT NULL
+--    BEGIN
+--        -- Cập nhật hạng thành viên chỉ khi cần thiết (không ghi đè nếu hạng cũ đã đúng)
+--        UPDATE KhachHang
+--        SET maHang = @maHangMoi
+--        WHERE maKhachHang = @maKhachHang AND maHang <> @maHangMoi;
+--    END
+--END;

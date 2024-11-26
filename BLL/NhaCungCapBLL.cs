@@ -32,5 +32,10 @@ namespace BLL
         {
             return nccdal.XoaNhaCungCap(ncc);
         }
+
+        public int TongSoLuongNhaCungCap()
+        {
+            return nccdal.TongSoLuongNhaCungCap();
+        }
     }
 }

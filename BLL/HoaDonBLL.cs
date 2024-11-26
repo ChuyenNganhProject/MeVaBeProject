@@ -27,11 +27,6 @@ namespace BLL
             return hddal.TaoMaHoaDonTuDong();
         }
 
-        public decimal tongTienTatCaHoaDonCuaKH(KhachHang khachhang)
-        {
-            return hddal.tongTienTatCaHoaDonCuaKH(khachhang);
-        }
-
         public List<HoaDon> TimKiemHoaDon(string tieuChi, string giaTriTimKiem)
         {
             return hddal.TimKiemHoaDon(tieuChi, giaTriTimKiem);
@@ -52,56 +47,6 @@ namespace BLL
             return hddal.TongSoHoaDon();
         }
 
-        // Năm này
-        public decimal TinhDoanhThuNamNay()
-        {
-            return hddal.TinhDoanhThuNamNay();
-        }
-        public int TongHoaDonNamNay()
-        {
-            return hddal.TongHoaDonNamNay();
-        }
-
-        // Tháng này
-        public decimal TinhDoanhThuThangNay()
-        {
-            return hddal.TinhDoanhThuThangNay();
-        }
-        public int TongHoaDonThangNay()
-        {
-            return hddal.TongHoaDonThangNay();
-        }
-
-        // 30 ngày qua
-        public decimal TinhDoanhThu30NgayQua()
-        {
-            return hddal.TinhDoanhThu30NgayQua();
-        }
-        public int TongHoaDon30NgayQua()
-        {
-            return hddal.TongHoaDon30NgayQua();
-        }
-
-        // 7 ngày qua
-        public decimal TinhDoanhThu7NgayQua()
-        {
-            return hddal.TinhDoanhThu7NgayQua();
-        }
-        public int TongHoaDon7NgayQua()
-        {
-            return hddal.TongHoaDon7NgayQua();
-        }
-
-        // Hôm nay
-        public decimal TinhDoanhThuHomNay()
-        {
-            return hddal.TinhDoanhThuHomNay();
-        }
-        public int TongHoaDonHomNay()
-        {
-            return hddal.TongHoaDonHomNay();
-        }
-
         // Custom
         public List<HoaDon> LoadDanhSachHoaDonTheoNgayLoc(DateTime ngayBatDau, DateTime ngayKetThuc)
         {
@@ -116,6 +61,21 @@ namespace BLL
         public int TongSoHoaDonTheoKhoangThoiGian(DateTime batDau, DateTime ketThuc)
         {
             return hddal.TongSoHoaDonTheoKhoangThoiGian(batDau, ketThuc);
+        }
+
+        public Dictionary<DateTime?, decimal> ThongKeTongDoanhThuCuaTungNgay(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            return hddal.ThongKeTongDoanhThuCuaTungNgay(ngayBatDau, ngayKetThuc);
+        }
+
+        public Dictionary<int, decimal> ThongKeTongDoanhThuTheoGioTrongNgay(DateTime ngay)
+        {
+            return hddal.ThongKeTongDoanhThuTheoGioTrongNgay(ngay);
+        }
+
+        public Dictionary<DateTime?, decimal> ThongKeTongDoanhThuTheoThangTrongNam(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            return hddal.ThongKeTongDoanhThuTheoThangTrongNam(ngayBatDau, ngayKetThuc);
         }
     }
 }

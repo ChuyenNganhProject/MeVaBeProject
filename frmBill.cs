@@ -21,12 +21,15 @@ namespace MeVaBeProject
         private string tienTruocKhiGiamText;
         private string hangThanhVienText;
         private string phanTramGiamText;
+        private string diemTichLuyDuocCongText;
+        private string hinhThucTra;
         private int soLuong;
+
         private List<ChiTietHoaDonSanPham> _chiTietHoaDons;
         KhachHangBLL khbll = new KhachHangBLL();
         NhanVienBLL nvbll = new NhanVienBLL();
         public frmBill(HoaDon hoaDon, List<ChiTietHoaDonSanPham> chiTietHoaDons, 
-            string tienBiGiamText, string tienTruocKhiGiamText, string hangThanhVienText, string phanTramGiamText) 
+            string tienBiGiamText, string tienTruocKhiGiamText, string hangThanhVienText, string phanTramGiamText, string diemTichLuyDuocCongText, string hinhThucTra) 
         { 
             InitializeComponent(); 
             _hoaDon = hoaDon; 
@@ -35,6 +38,8 @@ namespace MeVaBeProject
             this.tienTruocKhiGiamText = tienTruocKhiGiamText;
             this.hangThanhVienText = hangThanhVienText;
             this.phanTramGiamText = phanTramGiamText;
+            this.diemTichLuyDuocCongText = diemTichLuyDuocCongText;
+            this.hinhThucTra = hinhThucTra;
         }
 
         private void frmBill_Load(object sender, EventArgs e)
@@ -44,7 +49,7 @@ namespace MeVaBeProject
             var nhanVien = nvbll.LayTTNhanVienTuMa(_hoaDon.maNhanVien);
 
             string tenNhanVien = nhanVien != null ? nhanVien.tenNhanVien : " ";
-            string tenKhachHang = khachHang != null ? khachHang.tenKhachHang : " ";
+            string tenKhachHang = khachHang != null ? khachHang.tenKhachHang : "Khách vãng lai";
             string ngayLap = _hoaDon.ngayLap.HasValue ? _hoaDon.ngayLap.Value.ToString("dd/MM/yyyy HH:mm:ss") : "N/A";
             decimal tongTienThanhToan = _hoaDon.tongTienSauGiam.Value;
             string tongTienThanhToanText = tongTienThanhToan.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"));
@@ -56,16 +61,17 @@ namespace MeVaBeProject
             string diemTichLuyDuocCongText;
             decimal tongDiemTichLuy = khachHang != null ? khachHang.diemTichLuy.Value : 0;
             string tongDiemTichLuyText;
-            if (tenKhachHang == " ")
+            if (tenKhachHang == "Khách vãng lai")
             {
                 diemTichLuyDuocCongText = " ";
                 tongDiemTichLuyText = " ";
             }
             else
             {
-                diemTichLuyDuocCongText = "Điểm tích lũy được cộng: " + tongTienThanhToan.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "";
+                diemTichLuyDuocCongText = "Điểm tích lũy được cộng: " + this.diemTichLuyDuocCongText;
                 tongDiemTichLuyText = "Tổng điểm tích lũy: " + tongDiemTichLuy.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"));
             }
+            string hinhThucTraText = this.hinhThucTra;
 
             ReportParameter[] reportParameters = new ReportParameter[] {
                 new ReportParameter("TenKhachHang", tenKhachHang),
@@ -78,7 +84,8 @@ namespace MeVaBeProject
                 new ReportParameter("PhanTramGiam", phanTramGiamValue),
                 new ReportParameter("TongSoLuong", tongSoLuongText),
                 new ReportParameter("DiemTichLuyDuocCong", diemTichLuyDuocCongText),
-                new ReportParameter("TongDiemTichLuy", tongDiemTichLuyText)
+                new ReportParameter("TongDiemTichLuy", tongDiemTichLuyText),
+                new ReportParameter("HinhThucTra", hinhThucTraText)
             };
 
             ReportDataSource rdsChiTiet = new ReportDataSource("ChiTietHoaDonSanPhamDataSet", _chiTietHoaDons);

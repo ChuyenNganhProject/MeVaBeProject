@@ -1,6 +1,6 @@
 ﻿namespace MeVaBeProject
 {
-    partial class frmThemSanPhamKhuyenMai
+    partial class frmLapPhieuGiaoHang
     {
         /// <summary>
         /// Required designer variable.
@@ -787,7 +787,7 @@
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(1216, 48);
             this.uiLabel1.TabIndex = 1;
-            this.uiLabel1.Text = "Thêm sản phẩm khuyến mãi";
+            this.uiLabel1.Text = "Lập phiếu giao hàng";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // uiPanel3
@@ -847,7 +847,7 @@
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // frmThemSanPhamKhuyenMai
+            // frmLapPhieuGiaoHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -856,7 +856,7 @@
             this.Controls.Add(this.uiPanel2);
             this.Controls.Add(this.uiPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmThemSanPhamKhuyenMai";
+            this.Name = "frmLapPhieuGiaoHang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCTHD";
             this.uiPanel2.ResumeLayout(false);

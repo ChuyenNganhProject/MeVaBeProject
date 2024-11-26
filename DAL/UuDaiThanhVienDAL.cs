@@ -20,5 +20,10 @@ namespace DAL
                 .Where(u => u.maHang == maHang).FirstOrDefault();
             return uudais != null ? uudais.phanTramGiam.Value : 0;
         }
+
+        public bool CoUuDaiChoHang(string maHang)
+        {
+            return db.UuDaiThanhViens.Any(u => u.maHang == maHang);
+        }
     }
 }

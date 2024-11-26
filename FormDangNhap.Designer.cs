@@ -125,7 +125,6 @@
             this.btnLogin.TabIndex = 6;
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
             // txtPassword
             // 
