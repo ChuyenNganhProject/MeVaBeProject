@@ -115,17 +115,29 @@ namespace MeVaBeProject
             chartTopSanPham.Series[0].YValueMembers = "SoLuongBan";
             chartTopSanPham.DataBind();
 
-            // chart tổng doanh thu
             var tongSoNgay = (ngayKetThuc - ngayBatDau).Days + 1;
 
             if (tongSoNgay <= 1) // Hôm nay
             {
+                // Thống kê doanh thu theo giờ
                 var doanhThuTheoGio = hdbll.ThongKeTongDoanhThuTheoGioTrongNgay(ngayBatDau);
-                var dataSource = doanhThuTheoGio.Select(x => new
+                var dataSource = new List<dynamic>();
+
+                int firstHourWithData = doanhThuTheoGio.Keys.Min();
+                int lastHourWithData = doanhThuTheoGio.Keys.Max();
+
+                // Duyệt qua từng giờ từ giờ đầu tiên có dữ liệu đến giờ cuối cùng có dữ liệu
+                for (int i = firstHourWithData; i <= lastHourWithData + 1; i++)
                 {
-                    Gio = $"{x.Key}:00 - {x.Key + 1}:00",
-                    TongDoanhThu = x.Value
-                }).ToList();
+                    decimal doanhThuHienTai = doanhThuTheoGio.ContainsKey(i) ? doanhThuTheoGio[i] : 0;
+
+                    // Thêm dữ liệu cho giờ hiện tại
+                    dataSource.Add(new
+                    {
+                        Gio = $"{i}:00",
+                        TongDoanhThu = doanhThuHienTai
+                    });
+                }
 
                 chartTongDoanhThu.DataSource = dataSource;
                 chartTongDoanhThu.Series[0].XValueMember = "Gio";
