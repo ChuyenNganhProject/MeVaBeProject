@@ -134,9 +134,7 @@ namespace DAL
         {
             try
             {
-                PhieuDat phieuDatDeleted = MeVaBeDBDataContext.PhieuDats.Where(pd => pd.maPhieuDat == pPhieuDat.maPhieuDat).Select(pd => pd).FirstOrDefault();
-                MeVaBeDBDataContext.PhieuDats.DeleteOnSubmit(phieuDatDeleted);
-                MeVaBeDBDataContext.SubmitChanges();
+                MeVaBeDBDataContext.XoaPhieuDat_Proc(pPhieuDat.maPhieuDat);
                 return true;
             }
             catch
@@ -149,9 +147,6 @@ namespace DAL
             try
             {
                 MeVaBeDBDataContext.XoaPhieuDat_Proc(maPhieuDat);
-                //PhieuDat phieuDatDeleted = MeVaBeDBDataContext.PhieuDats.Where(pd => pd.maPhieuDat == maPhieuDat).Select(pd => pd).FirstOrDefault();
-                //MeVaBeDBDataContext.PhieuDats.DeleteOnSubmit(phieuDatDeleted);
-                //MeVaBeDBDataContext.SubmitChanges();
                 return true;
             }
             catch

@@ -47,8 +47,18 @@ namespace MeVaBeProject
         private void btnTaoPhieuNhap_Click(object sender, EventArgs e)
         {                          
             frmNhapHang frmNhapHang = new frmNhapHang(maNhanVien);
+            frmNhapHang.DongForm += FrmNhapHang_DongForm;
             frmNhapHang.ShowDialog();         
         }
+
+        private void FrmNhapHang_DongForm(bool loadData)
+        {
+            if (loadData)
+            {
+                LoadData();
+            }
+        }
+
         private void btnInPhieuNhap_Click(object sender, EventArgs e)
         {
             if (dtgvPhieuNhap.SelectedRows.Count > 0)

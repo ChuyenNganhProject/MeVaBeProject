@@ -428,5 +428,14 @@ namespace MeVaBeProject
 
             btnThem.Enabled = false;
         }
+        private void btnPhanQuyen_Click(object sender, EventArgs e)
+        {
+            if (txtMaLoaiNV.Text!=string.Empty)
+            {
+                string maLoai = txtMaLoaiNV.Text;
+                frmQLPhanQuyen frmQLPhanQuyen = new frmQLPhanQuyen(maLoai);
+                frmQLPhanQuyen.ShowDialog();
+            }
+        }
     }
 }

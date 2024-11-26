@@ -28,6 +28,8 @@ namespace MeVaBeProject
         private ChiTietPhieuDatBLL chiTietPhieuDatBLL;
         private List<DataGridViewRow> deletedRows;
         private List<ChiTietPhieuDat> chiTietPhieuDatBiXoa;
+        public delegate void SendDataHandler(bool loadData);
+        public event SendDataHandler DongForm;
         #endregion
         public frmDatHang(string maNhanVien,bool themPhieu,string maPhieuDat,string maNhaCungCap)
         {
@@ -37,8 +39,7 @@ namespace MeVaBeProject
             {
                 this.maPhieuDat = maPhieuDat;
                 this.maNhaCungCap = maNhaCungCap;
-                this.chiTietPhieuDats = new BindingSource();
-                this.chiTietPhieuDatBiXoa = new List<ChiTietPhieuDat>();
+                this.chiTietPhieuDats = new BindingSource();                
             }
             this.bindingSource = new BindingSource();
             this.sanPhamBLL = new SanPhamBLL();
@@ -47,6 +48,7 @@ namespace MeVaBeProject
             this.phieuDatBLL = new PhieuDatBLL();
             this.chiTietPhieuDatBLL = new ChiTietPhieuDatBLL();
             this.deletedRows = new List<DataGridViewRow>();
+            this.chiTietPhieuDatBiXoa = new List<ChiTietPhieuDat>();
             InitializeComponent();
             this.txtSoLuongSanPham.KeyPress += onlyNumericInput;
             this.txtDonGia.KeyPress += onlyNumericInput;
@@ -87,7 +89,7 @@ namespace MeVaBeProject
             this.rdbtMaSP.Checked = true;
             LoadDanhSachSanPham();
             //Load dữ liệu danh sách loại sản phẩm
-            cbLoaiSP.DataSource = loaiSanPhamBLL.LayDanhSachSanPham();
+            cbLoaiSP.DataSource = loaiSanPhamBLL.LayDanhSachLoaiSanPham();
             cbLoaiSP.DisplayMember = "tenLoaiSanPham";
             cbLoaiSP.ValueMember = "maLoaiSanPham";
             this.cbLoaiSP.SelectedValueChanged += cbLoaiSP_SelectedValueChanged;
@@ -145,12 +147,22 @@ namespace MeVaBeProject
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
+            DongForm?.Invoke(true);
             this.Close();
         }
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (themPhieu)
             {
+                int soLuongSanPham = 0;
+                foreach(DataGridViewRow row in dtgvSanPhamTrongPhieuDat.Rows)
+                {
+                    int soLuong = int.Parse(row.Cells["soLuongDat"].Value.ToString());
+                    if (soLuong>0)
+                    {
+                        soLuongSanPham++;
+                    }
+                }
                 //Tạo phiếu đặt
                 PhieuDat pPhieuDat = new PhieuDat()
                 {
@@ -159,7 +171,7 @@ namespace MeVaBeProject
                     maNhanVien = maNhanVien,
                     ngayLap = DateTime.Now,
                     ngayCapNhat = DateTime.Now,
-                    soLuong = dtgvSanPhamTrongPhieuDat.RowCount,
+                    soLuong = soLuongSanPham,
                     tongTien = decimal.Parse(txtTongTien.Text.Replace("₫", "").Replace(".", "").Trim()),
                     trangThai = "Chưa duyệt"
                 };
@@ -180,12 +192,16 @@ namespace MeVaBeProject
                             donGia = decimal.Parse(donGia),
                             tongTien = decimal.Parse(tongTien)
                         };
-                        resultTaoCTPD = chiTietPhieuDatBLL.ThemChiTietPhieuDat(pChiTietPhieuDat);
-                        if (!resultTaoCTPD)
-                        {                            
-                            MessageBox.Show(this, "Tạo phiếu đặt thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        }                        
+                        if (pChiTietPhieuDat.soLuongDat>0)
+                        {
+                            resultTaoCTPD = chiTietPhieuDatBLL.ThemChiTietPhieuDat(pChiTietPhieuDat);
+                            if (!resultTaoCTPD)
+                            {
+                                MessageBox.Show(this, "Tạo phiếu đặt thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                phieuDatBLL.XoaPhieuDat(pPhieuDat);
+                                break;
+                            }
+                        }                      
                     }
                     if (resultTaoCTPD)
                     {
@@ -196,6 +212,7 @@ namespace MeVaBeProject
                 {
                     MessageBox.Show(this, "Tạo phiếu đặt thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                themPhieu = false;
             }
             else
             {
@@ -229,11 +246,21 @@ namespace MeVaBeProject
                             donGia = decimal.Parse(donGia),
                             tongTien = decimal.Parse(tongTien)
                         };
-                        resultSuaCTPD = chiTietPhieuDatBLL.SuaChiTietPhieuDat(pChiTietPhieuDat);
-                        if (!resultSuaCTPD)
+                        if (pChiTietPhieuDat.soLuongDat>0)
                         {
-                            resultSuaCTPD = chiTietPhieuDatBLL.ThemChiTietPhieuDat(pChiTietPhieuDat);
-                        }                       
+                            if (chiTietPhieuDatBLL.KiemTraTonTaiChiTietPhieuDat(pChiTietPhieuDat))
+                            {
+                                resultSuaCTPD = chiTietPhieuDatBLL.SuaChiTietPhieuDat(pChiTietPhieuDat);
+                            }
+                            else
+                            {
+                                resultSuaCTPD = chiTietPhieuDatBLL.ThemChiTietPhieuDat(pChiTietPhieuDat);
+                            }                            
+                        }
+                        else
+                        {
+                            chiTietPhieuDatBLL.XoaChiTietPhieuDat(pChiTietPhieuDat);
+                        }
                     }                    
                     //Xóa những sản phẩm khỏi chi tiết phiếu đặt
                     bool xoaSanPham = true;
@@ -460,7 +487,7 @@ namespace MeVaBeProject
                     e.Value = ((decimal)e.Value).ToString("C0");
                     e.FormattingApplied = true;
                 }
-            }
+            }            
         }
     }
 }

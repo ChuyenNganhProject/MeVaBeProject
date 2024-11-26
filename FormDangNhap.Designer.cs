@@ -49,9 +49,10 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.btnClose.Location = new System.Drawing.Point(728, 21);
+            this.btnClose.Location = new System.Drawing.Point(546, 17);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(38, 32);
+            this.btnClose.Size = new System.Drawing.Size(28, 26);
             this.btnClose.TabIndex = 6;
             this.btnClose.Text = "X";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -63,8 +64,9 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(778, 64);
+            this.panel1.Size = new System.Drawing.Size(584, 52);
             this.panel1.TabIndex = 7;
             // 
             // uiPanel1
@@ -81,13 +83,13 @@
             this.uiPanel1.Controls.Add(this.uiLabel5);
             this.uiPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
             this.uiPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.uiPanel1.Location = new System.Drawing.Point(184, 102);
-            this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel1.Location = new System.Drawing.Point(138, 83);
+            this.uiPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel1.Name = "uiPanel1";
             this.uiPanel1.Radius = 25;
             this.uiPanel1.RectColor = System.Drawing.Color.Transparent;
-            this.uiPanel1.Size = new System.Drawing.Size(405, 401);
+            this.uiPanel1.Size = new System.Drawing.Size(304, 326);
             this.uiPanel1.TabIndex = 9;
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -125,7 +127,6 @@
             this.btnLogin.TabIndex = 6;
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
             // txtPassword
             // 
@@ -175,7 +176,7 @@
             this.txtUsername.ShowText = false;
             this.txtUsername.Size = new System.Drawing.Size(246, 35);
             this.txtUsername.TabIndex = 3;
-            this.txtUsername.Text = "ttq";
+            this.txtUsername.Text = "hoangphuc";
             this.txtUsername.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtUsername.Watermark = "";
             // 
@@ -216,14 +217,15 @@
             // FormDangNhap
             // 
             this.AcceptButton = this.btnLogin;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(778, 565);
+            this.ClientSize = new System.Drawing.Size(584, 459);
             this.Controls.Add(this.uiPanel1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormDangNhap";

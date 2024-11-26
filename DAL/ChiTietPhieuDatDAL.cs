@@ -22,6 +22,11 @@ namespace DAL
             }
             return chiTietPhieuDats;
         }
+        public bool KiemTraTonTaiChiTietPhieuDat(ChiTietPhieuDat pChiTietPhieuDat)
+        {
+            bool result = (MeVaBeDBDataContext.ChiTietPhieuDats.Where(ctpd => ctpd.maPhieuDat == pChiTietPhieuDat.maPhieuDat && ctpd.maSanPham == pChiTietPhieuDat.maSanPham).Select(ctpd => ctpd).FirstOrDefault() != null) ? true : false;
+            return result;
+        }
         public bool TaoChiTietPhieuDat(ChiTietPhieuDat pChiTietPhieuDat)
         {
             try
