@@ -72,7 +72,7 @@ namespace MeVaBeProject
                     {
                         SanPham sanPham = spbll.TimKiemSanPhamTheoMaSP(MaSp);
                         sanPham.donGiaSale = giaSauGiam;
-                        spbll.CapNhatSanPham(sanPham);
+                        //spbll.CapNhatSanPham(sanPham);
                     }
                     
                     MessageBox.Show("Thêm sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -227,7 +227,7 @@ namespace MeVaBeProject
 
         private void LoadLoaiSanPham()
         {
-            List<LoaiSanPham> loaiSanPhams = lspbll.LayDanhSachSanPham();
+            List<LoaiSanPham> loaiSanPhams = lspbll.LayDanhSachLoaiSanPham();
 
             foreach (var loaisp in loaiSanPhams)
             {
