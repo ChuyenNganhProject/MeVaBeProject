@@ -81,8 +81,8 @@ namespace MeVaBeProject
                     row[1] = chiTietPhieuDat.tenSanPham;
                     row[2] = chiTietPhieuDat.soLuongDat - chiTietPhieuDat.soLuongNhan;
                     row[3] = 0;
-                    row[4] = null;
-                    row[5] = null;
+                    row[4] = DateTime.Now.ToString("dd-MM-yyyy");
+                    row[5] = DateTime.Now.AddDays(1).ToString("dd-MM-yyyy");
                     row[6] = chiTietPhieuDat.donGia;
                     row[7] = 0;
                     dtgvSanPhamTrongPhieuNhap.Rows.Add(row);
@@ -119,7 +119,7 @@ namespace MeVaBeProject
                 // Xóa số "0" ở đầu
                 txtSoLuongSanPham.Text = txtSoLuongSanPham.Text.TrimStart('0');
                 txtSoLuongSanPham.SelectionStart = txtSoLuongSanPham.Text.Length; // Đặt con trỏ ở cuối
-            }            
+            }
             if (dtgvSanPhamTrongPhieuNhap.SelectedRows.Count > 0)
             {
                 int soLuongNhap = int.Parse(txtSoLuongSanPham.Text);
@@ -146,8 +146,8 @@ namespace MeVaBeProject
                 foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuNhap.SelectedRows)
                 {
                     string price = row.Cells["donGiaSP"].Value.ToString();
-                    price = price.Replace("₫", "").Replace(".", "").Split(',')[0].Trim();
-                    int donGia = int.Parse(price);
+                    price = price.Split(',')[0].Trim();
+                    decimal donGia = decimal.Parse(price);
                     int soLuongDat = int.Parse(row.Cells["soLuongDaNhan"].Value.ToString());
                     decimal thanhTien = soLuongDat * donGia;
                     row.Cells["thanhTien"].Value = thanhTien;
@@ -160,12 +160,12 @@ namespace MeVaBeProject
         }
         private void TinhTongTien()
         {
-            int tongTien = 0;
+            decimal tongTien = 0;
             foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuNhap.Rows)
             {
                 string price = row.Cells["thanhTien"].Value.ToString();
-                price = price.Replace("₫", "").Replace(".", "").Split(',')[0].Trim();
-                int thanhTien = int.Parse(price);
+                price = price.Split(',')[0].Trim();
+                decimal thanhTien = decimal.Parse(price);
                 tongTien += thanhTien;
             }
             txtTongTien.Text = tongTien.ToString("C0");
@@ -183,7 +183,7 @@ namespace MeVaBeProject
         }
         private void ThemPhieuNhap()
         {
-            int tongTien = int.Parse(txtTongTien.Text.Replace("₫", "").Replace(".", "").Split(',')[0].Trim());
+            decimal tongTien = decimal.Parse(txtTongTien.Text.Replace("₫", "").Replace(".", "").Split(',')[0].Trim());
             PhieuNhap phieu = new PhieuNhap()
             {
                 maPhieuNhap = maPhieuNhap,
@@ -201,8 +201,8 @@ namespace MeVaBeProject
                     foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuNhap.Rows)
                     {
                         int soLuongNhan = int.Parse(row.Cells["soLuongDaNhan"].Value.ToString());
-                        int donGia = int.Parse(row.Cells["donGiaSP"].Value.ToString().Replace("₫", "").Replace(".", "").Split(',')[0].Trim());
-                        int thanhTien = int.Parse(row.Cells["thanhTien"].Value.ToString().Replace("₫", "").Replace(".", "").Split(',')[0].Trim());
+                        decimal donGia = decimal.Parse(row.Cells["donGiaSP"].Value.ToString().Split(',')[0].Trim());
+                        decimal thanhTien = decimal.Parse(row.Cells["thanhTien"].Value.ToString().Split(',')[0].Trim());
                         string ngaySanXuat = row.Cells["ngaySanXuat"].Value.ToString();
                         string hanSuDung = row.Cells["hanSuDung"].Value.ToString();
                         if (soLuongNhan > 0)
@@ -222,6 +222,8 @@ namespace MeVaBeProject
                         }
                     }
                     MessageBox.Show(this, "Tạo phiếu nhập thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DongForm?.Invoke(true);
+                    this.Close();
                 }
                 else
                 {
@@ -234,41 +236,66 @@ namespace MeVaBeProject
                 MessageBox.Show(this, "Tạo phiếu nhập thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private bool CheckSoLuongDat()
+        {
+            int soLuongSanPham = dtgvSanPhamTrongPhieuNhap.RowCount;
+            int dem = 0;
+            foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuNhap.Rows)
+            {
+                int soLuongNhan = int.Parse(row.Cells["soLuongDaNhan"].Value.ToString());                
+                if (soLuongNhan == 0)
+                {
+                    dem++;
+                }
+            }
+            if (dem==soLuongSanPham)
+            {
+                return false;
+            }
+            return true;
+        }
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (dtgvSanPhamTrongPhieuNhap.Rows.Count>0)
             {
-                if (!themLanCuoi)
+                if (CheckSoLuongDat())
                 {
-                    ThemPhieuNhap();
-                }
-                else
-                {
-                    bool chuaNhanDu = false;
-                    foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuNhap.Rows)
+                    if (!themLanCuoi)
                     {
-                        int soLuongConLai = int.Parse(row.Cells["soLuongConLai"].Value.ToString());
-                        int soLuongDaNhan = int.Parse(row.Cells["soLuongDaNhan"].Value.ToString());
-                        if (soLuongConLai != soLuongDaNhan)
-                        {
-                            chuaNhanDu = true;
-                            break;
-                        }
+                        ThemPhieuNhap();
                     }
-                    if (chuaNhanDu)
+                    else
                     {
-                        DialogResult r = MessageBox.Show(this, $"Đây là lần cuối để tạo phiếu nhập của phiếu đặt ({txtMaPhieuDat.Text})" +
-                            $" này nhưng số lượng sản phẩm nhận vào chưa đủ so với số lượng đặt, " +
-                            $"bạn có chắc chắn vẫn muốn tạo phiếu nhập này không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (r == DialogResult.Yes)
+                        bool chuaNhanDu = false;
+                        foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuNhap.Rows)
+                        {
+                            int soLuongConLai = int.Parse(row.Cells["soLuongConLai"].Value.ToString());
+                            int soLuongDaNhan = int.Parse(row.Cells["soLuongDaNhan"].Value.ToString());
+                            if (soLuongConLai != soLuongDaNhan)
+                            {
+                                chuaNhanDu = true;
+                                break;
+                            }
+                        }
+                        if (chuaNhanDu)
+                        {
+                            DialogResult r = MessageBox.Show(this, $"Đây là lần cuối để tạo phiếu nhập của phiếu đặt ({txtMaPhieuDat.Text})" +
+                                $" này nhưng số lượng sản phẩm nhận vào chưa đủ so với số lượng đặt, " +
+                                $"bạn có chắc chắn vẫn muốn tạo phiếu nhập này không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (r == DialogResult.Yes)
+                            {
+                                ThemPhieuNhap();
+                            }
+                        }
+                        else
                         {
                             ThemPhieuNhap();
                         }
                     }
-                    else
-                    {
-                        ThemPhieuNhap();
-                    }
+                }
+                else
+                {
+                    MessageBox.Show(this, "Lỗi số lượng nhận của tất cả sản phẩm bằng 0 hoặc không có ngày sản xuất, hạn sử dụng. Không thể tạo phiếu nhập", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

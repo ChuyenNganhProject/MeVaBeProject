@@ -16,21 +16,28 @@ namespace MeVaBeProject
         private string maLoaiNV;
         private QuyenHeThongBLL quyenHeThongBLL;
         private ChiTietQuyenCuaLoaiNVBLL chiTietQuyenBLL;
+        private BindingSource bindingSource;
         public frmQLPhanQuyen(string maLoaiNV)
         {
             InitializeComponent();
             this.quyenHeThongBLL = new QuyenHeThongBLL();
             this.chiTietQuyenBLL = new ChiTietQuyenCuaLoaiNVBLL();
+            this.bindingSource = new BindingSource();
             this.maLoaiNV = maLoaiNV;
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        private void LoadQuyenCuaLoaiNhanVien()
+        {
+            bindingSource.DataSource = chiTietQuyenBLL.LayDanhSachQuyenCuaLoaiNhanVien(maLoaiNV);            
+        }
         private void frmQLPhanQuyen_Load(object sender, EventArgs e)
         {
             dtgvQuyenHeThong.DataSource = quyenHeThongBLL.DanhSachQuyen();
-            dtgvChiTietQuyen.DataSource = chiTietQuyenBLL.LayDanhSachQuyenCuaLoaiNhanVien(maLoaiNV);
+            LoadQuyenCuaLoaiNhanVien();
+            dtgvChiTietQuyen.DataSource = bindingSource;
             dtgvChiTietQuyen.Columns["QuyenHeThong"].Visible = false;
             dtgvChiTietQuyen.Columns["LoaiNhanVien"].Visible = false;
             dtgvChiTietQuyen.Columns["maLoaiNhanVien"].Visible = false;
@@ -48,15 +55,19 @@ namespace MeVaBeProject
                         maLoaiNhanVien = maLoaiNV,
                         ngayCapQuyen = DateTime.Now,
                     };
-                    result = chiTietQuyenBLL.TaoChiTietQuyenCuaLoaiNhanVien(ctQuyen);
-                    if (!result)
+                    if(chiTietQuyenBLL.TimQuyenCuaNhanVien(maLoaiNV, ctQuyen.maQuyen)==null)
                     {
-                        break;
+                        result = chiTietQuyenBLL.TaoChiTietQuyenCuaLoaiNhanVien(ctQuyen);
+                        if (!result)
+                        {
+                            break;
+                        }
                     }
                 }
                 if (result)
                 {
                     MessageBox.Show(this, "Phân quyền thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadQuyenCuaLoaiNhanVien();
                 }
                 else
                 {
@@ -85,6 +96,7 @@ namespace MeVaBeProject
                 if (result)
                 {
                     MessageBox.Show(this, "Xóa quyền thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadQuyenCuaLoaiNhanVien();
                 }
                 else
                 {

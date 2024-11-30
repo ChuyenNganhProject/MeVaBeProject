@@ -14,16 +14,18 @@ namespace MeVaBeProject
 {
     public partial class frmTaoKhuyenMai : Form
     {
+        private NhanVien nhanVien;
         private frmTrangChu parentfrm;
         private string MaKM;
 
         KhuyenMaiBLL kmbll = new KhuyenMaiBLL();
         KhuyenMaiSanPhamBLL kmspbll = new KhuyenMaiSanPhamBLL();
-        public frmTaoKhuyenMai(frmTrangChu parentfrm, string MaKM)
+        public frmTaoKhuyenMai(frmTrangChu parentfrm,NhanVien nhanVien, string MaKM)
         {
             InitializeComponent();
             this.parentfrm = parentfrm;
             this.MaKM = MaKM;
+            this.nhanVien = nhanVien;
             this.Load += FrmTaoKhuyenMai_Load;
             this.dgvSanPhamKhuyenMai.CellFormatting += DgvSanPhamKhuyenMai_CellFormatting;
             this.btnBack.Click += BtnBack_Click;
@@ -305,7 +307,7 @@ namespace MeVaBeProject
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            frmQLKhuyenMai frm = new frmQLKhuyenMai(parentfrm);
+            frmQLKhuyenMai frm = new frmQLKhuyenMai(parentfrm, nhanVien);
             parentfrm.OpenChildForm(frm);
         }
 
@@ -313,7 +315,7 @@ namespace MeVaBeProject
         {
             if(txtTenKM.Enabled == false)
             {
-                frmThemSanPhamKhuyenMai frm = new frmThemSanPhamKhuyenMai(parentfrm, MaKM);
+                frmThemSanPhamKhuyenMai frm = new frmThemSanPhamKhuyenMai(parentfrm,nhanVien, MaKM);
                 parentfrm.OpenChildForm(frm);
             }
             else

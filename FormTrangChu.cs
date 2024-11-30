@@ -85,13 +85,22 @@ namespace MeVaBeProject
                         case "Q0001":
                             btnKhachHang.Enabled = true;
                             break;
+                        case "Q0003":
+                            btnNhanVien.Enabled = true;
+                            break;
                         case "Q0004":
                             btnNhanVien.Enabled = true;
                             break;
                         case "Q0005":
                             btnQLNhaCungCap.Enabled= true;
                             break;
+                        case "Q0006":
+                            btnSanPham.Enabled = true;
+                            break;
                         case "Q0007":
+                            btnSanPham.Enabled = true;
+                            break;
+                        case "Q0008":
                             btnSanPham.Enabled = true;
                             break;
                         case "Q0009":
@@ -99,6 +108,9 @@ namespace MeVaBeProject
                             break;
                         case "Q0010":
                             btnNhapHang.Enabled= true;
+                            break;
+                        case "Q0011":
+                            btnDatHang.Enabled = true;
                             break;
                         case "Q0012":
                             btnDashboard.Enabled= true;
@@ -164,7 +176,7 @@ namespace MeVaBeProject
 
         private void BtnSanPham_Click(object sender, EventArgs e)
         {
-            frmSanPham frm = new frmSanPham(this);
+            frmSanPham frm = new frmSanPham(this,nhanVien);
             OpenChildForm(frm);
         }
 
@@ -197,7 +209,7 @@ namespace MeVaBeProject
 
         private void btnDatHang_Click(object sender, EventArgs e)
         {
-            frmQLDatHang frmQLDatHang = new frmQLDatHang(nhanVien.maNhanVien);
+            frmQLDatHang frmQLDatHang = new frmQLDatHang(nhanVien);
             OpenChildForm(frmQLDatHang);
         }
 
