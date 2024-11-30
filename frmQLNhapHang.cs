@@ -38,7 +38,6 @@ namespace MeVaBeProject
         }
         private void frmNhapHang_Load(object sender, EventArgs e)
         {
-            this.rdbtnMaPhieuNhap.Checked = true;
             LoadData();
             dtgvPhieuNhap.DataSource = bindingSource;
             dtgvPhieuNhap.Columns["maNhanVien"].Visible = false;
@@ -50,7 +49,6 @@ namespace MeVaBeProject
             frmNhapHang.DongForm += FrmNhapHang_DongForm;
             frmNhapHang.ShowDialog();         
         }
-
         private void FrmNhapHang_DongForm(bool loadData)
         {
             if (loadData)
@@ -58,7 +56,6 @@ namespace MeVaBeProject
                 LoadData();
             }
         }
-
         private void btnInPhieuNhap_Click(object sender, EventArgs e)
         {
             if (dtgvPhieuNhap.SelectedRows.Count > 0)
@@ -85,24 +82,66 @@ namespace MeVaBeProject
                 bindingSourceCTPN.Clear();
             }            
         }
-
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            if (rdbtnMaPhieuNhap.Checked)
+            string text = txtTimKiem.Text;
+            if (!string.IsNullOrEmpty(text))
             {
-                string maPhieuNhap = txtTimKiem.Text.Trim();
-                bindingSource.DataSource = phieuNhapBLL.TimKiemPhieuNhapTheoMaPhieuNhap(maPhieuNhap);
+                text = text.Substring(0, 2);
+                if (text=="PN")
+                {
+                    string maPhieuNhap = txtTimKiem.Text.Trim();
+                    bindingSource.DataSource = phieuNhapBLL.TimKiemPhieuNhapTheoMaPhieuNhap(maPhieuNhap);
+                }
+                else if (text=="PD")
+                {
+                    string maPhieuDat = txtTimKiem.Text.Trim();
+                    bindingSource.DataSource = phieuNhapBLL.TimKiemPhieuNhapTheoMaPhieuDat(maPhieuDat);
+                }
+                else
+                {
+                    bindingSource.DataSource = null;
+                }                
             }
             else
             {
-                string maPhieuDat = txtTimKiem.Text.Trim();
-                bindingSource.DataSource = phieuNhapBLL.TimKiemPhieuNhapTheoMaPhieuDat(maPhieuDat);
+                MessageBox.Show(this, "Vui lòng nhập từ khóa để tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private void dtNgayTaoPhieuNhap_ValueChanged(object sender, EventArgs e)
         {
             bindingSource.DataSource = phieuNhapBLL.LocDanhSachPhieuNhapTheoNgayLap(dtNgayTaoPhieuNhap.Value);
+        }
+        private void txtTimKiem_Leave(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text == "")
+            {
+                txtTimKiem.Text = "Nhập mã phiếu đặt hoặc phiếu nhập để tìm";
+                txtTimKiem.ForeColor = Color.Silver;
+                txtTimKiem.Font = new Font(txtTimKiem.Font, FontStyle.Italic);
+                LoadData();
+            }
+        }
+        private void txtTimKiem_Enter(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text == "Nhập mã phiếu đặt hoặc phiếu nhập để tìm")
+            {
+                txtTimKiem.Text = "";
+                txtTimKiem.ForeColor = Color.Black;
+                txtTimKiem.Font = new Font(txtTimKiem.Font, FontStyle.Regular);
+            }
+        }
+        private void txtTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra xem phím nhấn có phải là Enter không
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Tự động click vào nút tìm kiếm
+                btnTimKiem.PerformClick();
+
+                // Ngăn chặn âm thanh bíp khi nhấn Enter
+                e.Handled = true;
+            }
         }
     }
 }

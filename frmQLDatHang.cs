@@ -13,23 +13,28 @@ namespace MeVaBeProject
 {
     public partial class frmQLDatHang : Form
     {
-        private string maNhanVien;
+        private NhanVien nhanVien;
         private PhieuDatBLL phieuDatBLL;
         private ChiTietPhieuDatBLL chiTietPhieuDatBLL;
+        private ChiTietQuyenCuaLoaiNVBLL ctQuyen;
         private BindingSource bindingSource;
         private BindingSource bindingSourceCTPD;
-        public frmQLDatHang(string maNhanVien)
+
+        private bool QuyenDuyetPhieu;
+        private bool QuyenTaoPhieu;
+        public frmQLDatHang(NhanVien nhanVien)
         {
-            this.maNhanVien = maNhanVien;
+            this.nhanVien = nhanVien;
             this.phieuDatBLL = new PhieuDatBLL();
             this.chiTietPhieuDatBLL = new ChiTietPhieuDatBLL();
+            this.ctQuyen = new ChiTietQuyenCuaLoaiNVBLL();
             this.bindingSource = new BindingSource();
             this.bindingSourceCTPD = new BindingSource();
             InitializeComponent();
         }        
         private void btnTaoPhieuDat_Click(object sender, EventArgs e)
         {
-            frmDatHang frmDatHang = new frmDatHang(maNhanVien,true,string.Empty,string.Empty);
+            frmDatHang frmDatHang = new frmDatHang(nhanVien.maNhanVien, true,string.Empty,string.Empty);
             frmDatHang.DongForm += FormDatHang_Closed;
             frmDatHang.ShowDialog();
         }
@@ -96,7 +101,7 @@ namespace MeVaBeProject
                 {
                     string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
                     string maNhaCungCap = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maNhaCungCap"].Value.ToString();
-                    frmDatHang frmDatHang = new frmDatHang(maNhanVien, false, maPhieuDat,maNhaCungCap);
+                    frmDatHang frmDatHang = new frmDatHang(nhanVien.maNhanVien, false, maPhieuDat,maNhaCungCap);
                     frmDatHang.DongForm += FormDatHang_Closed;
                     frmDatHang.ShowDialog();
                 }
@@ -122,6 +127,23 @@ namespace MeVaBeProject
             dtgvDanhSachPhieuDat.Columns["NhanVien"].Visible = false;
             dtgvDanhSachPhieuDat.Columns["ghiChu"].Visible = false;
             dtgvDanhSachPhieuDat.Columns["ghiChuKhongDuyet"].DisplayIndex = dtgvDanhSachPhieuDat.Columns.Count - 1;
+
+            QuyenDuyetPhieu = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0011") != null) ? true : false;
+            if (!QuyenDuyetPhieu)
+            {
+                btnDuyetPhieuDat.Visible = false;
+                btnKoDuyet.Visible = false;
+                btnKhongXacNhan.Visible = false;
+                btnXacNhan.Visible = false;
+            }
+            QuyenTaoPhieu = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0009") != null) ? true : false;
+            if (!QuyenTaoPhieu)
+            {
+                btnTaoPhieuDat.Visible = false;
+                btnSuaPhieuDat.Visible = false;
+                btnXoaPhieuDat.Visible = false;
+                btnInPhieuDat.Visible = false;
+            }
         }
         private void dtNgayTaoPhieuNhap_ValueChanged(object sender, EventArgs e)
         {
@@ -167,50 +189,52 @@ namespace MeVaBeProject
                     frmGhiChu frmGhiChu = new frmGhiChu(maPhieuDat);
                     frmGhiChu.ShowDialog();
                 }
-                string trangThai = dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["trangThai"].Value.ToString();
-                if (trangThai!="Đã duyệt")
+                if (QuyenDuyetPhieu)
                 {
-                    btnDuyetPhieuDat.Enabled = true;
-                    btnKoDuyet.Enabled = true;
-                    btnXacNhan.Enabled = false;
-                    btnKhongXacNhan.Enabled = false;
+                    string trangThai = dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["trangThai"].Value.ToString();
+                    if (trangThai != "Đã duyệt")
+                    {
+                        btnDuyetPhieuDat.Enabled = true;
+                        btnKoDuyet.Enabled = true;
+                        btnXacNhan.Enabled = false;
+                        btnKhongXacNhan.Enabled = false;
+                    }
+                    else if (trangThai == "Đã duyệt")
+                    {
+                        btnDuyetPhieuDat.Enabled = false;
+                        btnKoDuyet.Enabled = false;
+                    }
+                    string trangThaiXacNhan;
+                    if (dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["trangThaiXacNhan"].Value != null)
+                    {
+                        trangThaiXacNhan = dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["trangThaiXacNhan"].Value.ToString();
+                    }
+                    else
+                    {
+                        trangThaiXacNhan = null;
+                    }
+                    if (trangThaiXacNhan == "Không chấp thuận")
+                    {
+                        btnXacNhan.Enabled = false;
+                        btnKhongXacNhan.Enabled = false;
+                    }
+                    else if (trangThaiXacNhan == null && trangThai == "Đã duyệt")
+                    {
+                        btnXacNhan.Enabled = true;
+                        btnKhongXacNhan.Enabled = true;
+                    }
+                    else if (trangThaiXacNhan == null && trangThai != "Đã duyệt")
+                    {
+                        btnXacNhan.Enabled = false;
+                        btnKhongXacNhan.Enabled = false;
+                    }
+                    else if (trangThaiXacNhan == "Đã chấp thuận")
+                    {
+                        btnXacNhan.Enabled = false;
+                        btnKhongXacNhan.Enabled = false;
+                        btnKoDuyet.Enabled = false;
+                    }
                 }                
-                else if(trangThai == "Đã duyệt")
-                {
-                    btnDuyetPhieuDat.Enabled = false;
-                    btnKoDuyet.Enabled = false;
-                }
-                string trangThaiXacNhan;
-                if (dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["trangThaiXacNhan"].Value != null)
-                {
-                    trangThaiXacNhan = dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["trangThaiXacNhan"].Value.ToString();
-                }
-                else
-                {
-                    trangThaiXacNhan = null;
-                }
-                if (trangThaiXacNhan == "Không chấp thuận")
-                {
-                    btnXacNhan.Enabled = false;
-                    btnKhongXacNhan.Enabled = false;
-                }    
-                else if(trangThaiXacNhan == null && trangThai == "Đã duyệt")
-                {
-                    btnXacNhan.Enabled = true;
-                    btnKhongXacNhan.Enabled = true;
-                }
-                else if (trangThaiXacNhan == null && trangThai != "Đã duyệt")
-                {
-                    btnXacNhan.Enabled = false;
-                    btnKhongXacNhan.Enabled = false;
-                }
-                else if(trangThaiXacNhan == "Đã chấp thuận")
-                {
-                    btnXacNhan.Enabled = false;
-                    btnKhongXacNhan.Enabled = false;
-                    btnKoDuyet.Enabled = false;
-                }
-                
             }
         }
         private void btnXacNhan_Click(object sender, EventArgs e)
@@ -294,6 +318,37 @@ namespace MeVaBeProject
 
                 e.CellStyle.SelectionBackColor = Color.Green;
                 e.CellStyle.SelectionForeColor = Color.White;
+            }
+        }
+        private void txtTimKiem_Leave(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text == "")
+            {
+                txtTimKiem.Text = "Nhập mã phiếu đặt để tìm";
+                txtTimKiem.ForeColor = Color.Silver;
+                txtTimKiem.Font = new Font(txtTimKiem.Font, FontStyle.Italic);
+                LoadData();
+            }
+        }
+        private void txtTimKiem_Enter(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text == "Nhập mã phiếu đặt để tìm")
+            {
+                txtTimKiem.Text = "";
+                txtTimKiem.ForeColor = Color.Black;
+                txtTimKiem.Font = new Font(txtTimKiem.Font, FontStyle.Regular);
+            }
+        }
+        private void txtTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra xem phím nhấn có phải là Enter không
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Tự động click vào nút tìm kiếm
+                btnTimKiem.PerformClick();
+
+                // Ngăn chặn âm thanh bíp khi nhấn Enter
+                e.Handled = true;
             }
         }
     }

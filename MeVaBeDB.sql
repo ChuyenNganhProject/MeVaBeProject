@@ -144,9 +144,9 @@ CREATE TABLE PhieuDat (
     maPhieuDat VARCHAR(50) PRIMARY KEY,
     maNhanVien VARCHAR(50),
 	maNhaCungCap VARCHAR(10),
-    ngayLap DATE,
-	ngayCapNhat DATE,
-	soLuong INT,
+    ngayLap DATETIME,
+	ngayCapNhat DATETIME,
+	soLuong INT,	
     tongTien DECIMAL(18, 2),
 	trangThai NVARCHAR(20),
 	trangThaiXacNhan NVARCHAR(20),
@@ -219,7 +219,7 @@ CREATE TABLE PhieuNhap (
     maPhieuNhap VARCHAR(50) PRIMARY KEY,
 	maPhieuDat VARCHAR(50),
 	maNhanVien VARCHAR(50),
-    ngayNhap DATE,
+    ngayNhap DATETIME,
 	soLan INT,
 	tongTien DECIMAL(18,2),
 	FOREIGN KEY (maPhieuDat) REFERENCES PhieuDat(maPhieuDat),
@@ -230,7 +230,7 @@ CREATE TABLE ChiTietPhieuNhap (
     maPhieuNhap VARCHAR(50),
     maSanPham VARCHAR(50),
 	maPhieuDat VARCHAR(50),
-    soLuong INT,
+    soLuong INT,	
     donGia DECIMAL(18,2),
 	ngaySanXuat DATE,
 	hanSuDung DATE,
@@ -299,9 +299,7 @@ INSERT INTO LoaiNhanVien (maLoaiNhanVien, tenLoaiNhanVien)
 VALUES 
     (N'LNV001', N'Quản Lý'),
     (N'LNV002', N'Nhân Viên Bán Hàng'),
-    (N'LNV003', N'Nhân Viên Kho'),
-	(N'LNV004', N'Nhân Viên Giao Hàng'),
-	(N'LNV005', N'Nhân Viên Kế Toán')
+    (N'LNV003', N'Nhân Viên Kho')
 GO
 SET DATEFORMAT DMY
 INSERT INTO ChiTietQuyenCuaLoaiNhanVien(maLoaiNhanVien,maQuyen,ngayCapQuyen) 
@@ -480,7 +478,7 @@ CREATE TRIGGER TRG_TaoPhieuNhap ON PhieuNhap
 AFTER INSERT
 AS
 BEGIN
-	DECLARE @maPD VARCHAR(50), @ngayLapPhieuNhap DATE, @ngayLapPhieuDat DATE, @trangThai NVARCHAR(20), @trangThaiXacNhan NVARCHAR(20)
+	DECLARE @maPD VARCHAR(50), @ngayLapPhieuNhap DATETIME, @ngayLapPhieuDat DATETIME, @trangThai NVARCHAR(20), @trangThaiXacNhan NVARCHAR(20)
 	SELECT @maPD = maPhieuDat, @ngayLapPhieuNhap = ngayNhap FROM INSERTED
 	SELECT @ngayLapPhieuDat = ngayLap, @trangThai = trangThai, @trangThaiXacNhan = trangThaiXacNhan FROM PhieuDat WHERE maPhieuDat = @maPD
 	IF(@trangThai = N'Chưa duyệt' OR @trangThai = N'Không duyệt')
@@ -491,12 +489,12 @@ BEGIN
 		ROLLBACK
 END
 GO
-CREATE TRIGGER TRG_TaoChiTietPhieuNhap ON ChiTietPhieuNhap
+ALTER TRIGGER TRG_TaoChiTietPhieuNhap ON ChiTietPhieuNhap
 AFTER INSERT
 AS
 BEGIN
-	DECLARE @maSP VARCHAR(50),@maPD VARCHAR(50), @soLuong INT
-	SELECT @maSP = maSanPham, @maPD = maPhieuDat, @soLuong = soLuong FROM INSERTED
+	DECLARE @maSP VARCHAR(50),@maPD VARCHAR(50), @soLuong INT, @ngaySanXuat DATE, @hanSuDung DATE
+	SELECT @maSP = maSanPham, @maPD = maPhieuDat, @soLuong = soLuong, @ngaySanXuat = ngaySanXuat, @hanSuDung = hanSuDung FROM INSERTED
 
 	DECLARE @soLuongDaNhan INT, @soLuongDat INT
 	SELECT @soLuongDaNhan = soLuongNhan, @soLuongDat = soLuongDat FROM ChiTietPhieuDat WHERE maSanPham = @maSP AND maPhieuDat = @maPD
@@ -507,6 +505,14 @@ BEGIN
 			--Cập nhật số lượng mới
 			UPDATE SanPham
 			SET soLuong = soLuong + @soLuong
+			WHERE maSanPham = @maSP
+			--Cập nhật ngày sản xuất
+			UPDATE SanPham
+			SET ngaySanXuat = @ngaySanXuat
+			WHERE maSanPham = @maSP
+			--Cập nhật hạn sử dụng
+			UPDATE SanPham
+			SET hanSuDung = @hanSuDung
 			WHERE maSanPham = @maSP
 			--Cập nhật số lượng đã nhận
 			UPDATE ChiTietPhieuDat
@@ -620,7 +626,7 @@ END
 SELECT * FROM SanPham
 SELECT * FROM KhuyenMai
 SELECT * FROM KhuyenMaiSanPham
-SELECT * FROM KhachHang
+
 
 GO
 --CREATE TRIGGER trg_UpdateHangThanhVien

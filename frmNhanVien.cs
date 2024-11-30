@@ -390,8 +390,6 @@ namespace MeVaBeProject
                 {
                     dgvNhanVien.Columns["maLoaiNhanVien"].Visible = false; // Ẩn mã loại nhân viên
                 }
-
-                dgvNhanVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
             {

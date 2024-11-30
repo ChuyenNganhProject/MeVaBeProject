@@ -14,10 +14,11 @@ namespace MeVaBeProject
 {
     public partial class frmQLKhuyenMai : Form
     {
+        private NhanVien nhanVien;
         private frmTrangChu parentfrm;
         KhuyenMaiBLL kmbll = new KhuyenMaiBLL();
         private string MaKM;
-        public frmQLKhuyenMai(frmTrangChu parentfrm)
+        public frmQLKhuyenMai(frmTrangChu parentfrm, NhanVien nhanVien)
         {
             InitializeComponent();
             this.parentfrm = parentfrm;
@@ -28,6 +29,7 @@ namespace MeVaBeProject
             this.btnXemKhuyenMai.Click += BtnXemKhuyenMai_Click;
             this.btnReset.Click += BtnReset_Click;
             this.dgvKhuyenMai.SelectionChanged += DgvKhuyenMai_SelectionChanged;
+            this.nhanVien = nhanVien;
         }
 
         private void BtnReset_Click(object sender, EventArgs e)
@@ -47,7 +49,7 @@ namespace MeVaBeProject
 
         private void BtnXemKhuyenMai_Click(object sender, EventArgs e)
         {
-            frmTaoKhuyenMai frm = new frmTaoKhuyenMai(parentfrm, MaKM);
+            frmTaoKhuyenMai frm = new frmTaoKhuyenMai(parentfrm,nhanVien, MaKM);
             parentfrm.OpenChildForm(frm);
         }
 
@@ -101,13 +103,13 @@ namespace MeVaBeProject
 
         private void BtnTaoKhuyenMai_Click(object sender, EventArgs e)
         {
-            frmTaoKhuyenMai frm = new frmTaoKhuyenMai(parentfrm, "");
+            frmTaoKhuyenMai frm = new frmTaoKhuyenMai(parentfrm,nhanVien, "");
             parentfrm.OpenChildForm(frm);
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            frmSanPham frm = new frmSanPham(parentfrm);
+            frmSanPham frm = new frmSanPham(parentfrm,nhanVien);
             parentfrm.OpenChildForm(frm);
         }
     }

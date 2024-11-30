@@ -18,6 +18,10 @@ namespace BLL
         {
             return ctQuyen.LayDanhSachQuyenCuaLoaiNhanVien(maLoaiNV);
         }
+        public ChiTietQuyenCuaLoaiNhanVien TimQuyenCuaNhanVien(string maLoaiNV,string maQuyen)
+        {
+            return ctQuyen.TimQuyenCuaNhanVien(maLoaiNV, maQuyen);
+        }
         public bool TaoChiTietQuyenCuaLoaiNhanVien(ChiTietQuyenCuaLoaiNhanVien pQuyen)
         {
             return ctQuyen.TaoChiTietQuyenCuaLoaiNhanVien(pQuyen);
