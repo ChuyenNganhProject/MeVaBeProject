@@ -113,7 +113,7 @@ namespace MeVaBeProject
                 PhieuDat phieuDat = phieuDatBLL.TimKiemPhieuDatTheoMaPhieuDat(maPhieuDat);
                 string tongTien = phieuDat.tongTien.ToString();
                 tongTien = tongTien.Split(',')[0].Trim();
-                txtTongTien.Text = int.Parse(tongTien).ToString("C0");
+                txtTongTien.Text = decimal.Parse(tongTien).ToString("C0");
             }
         }
         private void cbLoaiSP_SelectedValueChanged(object sender, EventArgs e)
@@ -150,19 +150,34 @@ namespace MeVaBeProject
             DongForm?.Invoke(true);
             this.Close();
         }
-        private void btnLuu_Click(object sender, EventArgs e)
+        private bool CheckChiTietPhieuDatSoLuongDat()
+        {
+            foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuDat.Rows)
+            {
+                int soLuongDat = int.Parse(row.Cells["soLuongDat"].Value.ToString());
+                if (soLuongDat == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        private bool CheckChiTietPhieuDatDonGiaDat()
+        {
+            foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuDat.Rows)
+            {
+                decimal donGia = decimal.Parse(row.Cells["donGiaSP"].Value.ToString());
+                if (donGia == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        private void LuuPhieuDat(int soLuongSanPham)
         {
             if (themPhieu)
             {
-                int soLuongSanPham = 0;
-                foreach(DataGridViewRow row in dtgvSanPhamTrongPhieuDat.Rows)
-                {
-                    int soLuong = int.Parse(row.Cells["soLuongDat"].Value.ToString());
-                    if (soLuong>0)
-                    {
-                        soLuongSanPham++;
-                    }
-                }
                 //Tạo phiếu đặt
                 PhieuDat pPhieuDat = new PhieuDat()
                 {
@@ -192,7 +207,7 @@ namespace MeVaBeProject
                             donGia = decimal.Parse(donGia),
                             tongTien = decimal.Parse(tongTien)
                         };
-                        if (pChiTietPhieuDat.soLuongDat>0)
+                        if (pChiTietPhieuDat.soLuongDat > 0)
                         {
                             resultTaoCTPD = chiTietPhieuDatBLL.ThemChiTietPhieuDat(pChiTietPhieuDat);
                             if (!resultTaoCTPD)
@@ -201,7 +216,7 @@ namespace MeVaBeProject
                                 phieuDatBLL.XoaPhieuDat(pPhieuDat);
                                 break;
                             }
-                        }                      
+                        }
                     }
                     if (resultTaoCTPD)
                     {
@@ -224,7 +239,7 @@ namespace MeVaBeProject
                     maNhanVien = maNhanVien,
                     ngayLap = DateTime.Now,
                     ngayCapNhat = DateTime.Now,
-                    soLuong = dtgvSanPhamTrongPhieuDat.RowCount,
+                    soLuong = soLuongSanPham,
                     tongTien = decimal.Parse(txtTongTien.Text.Replace("₫", "").Replace(".", "").Trim()),
                     trangThai = "Chưa duyệt"
                 };
@@ -246,7 +261,7 @@ namespace MeVaBeProject
                             donGia = decimal.Parse(donGia),
                             tongTien = decimal.Parse(tongTien)
                         };
-                        if (pChiTietPhieuDat.soLuongDat>0)
+                        if (pChiTietPhieuDat.soLuongDat > 0)
                         {
                             if (chiTietPhieuDatBLL.KiemTraTonTaiChiTietPhieuDat(pChiTietPhieuDat))
                             {
@@ -255,13 +270,13 @@ namespace MeVaBeProject
                             else
                             {
                                 resultSuaCTPD = chiTietPhieuDatBLL.ThemChiTietPhieuDat(pChiTietPhieuDat);
-                            }                            
+                            }
                         }
                         else
                         {
                             chiTietPhieuDatBLL.XoaChiTietPhieuDat(pChiTietPhieuDat);
                         }
-                    }                    
+                    }
                     //Xóa những sản phẩm khỏi chi tiết phiếu đặt
                     bool xoaSanPham = true;
                     if (chiTietPhieuDatBiXoa.Count > 0)
@@ -273,8 +288,8 @@ namespace MeVaBeProject
                             xoaSanPham = chiTietPhieuDatBLL.XoaChiTietPhieuDat(maPhieuDat, maSanPham);
                             if (!xoaSanPham)
                             {
-                                break;                                
-                            }                           
+                                break;
+                            }
                         }
                     }
                     if (resultSuaCTPD && xoaSanPham)
@@ -289,6 +304,40 @@ namespace MeVaBeProject
                 else
                 {
                     MessageBox.Show(this, "Sửa phiếu đặt thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            if (dtgvSanPhamTrongPhieuDat.RowCount>0)
+            {
+                if (CheckChiTietPhieuDatDonGiaDat())
+                {
+                    if (!CheckChiTietPhieuDatSoLuongDat())
+                    {
+                        DialogResult r = MessageBox.Show(this, "Có sản phẩm chưa có số lượng đặt. Bạn có chắc chắn vẫn muốn lưu lại ko?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (r == DialogResult.Yes)
+                        {
+                            int soLuongSanPham = 0;
+                            foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuDat.Rows)
+                            {
+                                int soLuong = int.Parse(row.Cells["soLuongDat"].Value.ToString());
+                                if (soLuong > 0)
+                                {
+                                    soLuongSanPham++;
+                                }
+                            }
+                            LuuPhieuDat(soLuongSanPham);
+                        }
+                    }
+                    else
+                    {
+                        LuuPhieuDat(dtgvSanPhamTrongPhieuDat.RowCount);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(this, "Có sản phẩm chưa có đơn giá đặt. Vui lòng nhập đơn giá vào", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -375,7 +424,7 @@ namespace MeVaBeProject
             {
                 txtMaSanPham.Text = dtgvSanPhamTrongPhieuDat.Rows[e.RowIndex].Cells["maSP"].Value.ToString();
                 txtTenSanPham.Text = dtgvSanPhamTrongPhieuDat.Rows[e.RowIndex].Cells["tenSP"].Value.ToString();
-                txtSoLuongSanPham.Text = dtgvSanPhamTrongPhieuDat.Rows[e.RowIndex].Cells["soLuongDat"].Value.ToString();
+                txtSoLuongSanPham.Text = dtgvSanPhamTrongPhieuDat.Rows[e.RowIndex].Cells["soLuongDat"].Value.ToString();                
                 string donGia = dtgvSanPhamTrongPhieuDat.Rows[e.RowIndex].Cells["donGiaSP"].Value.ToString();
                 donGia = donGia.Replace("₫", "").Replace(".", "").Split(',')[0].Trim();
                 txtDonGia.Text = donGia;
@@ -448,12 +497,12 @@ namespace MeVaBeProject
         }
         private void TinhTongTien()
         {
-            int tongTien = 0;
+            decimal tongTien = 0;
             foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuDat.Rows)
             {
                 string price = row.Cells["thanhTien"].Value.ToString();
                 price = price.Replace("₫", "").Replace(".", "").Split(',')[0].Trim();
-                int thanhTien = int.Parse(price);
+                decimal thanhTien = decimal.Parse(price);
                 tongTien += thanhTien;
             }
             txtTongTien.Text = tongTien.ToString("C0");

@@ -65,5 +65,16 @@ namespace DTO.Properties {
                 return ((string)(this["MeVaBeDBConnectionString2"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ADMIN-PC;Initial Catalog=MeVaBeDB;Integrated Security=True;TrustServe" +
+            "rCertificate=True")]
+        public string MeVaBeDBConnectionString3 {
+            get {
+                return ((string)(this["MeVaBeDBConnectionString3"]));
+            }
+        }
     }
 }

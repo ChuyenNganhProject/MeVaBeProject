@@ -33,7 +33,7 @@ namespace MeVaBeProject
             {
                 PhieuDat phieuDat = danhSachPhieuDat[i];
                 List<PhieuNhap> danhSachPhieuNhap = phieuNhapBLL.TimKiemPhieuNhapTheoMaPhieuDat(phieuDat.maPhieuDat);
-                if (danhSachPhieuNhap.Count==3 || phieuDat.ngayLap.Value.Day == DateTime.Now.Day)
+                if (danhSachPhieuNhap.Count==3 || (phieuDat.ngayLap.Value.Hour+5 > DateTime.Now.Hour && phieuDat.ngayLap.Value.Day == DateTime.Now.Day))
                 {
                     danhSachPhieuDat.Remove(phieuDat);
                 }

@@ -16,6 +16,7 @@ namespace MeVaBeProject
 {
     public partial class frmThemSanPhamKhuyenMai : Form
     {
+        private NhanVien nhanVien;
         private frmTrangChu parentfrm;
 
         LoaiSanPhamBLL lspbll = new LoaiSanPhamBLL();
@@ -25,11 +26,12 @@ namespace MeVaBeProject
         private string MaKM;
         private string MaSp;
         
-        public frmThemSanPhamKhuyenMai(frmTrangChu parentfrm, string MaKM)
+        public frmThemSanPhamKhuyenMai(frmTrangChu parentfrm,NhanVien nhanVien, string MaKM)
         {
             InitializeComponent();
             this.parentfrm = parentfrm;
             this.MaKM = MaKM;
+            this.nhanVien = nhanVien;
             this.Load += FrmThemSanPhamKhuyenMai_Load;
             this.btnBack.Click += BtnBack_Click;
 
@@ -312,7 +314,7 @@ namespace MeVaBeProject
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            frmTaoKhuyenMai frm = new frmTaoKhuyenMai(parentfrm, MaKM);
+            frmTaoKhuyenMai frm = new frmTaoKhuyenMai(parentfrm,nhanVien, MaKM);
             parentfrm.OpenChildForm(frm);
         }
 

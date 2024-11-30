@@ -41,7 +41,7 @@ namespace MeVaBeProject
             if(nhanVien != null)
             {
                 MessageBox.Show($"Đăng nhập thành công! Xin chào, {nhanVien.tenNhanVien}");
-                if(nhanVien.maLoaiNhanVien == "LNV001")
+                if(nhanVien.maLoaiNhanVien != "LNV002")
                 {
                     frmTrangChu frm = new frmTrangChu(nhanVien);
                     frm.Show();

@@ -62,7 +62,7 @@ namespace DAL
         }
         public List<PhieuNhap> LocDanhSachPhieuNhapTheoNgayLap(DateTime ngayLap)
         {
-            List<PhieuNhap> phieuNhaps = MeVaBeDBDataContext.PhieuNhaps.Where(pn => pn.ngayNhap == ngayLap).Select(pn => pn).ToList<PhieuNhap>();
+            List<PhieuNhap> phieuNhaps = MeVaBeDBDataContext.PhieuNhaps.Where(pn => pn.ngayNhap.Value.Date == ngayLap.Date).Select(pn => pn).ToList<PhieuNhap>();
             foreach (PhieuNhap phieuNhap in phieuNhaps)
             {
                 phieuNhap.tenNhanVien = MeVaBeDBDataContext.NhanViens.Where(nv => nv.maNhanVien == phieuNhap.maNhanVien).Select(nv => nv.tenNhanVien).FirstOrDefault();                

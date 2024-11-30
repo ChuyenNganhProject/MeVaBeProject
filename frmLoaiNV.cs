@@ -21,9 +21,9 @@ namespace MeVaBeProject
             InitializeComponent();
             SetForm();
             this.Load += frmLoaiNV_Load;
+            uiPanel2.Visible = false;
             dgvLoaiNhanVien.Columns["maLoaiNhanVien"].ReadOnly = true;
             dgvLoaiNhanVien.Columns["tenLoaiNhanVien"].ReadOnly = false;
-
         }
         public void SetForm()
         {
@@ -61,7 +61,6 @@ namespace MeVaBeProject
         }
         public void LoadLoaiNhanVien()
         {
-
             try
             {
                 // Tải dữ liệu từ BLL
@@ -75,37 +74,7 @@ namespace MeVaBeProject
             {
                 MessageBox.Show($"Lỗi tải lọai nhân viên: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-       
-
-       
-
-        private void dgvLoaiNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-
-                DataGridViewRow selectedRow = dgvLoaiNhanVien.Rows[e.RowIndex];
-                // Lấy giá trị từ các ô trong hàng đã chọn (note: đặt tên name cho cột)
-                string maLoaiNhanVien = selectedRow.Cells["maLoaiNhanVien"].Value.ToString();
-                string tenLoaiNhanVien = selectedRow.Cells["tenLoaiNhanVien"].Value.ToString();
-
-                // Cập nhật giá trị vào các TextBox
-                txtMaLoaiNV.Text = maLoaiNhanVien;
-                txtTenLoaiNV.Text = tenLoaiNhanVien;
-                SetDataGirdView();
-            }
-
-        }
-
-      
-
-       
-
-      
-
-
-
+        }              
         private void btnSua_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn sửa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -140,9 +109,6 @@ namespace MeVaBeProject
             {
                 MessageBox.Show("Tên loại nhân viên đã tồn tại. Vui lòng nhập tên khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -180,9 +146,6 @@ namespace MeVaBeProject
             }
 
         }
-
-
-
         private void txtSearch_Enter(object sender, EventArgs e)
         {
             if (txtSearch.Text == "Nhập tên loại nhân viên ")
@@ -203,14 +166,10 @@ namespace MeVaBeProject
                 LoadLoaiNhanVien();
             }
         }
-
         private void uiSymbolButton1_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        
-
         private void dgvLoaiNhanVien_SelectionChanged(object sender, EventArgs e)
         {
 
@@ -228,7 +187,6 @@ namespace MeVaBeProject
             //}
 
         }
-
         private void dgvLoaiNhanVien_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             // Kiểm tra xem có phải đang chỉnh sửa cột "tenLoaiNhanVien" không
@@ -313,7 +271,6 @@ namespace MeVaBeProject
                 btnThem.Enabled = false;
                 btnSua.Enabled = false;
                 btnXoa.Enabled = false;
-
             }
         }
 
@@ -340,7 +297,6 @@ namespace MeVaBeProject
                 SetForm();
             }
         }
-
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             ClearForm();
@@ -354,11 +310,9 @@ namespace MeVaBeProject
             //load db 
             LoadLoaiNhanVien();
         }
-
         private void frmLoaiNV_Load(object sender, EventArgs e)
         {
             LoadLoaiNhanVien();
-
         }
 
         private void dgvLoaiNhanVien_CellClick_1(object sender, DataGridViewCellEventArgs e)

@@ -16,42 +16,37 @@ namespace MeVaBeProject
 {
     public partial class frmSanPham : Form
     {
+        private NhanVien nhanVien;
         private SanPhamBLL sanPhamBLL;
         private LoaiSanPhamBLL loaiSanPhamBLL;
+        private ChiTietQuyenCuaLoaiNVBLL ctQuyen;
         private BindingSource bindingSource;
+
+        private bool QuyenThemXoaSua;
+        private bool QuyenQLLoaiSanPham;
+        private bool QuyenQLKhuyenMai;
 
         private string selectedFilePath;
         private string saveFilePath;
         private string imagePath;
         private frmTrangChu parentfrm;
 
-        public frmSanPham(frmTrangChu parentfrm)
+        public frmSanPham(frmTrangChu parentfrm, NhanVien nhanVien)
         {
             InitializeComponent();
             this.parentfrm = parentfrm;
             this.btnKhuyenMai.Click += BtnKhuyenMai_Click;
             this.sanPhamBLL = new SanPhamBLL();
             this.loaiSanPhamBLL = new LoaiSanPhamBLL();
+            this.ctQuyen = new ChiTietQuyenCuaLoaiNVBLL();
             this.bindingSource = new BindingSource();
+            this.nhanVien = nhanVien;
         }
         private void BtnKhuyenMai_Click(object sender, EventArgs e)
         {
-            frmQLKhuyenMai frm = new frmQLKhuyenMai(parentfrm);
+            frmQLKhuyenMai frm = new frmQLKhuyenMai(parentfrm, nhanVien);
             parentfrm.OpenChildForm(frm);
-        }
-        private void SetHinhAnh(List<SanPham> danhSachSanPham)
-        {
-            // Đường dẫn tương đối từ thư mục gốc của project
-            string relativePath = @"..\..\PicSanPham";
-            string absolutePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
-            int i = 0;
-            foreach (SanPham sp in danhSachSanPham)
-            {
-                string imagePath = Path.Combine(absolutePath, Path.GetFileName(sp.hinhAnh)).Replace("/", "\\");
-                dgvProducts.Rows[i].Cells["hinhAnhSP"].Value = Image.FromFile(imagePath);
-                i++;
-            }
-        }
+        }        
         private void LoadCBLoaiSanPham()
         {
             cbLoaiSP.DataSource = loaiSanPhamBLL.LayDanhSachLoaiSanPham();
@@ -68,8 +63,7 @@ namespace MeVaBeProject
             bindingSource.DataSource = danhSachSanPham;
             dgvProducts.DataSource = bindingSource;
             dgvProducts.Columns["hinhAnh"].Visible = false;
-            dgvProducts.Columns["LoaiSanPham"].Visible = false;
-            SetHinhAnh(danhSachSanPham);
+            dgvProducts.Columns["LoaiSanPham"].Visible = false;            
             LoadCBLoaiSanPham();
         }
         private void frmSanPham_Load(object sender, EventArgs e)
@@ -77,7 +71,25 @@ namespace MeVaBeProject
             LoadData();
             EnableTextBox(false);
             dtHanSuDung.MinDate = dtNgaySanXuat.Value;
-        }
+            QuyenThemXoaSua = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0007")!=null) ? true : false;
+            if (!QuyenThemXoaSua)
+            {                
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnKhoiPhuc.Enabled = false;
+            }
+            QuyenQLKhuyenMai = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0008") != null) ? true : false;
+            if (!QuyenQLKhuyenMai)
+            {
+                btnKhuyenMai.Enabled = false;
+            }
+            QuyenQLLoaiSanPham = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0006") != null) ? true : false;
+            if (!QuyenQLLoaiSanPham)
+            {
+                btnLoaiSanPham.Enabled = false;
+            }
+        }        
         private bool IsImageFile(string filePath)
         {
             string[] validExtensions = { ".jpg", ".jpeg", ".png", ".bmp", ".gif", ".tiff", ".webp" };
@@ -146,6 +158,16 @@ namespace MeVaBeProject
                 string absolutePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\PicSanPham"));
                 imagePath = Path.Combine(absolutePath, Path.GetFileName(dgvProducts.Rows[e.RowIndex].Cells["hinhAnh"].Value.ToString())).Replace("/", "\\");
                 hinhAnh.Image = Image.FromFile(imagePath);
+
+                string trangThai = dgvProducts.Rows[e.RowIndex].Cells["trangThai"].Value.ToString();
+                if (trangThai!= "Không tồn tại")
+                {
+                    btnKhoiPhuc.Enabled = false;
+                }
+                else
+                {
+                    btnKhoiPhuc.Enabled = true;
+                }
             }
         }
         private void EnableDataGridView(bool enable)
@@ -235,6 +257,8 @@ namespace MeVaBeProject
                 SetButtonStyle(btnSua, false);
                 btnXoa.Enabled = false;
                 SetButtonStyle(btnXoa, false);
+                btnKhoiPhuc.Enabled= false;
+                SetButtonStyle(btnKhoiPhuc, false);
                 txtMaSanPham.Text = sanPhamBLL.TaoMaSanPham();
                 EnableTextBox(true);
             }
@@ -246,11 +270,11 @@ namespace MeVaBeProject
                     {
                         // Sao chép file đến nơi lưu
                         File.Copy(selectedFilePath, saveFilePath, overwrite: true);
-                        MessageBox.Show($"Image saved successfully at {saveFilePath}!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"Đã lưu ảnh thành công tại {saveFilePath}!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Lỗi lưu ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     string maSanPham = txtMaSanPham.Text.Trim();
                     string tenSanPham = txtTenSanPham.Text.Trim();
@@ -279,7 +303,6 @@ namespace MeVaBeProject
                             SetButtonStyle(btnSua, true);
                             btnXoa.Enabled = true;
                             SetButtonStyle(btnXoa, true);
-
                             btnThem.Text = "Thêm";
                             btnHuyBo.Enabled = false;
                             btnHuyBo.BackColor = Color.DarkGray;
@@ -336,7 +359,8 @@ namespace MeVaBeProject
                     SetButtonStyle(btnThem, false);
                     btnXoa.Enabled = false;
                     SetButtonStyle(btnXoa, false);
-
+                    btnKhoiPhuc.Enabled = false;
+                    SetButtonStyle(btnKhoiPhuc, false);
                     EnableTextBox(true);
                 }
                 else if (btnSua.Text == "Xác nhận")
@@ -350,11 +374,11 @@ namespace MeVaBeProject
                                 // Sao chép file đến nơi lưu
                                 File.Copy(selectedFilePath, saveFilePath, overwrite: true);
                                 hinhAnh.Image = Image.FromFile(saveFilePath);
-                                MessageBox.Show($"Image saved successfully at {saveFilePath}!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show($"Đã lưu ảnh thành công tại {saveFilePath}!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             catch (Exception ex)
                             {
-                                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show($"Lỗi lưu ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         SanPham newSanPham = new SanPham()
@@ -381,7 +405,6 @@ namespace MeVaBeProject
                                 SetButtonStyle(btnThem, true);
                                 btnXoa.Enabled = true;
                                 SetButtonStyle(btnXoa, true);
-
                                 btnSua.Text = "Sửa";
                                 btnHuyBo.Enabled = false;
                                 btnHuyBo.BackColor = Color.DarkGray;
@@ -413,7 +436,6 @@ namespace MeVaBeProject
             SetButtonStyle(btnSua, true);
             btnXoa.Enabled = true;
             SetButtonStyle(btnXoa, true);
-
             btnThem.Text = "Thêm";
             btnSua.Text = "Sửa";
             btnHuyBo.Enabled = false;

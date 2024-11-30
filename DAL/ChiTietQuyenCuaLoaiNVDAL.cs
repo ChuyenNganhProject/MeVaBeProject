@@ -23,6 +23,10 @@ namespace DAL
             }
             return danhSach;
         }
+        public ChiTietQuyenCuaLoaiNhanVien TimQuyenCuaNhanVien(string maLoaiNV,string maQuyen)
+        {
+            return dataContext.ChiTietQuyenCuaLoaiNhanViens.Where(ct => ct.maLoaiNhanVien == maLoaiNV && ct.maQuyen == maQuyen).FirstOrDefault();
+        }
         public bool TaoChiTietQuyenCuaLoaiNhanVien(ChiTietQuyenCuaLoaiNhanVien pQuyen)
         {
             try

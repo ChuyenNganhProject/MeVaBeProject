@@ -173,7 +173,8 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Pink;
             this.dgvNhaCungCap.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvNhaCungCap.RowTemplate.Height = 24;
-            this.dgvNhaCungCap.ScrollBarColor = System.Drawing.Color.White;
+            this.dgvNhaCungCap.ScrollBarBackColor = System.Drawing.SystemColors.Control;
+            this.dgvNhaCungCap.ScrollBarColor = System.Drawing.Color.LightPink;
             this.dgvNhaCungCap.ScrollBarRectColor = System.Drawing.Color.White;
             this.dgvNhaCungCap.ScrollBarStyleInherited = false;
             this.dgvNhaCungCap.SelectedIndex = -1;
