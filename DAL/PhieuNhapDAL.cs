@@ -96,5 +96,12 @@ namespace DAL
                 return false;
             }
         }
+
+        public decimal TinhTongTienPhieuNhapTheoKhoangThoiGian(DateTime batDau, DateTime ketThuc)
+        {
+            return MeVaBeDBDataContext.PhieuNhaps
+                .Where(pn => pn.ngayNhap.Value.Date >= batDau.Date && pn.ngayNhap.Value.Date <= ketThuc.Date)
+                .Sum(pn => pn.tongTien) ?? 0;
+        }
     }
 }

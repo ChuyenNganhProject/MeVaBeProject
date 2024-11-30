@@ -37,11 +37,34 @@ namespace MeVaBeProject
             this.dgvDSSP.SelectionChanged += DgvDSSP_SelectionChanged;
             this.dgvDSSP.CellContentClick += DgvDSSP_CellContentClick;
             this.dgvDSSP.CellFormatting += DgvDSSP_CellFormatting;
+            this.dgvDSSP.CellClick += DgvDSSP_CellClick;
 
             this.btnXacNhan.Click += BtnXacNhan_Click;
             this.btnHuyGiam.Click += BtnHuyGiam_Click;
         }
 
+        private void DgvDSSP_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Đảm bảo rằng chỉ thực hiện khi nhấp vào hàng hợp lệ
+            {
+                string maSanPham = dgvDSSP.Rows[e.RowIndex].Cells["maSanPham"].Value.ToString();
+                MaSp = maSanPham;
+                SanPham sanPham = spbll.TimKiemSanPhamTheoMaSP(MaSp);
+
+                if (sanPham != null)
+                {
+                    if (!kmspbll.KiemTraSanPhamTrongKhoangThoiGianKhuyenMai(MaKM, maSanPham))
+                    {
+                        MessageBox.Show("Sản phẩm này không thể thêm vào khuyến mãi mới do trùng thời gian với khuyến mãi khác.",
+                                        "Cảnh báo",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                }
+            }
+        }
         private void BtnHuyGiam_Click(object sender, EventArgs e)
         {
             SanPham sanPham = spbll.TimKiemSanPhamTheoMaSP(MaSp);
@@ -138,11 +161,6 @@ namespace MeVaBeProject
                 {
                     if (!kmspbll.KiemTraSanPhamTrongKhoangThoiGianKhuyenMai(MaKM, maSanPham))
                     {
-                        MessageBox.Show("Sản phẩm này không thể thêm vào khuyến mãi mới do trùng thời gian với khuyến mãi khác.",
-                                        "Cảnh báo",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Warning);
-
                         DataGridViewCheckBoxCell checkBoxDuocChon = (DataGridViewCheckBoxCell)dgvDSSP.Rows[e.RowIndex].Cells["duocChon"];
                         checkBoxDuocChon.Value = false;
                         return;
@@ -227,15 +245,6 @@ namespace MeVaBeProject
 
                 if (sanPham != null)
                 {
-                    if (!kmspbll.KiemTraSanPhamTrongKhoangThoiGianKhuyenMai(MaKM, maSanPham))
-                    {
-                        MessageBox.Show("Sản phẩm này không thể thêm vào khuyến mãi mới do trùng thời gian với khuyến mãi khác.",
-                                        "Cảnh báo",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Warning);
-                        return;
-                    }
-
                     lblTenSp.Text = sanPham.tenSanPham;
                     lblGiaGoc.Text = $"{sanPham.donGiaBan:N0}đ";
                     numericSoLuongToiDa.Enabled = true;
@@ -251,6 +260,25 @@ namespace MeVaBeProject
                         lblGiaSauGiam.Text = (sanPham.donGiaBan.Value - (sanPham.donGiaBan.Value * (sanPhamKhuyenMai.phanTramGiam.Value / 100)))
                             .ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
                         btnHuyGiam.Enabled = true;
+                    }
+                    else
+                    {
+                        List<KhuyenMaiSanPham> dskm = kmspbll.LayKhuyenMaiTheoSanPham(MaSp);
+                        if(dskm.Count() != 0)
+                        {
+                            foreach(var km in dskm)
+                            {
+                                KhuyenMaiSanPham sanPhamKhuyenMaiKhac = kmspbll.LayTTSanPhamCuaKhuyenMai(km.maKhuyenMai, MaSp);
+                                if (sanPhamKhuyenMaiKhac != null)
+                                {
+                                    numericPhanTramGiam.Value = sanPhamKhuyenMaiKhac.phanTramGiam.Value;
+                                    lblPhanTramGiam.Text = sanPhamKhuyenMaiKhac.phanTramGiam.Value.ToString("N0") + "% Giảm";
+                                    lblGiaSauGiam.Text = (sanPham.donGiaBan.Value - (sanPham.donGiaBan.Value * (sanPhamKhuyenMaiKhac.phanTramGiam.Value / 100)))
+                                        .ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
+                                    btnHuyGiam.Enabled = false;
+                                }
+                            }
+                        }
                     }
                 }
             }

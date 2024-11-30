@@ -37,10 +37,12 @@ namespace MeVaBeProject
 
             this.maNhanVien = maNhanVien;
 
+            this.btnQuaFormTrangChu.Click += BtnQuaFormTrangChu_Click;
             this.btnClose.Click += BtnClose_Click;
             this.btnPhongToThuNho.Click += BtnPhongToThuNho_Click;
             this.btnMinimize.Click += BtnMinimize_Click;
             this.btnDangXuat.Click += BtnDangXuat_Click;
+            this.btnLapPhieuGiaoHang.Click += BtnLapPhieuGiaoHang_Click;
             
             // Thông tin khách
             this.txtSdt.KeyPress += TxtSdt_KeyPress;
@@ -63,6 +65,21 @@ namespace MeVaBeProject
             // Nút bấm loại sản phẩm
             this.btnTatCaSanPham.Click += BtnTatCaSanPham_Click;
             LoadLoaiSanPham();
+        }
+
+        private void BtnQuaFormTrangChu_Click(object sender, EventArgs e)
+        {
+            NhanVien nv = nvbll.LayTTNhanVienTuTenDangNhap(maNhanVien);
+            frmTrangChu frm = new frmTrangChu(nv);
+            frm.Show();
+            this.Close();
+        }
+
+        private void BtnLapPhieuGiaoHang_Click(object sender, EventArgs e)
+        {
+            frmLapPhieuGiaoHang frm = new frmLapPhieuGiaoHang(maNhanVien);
+            frm.Show();
+            this.Close();
         }
 
         private void RdoChuyenKhoan_CheckedChanged(object sender, EventArgs e)
@@ -285,7 +302,6 @@ namespace MeVaBeProject
                             tienBiGiamText = tienBiGiamText.Replace("-", "");
                             if (decimal.TryParse(tienBiGiamText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tienDuocGiam))
                             {
-
                                 HoaDon hd = new HoaDon
                                 {
                                     maHoaDon = hdbll.TaoMaHoaDonTuDong(),

@@ -149,13 +149,13 @@ namespace MeVaBeProject
             }
 
             List<KhuyenMaiSanPham> danhSachSanPham = kmspbll.LoadSanPhamTheoKhuyenMai(MaKM);
-            dgvSanPhamKhuyenMai.DataSource = danhSachSanPham;
-            dgvSanPhamKhuyenMai.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            SettingDgv();
+            SettingDgv(danhSachSanPham);
         }
 
-        private void SettingDgv()
+        private void SettingDgv(List<KhuyenMaiSanPham> danhSachSanPham)
         {
+            dgvSanPhamKhuyenMai.DataSource = danhSachSanPham;
+            dgvSanPhamKhuyenMai.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             if (dgvSanPhamKhuyenMai.Columns["maKhuyenMai"] != null )
             {
                 dgvSanPhamKhuyenMai.Columns["maKhuyenMai"].Visible = false;
@@ -195,6 +195,7 @@ namespace MeVaBeProject
                 dgvSanPhamKhuyenMai.Columns["soLuongToiDa"].HeaderText = "Số lượng tối đa";
                 dgvSanPhamKhuyenMai.Columns["soLuongToiDa"].DisplayIndex = 3;
                 dgvSanPhamKhuyenMai.Columns["soLuongToiDa"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgvSanPhamKhuyenMai.Columns["soLuongToiDa"].Visible = false;
             }
         }
 

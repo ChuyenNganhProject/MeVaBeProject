@@ -44,6 +44,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnClose = new Sunny.UI.UILabel();
+            this.btnVeTrangBanHang = new Sunny.UI.UISymbolButton();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDatHang)).BeginInit();
@@ -82,8 +83,8 @@
             // lbChucVu
             // 
             this.lbChucVu.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbChucVu.ForeColor = System.Drawing.Color.Snow;
-            this.lbChucVu.Location = new System.Drawing.Point(3, 174);
+            this.lbChucVu.ForeColor = System.Drawing.Color.White;
+            this.lbChucVu.Location = new System.Drawing.Point(3, 157);
             this.lbChucVu.Name = "lbChucVu";
             this.lbChucVu.Size = new System.Drawing.Size(243, 28);
             this.lbChucVu.TabIndex = 13;
@@ -266,6 +267,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnVeTrangBanHang);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(249, 0);
@@ -283,6 +285,38 @@
             this.btnClose.Size = new System.Drawing.Size(36, 23);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "X";
+            // 
+            // btnVeTrangBanHang
+            // 
+            this.btnVeTrangBanHang.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVeTrangBanHang.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnVeTrangBanHang.FillColor = System.Drawing.SystemColors.Control;
+            this.btnVeTrangBanHang.FillHoverColor = System.Drawing.SystemColors.Window;
+            this.btnVeTrangBanHang.FillPressColor = System.Drawing.SystemColors.Window;
+            this.btnVeTrangBanHang.FillSelectedColor = System.Drawing.SystemColors.Window;
+            this.btnVeTrangBanHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnVeTrangBanHang.ForeColor = System.Drawing.Color.Black;
+            this.btnVeTrangBanHang.ForeHoverColor = System.Drawing.Color.Black;
+            this.btnVeTrangBanHang.ForePressColor = System.Drawing.Color.Black;
+            this.btnVeTrangBanHang.ForeSelectedColor = System.Drawing.Color.Black;
+            this.btnVeTrangBanHang.Location = new System.Drawing.Point(0, 0);
+            this.btnVeTrangBanHang.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnVeTrangBanHang.Name = "btnVeTrangBanHang";
+            this.btnVeTrangBanHang.RectColor = System.Drawing.SystemColors.Control;
+            this.btnVeTrangBanHang.RectHoverColor = System.Drawing.SystemColors.Window;
+            this.btnVeTrangBanHang.RectPressColor = System.Drawing.SystemColors.Window;
+            this.btnVeTrangBanHang.RectSelectedColor = System.Drawing.SystemColors.Window;
+            this.btnVeTrangBanHang.Size = new System.Drawing.Size(251, 40);
+            this.btnVeTrangBanHang.Symbol = 558135;
+            this.btnVeTrangBanHang.SymbolColor = System.Drawing.Color.Black;
+            this.btnVeTrangBanHang.SymbolHoverColor = System.Drawing.Color.Black;
+            this.btnVeTrangBanHang.SymbolOffset = new System.Drawing.Point(-20, 0);
+            this.btnVeTrangBanHang.SymbolPressColor = System.Drawing.Color.Black;
+            this.btnVeTrangBanHang.SymbolSelectedColor = System.Drawing.Color.Black;
+            this.btnVeTrangBanHang.TabIndex = 8;
+            this.btnVeTrangBanHang.Text = "Về trang bán hàng";
+            this.btnVeTrangBanHang.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnVeTrangBanHang.Visible = false;
             // 
             // frmTrangChu
             // 
@@ -330,5 +364,6 @@
         private Sunny.UI.UIImageButton btnDatHang;
         private Sunny.UI.UILabel lbChucVu;
         private Sunny.UI.UILabel lbTenNV;
+        private Sunny.UI.UISymbolButton btnVeTrangBanHang;
     }
 }

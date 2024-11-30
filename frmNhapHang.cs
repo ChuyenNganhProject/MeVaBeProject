@@ -147,7 +147,7 @@ namespace MeVaBeProject
                 {
                     string price = row.Cells["donGiaSP"].Value.ToString();
                     price = price.Replace("₫", "").Replace(".", "").Split(',')[0].Trim();
-                    decimal donGia = decimal.Parse(price);
+                    int donGia = int.Parse(price);
                     int soLuongDat = int.Parse(row.Cells["soLuongDaNhan"].Value.ToString());
                     decimal thanhTien = soLuongDat * donGia;
                     row.Cells["thanhTien"].Value = thanhTien;

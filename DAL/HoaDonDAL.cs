@@ -17,7 +17,7 @@ namespace DAL
         {
             try
             {
-                var hoadons = db.HoaDons.Select(hd => hd).ToList<HoaDon>();
+                var hoadons = db.HoaDons.Select(hd => hd).OrderByDescending(hd => hd.maHoaDon).ToList<HoaDon>();
                 foreach(var hoaDon in hoadons)
                 {
                     var khachhangs = db.KhachHangs.FirstOrDefault(kh => kh.maKhachHang == hoaDon.maKhachHang);
@@ -237,36 +237,53 @@ namespace DAL
                                         Ngay = tk.Key,
                                         TongDoanhThu = tk.Sum(hd => hd.tongTienSauGiam) ?? 0
                                     }).ToDictionary(x => (DateTime?)x.Ngay, x => x.TongDoanhThu);
+
+            if (!doanhThuTheoNgay.Any())
+            {
+                return new Dictionary<DateTime?, decimal>();
+            }
             return doanhThuTheoNgay;
         }
 
         // Lọc hôm nay
         public Dictionary<int, decimal> ThongKeTongDoanhThuTheoGioTrongNgay(DateTime ngay)
         {
+            DateTime ngayBatDau = ngay.Date;
+            DateTime ngayKetThuc = ngayBatDau.AddDays(1);
             var doanhThuTheoGio = db.HoaDons
-                                    .Where(hd => hd.ngayLap.Value.Date == ngay.Date)
+                                    .Where(hd => hd.ngayLap >= ngayBatDau && hd.ngayLap < ngayKetThuc)
                                     .GroupBy(hd => hd.ngayLap.Value.Hour)
                                     .Select(tk => new
                                     {
                                         Gio = tk.Key,
                                         TongDoanhThu = tk.Sum(hd => hd.tongTienSauGiam) ?? 0
                                     }).ToDictionary(x => x.Gio, x => x.TongDoanhThu);
+
+            if (!doanhThuTheoGio.Any())
+            {
+                return new Dictionary<int, decimal>();
+            }
             return doanhThuTheoGio;
         }
 
         // Lọc năm nay
-        public Dictionary<DateTime?, decimal> ThongKeTongDoanhThuTheoThangTrongNam(DateTime ngayBatDau, DateTime ngayKetThuc)
+        public List<ThongKeDoanhThuTheoThang> ThongKeTongDoanhThuTheoThangTrongNam(DateTime ngayBatDau, DateTime ngayKetThuc)
         {
             var doanhThuTheoThang = db.HoaDons
-                                      .Where(hd => hd.ngayLap.Value.Date >= ngayBatDau.Date && hd.ngayLap.Value.Date <= ngayKetThuc.Date)
-                                      .GroupBy(hd => new { hd.ngayLap.Value.Year, hd.ngayLap.Value.Month })
-                                      .Select(tk => new
-                                      {
-                                          Thang = new DateTime(tk.Key.Year, tk.Key.Month, 1),
-                                          TongDoanhThu = tk.Sum(hd => hd.tongTienSauGiam) ?? 0
-                                      }).ToDictionary(x => (DateTime?)x.Thang, x => x.TongDoanhThu);
+                                  .Where(hd => hd.ngayLap >= ngayBatDau && hd.ngayLap <= ngayKetThuc)
+                                  .GroupBy(hd => new { hd.ngayLap.Value.Year, hd.ngayLap.Value.Month })
+                                  .Select(tk => new ThongKeDoanhThuTheoThang
+                                  {
+                                      Thang = new DateTime(tk.Key.Year, tk.Key.Month, 1),
+                                      TongDoanhThu = TinhDoanhThuTheoKhoangThoiGian(ngayBatDau, ngayKetThuc)
+                                  })
+                                  .ToList();
+
+            if (!doanhThuTheoThang.Any())
+            {
+                return new List<ThongKeDoanhThuTheoThang>();
+            }
             return doanhThuTheoThang;
         }
-
     }
 }

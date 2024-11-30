@@ -132,7 +132,7 @@ namespace DAL
             return dataContext.SanPhams.Count();
         }
 
-        public Dictionary<string, (string TenSanPham, int? SoLuongBan)> ThongKeTop5SanPhamBanChayNhat(DateTime ngayBatDau, DateTime ngayKetThuc)
+        public List<SanPhamBanChay> ThongKeTop5SanPhamBanChayNhat(DateTime ngayBatDau, DateTime ngayKetThuc)
         {
             var topSanPham = dataContext.ChiTietHoaDonSanPhams
                                 .Where(ct => ct.HoaDon.ngayLap.Value.Date >= ngayBatDau.Date && ct.HoaDon.ngayLap.Value.Date <= ngayKetThuc.Date)
@@ -144,19 +144,19 @@ namespace DAL
                                 })
                                 .OrderByDescending(tk => tk.TongSoLuong)
                                 .Take(5)
-                                .Join(dataContext.SanPhams, tk => tk.MaSanPham, sp => sp.maSanPham, (tk, sp) => new
+                                .Join(dataContext.SanPhams, tk => tk.MaSanPham, sp => sp.maSanPham, (tk, sp) => new SanPhamBanChay
                                 {
                                     MaSanPham = sp.maSanPham,
                                     TenSanPham = sp.tenSanPham,
-                                    SoLuongBan = tk.TongSoLuong
+                                    SoLuongBan = tk.TongSoLuong.Value
                                 })
                                 .ToList();
 
             if (!topSanPham.Any())
             {
-                return new Dictionary<string, (string, int?)>(); // Trả về dictionary rỗng
+                return new List<SanPhamBanChay>();
             }
-            return topSanPham.ToDictionary(sp => sp.MaSanPham, sp => (sp.TenSanPham, sp.SoLuongBan));
+            return topSanPham;
         }
         public bool KhoiPhucSanPham(string maSanPham)
         {

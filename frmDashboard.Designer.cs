@@ -42,6 +42,13 @@
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.uiPanel1 = new Sunny.UI.UIPanel();
+            this.uiPanel40 = new Sunny.UI.UIPanel();
+            this.uiSymbolButton7 = new Sunny.UI.UISymbolButton();
+            this.uiPanel41 = new Sunny.UI.UIPanel();
+            this.uiPanel42 = new Sunny.UI.UIPanel();
+            this.lblLoiNhuan = new Sunny.UI.UILabel();
+            this.uiLabel11 = new Sunny.UI.UILabel();
+            this.uiPanel43 = new Sunny.UI.UIPanel();
             this.uiPanel8 = new Sunny.UI.UIPanel();
             this.uiSymbolButton3 = new Sunny.UI.UISymbolButton();
             this.uiPanel30 = new Sunny.UI.UIPanel();
@@ -69,9 +76,9 @@
             this.btnLocTheoCustom = new Sunny.UI.UISymbolButton();
             this.uiPanel15 = new Sunny.UI.UIPanel();
             this.uiPanel12 = new Sunny.UI.UIPanel();
-            this.dtpNgayBatDau = new System.Windows.Forms.DateTimePicker();
-            this.uiLabel2 = new Sunny.UI.UILabel();
             this.dtpNgayKetThuc = new System.Windows.Forms.DateTimePicker();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.dtpNgayBatDau = new System.Windows.Forms.DateTimePicker();
             this.uiPanel14 = new Sunny.UI.UIPanel();
             this.uiPanel13 = new Sunny.UI.UIPanel();
             this.btnCustom = new Sunny.UI.UIButton();
@@ -113,8 +120,17 @@
             this.uiLabel4 = new Sunny.UI.UILabel();
             this.uiPanel19 = new Sunny.UI.UIPanel();
             this.uiPanel20 = new Sunny.UI.UIPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.chartTongDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dtpChonThangInPhieu = new System.Windows.Forms.DateTimePicker();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.uiLabel9 = new Sunny.UI.UILabel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnInPhieuBaoCao = new Sunny.UI.UIButton();
             this.uiPanel1.SuspendLayout();
+            this.uiPanel40.SuspendLayout();
+            this.uiPanel42.SuspendLayout();
             this.uiPanel8.SuspendLayout();
             this.uiPanel29.SuspendLayout();
             this.uiPanel6.SuspendLayout();
@@ -136,11 +152,15 @@
             this.uiPanel33.SuspendLayout();
             this.uiPanel35.SuspendLayout();
             this.uiPanel20.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartTongDoanhThu)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // uiPanel1
             // 
+            this.uiPanel1.Controls.Add(this.uiPanel40);
+            this.uiPanel1.Controls.Add(this.uiPanel43);
             this.uiPanel1.Controls.Add(this.uiPanel8);
             this.uiPanel1.Controls.Add(this.uiPanel9);
             this.uiPanel1.Controls.Add(this.uiPanel6);
@@ -163,6 +183,124 @@
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // uiPanel40
+            // 
+            this.uiPanel40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.uiPanel40.Controls.Add(this.uiSymbolButton7);
+            this.uiPanel40.Controls.Add(this.uiPanel41);
+            this.uiPanel40.Controls.Add(this.uiPanel42);
+            this.uiPanel40.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiPanel40.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.uiPanel40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiPanel40.Location = new System.Drawing.Point(899, 80);
+            this.uiPanel40.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel40.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPanel40.Name = "uiPanel40";
+            this.uiPanel40.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.uiPanel40.Size = new System.Drawing.Size(247, 148);
+            this.uiPanel40.TabIndex = 17;
+            this.uiPanel40.Text = null;
+            this.uiPanel40.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiSymbolButton7
+            // 
+            this.uiSymbolButton7.BackColor = System.Drawing.Color.Transparent;
+            this.uiSymbolButton7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.uiSymbolButton7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(64)))), ((int)(((byte)(198)))));
+            this.uiSymbolButton7.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(64)))), ((int)(((byte)(198)))));
+            this.uiSymbolButton7.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(64)))), ((int)(((byte)(198)))));
+            this.uiSymbolButton7.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(64)))), ((int)(((byte)(198)))));
+            this.uiSymbolButton7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiSymbolButton7.IsCircle = true;
+            this.uiSymbolButton7.Location = new System.Drawing.Point(0, 12);
+            this.uiSymbolButton7.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton7.Name = "uiSymbolButton7";
+            this.uiSymbolButton7.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(64)))), ((int)(((byte)(198)))));
+            this.uiSymbolButton7.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(64)))), ((int)(((byte)(198)))));
+            this.uiSymbolButton7.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(64)))), ((int)(((byte)(198)))));
+            this.uiSymbolButton7.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(64)))), ((int)(((byte)(198)))));
+            this.uiSymbolButton7.Size = new System.Drawing.Size(103, 69);
+            this.uiSymbolButton7.Symbol = 61953;
+            this.uiSymbolButton7.SymbolOffset = new System.Drawing.Point(-5, 0);
+            this.uiSymbolButton7.SymbolSize = 32;
+            this.uiSymbolButton7.TabIndex = 17;
+            this.uiSymbolButton7.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            // 
+            // uiPanel41
+            // 
+            this.uiPanel41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.uiPanel41.Dock = System.Windows.Forms.DockStyle.Top;
+            this.uiPanel41.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.uiPanel41.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiPanel41.Location = new System.Drawing.Point(0, 0);
+            this.uiPanel41.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel41.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPanel41.Name = "uiPanel41";
+            this.uiPanel41.Radius = 0;
+            this.uiPanel41.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.uiPanel41.Size = new System.Drawing.Size(103, 12);
+            this.uiPanel41.TabIndex = 16;
+            this.uiPanel41.Text = null;
+            this.uiPanel41.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiPanel42
+            // 
+            this.uiPanel42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(195)))), ((int)(((byte)(18)))));
+            this.uiPanel42.Controls.Add(this.lblLoiNhuan);
+            this.uiPanel42.Controls.Add(this.uiLabel11);
+            this.uiPanel42.Dock = System.Windows.Forms.DockStyle.Right;
+            this.uiPanel42.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.uiPanel42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiPanel42.Location = new System.Drawing.Point(103, 0);
+            this.uiPanel42.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel42.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPanel42.Name = "uiPanel42";
+            this.uiPanel42.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.uiPanel42.Size = new System.Drawing.Size(144, 148);
+            this.uiPanel42.TabIndex = 14;
+            this.uiPanel42.Text = null;
+            this.uiPanel42.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblLoiNhuan
+            // 
+            this.lblLoiNhuan.BackColor = System.Drawing.Color.Transparent;
+            this.lblLoiNhuan.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblLoiNhuan.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblLoiNhuan.ForeColor = System.Drawing.Color.White;
+            this.lblLoiNhuan.Location = new System.Drawing.Point(0, 48);
+            this.lblLoiNhuan.Name = "lblLoiNhuan";
+            this.lblLoiNhuan.Size = new System.Drawing.Size(144, 34);
+            this.lblLoiNhuan.TabIndex = 4;
+            // 
+            // uiLabel11
+            // 
+            this.uiLabel11.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.uiLabel11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLabel11.ForeColor = System.Drawing.Color.White;
+            this.uiLabel11.Location = new System.Drawing.Point(0, 0);
+            this.uiLabel11.Name = "uiLabel11";
+            this.uiLabel11.Size = new System.Drawing.Size(144, 48);
+            this.uiLabel11.TabIndex = 3;
+            this.uiLabel11.Text = "Lợi nhuận";
+            this.uiLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiPanel43
+            // 
+            this.uiPanel43.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiPanel43.FillColor = System.Drawing.SystemColors.Window;
+            this.uiPanel43.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiPanel43.Location = new System.Drawing.Point(869, 80);
+            this.uiPanel43.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel43.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPanel43.Name = "uiPanel43";
+            this.uiPanel43.RectColor = System.Drawing.SystemColors.Window;
+            this.uiPanel43.Size = new System.Drawing.Size(30, 148);
+            this.uiPanel43.TabIndex = 16;
+            this.uiPanel43.Text = null;
+            this.uiPanel43.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // uiPanel8
             // 
             this.uiPanel8.Controls.Add(this.uiSymbolButton3);
@@ -171,12 +309,12 @@
             this.uiPanel8.Dock = System.Windows.Forms.DockStyle.Left;
             this.uiPanel8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(195)))), ((int)(((byte)(18)))));
             this.uiPanel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel8.Location = new System.Drawing.Point(835, 80);
+            this.uiPanel8.Location = new System.Drawing.Point(625, 80);
             this.uiPanel8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel8.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel8.Name = "uiPanel8";
             this.uiPanel8.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(195)))), ((int)(((byte)(18)))));
-            this.uiPanel8.Size = new System.Drawing.Size(339, 148);
+            this.uiPanel8.Size = new System.Drawing.Size(244, 148);
             this.uiPanel8.TabIndex = 15;
             this.uiPanel8.Text = null;
             this.uiPanel8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -199,10 +337,10 @@
             this.uiSymbolButton3.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(159)))), ((int)(((byte)(31)))));
             this.uiSymbolButton3.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(159)))), ((int)(((byte)(31)))));
             this.uiSymbolButton3.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(159)))), ((int)(((byte)(31)))));
-            this.uiSymbolButton3.Size = new System.Drawing.Size(102, 69);
+            this.uiSymbolButton3.Size = new System.Drawing.Size(103, 69);
             this.uiSymbolButton3.Symbol = 358665;
             this.uiSymbolButton3.SymbolOffset = new System.Drawing.Point(-5, 0);
-            this.uiSymbolButton3.SymbolSize = 48;
+            this.uiSymbolButton3.SymbolSize = 32;
             this.uiSymbolButton3.TabIndex = 17;
             this.uiSymbolButton3.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             // 
@@ -218,7 +356,7 @@
             this.uiPanel30.Name = "uiPanel30";
             this.uiPanel30.Radius = 0;
             this.uiPanel30.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(195)))), ((int)(((byte)(18)))));
-            this.uiPanel30.Size = new System.Drawing.Size(102, 12);
+            this.uiPanel30.Size = new System.Drawing.Size(103, 12);
             this.uiPanel30.TabIndex = 16;
             this.uiPanel30.Text = null;
             this.uiPanel30.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -231,12 +369,12 @@
             this.uiPanel29.Dock = System.Windows.Forms.DockStyle.Right;
             this.uiPanel29.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(195)))), ((int)(((byte)(18)))));
             this.uiPanel29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel29.Location = new System.Drawing.Point(102, 0);
+            this.uiPanel29.Location = new System.Drawing.Point(103, 0);
             this.uiPanel29.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel29.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel29.Name = "uiPanel29";
             this.uiPanel29.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(195)))), ((int)(((byte)(18)))));
-            this.uiPanel29.Size = new System.Drawing.Size(237, 148);
+            this.uiPanel29.Size = new System.Drawing.Size(141, 148);
             this.uiPanel29.TabIndex = 14;
             this.uiPanel29.Text = null;
             this.uiPanel29.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -249,18 +387,18 @@
             this.lblDoanhThu.ForeColor = System.Drawing.Color.White;
             this.lblDoanhThu.Location = new System.Drawing.Point(0, 48);
             this.lblDoanhThu.Name = "lblDoanhThu";
-            this.lblDoanhThu.Size = new System.Drawing.Size(237, 34);
+            this.lblDoanhThu.Size = new System.Drawing.Size(141, 34);
             this.lblDoanhThu.TabIndex = 4;
             // 
             // uiLabel5
             // 
             this.uiLabel5.BackColor = System.Drawing.Color.Transparent;
             this.uiLabel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.uiLabel5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLabel5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiLabel5.ForeColor = System.Drawing.Color.White;
             this.uiLabel5.Location = new System.Drawing.Point(0, 0);
             this.uiLabel5.Name = "uiLabel5";
-            this.uiLabel5.Size = new System.Drawing.Size(237, 48);
+            this.uiLabel5.Size = new System.Drawing.Size(141, 48);
             this.uiLabel5.TabIndex = 3;
             this.uiLabel5.Text = "Doanh thu";
             this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -270,12 +408,12 @@
             this.uiPanel9.Dock = System.Windows.Forms.DockStyle.Left;
             this.uiPanel9.FillColor = System.Drawing.SystemColors.Window;
             this.uiPanel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel9.Location = new System.Drawing.Point(773, 80);
+            this.uiPanel9.Location = new System.Drawing.Point(595, 80);
             this.uiPanel9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel9.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel9.Name = "uiPanel9";
             this.uiPanel9.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel9.Size = new System.Drawing.Size(62, 148);
+            this.uiPanel9.Size = new System.Drawing.Size(30, 148);
             this.uiPanel9.TabIndex = 14;
             this.uiPanel9.Text = null;
             this.uiPanel9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -288,12 +426,12 @@
             this.uiPanel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.uiPanel6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(209)))), ((int)(((byte)(161)))));
             this.uiPanel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel6.Location = new System.Drawing.Point(434, 80);
+            this.uiPanel6.Location = new System.Drawing.Point(318, 80);
             this.uiPanel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel6.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel6.Name = "uiPanel6";
             this.uiPanel6.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(209)))), ((int)(((byte)(161)))));
-            this.uiPanel6.Size = new System.Drawing.Size(339, 148);
+            this.uiPanel6.Size = new System.Drawing.Size(277, 148);
             this.uiPanel6.TabIndex = 13;
             this.uiPanel6.Text = null;
             this.uiPanel6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -316,9 +454,9 @@
             this.uiSymbolButton2.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(172)))), ((int)(((byte)(132)))));
             this.uiSymbolButton2.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(172)))), ((int)(((byte)(132)))));
             this.uiSymbolButton2.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(172)))), ((int)(((byte)(132)))));
-            this.uiSymbolButton2.Size = new System.Drawing.Size(102, 69);
+            this.uiSymbolButton2.Size = new System.Drawing.Size(92, 69);
             this.uiSymbolButton2.Symbol = 61447;
-            this.uiSymbolButton2.SymbolSize = 48;
+            this.uiSymbolButton2.SymbolSize = 32;
             this.uiSymbolButton2.TabIndex = 16;
             this.uiSymbolButton2.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             // 
@@ -334,7 +472,7 @@
             this.uiPanel28.Name = "uiPanel28";
             this.uiPanel28.Radius = 0;
             this.uiPanel28.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(209)))), ((int)(((byte)(161)))));
-            this.uiPanel28.Size = new System.Drawing.Size(102, 12);
+            this.uiPanel28.Size = new System.Drawing.Size(92, 12);
             this.uiPanel28.TabIndex = 15;
             this.uiPanel28.Text = null;
             this.uiPanel28.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -347,12 +485,12 @@
             this.uiPanel27.Dock = System.Windows.Forms.DockStyle.Right;
             this.uiPanel27.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(209)))), ((int)(((byte)(161)))));
             this.uiPanel27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel27.Location = new System.Drawing.Point(102, 0);
+            this.uiPanel27.Location = new System.Drawing.Point(92, 0);
             this.uiPanel27.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel27.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel27.Name = "uiPanel27";
             this.uiPanel27.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(209)))), ((int)(((byte)(161)))));
-            this.uiPanel27.Size = new System.Drawing.Size(237, 148);
+            this.uiPanel27.Size = new System.Drawing.Size(185, 148);
             this.uiPanel27.TabIndex = 13;
             this.uiPanel27.Text = null;
             this.uiPanel27.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -365,18 +503,18 @@
             this.lblSoLuongKH.ForeColor = System.Drawing.Color.White;
             this.lblSoLuongKH.Location = new System.Drawing.Point(0, 48);
             this.lblSoLuongKH.Name = "lblSoLuongKH";
-            this.lblSoLuongKH.Size = new System.Drawing.Size(237, 34);
+            this.lblSoLuongKH.Size = new System.Drawing.Size(185, 34);
             this.lblSoLuongKH.TabIndex = 4;
             // 
             // uiLabel3
             // 
             this.uiLabel3.BackColor = System.Drawing.Color.Transparent;
             this.uiLabel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.uiLabel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLabel3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiLabel3.ForeColor = System.Drawing.Color.White;
             this.uiLabel3.Location = new System.Drawing.Point(0, 0);
             this.uiLabel3.Name = "uiLabel3";
-            this.uiLabel3.Size = new System.Drawing.Size(237, 48);
+            this.uiLabel3.Size = new System.Drawing.Size(185, 48);
             this.uiLabel3.TabIndex = 3;
             this.uiLabel3.Text = "Số lượng khách hàng";
             this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -386,12 +524,12 @@
             this.uiPanel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.uiPanel7.FillColor = System.Drawing.SystemColors.Window;
             this.uiPanel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel7.Location = new System.Drawing.Point(372, 80);
+            this.uiPanel7.Location = new System.Drawing.Point(288, 80);
             this.uiPanel7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel7.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel7.Name = "uiPanel7";
             this.uiPanel7.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel7.Size = new System.Drawing.Size(62, 148);
+            this.uiPanel7.Size = new System.Drawing.Size(30, 148);
             this.uiPanel7.TabIndex = 12;
             this.uiPanel7.Text = null;
             this.uiPanel7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -404,12 +542,12 @@
             this.uiPanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.uiPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.uiPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel2.Location = new System.Drawing.Point(33, 80);
+            this.uiPanel2.Location = new System.Drawing.Point(30, 80);
             this.uiPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel2.Name = "uiPanel2";
             this.uiPanel2.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiPanel2.Size = new System.Drawing.Size(339, 148);
+            this.uiPanel2.Size = new System.Drawing.Size(258, 148);
             this.uiPanel2.TabIndex = 11;
             this.uiPanel2.Text = null;
             this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -432,9 +570,9 @@
             this.uiSymbolButton1.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(103)))), ((int)(((byte)(214)))));
             this.uiSymbolButton1.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(103)))), ((int)(((byte)(214)))));
             this.uiSymbolButton1.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(103)))), ((int)(((byte)(214)))));
-            this.uiSymbolButton1.Size = new System.Drawing.Size(90, 71);
+            this.uiSymbolButton1.Size = new System.Drawing.Size(95, 71);
             this.uiSymbolButton1.Symbol = 559476;
-            this.uiSymbolButton1.SymbolSize = 48;
+            this.uiSymbolButton1.SymbolSize = 32;
             this.uiSymbolButton1.TabIndex = 15;
             this.uiSymbolButton1.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             // 
@@ -450,7 +588,7 @@
             this.uiPanel26.Name = "uiPanel26";
             this.uiPanel26.Radius = 0;
             this.uiPanel26.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiPanel26.Size = new System.Drawing.Size(90, 12);
+            this.uiPanel26.Size = new System.Drawing.Size(95, 12);
             this.uiPanel26.TabIndex = 14;
             this.uiPanel26.Text = null;
             this.uiPanel26.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -463,12 +601,12 @@
             this.uiPanel25.Dock = System.Windows.Forms.DockStyle.Right;
             this.uiPanel25.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.uiPanel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel25.Location = new System.Drawing.Point(90, 0);
+            this.uiPanel25.Location = new System.Drawing.Point(95, 0);
             this.uiPanel25.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel25.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel25.Name = "uiPanel25";
             this.uiPanel25.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiPanel25.Size = new System.Drawing.Size(249, 148);
+            this.uiPanel25.Size = new System.Drawing.Size(163, 148);
             this.uiPanel25.TabIndex = 12;
             this.uiPanel25.Text = null;
             this.uiPanel25.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -481,7 +619,7 @@
             this.lblSoLuongHD.ForeColor = System.Drawing.Color.White;
             this.lblSoLuongHD.Location = new System.Drawing.Point(0, 48);
             this.lblSoLuongHD.Name = "lblSoLuongHD";
-            this.lblSoLuongHD.Size = new System.Drawing.Size(249, 34);
+            this.lblSoLuongHD.Size = new System.Drawing.Size(163, 34);
             this.lblSoLuongHD.TabIndex = 4;
             this.lblSoLuongHD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -489,11 +627,11 @@
             // 
             this.uiLabel1.BackColor = System.Drawing.Color.Transparent;
             this.uiLabel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.uiLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLabel1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiLabel1.ForeColor = System.Drawing.Color.White;
             this.uiLabel1.Location = new System.Drawing.Point(0, 0);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(249, 48);
+            this.uiLabel1.Size = new System.Drawing.Size(163, 48);
             this.uiLabel1.TabIndex = 3;
             this.uiLabel1.Text = "Số lượng hóa đơn";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -508,7 +646,7 @@
             this.uiPanel5.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel5.Name = "uiPanel5";
             this.uiPanel5.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel5.Size = new System.Drawing.Size(33, 148);
+            this.uiPanel5.Size = new System.Drawing.Size(30, 148);
             this.uiPanel5.TabIndex = 10;
             this.uiPanel5.Text = null;
             this.uiPanel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -611,9 +749,9 @@
             // uiPanel12
             // 
             this.uiPanel12.BackColor = System.Drawing.SystemColors.Window;
-            this.uiPanel12.Controls.Add(this.dtpNgayBatDau);
-            this.uiPanel12.Controls.Add(this.uiLabel2);
             this.uiPanel12.Controls.Add(this.dtpNgayKetThuc);
+            this.uiPanel12.Controls.Add(this.uiLabel2);
+            this.uiPanel12.Controls.Add(this.dtpNgayBatDau);
             this.uiPanel12.Controls.Add(this.uiPanel14);
             this.uiPanel12.Controls.Add(this.uiPanel13);
             this.uiPanel12.Dock = System.Windows.Forms.DockStyle.Left;
@@ -624,47 +762,47 @@
             this.uiPanel12.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel12.Name = "uiPanel12";
             this.uiPanel12.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel12.Size = new System.Drawing.Size(455, 47);
+            this.uiPanel12.Size = new System.Drawing.Size(449, 47);
             this.uiPanel12.TabIndex = 47;
             this.uiPanel12.Text = null;
             this.uiPanel12.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dtpNgayBatDau
+            // dtpNgayKetThuc
             // 
-            this.dtpNgayBatDau.CustomFormat = "dd/MM/yyyy";
-            this.dtpNgayBatDau.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dtpNgayBatDau.Enabled = false;
-            this.dtpNgayBatDau.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.dtpNgayBatDau.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNgayBatDau.Location = new System.Drawing.Point(113, 10);
-            this.dtpNgayBatDau.Name = "dtpNgayBatDau";
-            this.dtpNgayBatDau.Size = new System.Drawing.Size(150, 34);
-            this.dtpNgayBatDau.TabIndex = 46;
+            this.dtpNgayKetThuc.CustomFormat = "dd/MM/yyyy";
+            this.dtpNgayKetThuc.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dtpNgayKetThuc.Enabled = false;
+            this.dtpNgayKetThuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.dtpNgayKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNgayKetThuc.Location = new System.Drawing.Point(266, 10);
+            this.dtpNgayKetThuc.Name = "dtpNgayKetThuc";
+            this.dtpNgayKetThuc.Size = new System.Drawing.Size(151, 34);
+            this.dtpNgayKetThuc.TabIndex = 48;
             // 
             // uiLabel2
             // 
             this.uiLabel2.BackColor = System.Drawing.SystemColors.Window;
-            this.uiLabel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.uiLabel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.uiLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel2.Location = new System.Drawing.Point(263, 10);
+            this.uiLabel2.Location = new System.Drawing.Point(225, 10);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(41, 37);
-            this.uiLabel2.TabIndex = 45;
+            this.uiLabel2.TabIndex = 47;
             this.uiLabel2.Text = "-";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // dtpNgayKetThuc
+            // dtpNgayBatDau
             // 
-            this.dtpNgayKetThuc.CustomFormat = "dd/MM/yyyy";
-            this.dtpNgayKetThuc.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dtpNgayKetThuc.Enabled = false;
-            this.dtpNgayKetThuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.dtpNgayKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNgayKetThuc.Location = new System.Drawing.Point(304, 10);
-            this.dtpNgayKetThuc.Name = "dtpNgayKetThuc";
-            this.dtpNgayKetThuc.Size = new System.Drawing.Size(151, 34);
-            this.dtpNgayKetThuc.TabIndex = 44;
+            this.dtpNgayBatDau.CustomFormat = "dd/MM/yyyy";
+            this.dtpNgayBatDau.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dtpNgayBatDau.Enabled = false;
+            this.dtpNgayBatDau.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.dtpNgayBatDau.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNgayBatDau.Location = new System.Drawing.Point(75, 10);
+            this.dtpNgayBatDau.Name = "dtpNgayBatDau";
+            this.dtpNgayBatDau.Size = new System.Drawing.Size(150, 34);
+            this.dtpNgayBatDau.TabIndex = 46;
             // 
             // uiPanel14
             // 
@@ -676,7 +814,7 @@
             this.uiPanel14.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel14.Name = "uiPanel14";
             this.uiPanel14.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel14.Size = new System.Drawing.Size(33, 37);
+            this.uiPanel14.Size = new System.Drawing.Size(75, 37);
             this.uiPanel14.TabIndex = 38;
             this.uiPanel14.Text = null;
             this.uiPanel14.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -692,7 +830,7 @@
             this.uiPanel13.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel13.Name = "uiPanel13";
             this.uiPanel13.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel13.Size = new System.Drawing.Size(455, 10);
+            this.uiPanel13.Size = new System.Drawing.Size(449, 10);
             this.uiPanel13.TabIndex = 37;
             this.uiPanel13.Text = null;
             this.uiPanel13.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -907,7 +1045,7 @@
             series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.DiagonalRight;
             series1.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(159)))), ((int)(((byte)(255)))));
             series1.BorderColor = System.Drawing.SystemColors.Window;
-            series1.BorderWidth = 8;
+            series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
             series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -1433,7 +1571,8 @@
             // 
             // uiPanel20
             // 
-            this.uiPanel20.Controls.Add(this.chartTongDoanhThu);
+            this.uiPanel20.Controls.Add(this.panel3);
+            this.uiPanel20.Controls.Add(this.panel2);
             this.uiPanel20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiPanel20.FillColor = System.Drawing.SystemColors.Window;
             this.uiPanel20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -1447,6 +1586,15 @@
             this.uiPanel20.Text = null;
             this.uiPanel20.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.chartTongDoanhThu);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 44);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(539, 186);
+            this.panel3.TabIndex = 1;
+            // 
             // chartTongDoanhThu
             // 
             chartArea2.AxisX.IsMarginVisible = false;
@@ -1456,12 +1604,13 @@
             chartArea2.AxisX.MajorGrid.LineWidth = 0;
             chartArea2.AxisX.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(111)))));
             chartArea2.AxisX.MajorTickMark.Size = 3F;
+            chartArea2.AxisX.ScaleBreakStyle.BreakLineStyle = System.Windows.Forms.DataVisualization.Charting.BreakLineStyle.Straight;
             chartArea2.AxisY.LabelStyle.Format = "{C0}";
             chartArea2.AxisY.LineColor = System.Drawing.Color.White;
-            chartArea2.AxisY.LineWidth = 0;
             chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(111)))));
             chartArea2.AxisY.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(111)))));
             chartArea2.AxisY.MajorTickMark.LineWidth = 0;
+            chartArea2.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.DashedHorizontal;
             chartArea2.Name = "ChartArea1";
             this.chartTongDoanhThu.ChartAreas.Add(chartArea2);
             this.chartTongDoanhThu.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1482,6 +1631,7 @@
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
             series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(127)))));
             series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            series2.IsVisibleInLegend = false;
             series2.LabelForeColor = System.Drawing.Color.White;
             series2.Legend = "Legend1";
             series2.MarkerColor = System.Drawing.Color.MediumPurple;
@@ -1489,13 +1639,89 @@
             series2.Name = "Series1";
             series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             this.chartTongDoanhThu.Series.Add(series2);
-            this.chartTongDoanhThu.Size = new System.Drawing.Size(539, 230);
-            this.chartTongDoanhThu.TabIndex = 5;
+            this.chartTongDoanhThu.Size = new System.Drawing.Size(539, 186);
+            this.chartTongDoanhThu.TabIndex = 6;
             title2.Alignment = System.Drawing.ContentAlignment.TopLeft;
             title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             title2.Name = "Title1";
             title2.Text = "Tổng doanh thu";
             this.chartTongDoanhThu.Titles.Add(title2);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.Controls.Add(this.dtpChonThangInPhieu);
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.uiLabel9);
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.btnInPhieuBaoCao);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(539, 44);
+            this.panel2.TabIndex = 0;
+            // 
+            // dtpChonThangInPhieu
+            // 
+            this.dtpChonThangInPhieu.CustomFormat = "MM/yyyy";
+            this.dtpChonThangInPhieu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dtpChonThangInPhieu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpChonThangInPhieu.Location = new System.Drawing.Point(185, 10);
+            this.dtpChonThangInPhieu.Name = "dtpChonThangInPhieu";
+            this.dtpChonThangInPhieu.Size = new System.Drawing.Size(114, 30);
+            this.dtpChonThangInPhieu.TabIndex = 52;
+            // 
+            // panel5
+            // 
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(185, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(133, 10);
+            this.panel5.TabIndex = 51;
+            // 
+            // uiLabel9
+            // 
+            this.uiLabel9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel9.Location = new System.Drawing.Point(13, 0);
+            this.uiLabel9.Name = "uiLabel9";
+            this.uiLabel9.Size = new System.Drawing.Size(172, 44);
+            this.uiLabel9.TabIndex = 49;
+            this.uiLabel9.Text = "Chọn tháng để in:";
+            this.uiLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel4
+            // 
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(13, 44);
+            this.panel4.TabIndex = 48;
+            // 
+            // btnInPhieuBaoCao
+            // 
+            this.btnInPhieuBaoCao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInPhieuBaoCao.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnInPhieuBaoCao.FillColor = System.Drawing.SystemColors.Window;
+            this.btnInPhieuBaoCao.FillHoverColor = System.Drawing.Color.HotPink;
+            this.btnInPhieuBaoCao.FillPressColor = System.Drawing.Color.DeepPink;
+            this.btnInPhieuBaoCao.FillSelectedColor = System.Drawing.Color.DeepPink;
+            this.btnInPhieuBaoCao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnInPhieuBaoCao.ForeColor = System.Drawing.Color.HotPink;
+            this.btnInPhieuBaoCao.Location = new System.Drawing.Point(318, 0);
+            this.btnInPhieuBaoCao.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnInPhieuBaoCao.Name = "btnInPhieuBaoCao";
+            this.btnInPhieuBaoCao.Radius = 2;
+            this.btnInPhieuBaoCao.RectColor = System.Drawing.Color.HotPink;
+            this.btnInPhieuBaoCao.RectHoverColor = System.Drawing.Color.HotPink;
+            this.btnInPhieuBaoCao.RectPressColor = System.Drawing.Color.DeepPink;
+            this.btnInPhieuBaoCao.RectSelectedColor = System.Drawing.Color.DeepPink;
+            this.btnInPhieuBaoCao.RectSize = 2;
+            this.btnInPhieuBaoCao.Size = new System.Drawing.Size(221, 44);
+            this.btnInPhieuBaoCao.TabIndex = 46;
+            this.btnInPhieuBaoCao.Text = "In phiếu báo cáo";
+            this.btnInPhieuBaoCao.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             // 
             // frmDashboard
             // 
@@ -1514,6 +1740,8 @@
             this.Name = "frmDashboard";
             this.Text = "frmDashboard";
             this.uiPanel1.ResumeLayout(false);
+            this.uiPanel40.ResumeLayout(false);
+            this.uiPanel42.ResumeLayout(false);
             this.uiPanel8.ResumeLayout(false);
             this.uiPanel29.ResumeLayout(false);
             this.uiPanel6.ResumeLayout(false);
@@ -1535,7 +1763,9 @@
             this.uiPanel33.ResumeLayout(false);
             this.uiPanel35.ResumeLayout(false);
             this.uiPanel20.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartTongDoanhThu)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1606,14 +1836,28 @@
         private Sunny.UI.UILabel uiLabel10;
         private Sunny.UI.UISymbolButton uiSymbolButton5;
         private Sunny.UI.UIPanel uiPanel39;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartTongDoanhThu;
         private Sunny.UI.UILabel uiLabel6;
-        private System.Windows.Forms.DateTimePicker dtpNgayBatDau;
-        private Sunny.UI.UILabel uiLabel2;
-        private System.Windows.Forms.DateTimePicker dtpNgayKetThuc;
         private Sunny.UI.UIDataGridView dgvSPDuoiMucToiThieu;
         public System.Windows.Forms.DataVisualization.Charting.Chart chartTopSanPham;
         private Sunny.UI.UISymbolButton btnLocTheoCustom;
         private Sunny.UI.UIPanel uiPanel15;
+        private System.Windows.Forms.DateTimePicker dtpNgayKetThuc;
+        private Sunny.UI.UILabel uiLabel2;
+        private System.Windows.Forms.DateTimePicker dtpNgayBatDau;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartTongDoanhThu;
+        private System.Windows.Forms.Panel panel2;
+        private Sunny.UI.UIButton btnInPhieuBaoCao;
+        private Sunny.UI.UIPanel uiPanel40;
+        private Sunny.UI.UISymbolButton uiSymbolButton7;
+        private Sunny.UI.UIPanel uiPanel41;
+        private Sunny.UI.UIPanel uiPanel42;
+        private Sunny.UI.UILabel lblLoiNhuan;
+        private Sunny.UI.UILabel uiLabel11;
+        private Sunny.UI.UIPanel uiPanel43;
+        private Sunny.UI.UILabel uiLabel9;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.DateTimePicker dtpChonThangInPhieu;
+        private System.Windows.Forms.Panel panel5;
     }
 }
