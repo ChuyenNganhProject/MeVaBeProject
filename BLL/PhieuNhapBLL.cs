@@ -49,5 +49,9 @@ namespace BLL
             return phieuNhapDAL.XoaPhieuNhap(maPhieuNhap,soLan);
         }
 
+        public decimal TinhTongTienPhieuNhapTheoKhoangThoiGian(DateTime batDau, DateTime ketThuc)
+        {
+            return phieuNhapDAL.TinhTongTienPhieuNhapTheoKhoangThoiGian(batDau, ketThuc);
+        }
     }
 }

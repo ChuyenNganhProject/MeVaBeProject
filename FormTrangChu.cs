@@ -21,6 +21,8 @@ namespace MeVaBeProject
         public frmTrangChu(NhanVien nhanVien)
         {
             InitializeComponent();
+            this.btnVeTrangBanHang.Visible = false;
+            this.btnVeTrangBanHang.Click += BtnVeTrangBanHang_Click;
             this.btnClose.Click += BtnClose_Click;
             this.btnNhapHang.Click += BtnNhapHang_Click;
             this.btnSanPham.Click += BtnSanPham_Click;
@@ -33,6 +35,13 @@ namespace MeVaBeProject
             this.quyens = new List<ChiTietQuyenCuaLoaiNhanVien>();
             this.btnHoaDon.Click += BtnHoaDon_Click;
             this.btnDashboard.Click += BtnDashboard_Click;
+        }
+
+        private void BtnVeTrangBanHang_Click(object sender, EventArgs e)
+        {
+            frmBanHang frm = new frmBanHang(nhanVien.maNhanVien);
+            frm.Show();
+            this.Close();
         }
 
         private void BtnDashboard_Click(object sender, EventArgs e)
@@ -67,7 +76,7 @@ namespace MeVaBeProject
                 lbTenNV.Text = $"Xin Chào: {nhanVien.tenNhanVien}";
 
                 // Hiển thị tên loại nhân viên (chức vụ)
-                lbChucVu.Text = $"Chức vụ: {nhanVien.tenLoaiNhanVien}";
+                lbChucVu.Text += " " + nhanVien.tenLoaiNhanVien;
                 quyens = ctQuyen.LayDanhSachQuyenCuaLoaiNhanVien(nhanVien.maLoaiNhanVien);
                 foreach(ChiTietQuyenCuaLoaiNhanVien item in quyens)
                 {
@@ -105,6 +114,10 @@ namespace MeVaBeProject
                             break;
                         case "Q0012":
                             btnDashboard.Enabled= true;
+                            btnHoaDon.Enabled = true;
+                            break;
+                        case "Q0013":
+                            btnVeTrangBanHang.Visible = true;
                             break;
                         default:
                             break;

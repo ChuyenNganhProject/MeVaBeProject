@@ -213,7 +213,13 @@
     </Compile>
     <Compile Include="frmPhieuGiaoHang.Designer.cs">
       <DependentUpon>frmPhieuGiaoHang.cs</DependentUpon>
-	</Compile>
+    </Compile>
+    <Compile Include="frmPhieuThongKeBaoCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhieuThongKeBaoCao.Designer.cs">
+      <DependentUpon>frmPhieuThongKeBaoCao.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmQLLoaiSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -267,7 +273,7 @@
     </Compile>
     <Compile Include="frmQRCodeThanhToan.Designer.cs">
       <DependentUpon>frmQRCodeThanhToan.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="frmQLPhanQuyen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -341,7 +347,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPhieuGiaoHang.resx">
       <DependentUpon>frmPhieuGiaoHang.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhieuThongKeBaoCao.resx">
+      <DependentUpon>frmPhieuThongKeBaoCao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmQLLoaiSanPham.resx">
       <DependentUpon>frmQLLoaiSanPham.cs</DependentUpon>
     </EmbeddedResource>
@@ -368,7 +377,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQRCodeThanhToan.resx">
       <DependentUpon>frmQRCodeThanhToan.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmQLPhanQuyen.resx">
       <DependentUpon>frmQLPhanQuyen.cs</DependentUpon>
     </EmbeddedResource>
@@ -387,6 +396,9 @@
     <EmbeddedResource Include="PhieuDatHang.rdlc" />
     <EmbeddedResource Include="PhieuGiaoHang.rdlc" />
     <EmbeddedResource Include="PhieuNhapHang.rdlc" />
+    <EmbeddedResource Include="PhieuThongKeBaoCao.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -400,6 +412,8 @@
     <None Include="Properties\DataSources\DTO.ChiTietHoaDonSanPham.datasource" />
     <None Include="Properties\DataSources\DTO.ChiTietPhieuDat.datasource" />
     <None Include="Properties\DataSources\DTO.ChiTietPhieuNhap.datasource" />
+    <None Include="Properties\DataSources\DTO.SanPhamBanChay.datasource" />
+    <None Include="Properties\DataSources\DTO.ThongKeDoanhThuTheoThang.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

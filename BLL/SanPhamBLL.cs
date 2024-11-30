@@ -64,7 +64,7 @@ namespace BLL
             return spdal.TongSoLuongSanPham();
         }
 
-        public Dictionary<string, (string TenSanPham, int? SoLuongBan)> ThongKeTop5SanPhamBanChayNhat(DateTime ngayBatDau, DateTime ngayKetThuc)
+        public List<SanPhamBanChay> ThongKeTop5SanPhamBanChayNhat(DateTime ngayBatDau, DateTime ngayKetThuc)
         {
             return spdal.ThongKeTop5SanPhamBanChayNhat(ngayBatDau, ngayKetThuc);
         }

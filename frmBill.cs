@@ -35,7 +35,7 @@ namespace MeVaBeProject
             _hoaDon = hoaDon; 
             _chiTietHoaDons = chiTietHoaDons; 
             this.tienBiGiamText = tienBiGiamText;
-            this.tienTruocKhiGiamText = tienTruocKhiGiamText;
+            this.tienTruocKhiGiamText = tienTruocKhiGiamText + "đ";
             this.hangThanhVienText = hangThanhVienText;
             this.phanTramGiamText = phanTramGiamText;
             this.diemTichLuyDuocCongText = diemTichLuyDuocCongText;
@@ -52,7 +52,7 @@ namespace MeVaBeProject
             string tenKhachHang = khachHang != null ? khachHang.tenKhachHang : "Khách vãng lai";
             string ngayLap = _hoaDon.ngayLap.HasValue ? _hoaDon.ngayLap.Value.ToString("dd/MM/yyyy HH:mm:ss") : "N/A";
             decimal tongTienThanhToan = _hoaDon.tongTienSauGiam.Value;
-            string tongTienThanhToanText = tongTienThanhToan.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"));
+            string tongTienThanhToanText = tongTienThanhToan.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
             string hangThanhVienValue = !string.IsNullOrEmpty(hangThanhVienText) ? hangThanhVienText : " ";
             string tienBiGiamValue = !string.IsNullOrEmpty(tienBiGiamText) ? tienBiGiamText: " ";
             string phanTramGiamValue = !string.IsNullOrEmpty(phanTramGiamText) ? phanTramGiamText : " ";
@@ -68,8 +68,8 @@ namespace MeVaBeProject
             }
             else
             {
-                diemTichLuyDuocCongText = "Điểm tích lũy được cộng: " + this.diemTichLuyDuocCongText;
-                tongDiemTichLuyText = "Tổng điểm tích lũy: " + tongDiemTichLuy.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"));
+                diemTichLuyDuocCongText = "Điểm tích lũy được cộng: " + this.diemTichLuyDuocCongText + "đ";
+                tongDiemTichLuyText = "Tổng điểm tích lũy: " + tongDiemTichLuy.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
             }
             string hinhThucTraText = this.hinhThucTra;
 

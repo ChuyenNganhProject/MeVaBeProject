@@ -73,7 +73,7 @@ namespace BLL
             return hddal.ThongKeTongDoanhThuTheoGioTrongNgay(ngay);
         }
 
-        public Dictionary<DateTime?, decimal> ThongKeTongDoanhThuTheoThangTrongNam(DateTime ngayBatDau, DateTime ngayKetThuc)
+        public List<ThongKeDoanhThuTheoThang> ThongKeTongDoanhThuTheoThangTrongNam(DateTime ngayBatDau, DateTime ngayKetThuc)
         {
             return hddal.ThongKeTongDoanhThuTheoThangTrongNam(ngayBatDau, ngayKetThuc);
         }

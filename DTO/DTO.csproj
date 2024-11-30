@@ -66,6 +66,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="SanPham.cs" />
+    <Compile Include="SanPhamBanChay.cs" />
+    <Compile Include="ThongKeDoanhThuTheoThang.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -77,6 +79,8 @@
     <None Include="MeVaBeDB.dbml.layout">
       <DependentUpon>MeVaBeDB.dbml</DependentUpon>
     </None>
+    <None Include="Properties\DataSources\ThongKeDoanhThuTheoThang.datasource" />
+    <None Include="Properties\DataSources\ThongKeDoanhThuTheoThangDataSet.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -81,9 +81,8 @@ namespace MeVaBeProject
                 dtpNgayBatDau.Value = dtpNgayKetThuc.Value;
                 txtTimKiem.Text = "";
                 txtTimKiem.Enabled = false;
-                dgvHoaDon.DataSource = hdbll.LoadDanhSachHoaDon();
-                dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                SettingDgv();
+                List<HoaDon> dsHoaDon = hdbll.LoadDanhSachHoaDon();
+                SettingDgv(dsHoaDon);
                 LoadTieuChiCombobox();
 
                 decimal tongDoanhThu = hdbll.TinhTongDoanhThu();
@@ -102,12 +101,10 @@ namespace MeVaBeProject
 
         private void LoadDanhSachHoaDonTheoNgayLoc(DateTime ngayBatDau, DateTime ngayKetThuc)
         {
-            var hoadons = hdbll.LoadDanhSachHoaDonTheoNgayLoc(ngayBatDau, ngayKetThuc);
-            dgvHoaDon.DataSource = hoadons;
-            dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            SettingDgv();
+            List<HoaDon> dsHoaDon = hdbll.LoadDanhSachHoaDonTheoNgayLoc(ngayBatDau, ngayKetThuc);
+            SettingDgv(dsHoaDon);
 
-            decimal tongDoanhThu = hoadons.Sum(hd => hd.tongTienSauGiam) ?? 0;
+            decimal tongDoanhThu = dsHoaDon.Sum(hd => hd.tongTienSauGiam) ?? 0;
             lblTongDoanhThu.Text = "Tổng doanh thu: " + tongDoanhThu.ToString("N0").Replace(",", ".") + "đ";
         }
 
@@ -119,17 +116,16 @@ namespace MeVaBeProject
 
             if (string.IsNullOrWhiteSpace(tenTimKiem))
             {
-                dgvHoaDon.DataSource = hdbll.LoadDanhSachHoaDon();
+                List<HoaDon> dsHoaDon = hdbll.LoadDanhSachHoaDon();
+                SettingDgv(dsHoaDon);
                 tongDoanhThu = hdbll.TinhTongDoanhThu();
             }
             else
             {
-                var ketQuaTimKiem = hdbll.TimKiemHoaDon(tieuChi, tenTimKiem);
-                dgvHoaDon.DataSource = ketQuaTimKiem;
+                List<HoaDon> ketQuaTimKiem = hdbll.TimKiemHoaDon(tieuChi, tenTimKiem);
+                SettingDgv(ketQuaTimKiem);
                 tongDoanhThu = ketQuaTimKiem.Sum(hd => hd.tongTienSauGiam) ?? 0;
             }
-            dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            SettingDgv();
 
             lblTongDoanhThu.Text = "Tổng doanh thu: " + tongDoanhThu.ToString("N0").Replace(",", ".") + "đ";
         }
@@ -149,9 +145,8 @@ namespace MeVaBeProject
         {
             try
             {
-                dgvHoaDon.DataSource = hdbll.LoadDanhSachHoaDon();
-                dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                SettingDgv();
+                List<HoaDon> dsHoaDon = hdbll.LoadDanhSachHoaDon();
+                SettingDgv(dsHoaDon);
                 LoadTieuChiCombobox();
 
                 decimal tongDoanhThu = hdbll.TinhTongDoanhThu();
@@ -176,8 +171,11 @@ namespace MeVaBeProject
             }
         }
 
-        private void SettingDgv()
+        private void SettingDgv(List<HoaDon> dsHoaDon)
         {
+            dgvHoaDon.DataSource = dsHoaDon;
+            dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             if (dgvHoaDon.Columns["KhachHang"] != null)
             {
                 dgvHoaDon.Columns["KhachHang"].Visible = false;
@@ -220,7 +218,7 @@ namespace MeVaBeProject
             }
             if (dgvHoaDon.Columns["tienDuocGiam"] != null)
             {
-                dgvHoaDon.Columns["tienDuocGiam"].HeaderText = "Tiền được giảm";
+                dgvHoaDon.Columns["tienDuocGiam"].HeaderText = "Giảm giá VIP";
             }
             if (dgvHoaDon.Columns["tongTienSauGiam"] != null)
             {
@@ -230,7 +228,17 @@ namespace MeVaBeProject
             {
                 dgvHoaDon.Columns["tentrangThai"].HeaderText = "Trạng thái";
             }
+            if (dgvHoaDon.Columns["hinhThucTra"] != null)
+            {
+                dgvHoaDon.Columns["hinhThucTra"].HeaderText = "Hình thức trả";
+            }
+
+            dgvHoaDon.Columns["maHoaDon"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvHoaDon.Columns["tongTienSauGiam"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvHoaDon.Columns["hinhThucTra"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvHoaDon.Columns["tenKhachHang"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvHoaDon.Columns["tienDuocGiam"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvHoaDon.Columns["tenNhanVien"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             dgvHoaDon.Columns["maHoaDon"].DisplayIndex = 0;
             dgvHoaDon.Columns["tenKhachHang"].DisplayIndex = 1;
@@ -240,6 +248,7 @@ namespace MeVaBeProject
             dgvHoaDon.Columns["tienDuocGiam"].DisplayIndex = 5;
             dgvHoaDon.Columns["tongTienSauGiam"].DisplayIndex = 6;
             dgvHoaDon.Columns["tentrangThai"].DisplayIndex = 7;
+            dgvHoaDon.Columns["hinhThucTra"].DisplayIndex = 8;
         }
         private void LoadTieuChiCombobox()
         {

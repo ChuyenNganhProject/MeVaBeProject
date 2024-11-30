@@ -146,5 +146,22 @@ namespace DAL
             }
             return true;
         }
+
+        public List<KhuyenMai> LocDanhSachKhuyenMai(DateTime tgBatDau, DateTime tgKetThuc, string trangThai)
+        {
+            if(trangThai == "Chọn...")
+            {
+                return db.KhuyenMais.Where(km => (km.ngayBatDau.Value.Date >= tgBatDau.Date && km.ngayBatDau.Value.Date <= tgKetThuc.Date) ||
+                                          (km.ngayKetThuc.Value.Date >= tgBatDau.Date && km.ngayKetThuc.Value.Date <= tgKetThuc.Date))
+                            .Select(km => km).ToList();
+            }
+            else
+            {
+                return db.KhuyenMais.Where(km => (km.ngayBatDau.Value.Date >= tgBatDau.Date && km.ngayBatDau.Value.Date <= tgKetThuc.Date) ||
+                                          (km.ngayKetThuc.Value.Date >= tgBatDau.Date && km.ngayKetThuc.Value.Date <= tgKetThuc.Date) && 
+                                          km.trangThai == trangThai)
+                                        .Select(km => km).ToList();
+            }
+        }
     }
 }

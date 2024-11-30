@@ -52,5 +52,10 @@ namespace BLL
         {
             return kmdal.KiemTraThoiGianKhuyenMaiTruocKhiSua(maKM, ngayBatDau, ngayKetThuc);
         }
+
+        public List<KhuyenMai> LocDanhSachKhuyenMai(DateTime tgBatDau, DateTime tgKetThuc, string trangThai)
+        {
+            return kmdal.LocDanhSachKhuyenMai(tgBatDau, tgKetThuc, trangThai);
+        }
     }
 }

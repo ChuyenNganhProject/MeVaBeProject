@@ -29,6 +29,7 @@ namespace CustomControl
         public decimal TongTienTruocKhiGiamGiaSp { get; private set; }
         public decimal TongGiaTri { get; private set; }
         public string TenSanPham { get; private set; }
+        private int SoLuongMax;
 
         public GioHangItemControl()
         {
@@ -53,16 +54,22 @@ namespace CustomControl
 
         private void NumericSoLuongSp_ValueChanged(object sender, EventArgs e)
         {
+            SanPham sanPham = spbll.TimKiemSanPhamTheoMaSP(MaSanPham);
+            int max = sanPham.soLuong.Value;
+            int soLuong = (int)this.numericSoLuongSp.Value;
+
+            if (soLuong > max)
+            {
+                MessageBox.Show("Số lượng sản phẩm hiện tại: " + max, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.numericSoLuongSp.Value = max;
+                return;
+            }
+            // Đặt giá trị Maximum sau khi kiểm tra số lượng
+            this.numericSoLuongSp.Maximum = max;
+
             string donGiaText = this.labelGiaTinhTien.Text.Replace("đ", "").Trim();
             if (decimal.TryParse(donGiaText, NumberStyles.Number, CultureInfo.GetCultureInfo("vi-VN"), out decimal donGia))
             {
-                int soLuong = (int)this.numericSoLuongSp.Value;
-                int max = int.Parse(numericSoLuongSp.Maximum.ToString());
-                if(soLuong > max)
-                {
-                    MessageBox.Show("Số lượng sản phẩm hiện tại: " + max, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
                 this.SoLuong = soLuong;
                 this.TongGiaTri = donGia * soLuong;
 
@@ -77,7 +84,7 @@ namespace CustomControl
         {
             SanPham sanPham = spbll.TimKiemSanPhamTheoMaSP(maSp);
             this.TongTienTruocKhiGiamGiaSp = soLuong * donGia;
-            this.numericSoLuongSp.Maximum = sanPham.soLuong.Value;
+            
             this.MaSanPham = maSp;
             this.TenSanPham = tenSp;
             this.SoLuong = soLuong;

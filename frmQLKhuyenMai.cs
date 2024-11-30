@@ -21,6 +21,13 @@ namespace MeVaBeProject
         public frmQLKhuyenMai(frmTrangChu parentfrm, NhanVien nhanVien)
         {
             InitializeComponent();
+
+            cboTrangThai.SelectedIndex = 0;
+            this.dtpNgayKetThuc.MaxDate = DateTime.Now;
+            this.dtpNgayBatDau.MaxDate = this.dtpNgayKetThuc.MaxDate;
+            this.dtpNgayBatDau.ValueChanged += DtpNgayBatDau_ValueChanged;
+            this.dtpNgayKetThuc.ValueChanged += DtpNgayKetThuc_ValueChanged;
+            
             this.parentfrm = parentfrm;
             this.Load += FrmQLKhuyenMai_Load;
             this.btnBack.Click += BtnBack_Click;
@@ -29,7 +36,39 @@ namespace MeVaBeProject
             this.btnXemKhuyenMai.Click += BtnXemKhuyenMai_Click;
             this.btnReset.Click += BtnReset_Click;
             this.dgvKhuyenMai.SelectionChanged += DgvKhuyenMai_SelectionChanged;
-            this.nhanVien = nhanVien;
+
+            this.btnXacNhan.Click += BtnXacNhan_Click;
+            this.btnHuyLoc.Click += BtnHuyLoc_Click;
+        }
+
+        private void DtpNgayBatDau_ValueChanged(object sender, EventArgs e)
+        {
+            if(dtpNgayBatDau.Value > dtpNgayKetThuc.Value)
+            {
+                dtpNgayKetThuc.Value = dtpNgayBatDau.Value;
+            }
+        }
+
+        private void DtpNgayKetThuc_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpNgayKetThuc.Value < dtpNgayBatDau.Value)
+            {
+                dtpNgayBatDau.Value = dtpNgayKetThuc.Value;
+            }
+        }
+
+        private void BtnHuyLoc_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void BtnXacNhan_Click(object sender, EventArgs e)
+        {
+            DateTime tgBatDau = dtpNgayBatDau.Value;
+            DateTime tgKetThuc = dtpNgayKetThuc.Value;
+            string trangThai = cboTrangThai.SelectedItem.ToString();
+            List<KhuyenMai> dsKhuyenMaiLoc = kmbll.LocDanhSachKhuyenMai(tgBatDau, tgKetThuc, trangThai);
+            SettingDgv(dsKhuyenMaiLoc);
         }
 
         private void BtnReset_Click(object sender, EventArgs e)
@@ -61,14 +100,14 @@ namespace MeVaBeProject
         private void LoadDanhSachKhuyenMai()
         {
             List<KhuyenMai> khuyenMais = kmbll.LoadDanhSachKhuyenMai();
+            SettingDgv(khuyenMais);
+        }
+
+        private void SettingDgv(List<KhuyenMai> khuyenMais)
+        {
             dgvKhuyenMai.DataSource = khuyenMais;
             dgvKhuyenMai.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            SettingDgv();
-        }
-
-        private void SettingDgv()
-        {
             if (dgvKhuyenMai.Columns["ngayBatDau"] != null)
             {
                 dgvKhuyenMai.Columns["ngayBatDau"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
@@ -100,7 +139,6 @@ namespace MeVaBeProject
                 dgvKhuyenMai.Columns["trangThai"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
         }
-
         private void BtnTaoKhuyenMai_Click(object sender, EventArgs e)
         {
             frmTaoKhuyenMai frm = new frmTaoKhuyenMai(parentfrm,nhanVien, "");

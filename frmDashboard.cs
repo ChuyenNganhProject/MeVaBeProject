@@ -1,5 +1,6 @@
 ﻿using BLL;
 using DTO;
+using Microsoft.Reporting.WinForms;
 using Sunny.UI;
 using System;
 using System.Collections.Generic;
@@ -7,9 +8,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace MeVaBeProject
 {
@@ -20,12 +23,16 @@ namespace MeVaBeProject
         NhanVienBLL nvbll = new NhanVienBLL();
         NhaCungCapBLL nccbll = new NhaCungCapBLL();
         SanPhamBLL spbll = new SanPhamBLL();
+        PhieuNhapBLL pnbll = new PhieuNhapBLL();
 
         private List<Sunny.UI.UIButton> buttonList;
 
         public frmDashboard()
         {
             InitializeComponent();
+
+            dtpChonThangInPhieu.MaxDate = DateTime.Today;
+
             this.Load += FrmDashboard_Load;
             this.dtpNgayBatDau.Value = DateTime.Today.AddDays(-7);
             this.dtpNgayKetThuc.Value = DateTime.Now;
@@ -55,7 +62,39 @@ namespace MeVaBeProject
                 button.Click += Button_Click;
             }    
 
-                this.dgvSPDuoiMucToiThieu.CellFormatting += DgvSPDuoiMucToiThieu_CellFormatting;
+            this.dgvSPDuoiMucToiThieu.CellFormatting += DgvSPDuoiMucToiThieu_CellFormatting;
+            this.btnInPhieuBaoCao.Click += BtnInPhieuBaoCao_Click; ;
+        }
+
+        private void BtnInPhieuBaoCao_Click(object sender, EventArgs e)
+        {
+            var month = dtpChonThangInPhieu.Value.Month;
+            var year = dtpChonThangInPhieu.Value.Year;
+
+            DateTime ngayBatDau = new DateTime(year, month, 1);
+            DateTime ngayKetThuc = ngayBatDau.AddMonths(1).AddDays(-1);
+
+            // doanh thu của tháng được chọn
+            var reportData = hdbll.ThongKeTongDoanhThuTheoThangTrongNam(ngayBatDau, ngayKetThuc);
+
+            // lợi nhuận
+            decimal tongDoanhThu = hdbll.TinhDoanhThuTheoKhoangThoiGian(ngayBatDau, ngayKetThuc);
+            decimal tongTienNhapHang = pnbll.TinhTongTienPhieuNhapTheoKhoangThoiGian(ngayBatDau, ngayKetThuc);
+            decimal tienLoiNhuan = tongDoanhThu - tongTienNhapHang;
+            string loiNhuanText = "Lợi nhuận: " + tienLoiNhuan.ToString("N0").Replace(",", ".") + "đ";
+
+            // top 5 sản phẩm bán chạy
+            var top5SanPhamBanChay = spbll.ThongKeTop5SanPhamBanChayNhat(ngayBatDau, ngayKetThuc);
+            var dataSourceTop5SanPhamBanChay = top5SanPhamBanChay.Select((x, index) => new
+            {
+                STT = index + 1,
+                MaSanPham = x.MaSanPham,
+                TenSanPham = x.TenSanPham,
+                SoLuongBan = x.SoLuongBan
+            }).ToList();
+
+            frmPhieuThongKeBaoCao frm = new frmPhieuThongKeBaoCao(reportData, month, year, loiNhuanText, top5SanPhamBanChay);
+            frm.ShowDialog();
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -75,7 +114,7 @@ namespace MeVaBeProject
                 clickedButton.ForeColor = System.Drawing.Color.White;
             }
         }
-
+        
         private void DgvSPDuoiMucToiThieu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.Value != null && decimal.TryParse(e.Value.ToString(), out _))
@@ -95,7 +134,7 @@ namespace MeVaBeProject
     
         private void LoadData(DateTime ngayBatDau, DateTime ngayKetThuc)
         {
-            // 3 dữ liệu đầu
+            // 4 dữ liệu đầu
             int tongKH = khbll.TongSoKhachHang();
             lblSoLuongKH.Text = tongKH.ToString();
             lblSoLuongHD.Text = hdbll.TongSoHoaDonTheoKhoangThoiGian(ngayBatDau, ngayKetThuc).ToString("N0").Replace(",", ".");
@@ -103,12 +142,17 @@ namespace MeVaBeProject
             decimal tongDoanhThu = hdbll.TinhDoanhThuTheoKhoangThoiGian(ngayBatDau, ngayKetThuc);
             lblDoanhThu.Text = tongDoanhThu.ToString("N0").Replace(",", ".") + "đ";
 
+            decimal tongTienNhapHang = pnbll.TinhTongTienPhieuNhapTheoKhoangThoiGian(ngayBatDau, ngayKetThuc);
+            decimal tienLoiNhuan = tongDoanhThu - tongTienNhapHang;
+            lblLoiNhuan.Text = tienLoiNhuan.ToString("N0").Replace(",", ".") + "đ";
+
             // top 5 sản phẩm
             var top5SanPhamBanChay = spbll.ThongKeTop5SanPhamBanChayNhat(ngayBatDau, ngayKetThuc);
             var dataSourceTop5SanPhamBanChay = top5SanPhamBanChay.Select(x => new
             {
-                TenSanPham = x.Value.TenSanPham,
-                SoLuongBan = x.Value.SoLuongBan
+                MaSanPham = x.MaSanPham,
+                TenSanPham = x.TenSanPham,
+                SoLuongBan = x.SoLuongBan
             }).ToList();
             chartTopSanPham.DataSource = dataSourceTop5SanPhamBanChay;
             chartTopSanPham.Series[0].XValueMember = "TenSanPham";
@@ -117,25 +161,38 @@ namespace MeVaBeProject
 
             var tongSoNgay = (ngayKetThuc - ngayBatDau).Days + 1;
 
+            // Thống kê doanh thu
             if (tongSoNgay <= 1) // Hôm nay
             {
                 // Thống kê doanh thu theo giờ
                 var doanhThuTheoGio = hdbll.ThongKeTongDoanhThuTheoGioTrongNgay(ngayBatDau);
                 var dataSource = new List<dynamic>();
 
-                int firstHourWithData = doanhThuTheoGio.Keys.Min();
-                int lastHourWithData = doanhThuTheoGio.Keys.Max();
-
-                // Duyệt qua từng giờ từ giờ đầu tiên có dữ liệu đến giờ cuối cùng có dữ liệu
-                for (int i = firstHourWithData; i <= lastHourWithData + 1; i++)
+                if (doanhThuTheoGio.Any())
                 {
-                    decimal doanhThuHienTai = doanhThuTheoGio.ContainsKey(i) ? doanhThuTheoGio[i] : 0;
+                    int firstHourWithData = doanhThuTheoGio.Keys.Min();
+                    int lastHourWithData = doanhThuTheoGio.Keys.Max();
 
-                    // Thêm dữ liệu cho giờ hiện tại
+                    // Duyệt qua từng giờ từ giờ đầu tiên có dữ liệu đến giờ cuối cùng có dữ liệu
+                    for (int i = firstHourWithData; i <= lastHourWithData + 1; i++)
+                    {
+                        decimal doanhThuHienTai = doanhThuTheoGio.ContainsKey(i) ? doanhThuTheoGio[i] : 0;
+
+                        // Thêm dữ liệu cho giờ hiện tại
+                        dataSource.Add(new
+                        {
+                            Gio = $"{i}:00",
+                            TongDoanhThu = doanhThuHienTai
+                        });
+                    }
+                }
+                else
+                {
+                    // Xử lý khi không có dữ liệu
                     dataSource.Add(new
                     {
-                        Gio = $"{i}:00",
-                        TongDoanhThu = doanhThuHienTai
+                        Gio = "No Data",
+                        TongDoanhThu = 0
                     });
                 }
 
@@ -179,8 +236,8 @@ namespace MeVaBeProject
                 var doanhThuTheoThang = hdbll.ThongKeTongDoanhThuTheoThangTrongNam(ngayBatDau, ngayKetThuc);
                 var dataSource = doanhThuTheoThang.Select(x => new
                 {
-                    Thang = x.Key.Value.ToString("MM/yyyy"),
-                    TongDoanhThu = x.Value
+                    Thang = x.Thang.ToString("MM/yyyy"), // Chuyển DateTime thành chuỗi định dạng MM/yyyy
+                    TongDoanhThu = x.TongDoanhThu
                 }).ToList();
 
                 chartTongDoanhThu.DataSource = dataSource;
@@ -189,6 +246,16 @@ namespace MeVaBeProject
             }
 
             chartTongDoanhThu.DataBind();
+
+            // Kiểm tra số lượng điểm dữ liệu và thay đổi loại biểu đồ
+            if (chartTongDoanhThu.Series[0].Points.Count == 1)
+            {
+                chartTongDoanhThu.Series[0].ChartType = SeriesChartType.Column;
+            }
+            else
+            {
+                chartTongDoanhThu.Series[0].ChartType = SeriesChartType.SplineArea;
+            }
 
             // 3 dữ liệu ô dưới bên trái
             int soLuongNhanVien = nvbll.TongSoLuongNhanVien();

@@ -2,13 +2,6 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="HoaDonDataSet">
-      <ConnectionProperties>
-        <DataProvider>System.Data.DataSet</DataProvider>
-        <ConnectString>/* Local Connection */</ConnectString>
-      </ConnectionProperties>
-      <rd:DataSourceID>0f4e71ce-ac09-43e9-8315-bdfd23952ea2</rd:DataSourceID>
-    </DataSource>
     <DataSource Name="ChiTietHoaDonSanPhamDataSet">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
@@ -578,7 +571,7 @@
                                 <TextRun>
                                   <Value>=Fields!tongTien.Value</Value>
                                   <Style>
-                                    <Format>N0</Format>
+                                    <Format>#,##0 đ</Format>
                                     <Language>vi-VN</Language>
                                   </Style>
                                 </TextRun>
