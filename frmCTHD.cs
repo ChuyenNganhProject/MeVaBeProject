@@ -18,13 +18,18 @@ namespace MeVaBeProject
         ChiTietHoaDonSanPhamBLL cthdspbll = new ChiTietHoaDonSanPhamBLL();
         private string mahd;
         private string TenKH;
-        public frmCTHD(string mahd, string tenKH)
+        private string maNhanVien;
+        private HoaDon hoadon;
+        private ChiTietPhieuDoiHangBLL ctPhieuDoiBLL;
+        public frmCTHD(string mahd,string maNhanVien, string tenKH)
         {
             InitializeComponent();
             this.Load += FrmCTHD_Load;
             this.mahd = mahd;
             this.TenKH = tenKH;
 
+            this.maNhanVien = maNhanVien;
+            this.ctPhieuDoiBLL = new ChiTietPhieuDoiHangBLL();
             this.dgvCTHD.CellFormatting += DgvCTHD_CellFormatting;
             this.btnThoat.Click += BtnThoat_Click;
         }
@@ -51,11 +56,15 @@ namespace MeVaBeProject
 
         private void FrmCTHD_Load(object sender, EventArgs e)
         {
-            HoaDon hoadon = hdbll.LoadHoaDonTheoMa(mahd);
+            hoadon = hdbll.LoadHoaDonTheoMa(mahd);
             lblMaHD.Text = mahd;
             lblTenKH.Text = TenKH;
             lblTenNV.Text = hoadon.tenNhanVien;
             lblNgayLap.Text = hoadon.ngayLap.Value.ToString("dd/MM/yyyy");
+            if (hoadon.ngayLap.Value.AddDays(15) <= DateTime.Now||ctPhieuDoiBLL.KiemTraPhieuDoiCuaHoaDon(mahd))
+            {
+                btnTaoPhieuDoi.Enabled = false;
+            }
             lblHinhThucTra.Text = hoadon.hinhThucTra;
             
             dgvCTHD.DataSource = cthdspbll.LoadCTHDSanPham(mahd);
@@ -115,6 +124,24 @@ namespace MeVaBeProject
             dgvCTHD.Columns["soLuong"].DisplayIndex = 2;
             dgvCTHD.Columns["donGia"].DisplayIndex = 3;
             dgvCTHD.Columns["tongTien"].DisplayIndex = 4;
+        }
+
+        private void btnTaoPhieuDoi_Click(object sender, EventArgs e)
+        {
+            frmTaoPhieuDoiHang frmTaoPhieuDoiHang = new frmTaoPhieuDoiHang(mahd,maNhanVien);
+            frmTaoPhieuDoiHang.DongForm += FrmTaoPhieuDoiHang_DongForm;
+            frmTaoPhieuDoiHang.ShowDialog();
+        }
+
+        private void FrmTaoPhieuDoiHang_DongForm(bool loadData)
+        {
+            if (loadData)
+            {
+                if (hoadon.ngayLap.Value.AddDays(15) <= DateTime.Now || ctPhieuDoiBLL.KiemTraPhieuDoiCuaHoaDon(mahd))
+                {
+                    btnTaoPhieuDoi.Enabled = false;
+                }
+            }
         }
     }
 }

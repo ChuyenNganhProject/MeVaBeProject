@@ -148,6 +148,12 @@
     <Compile Include="frmCapNhatSDT.Designer.cs">
       <DependentUpon>frmCapNhatSDT.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmChonSanPhamDoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChonSanPhamDoi.Designer.cs">
+      <DependentUpon>frmChonSanPhamDoi.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCTHD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,11 +220,23 @@
     <Compile Include="frmNhapHang.Designer.cs">
       <DependentUpon>frmNhapHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPhieuDoiHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhieuDoiHang.Designer.cs">
+      <DependentUpon>frmPhieuDoiHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPhieuGiaoHang.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPhieuGiaoHang.Designer.cs">
       <DependentUpon>frmPhieuGiaoHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhieuThanhLy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhieuThanhLy.Designer.cs">
+      <DependentUpon>frmPhieuThanhLy.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPhieuThongKeBaoCao.cs">
       <SubType>Form</SubType>
@@ -304,6 +322,12 @@
     <Compile Include="frmTaoKhuyenMai.Designer.cs">
       <DependentUpon>frmTaoKhuyenMai.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTaoPhieuDoiHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTaoPhieuDoiHang.Designer.cs">
+      <DependentUpon>frmTaoPhieuDoiHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmThemSanPhamKhuyenMai.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCapNhatSDT.resx">
       <DependentUpon>frmCapNhatSDT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChonSanPhamDoi.resx">
+      <DependentUpon>frmChonSanPhamDoi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCTHD.resx">
       <DependentUpon>frmCTHD.cs</DependentUpon>
@@ -360,8 +387,14 @@
     <EmbeddedResource Include="frmNhapHang.resx">
       <DependentUpon>frmNhapHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPhieuDoiHang.resx">
+      <DependentUpon>frmPhieuDoiHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPhieuGiaoHang.resx">
       <DependentUpon>frmPhieuGiaoHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhieuThanhLy.resx">
+      <DependentUpon>frmPhieuThanhLy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPhieuThongKeBaoCao.resx">
       <DependentUpon>frmPhieuThongKeBaoCao.cs</DependentUpon>
@@ -405,6 +438,9 @@
     <EmbeddedResource Include="frmTaoKhuyenMai.resx">
       <DependentUpon>frmTaoKhuyenMai.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTaoPhieuDoiHang.resx">
+      <DependentUpon>frmTaoPhieuDoiHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmThemSanPhamKhuyenMai.resx">
       <DependentUpon>frmThemSanPhamKhuyenMai.cs</DependentUpon>
     </EmbeddedResource>
@@ -412,10 +448,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="PhieuDatHang.rdlc" />
+    <EmbeddedResource Include="PhieuDoiHang.rdlc" />
     <EmbeddedResource Include="PhieuGiaoHang.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="PhieuNhapHang.rdlc" />
+    <EmbeddedResource Include="PhieuThanhLy.rdlc" />
     <EmbeddedResource Include="PhieuThongKeBaoCao.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -431,8 +469,11 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DTO.ChiTietHoaDonSanPham.datasource" />
     <None Include="Properties\DataSources\DTO.ChiTietPhieuDat.datasource" />
+    <None Include="Properties\DataSources\DTO.ChiTietPhieuDoiHang.datasource" />
     <None Include="Properties\DataSources\DTO.ChiTietPhieuGiaoHang.datasource" />
     <None Include="Properties\DataSources\DTO.ChiTietPhieuNhap.datasource" />
+    <None Include="Properties\DataSources\DTO.ChiTietPhieuThanhLy.datasource" />
+    <None Include="Properties\DataSources\DTO.SanPham.datasource" />
     <None Include="Properties\DataSources\DTO.SanPhamBanChay.datasource" />
     <None Include="Properties\DataSources\DTO.ThongKeDoanhThuTheoThang.datasource" />
     <None Include="Properties\Settings.settings">
