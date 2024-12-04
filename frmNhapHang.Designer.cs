@@ -151,7 +151,7 @@
             this.txtTongTien.ShowText = false;
             this.txtTongTien.Size = new System.Drawing.Size(216, 29);
             this.txtTongTien.TabIndex = 23;
-            this.txtTongTien.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtTongTien.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.txtTongTien.Watermark = "";
             // 
             // uiLabel9
@@ -440,7 +440,7 @@
             this.txtLanNhap.ShowText = false;
             this.txtLanNhap.Size = new System.Drawing.Size(310, 29);
             this.txtLanNhap.TabIndex = 22;
-            this.txtLanNhap.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtLanNhap.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.txtLanNhap.Watermark = "";
             // 
             // uiLabel4
@@ -557,7 +557,7 @@
             this.txtDonGia.ShowText = false;
             this.txtDonGia.Size = new System.Drawing.Size(310, 29);
             this.txtDonGia.TabIndex = 22;
-            this.txtDonGia.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtDonGia.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.txtDonGia.Watermark = "";
             // 
             // uiLabel8
@@ -584,7 +584,7 @@
             this.txtSoLuongSanPham.ShowText = false;
             this.txtSoLuongSanPham.Size = new System.Drawing.Size(310, 29);
             this.txtSoLuongSanPham.TabIndex = 21;
-            this.txtSoLuongSanPham.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtSoLuongSanPham.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.txtSoLuongSanPham.Watermark = "";
             this.txtSoLuongSanPham.TextChanged += new System.EventHandler(this.txtSoLuongSanPham_TextChanged);
             this.txtSoLuongSanPham.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuongSanPham_KeyPress);

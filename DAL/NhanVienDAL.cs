@@ -65,6 +65,7 @@ namespace DAL
             try
             {
                 NhanVien nhanvien = db.NhanViens.FirstOrDefault(nv => nv.maNhanVien == maNhanVien);
+                nhanvien.tenLoaiNhanVien = db.LoaiNhanViens.Where(lnv => lnv.maLoaiNhanVien == nhanvien.maLoaiNhanVien).Select(lnv => lnv.tenLoaiNhanVien).FirstOrDefault();
                 return nhanvien;
             }
             catch
