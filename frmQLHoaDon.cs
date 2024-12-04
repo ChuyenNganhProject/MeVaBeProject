@@ -16,6 +16,7 @@ namespace MeVaBeProject
     {
         HoaDonBLL hdbll = new HoaDonBLL();
         private string MaHoaDon;
+        private string TenKhachHang;
         private string maNhanVien;
         private frmTrangChu parentfrm;
         public frmQLHoaDon(frmTrangChu parentfrm, string maNhanVien)
@@ -70,6 +71,7 @@ namespace MeVaBeProject
             {
                 DataGridViewRow selectedRow = dgvHoaDon.SelectedRows[0];
                 MaHoaDon = selectedRow.Cells["maHoaDon"].Value.ToString();
+                TenKhachHang = selectedRow.Cells["tenKhachHang"].Value.ToString();
             }
         }
 
@@ -77,7 +79,7 @@ namespace MeVaBeProject
         {
             if(!string.IsNullOrEmpty(MaHoaDon))
             {
-                frmCTHD frm = new frmCTHD(MaHoaDon,maNhanVien);
+                frmCTHD frm = new frmCTHD(MaHoaDon,maNhanVien, TenKhachHang);
                 frm.ShowDialog();
             }
             else

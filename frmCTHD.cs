@@ -17,14 +17,17 @@ namespace MeVaBeProject
         HoaDonBLL hdbll = new HoaDonBLL();
         ChiTietHoaDonSanPhamBLL cthdspbll = new ChiTietHoaDonSanPhamBLL();
         private string mahd;
+        private string TenKH;
         private string maNhanVien;
         private HoaDon hoadon;
         private ChiTietPhieuDoiHangBLL ctPhieuDoiBLL;
-        public frmCTHD(string mahd,string maNhanVien)
+        public frmCTHD(string mahd,string maNhanVien, string tenKH)
         {
             InitializeComponent();
             this.Load += FrmCTHD_Load;
             this.mahd = mahd;
+            this.TenKH = tenKH;
+
             this.maNhanVien = maNhanVien;
             this.ctPhieuDoiBLL = new ChiTietPhieuDoiHangBLL();
             this.dgvCTHD.CellFormatting += DgvCTHD_CellFormatting;
@@ -55,7 +58,7 @@ namespace MeVaBeProject
         {
             hoadon = hdbll.LoadHoaDonTheoMa(mahd);
             lblMaHD.Text = mahd;
-            lblTenKH.Text = hoadon.tenKhachHang;
+            lblTenKH.Text = TenKH;
             lblTenNV.Text = hoadon.tenNhanVien;
             lblNgayLap.Text = hoadon.ngayLap.Value.ToString("dd/MM/yyyy");
             if (hoadon.ngayLap.Value.AddDays(15) <= DateTime.Now||ctPhieuDoiBLL.KiemTraPhieuDoiCuaHoaDon(mahd))
