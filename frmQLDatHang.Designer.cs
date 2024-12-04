@@ -34,18 +34,16 @@ namespace MeVaBeProject
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.uiPanel1 = new Sunny.UI.UIPanel();
             this.uiPanel2 = new Sunny.UI.UIPanel();
             this.uiPanel3 = new Sunny.UI.UIPanel();
@@ -58,11 +56,11 @@ namespace MeVaBeProject
             this.btnKoDuyet = new Sunny.UI.UIButton();
             this.btnKhongXacNhan = new Sunny.UI.UIButton();
             this.btnXacNhan = new Sunny.UI.UIButton();
-            this.btnTaoPhieuDat = new Sunny.UI.UIButton();
             this.btnDuyetPhieuDat = new Sunny.UI.UIButton();
             this.btnInPhieuDat = new Sunny.UI.UIButton();
             this.btnSuaPhieuDat = new Sunny.UI.UIButton();
             this.btnXoaPhieuDat = new Sunny.UI.UIButton();
+            this.btnTaoPhieuDat = new Sunny.UI.UIButton();
             this.tabControlPhieuDat = new Sunny.UI.UITabControl();
             this.tabDanhSach = new System.Windows.Forms.TabPage();
             this.dtgvDanhSachPhieuDat = new Sunny.UI.UIDataGridView();
@@ -86,6 +84,7 @@ namespace MeVaBeProject
             this.donGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.thanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiToolTip1 = new Sunny.UI.UIToolTip(this.components);
+            this.uiPanel4 = new Sunny.UI.UIPanel();
             this.uiPanel2.SuspendLayout();
             this.uiPanel3.SuspendLayout();
             this.uiGroupBox3.SuspendLayout();
@@ -95,6 +94,7 @@ namespace MeVaBeProject
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDanhSachPhieuDat)).BeginInit();
             this.tabChiTiet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvChiTietPhieuDat)).BeginInit();
+            this.uiPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // uiPanel1
@@ -102,27 +102,27 @@ namespace MeVaBeProject
             this.uiPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.uiPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uiPanel1.Location = new System.Drawing.Point(0, 0);
-            this.uiPanel1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel1.Name = "uiPanel1";
             this.uiPanel1.RectColor = System.Drawing.Color.HotPink;
-            this.uiPanel1.Size = new System.Drawing.Size(1484, 53);
+            this.uiPanel1.Size = new System.Drawing.Size(1113, 42);
             this.uiPanel1.TabIndex = 0;
             this.uiPanel1.Text = "Quản lý phiếu đặt hàng";
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // uiPanel2
             // 
+            this.uiPanel2.Controls.Add(this.uiPanel4);
             this.uiPanel2.Controls.Add(this.uiPanel3);
-            this.uiPanel2.Controls.Add(this.tabControlPhieuDat);
             this.uiPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.uiPanel2.Location = new System.Drawing.Point(0, 53);
-            this.uiPanel2.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.uiPanel2.Location = new System.Drawing.Point(0, 42);
+            this.uiPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel2.Name = "uiPanel2";
             this.uiPanel2.RectColor = System.Drawing.Color.HotPink;
-            this.uiPanel2.Size = new System.Drawing.Size(1484, 833);
+            this.uiPanel2.Size = new System.Drawing.Size(1113, 598);
             this.uiPanel2.TabIndex = 1;
             this.uiPanel2.Text = null;
             this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -139,7 +139,7 @@ namespace MeVaBeProject
             this.uiPanel3.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel3.Name = "uiPanel3";
             this.uiPanel3.RectColor = System.Drawing.Color.HotPink;
-            this.uiPanel3.Size = new System.Drawing.Size(1484, 123);
+            this.uiPanel3.Size = new System.Drawing.Size(1113, 129);
             this.uiPanel3.TabIndex = 5;
             this.uiPanel3.Text = null;
             this.uiPanel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -158,7 +158,7 @@ namespace MeVaBeProject
             this.uiGroupBox3.Name = "uiGroupBox3";
             this.uiGroupBox3.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox3.RectColor = System.Drawing.Color.HotPink;
-            this.uiGroupBox3.Size = new System.Drawing.Size(452, 123);
+            this.uiGroupBox3.Size = new System.Drawing.Size(448, 129);
             this.uiGroupBox3.TabIndex = 12;
             this.uiGroupBox3.Text = "Tìm kiếm";
             this.uiGroupBox3.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -180,7 +180,7 @@ namespace MeVaBeProject
             this.dtNgayTaoPhieuNhap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtNgayTaoPhieuNhap.Location = new System.Drawing.Point(182, 76);
             this.dtNgayTaoPhieuNhap.Name = "dtNgayTaoPhieuNhap";
-            this.dtNgayTaoPhieuNhap.Size = new System.Drawing.Size(121, 30);
+            this.dtNgayTaoPhieuNhap.Size = new System.Drawing.Size(121, 26);
             this.dtNgayTaoPhieuNhap.TabIndex = 3;
             this.dtNgayTaoPhieuNhap.ValueChanged += new System.EventHandler(this.dtNgayTaoPhieuNhap_ValueChanged);
             // 
@@ -238,13 +238,13 @@ namespace MeVaBeProject
             this.uiGroupBox4.Controls.Add(this.btnTaoPhieuDat);
             this.uiGroupBox4.Dock = System.Windows.Forms.DockStyle.Right;
             this.uiGroupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.uiGroupBox4.Location = new System.Drawing.Point(839, 0);
+            this.uiGroupBox4.Location = new System.Drawing.Point(456, 0);
             this.uiGroupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox4.Name = "uiGroupBox4";
             this.uiGroupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox4.RectColor = System.Drawing.Color.HotPink;
-            this.uiGroupBox4.Size = new System.Drawing.Size(645, 123);
+            this.uiGroupBox4.Size = new System.Drawing.Size(657, 129);
             this.uiGroupBox4.TabIndex = 13;
             this.uiGroupBox4.Text = "Thao tác";
             this.uiGroupBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -314,28 +314,6 @@ namespace MeVaBeProject
             this.btnXacNhan.Text = "Xác nhận";
             this.btnXacNhan.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
-            // 
-            // btnTaoPhieuDat
-            // 
-            this.btnTaoPhieuDat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTaoPhieuDat.FillColor = System.Drawing.Color.HotPink;
-            this.btnTaoPhieuDat.FillColor2 = System.Drawing.Color.HotPink;
-            this.btnTaoPhieuDat.FillHoverColor = System.Drawing.Color.DeepPink;
-            this.btnTaoPhieuDat.FillPressColor = System.Drawing.Color.DeepPink;
-            this.btnTaoPhieuDat.FillSelectedColor = System.Drawing.Color.HotPink;
-            this.btnTaoPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnTaoPhieuDat.Location = new System.Drawing.Point(14, 37);
-            this.btnTaoPhieuDat.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnTaoPhieuDat.Name = "btnTaoPhieuDat";
-            this.btnTaoPhieuDat.RectColor = System.Drawing.Color.HotPink;
-            this.btnTaoPhieuDat.RectHoverColor = System.Drawing.Color.DeepPink;
-            this.btnTaoPhieuDat.RectPressColor = System.Drawing.Color.DeepPink;
-            this.btnTaoPhieuDat.RectSelectedColor = System.Drawing.Color.HotPink;
-            this.btnTaoPhieuDat.Size = new System.Drawing.Size(150, 36);
-            this.btnTaoPhieuDat.TabIndex = 4;
-            this.btnTaoPhieuDat.Text = "Tạo phiếu đặt";
-            this.btnTaoPhieuDat.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnTaoPhieuDat.Click += new System.EventHandler(this.btnTaoPhieuDat_Click);
             // 
             // btnDuyetPhieuDat
             // 
@@ -425,21 +403,44 @@ namespace MeVaBeProject
             this.btnXoaPhieuDat.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnXoaPhieuDat.Click += new System.EventHandler(this.btnXoaPhieuDat_Click);
             // 
+            // btnTaoPhieuDat
+            // 
+            this.btnTaoPhieuDat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTaoPhieuDat.FillColor = System.Drawing.Color.HotPink;
+            this.btnTaoPhieuDat.FillColor2 = System.Drawing.Color.HotPink;
+            this.btnTaoPhieuDat.FillHoverColor = System.Drawing.Color.DeepPink;
+            this.btnTaoPhieuDat.FillPressColor = System.Drawing.Color.DeepPink;
+            this.btnTaoPhieuDat.FillSelectedColor = System.Drawing.Color.HotPink;
+            this.btnTaoPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnTaoPhieuDat.Location = new System.Drawing.Point(14, 37);
+            this.btnTaoPhieuDat.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnTaoPhieuDat.Name = "btnTaoPhieuDat";
+            this.btnTaoPhieuDat.RectColor = System.Drawing.Color.HotPink;
+            this.btnTaoPhieuDat.RectHoverColor = System.Drawing.Color.DeepPink;
+            this.btnTaoPhieuDat.RectPressColor = System.Drawing.Color.DeepPink;
+            this.btnTaoPhieuDat.RectSelectedColor = System.Drawing.Color.HotPink;
+            this.btnTaoPhieuDat.Size = new System.Drawing.Size(150, 36);
+            this.btnTaoPhieuDat.TabIndex = 4;
+            this.btnTaoPhieuDat.Text = "Tạo phiếu đặt";
+            this.btnTaoPhieuDat.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnTaoPhieuDat.Click += new System.EventHandler(this.btnTaoPhieuDat_Click);
+            // 
             // tabControlPhieuDat
             // 
             this.tabControlPhieuDat.Controls.Add(this.tabDanhSach);
             this.tabControlPhieuDat.Controls.Add(this.tabChiTiet);
-            this.tabControlPhieuDat.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tabControlPhieuDat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlPhieuDat.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControlPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.tabControlPhieuDat.ItemSize = new System.Drawing.Size(150, 40);
-            this.tabControlPhieuDat.Location = new System.Drawing.Point(0, 287);
+            this.tabControlPhieuDat.Location = new System.Drawing.Point(0, 0);
             this.tabControlPhieuDat.MainPage = "";
             this.tabControlPhieuDat.MenuStyle = Sunny.UI.UIMenuStyle.White;
             this.tabControlPhieuDat.Name = "tabControlPhieuDat";
             this.tabControlPhieuDat.SelectedIndex = 0;
-            this.tabControlPhieuDat.Size = new System.Drawing.Size(1484, 546);
+            this.tabControlPhieuDat.Size = new System.Drawing.Size(1113, 469);
             this.tabControlPhieuDat.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControlPhieuDat.Style = Sunny.UI.UIStyle.Custom;
             this.tabControlPhieuDat.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tabControlPhieuDat.TabIndex = 9;
             this.tabControlPhieuDat.TabSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
@@ -454,7 +455,7 @@ namespace MeVaBeProject
             this.tabDanhSach.Controls.Add(this.dtgvDanhSachPhieuDat);
             this.tabDanhSach.Location = new System.Drawing.Point(0, 40);
             this.tabDanhSach.Name = "tabDanhSach";
-            this.tabDanhSach.Size = new System.Drawing.Size(1484, 506);
+            this.tabDanhSach.Size = new System.Drawing.Size(1113, 429);
             this.tabDanhSach.TabIndex = 0;
             this.tabDanhSach.Text = "Danh sách";
             this.tabDanhSach.UseVisualStyleBackColor = true;
@@ -490,14 +491,6 @@ namespace MeVaBeProject
             this.trangThai,
             this.trangThaiXacNhan,
             this.ghiChuKhongDuyet});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvDanhSachPhieuDat.DefaultCellStyle = dataGridViewCellStyle5;
             this.dtgvDanhSachPhieuDat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgvDanhSachPhieuDat.EnableHeadersVisualStyles = false;
             this.dtgvDanhSachPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -506,19 +499,19 @@ namespace MeVaBeProject
             this.dtgvDanhSachPhieuDat.Name = "dtgvDanhSachPhieuDat";
             this.dtgvDanhSachPhieuDat.ReadOnly = true;
             this.dtgvDanhSachPhieuDat.RectColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DeepPink;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvDanhSachPhieuDat.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DeepPink;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvDanhSachPhieuDat.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgvDanhSachPhieuDat.RowHeadersWidth = 51;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.HotPink;
-            this.dtgvDanhSachPhieuDat.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.HotPink;
+            this.dtgvDanhSachPhieuDat.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dtgvDanhSachPhieuDat.RowTemplate.Height = 24;
             this.dtgvDanhSachPhieuDat.ScrollBarBackColor = System.Drawing.SystemColors.Control;
             this.dtgvDanhSachPhieuDat.ScrollBarColor = System.Drawing.Color.LightPink;
@@ -526,7 +519,7 @@ namespace MeVaBeProject
             this.dtgvDanhSachPhieuDat.ScrollBarStyleInherited = false;
             this.dtgvDanhSachPhieuDat.SelectedIndex = -1;
             this.dtgvDanhSachPhieuDat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvDanhSachPhieuDat.Size = new System.Drawing.Size(1484, 506);
+            this.dtgvDanhSachPhieuDat.Size = new System.Drawing.Size(1113, 429);
             this.dtgvDanhSachPhieuDat.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.dtgvDanhSachPhieuDat.TabIndex = 8;
             this.dtgvDanhSachPhieuDat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDanhSachPhieuDat_CellClick);
@@ -540,7 +533,7 @@ namespace MeVaBeProject
             this.maPhieuDat.MinimumWidth = 6;
             this.maPhieuDat.Name = "maPhieuDat";
             this.maPhieuDat.ReadOnly = true;
-            this.maPhieuDat.Width = 153;
+            this.maPhieuDat.Width = 125;
             // 
             // tenNhanVien
             // 
@@ -549,7 +542,7 @@ namespace MeVaBeProject
             this.tenNhanVien.MinimumWidth = 6;
             this.tenNhanVien.Name = "tenNhanVien";
             this.tenNhanVien.ReadOnly = true;
-            this.tenNhanVien.Width = 165;
+            this.tenNhanVien.Width = 132;
             // 
             // tenNhaCungCap
             // 
@@ -558,7 +551,7 @@ namespace MeVaBeProject
             this.tenNhaCungCap.MinimumWidth = 6;
             this.tenNhaCungCap.Name = "tenNhaCungCap";
             this.tenNhaCungCap.ReadOnly = true;
-            this.tenNhaCungCap.Width = 161;
+            this.tenNhaCungCap.Width = 131;
             // 
             // ngayLap
             // 
@@ -567,7 +560,7 @@ namespace MeVaBeProject
             this.ngayLap.MinimumWidth = 6;
             this.ngayLap.Name = "ngayLap";
             this.ngayLap.ReadOnly = true;
-            this.ngayLap.Width = 117;
+            this.ngayLap.Width = 94;
             // 
             // ngayCapNhat
             // 
@@ -576,7 +569,7 @@ namespace MeVaBeProject
             this.ngayCapNhat.MinimumWidth = 6;
             this.ngayCapNhat.Name = "ngayCapNhat";
             this.ngayCapNhat.ReadOnly = true;
-            this.ngayCapNhat.Width = 166;
+            this.ngayCapNhat.Width = 135;
             // 
             // soLuong
             // 
@@ -587,7 +580,7 @@ namespace MeVaBeProject
             this.soLuong.MinimumWidth = 6;
             this.soLuong.Name = "soLuong";
             this.soLuong.ReadOnly = true;
-            this.soLuong.Width = 118;
+            this.soLuong.Width = 96;
             // 
             // tongTien
             // 
@@ -599,7 +592,7 @@ namespace MeVaBeProject
             this.tongTien.MinimumWidth = 6;
             this.tongTien.Name = "tongTien";
             this.tongTien.ReadOnly = true;
-            this.tongTien.Width = 122;
+            this.tongTien.Width = 99;
             // 
             // trangThai
             // 
@@ -608,7 +601,7 @@ namespace MeVaBeProject
             this.trangThai.MinimumWidth = 6;
             this.trangThai.Name = "trangThai";
             this.trangThai.ReadOnly = true;
-            this.trangThai.Width = 128;
+            this.trangThai.Width = 104;
             // 
             // trangThaiXacNhan
             // 
@@ -617,7 +610,7 @@ namespace MeVaBeProject
             this.trangThaiXacNhan.MinimumWidth = 6;
             this.trangThaiXacNhan.Name = "trangThaiXacNhan";
             this.trangThaiXacNhan.ReadOnly = true;
-            this.trangThaiXacNhan.Width = 213;
+            this.trangThaiXacNhan.Width = 172;
             // 
             // ghiChuKhongDuyet
             // 
@@ -628,14 +621,14 @@ namespace MeVaBeProject
             this.ghiChuKhongDuyet.ReadOnly = true;
             this.ghiChuKhongDuyet.Text = "Xem chi tiết";
             this.ghiChuKhongDuyet.UseColumnTextForButtonValue = true;
-            this.ghiChuKhongDuyet.Width = 84;
+            this.ghiChuKhongDuyet.Width = 69;
             // 
             // tabChiTiet
             // 
             this.tabChiTiet.Controls.Add(this.dtgvChiTietPhieuDat);
             this.tabChiTiet.Location = new System.Drawing.Point(0, 40);
             this.tabChiTiet.Name = "tabChiTiet";
-            this.tabChiTiet.Size = new System.Drawing.Size(1113, 506);
+            this.tabChiTiet.Size = new System.Drawing.Size(1113, 426);
             this.tabChiTiet.TabIndex = 1;
             this.tabChiTiet.Text = "Chi tiết";
             this.tabChiTiet.UseVisualStyleBackColor = true;
@@ -644,19 +637,19 @@ namespace MeVaBeProject
             // 
             this.dtgvChiTietPhieuDat.AllowUserToAddRows = false;
             this.dtgvChiTietPhieuDat.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.dtgvChiTietPhieuDat.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.dtgvChiTietPhieuDat.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dtgvChiTietPhieuDat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvChiTietPhieuDat.BackgroundColor = System.Drawing.Color.White;
             this.dtgvChiTietPhieuDat.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DeepPink;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DeepPink;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvChiTietPhieuDat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.DeepPink;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DeepPink;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvChiTietPhieuDat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dtgvChiTietPhieuDat.ColumnHeadersHeight = 32;
             this.dtgvChiTietPhieuDat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgvChiTietPhieuDat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -667,14 +660,6 @@ namespace MeVaBeProject
             this.soLuongNhan,
             this.donGia,
             this.thanhTien});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvChiTietPhieuDat.DefaultCellStyle = dataGridViewCellStyle14;
             this.dtgvChiTietPhieuDat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgvChiTietPhieuDat.EnableHeadersVisualStyles = false;
             this.dtgvChiTietPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -683,26 +668,26 @@ namespace MeVaBeProject
             this.dtgvChiTietPhieuDat.Name = "dtgvChiTietPhieuDat";
             this.dtgvChiTietPhieuDat.ReadOnly = true;
             this.dtgvChiTietPhieuDat.RectColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.DeepPink;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvChiTietPhieuDat.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.DeepPink;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvChiTietPhieuDat.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dtgvChiTietPhieuDat.RowHeadersWidth = 51;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.HotPink;
-            this.dtgvChiTietPhieuDat.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.HotPink;
+            this.dtgvChiTietPhieuDat.RowsDefaultCellStyle = dataGridViewCellStyle14;
             this.dtgvChiTietPhieuDat.RowTemplate.Height = 24;
             this.dtgvChiTietPhieuDat.ScrollBarBackColor = System.Drawing.SystemColors.Control;
             this.dtgvChiTietPhieuDat.ScrollBarColor = System.Drawing.Color.LightPink;
             this.dtgvChiTietPhieuDat.ScrollBarRectColor = System.Drawing.Color.White;
             this.dtgvChiTietPhieuDat.ScrollBarStyleInherited = false;
             this.dtgvChiTietPhieuDat.SelectedIndex = -1;
-            this.dtgvChiTietPhieuDat.Size = new System.Drawing.Size(1113, 506);
+            this.dtgvChiTietPhieuDat.Size = new System.Drawing.Size(1113, 426);
             this.dtgvChiTietPhieuDat.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.dtgvChiTietPhieuDat.TabIndex = 9;
             // 
@@ -733,8 +718,8 @@ namespace MeVaBeProject
             // soLuongDat
             // 
             this.soLuongDat.DataPropertyName = "soLuongDat";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.soLuongDat.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.soLuongDat.DefaultCellStyle = dataGridViewCellStyle9;
             this.soLuongDat.HeaderText = "Số lượng đặt";
             this.soLuongDat.MinimumWidth = 6;
             this.soLuongDat.Name = "soLuongDat";
@@ -743,8 +728,8 @@ namespace MeVaBeProject
             // soLuongNhan
             // 
             this.soLuongNhan.DataPropertyName = "soLuongNhan";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.soLuongNhan.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.soLuongNhan.DefaultCellStyle = dataGridViewCellStyle10;
             this.soLuongNhan.HeaderText = "Số lượng nhận";
             this.soLuongNhan.MinimumWidth = 6;
             this.soLuongNhan.Name = "soLuongNhan";
@@ -753,9 +738,9 @@ namespace MeVaBeProject
             // donGia
             // 
             this.donGia.DataPropertyName = "donGia";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "C0";
-            this.donGia.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "C0";
+            this.donGia.DefaultCellStyle = dataGridViewCellStyle11;
             this.donGia.HeaderText = "Đơn giá";
             this.donGia.MinimumWidth = 6;
             this.donGia.Name = "donGia";
@@ -764,9 +749,9 @@ namespace MeVaBeProject
             // thanhTien
             // 
             this.thanhTien.DataPropertyName = "tongTien";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "C0";
-            this.thanhTien.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "C0";
+            this.thanhTien.DefaultCellStyle = dataGridViewCellStyle12;
             this.thanhTien.HeaderText = "Thành tiền";
             this.thanhTien.MinimumWidth = 6;
             this.thanhTien.Name = "thanhTien";
@@ -778,15 +763,28 @@ namespace MeVaBeProject
             this.uiToolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
             this.uiToolTip1.OwnerDraw = true;
             // 
+            // uiPanel4
+            // 
+            this.uiPanel4.Controls.Add(this.tabControlPhieuDat);
+            this.uiPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiPanel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.uiPanel4.Location = new System.Drawing.Point(0, 129);
+            this.uiPanel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel4.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPanel4.Name = "uiPanel4";
+            this.uiPanel4.RectColor = System.Drawing.Color.HotPink;
+            this.uiPanel4.Size = new System.Drawing.Size(1113, 469);
+            this.uiPanel4.TabIndex = 10;
+            this.uiPanel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmQLDatHang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1484, 886);
+            this.ClientSize = new System.Drawing.Size(1113, 640);
             this.Controls.Add(this.uiPanel2);
             this.Controls.Add(this.uiPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmQLDatHang";
             this.Text = "frmQLDatHang";
             this.Load += new System.EventHandler(this.frmQLDatHang_Load);
@@ -799,6 +797,7 @@ namespace MeVaBeProject
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDanhSachPhieuDat)).EndInit();
             this.tabChiTiet.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvChiTietPhieuDat)).EndInit();
+            this.uiPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -845,5 +844,6 @@ namespace MeVaBeProject
         private System.Windows.Forms.DataGridViewTextBoxColumn trangThaiXacNhan;
         private System.Windows.Forms.DataGridViewButtonColumn ghiChuKhongDuyet;
         private Sunny.UI.UIPanel uiPanel3;
+        private Sunny.UI.UIPanel uiPanel4;
     }
 }

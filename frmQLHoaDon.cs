@@ -16,7 +16,8 @@ namespace MeVaBeProject
     {
         HoaDonBLL hdbll = new HoaDonBLL();
         private string MaHoaDon;
-        public frmQLHoaDon()
+        private string maNhanVien;
+        public frmQLHoaDon(string maNhanVien)
         {
             InitializeComponent();
             this.Load += FrmQLHoaDon_Load;
@@ -33,6 +34,7 @@ namespace MeVaBeProject
             this.dgvHoaDon.CellFormatting += DgvHoaDon_CellFormatting;
 
             this.btnXemChiTiet.Click += BtnXemChiTiet_Click;
+            this.maNhanVien = maNhanVien;
         }
 
         private void DtpNgayBatDau_ValueChanged(object sender, EventArgs e)
@@ -64,7 +66,7 @@ namespace MeVaBeProject
         {
             if(!string.IsNullOrEmpty(MaHoaDon))
             {
-                frmCTHD frm = new frmCTHD(MaHoaDon);
+                frmCTHD frm = new frmCTHD(MaHoaDon,maNhanVien);
                 frm.ShowDialog();
             }
             else
@@ -173,8 +175,7 @@ namespace MeVaBeProject
 
         private void SettingDgv(List<HoaDon> dsHoaDon)
         {
-            dgvHoaDon.DataSource = dsHoaDon;
-            dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvHoaDon.DataSource = dsHoaDon;            
 
             if (dgvHoaDon.Columns["KhachHang"] != null)
             {

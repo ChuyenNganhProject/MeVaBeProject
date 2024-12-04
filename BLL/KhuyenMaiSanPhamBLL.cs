@@ -41,5 +41,9 @@ namespace BLL
         {
             return kmspdal.CapNhatTrangThaiSanPhamTrongKhuyenMai(maKhuyenMai, trangThai);
         }
+        public KhuyenMaiSanPham TimKhuyenMaiSanPhamTheoNgayLapHoaDon(string maSanPham,DateTime ngayKhuyenMai)
+        {
+            return kmspdal.TimKhuyenMaiSanPhamTheoNgayLapHoaDon(maSanPham, ngayKhuyenMai);
+        }
     }
 }

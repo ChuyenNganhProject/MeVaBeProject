@@ -197,7 +197,7 @@
             this.uiPanel40.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel40.Name = "uiPanel40";
             this.uiPanel40.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
-            this.uiPanel40.Size = new System.Drawing.Size(247, 148);
+            this.uiPanel40.Size = new System.Drawing.Size(247, 101);
             this.uiPanel40.TabIndex = 17;
             this.uiPanel40.Text = null;
             this.uiPanel40.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -257,7 +257,7 @@
             this.uiPanel42.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel42.Name = "uiPanel42";
             this.uiPanel42.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
-            this.uiPanel42.Size = new System.Drawing.Size(144, 148);
+            this.uiPanel42.Size = new System.Drawing.Size(144, 101);
             this.uiPanel42.TabIndex = 14;
             this.uiPanel42.Text = null;
             this.uiPanel42.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -296,7 +296,7 @@
             this.uiPanel43.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel43.Name = "uiPanel43";
             this.uiPanel43.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel43.Size = new System.Drawing.Size(30, 148);
+            this.uiPanel43.Size = new System.Drawing.Size(30, 101);
             this.uiPanel43.TabIndex = 16;
             this.uiPanel43.Text = null;
             this.uiPanel43.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -314,7 +314,7 @@
             this.uiPanel8.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel8.Name = "uiPanel8";
             this.uiPanel8.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(195)))), ((int)(((byte)(18)))));
-            this.uiPanel8.Size = new System.Drawing.Size(244, 148);
+            this.uiPanel8.Size = new System.Drawing.Size(244, 101);
             this.uiPanel8.TabIndex = 15;
             this.uiPanel8.Text = null;
             this.uiPanel8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -374,7 +374,7 @@
             this.uiPanel29.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel29.Name = "uiPanel29";
             this.uiPanel29.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(195)))), ((int)(((byte)(18)))));
-            this.uiPanel29.Size = new System.Drawing.Size(141, 148);
+            this.uiPanel29.Size = new System.Drawing.Size(141, 101);
             this.uiPanel29.TabIndex = 14;
             this.uiPanel29.Text = null;
             this.uiPanel29.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -413,7 +413,7 @@
             this.uiPanel9.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel9.Name = "uiPanel9";
             this.uiPanel9.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel9.Size = new System.Drawing.Size(30, 148);
+            this.uiPanel9.Size = new System.Drawing.Size(30, 101);
             this.uiPanel9.TabIndex = 14;
             this.uiPanel9.Text = null;
             this.uiPanel9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -431,7 +431,7 @@
             this.uiPanel6.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel6.Name = "uiPanel6";
             this.uiPanel6.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(209)))), ((int)(((byte)(161)))));
-            this.uiPanel6.Size = new System.Drawing.Size(277, 148);
+            this.uiPanel6.Size = new System.Drawing.Size(277, 101);
             this.uiPanel6.TabIndex = 13;
             this.uiPanel6.Text = null;
             this.uiPanel6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -490,7 +490,7 @@
             this.uiPanel27.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel27.Name = "uiPanel27";
             this.uiPanel27.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(209)))), ((int)(((byte)(161)))));
-            this.uiPanel27.Size = new System.Drawing.Size(185, 148);
+            this.uiPanel27.Size = new System.Drawing.Size(185, 101);
             this.uiPanel27.TabIndex = 13;
             this.uiPanel27.Text = null;
             this.uiPanel27.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -529,7 +529,7 @@
             this.uiPanel7.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel7.Name = "uiPanel7";
             this.uiPanel7.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel7.Size = new System.Drawing.Size(30, 148);
+            this.uiPanel7.Size = new System.Drawing.Size(30, 101);
             this.uiPanel7.TabIndex = 12;
             this.uiPanel7.Text = null;
             this.uiPanel7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -547,7 +547,7 @@
             this.uiPanel2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel2.Name = "uiPanel2";
             this.uiPanel2.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiPanel2.Size = new System.Drawing.Size(258, 148);
+            this.uiPanel2.Size = new System.Drawing.Size(258, 101);
             this.uiPanel2.TabIndex = 11;
             this.uiPanel2.Text = null;
             this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -606,7 +606,7 @@
             this.uiPanel25.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel25.Name = "uiPanel25";
             this.uiPanel25.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiPanel25.Size = new System.Drawing.Size(163, 148);
+            this.uiPanel25.Size = new System.Drawing.Size(163, 101);
             this.uiPanel25.TabIndex = 12;
             this.uiPanel25.Text = null;
             this.uiPanel25.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -646,7 +646,7 @@
             this.uiPanel5.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel5.Name = "uiPanel5";
             this.uiPanel5.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel5.Size = new System.Drawing.Size(30, 148);
+            this.uiPanel5.Size = new System.Drawing.Size(30, 101);
             this.uiPanel5.TabIndex = 10;
             this.uiPanel5.Text = null;
             this.uiPanel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -776,7 +776,7 @@
             this.dtpNgayKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpNgayKetThuc.Location = new System.Drawing.Point(266, 10);
             this.dtpNgayKetThuc.Name = "dtpNgayKetThuc";
-            this.dtpNgayKetThuc.Size = new System.Drawing.Size(151, 34);
+            this.dtpNgayKetThuc.Size = new System.Drawing.Size(151, 28);
             this.dtpNgayKetThuc.TabIndex = 48;
             // 
             // uiLabel2
@@ -801,7 +801,7 @@
             this.dtpNgayBatDau.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpNgayBatDau.Location = new System.Drawing.Point(75, 10);
             this.dtpNgayBatDau.Name = "dtpNgayBatDau";
-            this.dtpNgayBatDau.Size = new System.Drawing.Size(150, 34);
+            this.dtpNgayBatDau.Size = new System.Drawing.Size(150, 28);
             this.dtpNgayBatDau.TabIndex = 46;
             // 
             // uiPanel14
@@ -1593,7 +1593,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 44);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(539, 186);
+            this.panel3.Size = new System.Drawing.Size(404, 51);
             this.panel3.TabIndex = 1;
             // 
             // chartTongDoanhThu
@@ -1640,7 +1640,7 @@
             series2.Name = "Series1";
             series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             this.chartTongDoanhThu.Series.Add(series2);
-            this.chartTongDoanhThu.Size = new System.Drawing.Size(539, 186);
+            this.chartTongDoanhThu.Size = new System.Drawing.Size(404, 51);
             this.chartTongDoanhThu.TabIndex = 6;
             title2.Alignment = System.Drawing.ContentAlignment.TopLeft;
             title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
@@ -1659,7 +1659,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(539, 44);
+            this.panel2.Size = new System.Drawing.Size(404, 44);
             this.panel2.TabIndex = 0;
             // 
             // dtpChonThangInPhieu
@@ -1669,7 +1669,7 @@
             this.dtpChonThangInPhieu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpChonThangInPhieu.Location = new System.Drawing.Point(185, 10);
             this.dtpChonThangInPhieu.Name = "dtpChonThangInPhieu";
-            this.dtpChonThangInPhieu.Size = new System.Drawing.Size(114, 30);
+            this.dtpChonThangInPhieu.Size = new System.Drawing.Size(114, 26);
             this.dtpChonThangInPhieu.TabIndex = 52;
             // 
             // panel5
@@ -1677,7 +1677,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(185, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(133, 10);
+            this.panel5.Size = new System.Drawing.Size(0, 10);
             this.panel5.TabIndex = 51;
             // 
             // uiLabel9
@@ -1710,7 +1710,7 @@
             this.btnInPhieuBaoCao.FillSelectedColor = System.Drawing.Color.DeepPink;
             this.btnInPhieuBaoCao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnInPhieuBaoCao.ForeColor = System.Drawing.Color.HotPink;
-            this.btnInPhieuBaoCao.Location = new System.Drawing.Point(318, 0);
+            this.btnInPhieuBaoCao.Location = new System.Drawing.Point(183, 0);
             this.btnInPhieuBaoCao.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnInPhieuBaoCao.Name = "btnInPhieuBaoCao";
             this.btnInPhieuBaoCao.Radius = 2;

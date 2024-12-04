@@ -29,6 +29,7 @@ namespace MeVaBeProject
             this.dtpNgayKetThuc.ValueChanged += DtpNgayKetThuc_ValueChanged;
             
             this.parentfrm = parentfrm;
+            this.nhanVien = nhanVien;
             this.Load += FrmQLKhuyenMai_Load;
             this.btnBack.Click += BtnBack_Click;
 

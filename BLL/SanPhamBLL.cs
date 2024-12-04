@@ -16,10 +16,6 @@ namespace BLL
         {
             return spdal.LayTatCaSanPham();
         }
-        public List<SanPham> LayDanhSachSanPham()
-        {
-            return spdal.LayDanhSachSanPham();
-        }
         public string TaoMaSanPham()
         {
             string maSanPham = spdal.TaoMaSanPham();
@@ -41,6 +37,10 @@ namespace BLL
         public List<SanPham> LayDanhSachSanPhamTheoMaLoai(string maLoai)
         {            
             return spdal.LayDanhSachSanPhamTheoMaLoai(maLoai);
+        }
+        public List<SanPham> LayDanhSachSanPhamHetHan()
+        {
+            return spdal.LayDanhSachSanPhamHetHan();
         }
         public List<SanPham> LayDanhSachSanPhamTheoTrangThai(string trangThai)
         {
@@ -92,6 +92,10 @@ namespace BLL
         public bool XoaSanPham(string maSanPham)
         {
             return spdal.XoaSanPham(maSanPham);
+        }
+        public List<SanPham> LayDanhSachSanPhamTheoMucGia(decimal giaTriSanPham)
+        {
+            return spdal.LayDanhSachSanPhamTheoMucGia(giaTriSanPham);
         }
     }
 }

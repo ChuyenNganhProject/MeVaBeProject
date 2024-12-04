@@ -75,7 +75,7 @@ namespace MeVaBeProject
         }       
         private void LoadDanhSachSanPham()
         {
-            List<SanPham> danhSachSanPham = sanPhamBLL.LayDanhSachSanPham();
+            List<SanPham> danhSachSanPham = sanPhamBLL.LayTatCaSanPham();
             bindingSource.DataSource = danhSachSanPham;
             dtgvDanhSachSP.DataSource = bindingSource;
             dtgvDanhSachSP.Columns["maLoaiSanPham"].Visible = false;
@@ -125,7 +125,7 @@ namespace MeVaBeProject
         }
         private void btnHuyLoc_Click(object sender, EventArgs e)
         {
-            List<SanPham> sanPhams = sanPhamBLL.LayDanhSachSanPham();
+            List<SanPham> sanPhams = sanPhamBLL.LayTatCaSanPham();
             bindingSource.DataSource = sanPhams;
             SetHinhAnh(sanPhams);
             txtTimKiem.Text = string.Empty;

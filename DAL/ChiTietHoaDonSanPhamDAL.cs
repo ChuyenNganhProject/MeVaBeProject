@@ -30,7 +30,6 @@ namespace DAL
                 return false;
             }
         }
-
         public List<ChiTietHoaDonSanPham> LoadCTHDSanPham(string mahd)
         {
             var list = db.ChiTietHoaDonSanPhams.Where(ct => ct.maHoaDon == mahd).Select(ct => ct).ToList<ChiTietHoaDonSanPham>();
@@ -39,6 +38,10 @@ namespace DAL
                 item.tenSanPham = db.SanPhams.Where(sp => sp.maSanPham == item.maSanPham).Select(sp => sp.tenSanPham).First();
             }
             return list;
+        }
+        public ChiTietHoaDonSanPham TimChiTietHoaDonSanPham(string maHoaDon,string maSanPham)
+        {
+            return db.ChiTietHoaDonSanPhams.Where(ct => ct.maSanPham == maSanPham && ct.maHoaDon == maHoaDon).FirstOrDefault();
         }
     }
 }

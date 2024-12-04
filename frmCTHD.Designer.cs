@@ -35,6 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnThoat = new Sunny.UI.UIButton();
             this.uiPanel1 = new Sunny.UI.UIPanel();
+            this.btnTaoPhieuDoi = new Sunny.UI.UISymbolButton();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.uiPanel2 = new Sunny.UI.UIPanel();
             this.uiPanel7 = new Sunny.UI.UIPanel();
@@ -98,19 +99,42 @@
             // uiPanel1
             // 
             this.uiPanel1.BackColor = System.Drawing.SystemColors.Control;
+            this.uiPanel1.Controls.Add(this.btnTaoPhieuDoi);
             this.uiPanel1.Controls.Add(this.btnThoat);
             this.uiPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.uiPanel1.FillColor = System.Drawing.SystemColors.Control;
             this.uiPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel1.Location = new System.Drawing.Point(0, 757);
-            this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel1.Location = new System.Drawing.Point(0, 562);
+            this.uiPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel1.Name = "uiPanel1";
             this.uiPanel1.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel1.Size = new System.Drawing.Size(1220, 96);
+            this.uiPanel1.Size = new System.Drawing.Size(915, 78);
             this.uiPanel1.TabIndex = 1;
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnTaoPhieuDoi
+            // 
+            this.btnTaoPhieuDoi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTaoPhieuDoi.FillColor = System.Drawing.Color.HotPink;
+            this.btnTaoPhieuDoi.FillHoverColor = System.Drawing.Color.DeepPink;
+            this.btnTaoPhieuDoi.FillPressColor = System.Drawing.Color.DeepPink;
+            this.btnTaoPhieuDoi.FillSelectedColor = System.Drawing.Color.Honeydew;
+            this.btnTaoPhieuDoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnTaoPhieuDoi.Location = new System.Drawing.Point(5, 8);
+            this.btnTaoPhieuDoi.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnTaoPhieuDoi.Name = "btnTaoPhieuDoi";
+            this.btnTaoPhieuDoi.RectColor = System.Drawing.Color.HotPink;
+            this.btnTaoPhieuDoi.RectHoverColor = System.Drawing.Color.DeepPink;
+            this.btnTaoPhieuDoi.RectPressColor = System.Drawing.Color.DeepPink;
+            this.btnTaoPhieuDoi.RectSelectedColor = System.Drawing.Color.HotPink;
+            this.btnTaoPhieuDoi.Size = new System.Drawing.Size(184, 42);
+            this.btnTaoPhieuDoi.Symbol = 57432;
+            this.btnTaoPhieuDoi.TabIndex = 5;
+            this.btnTaoPhieuDoi.Text = "Tạo phiếu đổi hàng";
+            this.btnTaoPhieuDoi.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnTaoPhieuDoi.Click += new System.EventHandler(this.btnTaoPhieuDoi_Click);
             // 
             // uiLabel1
             // 
@@ -119,8 +143,9 @@
             this.uiLabel1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel1.Location = new System.Drawing.Point(0, 0);
+            this.uiLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(1220, 64);
+            this.uiLabel1.Size = new System.Drawing.Size(915, 52);
             this.uiLabel1.TabIndex = 2;
             this.uiLabel1.Text = "Thông tin hóa đơn";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -139,12 +164,12 @@
             this.uiPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiPanel2.FillColor = System.Drawing.SystemColors.Window;
             this.uiPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel2.Location = new System.Drawing.Point(0, 64);
-            this.uiPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel2.Location = new System.Drawing.Point(0, 52);
+            this.uiPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uiPanel2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel2.Name = "uiPanel2";
             this.uiPanel2.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel2.Size = new System.Drawing.Size(1220, 693);
+            this.uiPanel2.Size = new System.Drawing.Size(915, 510);
             this.uiPanel2.TabIndex = 3;
             this.uiPanel2.Text = null;
             this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -161,7 +186,7 @@
             this.uiPanel7.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel7.Name = "uiPanel7";
             this.uiPanel7.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel7.Size = new System.Drawing.Size(1220, 398);
+            this.uiPanel7.Size = new System.Drawing.Size(915, 215);
             this.uiPanel7.TabIndex = 8;
             this.uiPanel7.Text = null;
             this.uiPanel7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -175,7 +200,7 @@
             this.dgvCTHD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepPink;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -184,7 +209,7 @@
             this.dgvCTHD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DeepPink;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -216,7 +241,7 @@
             this.dgvCTHD.ScrollBarRectColor = System.Drawing.Color.HotPink;
             this.dgvCTHD.ScrollBarStyleInherited = false;
             this.dgvCTHD.SelectedIndex = -1;
-            this.dgvCTHD.Size = new System.Drawing.Size(1220, 398);
+            this.dgvCTHD.Size = new System.Drawing.Size(915, 215);
             this.dgvCTHD.StripeOddColor = System.Drawing.SystemColors.Window;
             this.dgvCTHD.TabIndex = 16;
             // 
@@ -227,12 +252,12 @@
             this.uiPanel10.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.uiPanel10.FillColor = System.Drawing.SystemColors.Window;
             this.uiPanel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel10.Location = new System.Drawing.Point(0, 572);
+            this.uiPanel10.Location = new System.Drawing.Point(0, 389);
             this.uiPanel10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel10.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel10.Name = "uiPanel10";
             this.uiPanel10.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel10.Size = new System.Drawing.Size(1220, 42);
+            this.uiPanel10.Size = new System.Drawing.Size(915, 42);
             this.uiPanel10.TabIndex = 7;
             this.uiPanel10.Text = null;
             this.uiPanel10.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -245,7 +270,7 @@
             this.uiLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel11.Location = new System.Drawing.Point(0, 0);
             this.uiLabel11.Name = "uiLabel11";
-            this.uiLabel11.Size = new System.Drawing.Size(1086, 42);
+            this.uiLabel11.Size = new System.Drawing.Size(781, 42);
             this.uiLabel11.TabIndex = 4;
             this.uiLabel11.Text = "Tổng tiền:";
             this.uiLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -256,7 +281,7 @@
             this.lblTongTien.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblTongTien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.lblTongTien.Location = new System.Drawing.Point(1086, 0);
+            this.lblTongTien.Location = new System.Drawing.Point(781, 0);
             this.lblTongTien.Name = "lblTongTien";
             this.lblTongTien.Size = new System.Drawing.Size(134, 42);
             this.lblTongTien.TabIndex = 3;
@@ -271,12 +296,12 @@
             this.uiPanel9.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.uiPanel9.FillColor = System.Drawing.SystemColors.Window;
             this.uiPanel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel9.Location = new System.Drawing.Point(0, 614);
+            this.uiPanel9.Location = new System.Drawing.Point(0, 431);
             this.uiPanel9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel9.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel9.Name = "uiPanel9";
             this.uiPanel9.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel9.Size = new System.Drawing.Size(1220, 40);
+            this.uiPanel9.Size = new System.Drawing.Size(915, 40);
             this.uiPanel9.TabIndex = 6;
             this.uiPanel9.Text = null;
             this.uiPanel9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -289,7 +314,7 @@
             this.uiLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel8.Location = new System.Drawing.Point(0, 0);
             this.uiLabel8.Name = "uiLabel8";
-            this.uiLabel8.Size = new System.Drawing.Size(1085, 40);
+            this.uiLabel8.Size = new System.Drawing.Size(780, 40);
             this.uiLabel8.TabIndex = 4;
             this.uiLabel8.Text = "Tiền được giảm:";
             this.uiLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -299,7 +324,7 @@
             this.lblTienDuocGiam.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblTienDuocGiam.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblTienDuocGiam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.lblTienDuocGiam.Location = new System.Drawing.Point(1085, 0);
+            this.lblTienDuocGiam.Location = new System.Drawing.Point(780, 0);
             this.lblTienDuocGiam.Name = "lblTienDuocGiam";
             this.lblTienDuocGiam.Size = new System.Drawing.Size(135, 40);
             this.lblTienDuocGiam.TabIndex = 3;
@@ -312,12 +337,12 @@
             this.uiPanel8.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.uiPanel8.FillColor = System.Drawing.SystemColors.Window;
             this.uiPanel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel8.Location = new System.Drawing.Point(0, 654);
+            this.uiPanel8.Location = new System.Drawing.Point(0, 471);
             this.uiPanel8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel8.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel8.Name = "uiPanel8";
             this.uiPanel8.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel8.Size = new System.Drawing.Size(1220, 39);
+            this.uiPanel8.Size = new System.Drawing.Size(915, 39);
             this.uiPanel8.TabIndex = 5;
             this.uiPanel8.Text = null;
             this.uiPanel8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -330,7 +355,7 @@
             this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel4.Location = new System.Drawing.Point(0, 0);
             this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(1087, 39);
+            this.uiLabel4.Size = new System.Drawing.Size(782, 39);
             this.uiLabel4.TabIndex = 4;
             this.uiLabel4.Text = "Tổng tiền hóa đơn:";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -341,7 +366,7 @@
             this.lblTongTienHD.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblTongTienHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblTongTienHD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.lblTongTienHD.Location = new System.Drawing.Point(1087, 0);
+            this.lblTongTienHD.Location = new System.Drawing.Point(782, 0);
             this.lblTongTienHD.Name = "lblTongTienHD";
             this.lblTongTienHD.Size = new System.Drawing.Size(133, 39);
             this.lblTongTienHD.TabIndex = 3;
@@ -359,7 +384,7 @@
             this.uiPanel6.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel6.Name = "uiPanel6";
             this.uiPanel6.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel6.Size = new System.Drawing.Size(1220, 43);
+            this.uiPanel6.Size = new System.Drawing.Size(915, 43);
             this.uiPanel6.TabIndex = 3;
             this.uiPanel6.Text = null;
             this.uiPanel6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -372,7 +397,7 @@
             this.lblNgayLap.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblNgayLap.Location = new System.Drawing.Point(228, 0);
             this.lblNgayLap.Name = "lblNgayLap";
-            this.lblNgayLap.Size = new System.Drawing.Size(992, 43);
+            this.lblNgayLap.Size = new System.Drawing.Size(687, 43);
             this.lblNgayLap.TabIndex = 1;
             this.lblNgayLap.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -401,7 +426,7 @@
             this.uiPanel5.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel5.Name = "uiPanel5";
             this.uiPanel5.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel5.Size = new System.Drawing.Size(1220, 45);
+            this.uiPanel5.Size = new System.Drawing.Size(915, 45);
             this.uiPanel5.TabIndex = 2;
             this.uiPanel5.Text = null;
             this.uiPanel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -414,7 +439,7 @@
             this.lblTenNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblTenNV.Location = new System.Drawing.Point(228, 0);
             this.lblTenNV.Name = "lblTenNV";
-            this.lblTenNV.Size = new System.Drawing.Size(992, 45);
+            this.lblTenNV.Size = new System.Drawing.Size(687, 45);
             this.lblTenNV.TabIndex = 1;
             this.lblTenNV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -443,7 +468,7 @@
             this.uiPanel4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel4.Name = "uiPanel4";
             this.uiPanel4.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel4.Size = new System.Drawing.Size(1220, 43);
+            this.uiPanel4.Size = new System.Drawing.Size(915, 43);
             this.uiPanel4.TabIndex = 1;
             this.uiPanel4.Text = null;
             this.uiPanel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -456,7 +481,7 @@
             this.lblTenKH.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblTenKH.Location = new System.Drawing.Point(228, 0);
             this.lblTenKH.Name = "lblTenKH";
-            this.lblTenKH.Size = new System.Drawing.Size(992, 43);
+            this.lblTenKH.Size = new System.Drawing.Size(687, 43);
             this.lblTenKH.TabIndex = 1;
             this.lblTenKH.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -485,7 +510,7 @@
             this.uiPanel3.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel3.Name = "uiPanel3";
             this.uiPanel3.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel3.Size = new System.Drawing.Size(1220, 43);
+            this.uiPanel3.Size = new System.Drawing.Size(915, 43);
             this.uiPanel3.TabIndex = 0;
             this.uiPanel3.Text = null;
             this.uiPanel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -498,7 +523,7 @@
             this.lblMaHD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblMaHD.Location = new System.Drawing.Point(228, 0);
             this.lblMaHD.Name = "lblMaHD";
-            this.lblMaHD.Size = new System.Drawing.Size(992, 43);
+            this.lblMaHD.Size = new System.Drawing.Size(687, 43);
             this.lblMaHD.TabIndex = 1;
             this.lblMaHD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -517,14 +542,15 @@
             // 
             // frmCTHD
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1220, 853);
+            this.ClientSize = new System.Drawing.Size(915, 640);
             this.Controls.Add(this.uiPanel2);
             this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.uiPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmCTHD";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCTHD";
@@ -572,5 +598,6 @@
         private Sunny.UI.UILabel uiLabel11;
         private Sunny.UI.UILabel uiLabel8;
         private Sunny.UI.UILabel uiLabel4;
+        private Sunny.UI.UISymbolButton btnTaoPhieuDoi;
     }
 }

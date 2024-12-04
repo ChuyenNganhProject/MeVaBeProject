@@ -118,5 +118,21 @@ namespace DAL
                 return false;
             }
         }
+        public KhuyenMaiSanPham TimKhuyenMaiSanPhamTheoNgayLapHoaDon(string maSanPham,DateTime ngayKhuyenMai)
+        {
+            List<KhuyenMai> danhSachKhuyenMai = db.KhuyenMais.Where(km => km.ngayBatDau <= ngayKhuyenMai && km.ngayKetThuc >= ngayKhuyenMai).ToList();
+            foreach(KhuyenMai item in danhSachKhuyenMai)
+            {
+                List<KhuyenMaiSanPham> danhSachSanPhamKhuyenMai = db.KhuyenMaiSanPhams.Where(kmsp => kmsp.maKhuyenMai == item.maKhuyenMai).ToList();
+                foreach (KhuyenMaiSanPham sp in danhSachSanPhamKhuyenMai)
+                {
+                    if (sp.maSanPham == maSanPham)
+                    {
+                        return sp;
+                    }
+                }
+            }
+            return null;
+        }
     }
 }

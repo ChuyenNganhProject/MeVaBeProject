@@ -56,6 +56,7 @@ CREATE TABLE SanPham (
     maSanPham VARCHAR(50) PRIMARY KEY,
     maLoaiSanPham VARCHAR(10),
     tenSanPham NVARCHAR(100),
+	donGiaNhap DECIMAL(18,2),
     donGiaBan DECIMAL(18, 2),
 	donGiaSale DECIMAL(18, 2),
     soLuong INT,
@@ -81,26 +82,29 @@ CREATE TABLE HoaDon (
 );
 GO
 CREATE TABLE PhieuDoiHang (
-    maPhieuDoi VARCHAR(50) PRIMARY KEY,
-    maHoaDon VARCHAR(50),
-    maKhachHang VARCHAR(20),
+    maPhieuDoi VARCHAR(50) PRIMARY KEY,    
+    tenKhachHang NVARCHAR(100),
     maNhanVien VARCHAR(50),
     ngayDoi DATE,
-    trangThai BIT,
-    FOREIGN KEY (maHoaDon) REFERENCES HoaDon(maHoaDon),
-    FOREIGN KEY (maKhachHang) REFERENCES KhachHang(maKhachHang),
+	lyDoDoi NVARCHAR(100),
+    hinhThucDoi NVARCHAR(20),      
+	tongTien DECIMAL(18,2),
     FOREIGN KEY (maNhanVien) REFERENCES NhanVien(maNhanVien)
 );
 GO
 CREATE TABLE ChiTietPhieuDoiHang (
     maPhieuDoi VARCHAR(50),
+	maHoaDon VARCHAR(50),
     maSanPham VARCHAR(50),
+	maSanPhamDoi VARCHAR(50),
     soLuong INT,
-    donGia DECIMAL(18, 2),
-    tongTien DECIMAL(18, 2),
-    PRIMARY KEY (maPhieuDoi, maSanPham),
+    giaTriSanPham DECIMAL(18, 2),
+	giaTriSanPhamDoi DECIMAL(18, 2),    
+	tongTien DECIMAL(18, 2),
+    PRIMARY KEY (maPhieuDoi,maSanPham,maHoaDon),
     FOREIGN KEY (maPhieuDoi) REFERENCES PhieuDoiHang(maPhieuDoi),
-    FOREIGN KEY (maSanPham) REFERENCES SanPham(maSanPham)
+	FOREIGN KEY (maHoaDon,maSanPham) REFERENCES ChiTietHoaDonSanPham(maHoaDon,maSanPham),
+    FOREIGN KEY (maSanPhamDoi) REFERENCES SanPham(maSanPham)
 );
 GO
 CREATE TABLE UuDaiThanhVien (
@@ -110,24 +114,24 @@ CREATE TABLE UuDaiThanhVien (
 	maHang VARCHAR(10),
 	FOREIGN KEY (maHang) REFERENCES HangThanhVien(maHang) ON DELETE CASCADE
 );
-GO
-CREATE TABLE GoiSanPham (
-    maGoiSanPham VARCHAR(50) PRIMARY KEY,
-    tenGoiSanPham NVARCHAR(100),
-    donGia DECIMAL(18, 2),
-    soLuong INT,
-    hinhAnh NVARCHAR(255)
-);
-GO
-CREATE TABLE ChiTietGoiSanPham (
-    maGoiSanPham VARCHAR(50),
-    maSanPham VARCHAR(50),
-    donGia DECIMAL(18, 2),
-    soLuong INT,
-    PRIMARY KEY (maGoiSanPham, maSanPham),
-    FOREIGN KEY (maGoiSanPham) REFERENCES GoiSanPham(maGoiSanPham),
-    FOREIGN KEY (maSanPham) REFERENCES SanPham(maSanPham)
-);
+--GO
+--CREATE TABLE GoiSanPham (
+--    maGoiSanPham VARCHAR(50) PRIMARY KEY,
+--    tenGoiSanPham NVARCHAR(100),
+--    donGia DECIMAL(18, 2),
+--    soLuong INT,
+--    hinhAnh NVARCHAR(255)
+--);
+--GO
+--CREATE TABLE ChiTietGoiSanPham (
+--    maGoiSanPham VARCHAR(50),
+--    maSanPham VARCHAR(50),
+--    donGia DECIMAL(18, 2),
+--    soLuong INT,
+--    PRIMARY KEY (maGoiSanPham, maSanPham),
+--    FOREIGN KEY (maGoiSanPham) REFERENCES GoiSanPham(maGoiSanPham),
+--    FOREIGN KEY (maSanPham) REFERENCES SanPham(maSanPham)
+--);
 GO
 CREATE TABLE ChiTietHoaDonSanPham (
     maHoaDon VARCHAR(50),
@@ -169,10 +173,9 @@ CREATE TABLE ChiTietPhieuDat (
 GO
 CREATE TABLE PhieuThanhLy (
     maThanhLy VARCHAR(50) PRIMARY KEY,
-    maNhanVien VARCHAR(50),
-    lyDo NVARCHAR(255),
-    ngayThanhLy DATE,
-    tongTien DECIMAL(18, 2),
+    maNhanVien VARCHAR(50),    
+    ngayThanhLy DATE,	
+	lyDo NVARCHAR(255),
     FOREIGN KEY (maNhanVien) REFERENCES NhanVien(maNhanVien)
 );
 GO
@@ -180,7 +183,7 @@ CREATE TABLE ChiTietPhieuThanhLy (
     maThanhLy VARCHAR(50),
     maSanPham VARCHAR(50),
     soLuong INT,
-    giaThanhLy DECIMAL(18, 2),
+    ngayHetHan DATE,
     PRIMARY KEY (maThanhLy, maSanPham),
     FOREIGN KEY (maThanhLy) REFERENCES PhieuThanhLy(maThanhLy),
     FOREIGN KEY (maSanPham) REFERENCES SanPham(maSanPham)
@@ -209,16 +212,16 @@ GO
 CREATE TABLE PhieuGiaoHang (
     maPhieuGiao VARCHAR(50) PRIMARY KEY,
 	maNhanVien VARCHAR(50),
-	khachHangNhan NVARCHAR(50),
+	tenKhachHang NVARCHAR(50),
 	soDienThoai VARCHAR(15),
 	DiaChiGiaoHang NVARCHAR(255) NOT NULL,
-    ngayGiaoDuKien	 DATE,
+    ngayGiaoDuKien DATE,
+	ngayLap DATETIME,
     chiPhi DECIMAL(18, 2),
-    tinhTrang NVARCHAR(50) DEFAULT N'Chưa giao'
+    tinhTrang NVARCHAR(50)
 	FOREIGN KEY (maNhanVien) REFERENCES NhanVien(maNhanVien)
 );
 GO
-
 CREATE TABLE ChiTietPhieuGiaoHang(
 	maPhieuGiao VARCHAR(50),
     maHoaDon VARCHAR(50),
@@ -270,6 +273,12 @@ CREATE TABLE ChiTietQuyenCuaLoaiNhanVien(
     FOREIGN KEY (maQuyen) REFERENCES QuyenHeThong(maQuyen)
 );
 GO
+ALTER TABLE SanPham
+ADD CONSTRAINT DonGiaNhapDefault DEFAULT 0 FOR donGiaNhap
+
+ALTER TABLE SanPham
+ADD CONSTRAINT DonGiaBanDefault DEFAULT 0 FOR donGiaBan
+
 ALTER TABLE SanPham
 ADD CONSTRAINT SoLuongDefault DEFAULT 0 FOR soLuong
 
@@ -359,70 +368,70 @@ INSERT INTO LoaiSanPham (maLoaiSanPham, tenLoaiSanPham) VALUES ('LSP006', N'Th�
 GO
 SET DATEFORMAT DMY
 -- LSP002: Đồ chơi, học tập
-INSERT INTO SanPham (maSanPham,maLoaiSanPham,tenSanPham,donGiaBan,soLuong,ngaySanXuat,hanSuDung,hinhAnh,trangThai)
+INSERT INTO SanPham (maSanPham,maLoaiSanPham,tenSanPham,ngaySanXuat,hanSuDung,hinhAnh,trangThai)
 VALUES 
-('SP000001', 'LSP002', N'Robot nhảy múa và xoay chong chóng có nhạc đèn', 215000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Robot_nhay_mua_YN382700_C407.jpg', N'Còn hàng'),
-('SP000002', 'LSP002', N'Bộ mô hình xe, máy bay và biển báo', 175000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Bo_mohinhxe_maybay_va_bien_bao_HW24031178_C407.jpg', N'Còn hàng'),
-('SP000003', 'LSP002', N'Thú bông capybara cầm lá cây ngộ nghĩnh', 185000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Thu_bong_capybara_cam_la_cay_ngo_nghinh_C407.jpg', N'Còn hàng'),
-('SP000004', 'LSP002', N'Bộ đồ chơi nhà tắm', 99000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Bo_do_choi_nha_tam_9pcs_JS048059.jpg', N'Còn hàng'),
-('SP000005', 'LSP002', N'Bảng vẽ học tập và bàn chơi cờ', 285000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Bangve_hoctap_va_ban_choi_co_JS028150.jpg', N'Còn hàng'),
-('SP000006', 'LSP002', N'Xe lắc cao cấp có nhạc đèn', 765000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Xe_lac_cao_cap_co_nhac_den_QT8068.jpg', N'Còn hàng'),
-('SP000007', 'LSP002', N'Xe chòi chân, thăng bằng 4 bánh Animo', 565000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Xe_choi_chan_thang_bang_4_banh_Animo_M5910.jpg', N'Còn hàng'),
-('SP000008', 'LSP002', N'Túi xách nhập vai bán kem hình gấu ngộ nghĩnh', 145000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Tui_xach_nhap_vai_ban_kem_hinh_gau_ngo_nghinh_21pcs_CY369198.jpg', N'Còn hàng'),
-('SP000009', 'LSP002', N'Gối ôm thú bông chó con tinh nghịch (xanh)', 199000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Goi_om_thu_bong_cho_con_tinh_nghich_xanh.jpg', N'Còn hàng'),
-('SP000010', 'LSP002', N'Gặm nướu silicone hình thú Animo (Hình gà con) (Vàng)', 149000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/Gam_nuou_silicone_hinh_thu_Animo_Hinh_ga_con_Vang.jpg', N'Còn hàng')
+('SP000001', 'LSP002', N'Robot nhảy múa và xoay chong chóng có nhạc đèn','2024-01-01', '4/2/2025', 'PicSanPham/Robot_nhay_mua_YN382700_C407.jpg',N'Hết hàng'),
+('SP000002', 'LSP002', N'Bộ mô hình xe, máy bay và biển báo', '2024-01-01', '4/2/2025', 'PicSanPham/Bo_mohinhxe_maybay_va_bien_bao_HW24031178_C407.jpg',N'Hết hàng'),
+('SP000003', 'LSP002', N'Thú bông capybara cầm lá cây ngộ nghĩnh', '2024-01-01', '4/2/2025', 'PicSanPham/Thu_bong_capybara_cam_la_cay_ngo_nghinh_C407.jpg',N'Hết hàng'),
+('SP000004', 'LSP002', N'Bộ đồ chơi nhà tắm', '2024-01-01', '4/2/2025', 'PicSanPham/Bo_do_choi_nha_tam_9pcs_JS048059.jpg',N'Hết hàng'),
+('SP000005', 'LSP002', N'Bảng vẽ học tập và bàn chơi cờ', '2024-01-01', '4/2/2025', 'PicSanPham/Bangve_hoctap_va_ban_choi_co_JS028150.jpg',N'Hết hàng'),
+('SP000006', 'LSP002', N'Xe lắc cao cấp có nhạc đèn', '2024-01-01', '4/2/2025', 'PicSanPham/Xe_lac_cao_cap_co_nhac_den_QT8068.jpg',N'Hết hàng'),
+('SP000007', 'LSP002', N'Xe chòi chân, thăng bằng 4 bánh Animo', '2024-01-01', '4/2/2025', 'PicSanPham/Xe_choi_chan_thang_bang_4_banh_Animo_M5910.jpg',N'Hết hàng'),
+('SP000008', 'LSP002', N'Túi xách nhập vai bán kem hình gấu ngộ nghĩnh', '2024-01-01', '4/2/2025', 'PicSanPham/Tui_xach_nhap_vai_ban_kem_hinh_gau_ngo_nghinh_21pcs_CY369198.jpg',N'Hết hàng'),
+('SP000009', 'LSP002', N'Gối ôm thú bông chó con tinh nghịch (xanh)', '2024-01-01', '4/2/2025', 'PicSanPham/Goi_om_thu_bong_cho_con_tinh_nghich_xanh.jpg',N'Hết hàng'),
+('SP000010', 'LSP002', N'Gặm nướu silicone hình thú Animo (Hình gà con) (Vàng)', '2024-01-01', '4/2/2025', 'PicSanPham/Gam_nuou_silicone_hinh_thu_Animo_Hinh_ga_con_Vang.jpg',N'Hết hàng')
 GO
 -- LSP003: Vitamin - sức khỏe
-INSERT INTO SanPham (maSanPham,maLoaiSanPham,tenSanPham,donGiaBan,soLuong,ngaySanXuat,hanSuDung,hinhAnh,trangThai)
+INSERT INTO SanPham (maSanPham,maLoaiSanPham,tenSanPham,ngaySanXuat,hanSuDung,hinhAnh,trangThai)
 VALUES 
-('SP000011', 'LSP003', N'Thực phẩm bảo vệ sức khoẻ Herbs of Gold Ginkgo Biloba 6000', 450000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/herbs_of_gold_ginkgo_biloba_6000.jpg', N'Còn hàng'),
-('SP000012', 'LSP003', N'Thực phẩm bảo vệ sức khoẻ VITAMIN D3 K2 Drops M-SMARTY', 195000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/vitamin_d3_k2_drops_m_smarty.jpg', N'Còn hàng'),
-('SP000013', 'LSP003', N'Thực phẩm bổ sung thạch Calci trẻ em NFood hương đào', 175000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/calci_tre_em_nfood_huong_dao.jpg', N'Còn hàng'),
-('SP000014', 'LSP003', N'Thực phẩm bổ sung thạch hồng sâm trẻ em NFood', 175000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/thach_hong_sam_tre_em_nfood.jpg', N'Còn hàng'),
-('SP000015', 'LSP003', N'Thạch sữa non trẻ em NFood (hương dâu)', 175000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/thach_sua_non_tre_em_nfood_huong_dau.jpg', N'Còn hàng'),
-('SP000016', 'LSP003', N'Men vi sinh Synteract Baby Drops Oil 10mL', 345000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/men_vi_sinh_synteract_baby_drops_oil_10ml.jpg', N'Còn hàng'),
-('SP000017', 'LSP003', N'Bioamicus Vitamin K2D3', 330000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/bioamicus_vitamin_k2d3.jpg', N'Còn hàng'),
-('SP000018', 'LSP003', N'Thực phẩm bảo vệ sức khỏe WELLBABY MULTI-VITAMIN LIQUID', 420000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/wellbaby_multi_vitamin_liquid.jpg', N'Còn hàng'),
-('SP000019', 'LSP003', N'Siro Tăng Đề Kháng Bé GADOPAX FORTE', 279000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/siro_tang_de_khang_be_gadopax_forte.jpg', N'Còn hàng'),
-('SP000020', 'LSP003', N'Biolizin', 295000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/biolizin.jpg', N'Còn hàng')
+('SP000011', 'LSP003', N'Thực phẩm bảo vệ sức khoẻ Herbs of Gold Ginkgo Biloba 6000', '2024-01-01', '4/2/2025', 'PicSanPham/herbs_of_gold_ginkgo_biloba_6000.jpg',N'Hết hàng'),
+('SP000012', 'LSP003', N'Thực phẩm bảo vệ sức khoẻ VITAMIN D3 K2 Drops M-SMARTY', '2024-01-01', '4/2/2025', 'PicSanPham/vitamin_d3_k2_drops_m_smarty.jpg',N'Hết hàng'),
+('SP000013', 'LSP003', N'Thực phẩm bổ sung thạch Calci trẻ em NFood hương đào', '2024-01-01', '4/2/2025', 'PicSanPham/calci_tre_em_nfood_huong_dao.jpg',N'Hết hàng'),
+('SP000014', 'LSP003', N'Thực phẩm bổ sung thạch hồng sâm trẻ em NFood', '2024-01-01', '4/2/2025', 'PicSanPham/thach_hong_sam_tre_em_nfood.jpg',N'Hết hàng'),
+('SP000015', 'LSP003', N'Thạch sữa non trẻ em NFood (hương dâu)', '2024-01-01', '4/2/2025', 'PicSanPham/thach_sua_non_tre_em_nfood_huong_dau.jpg',N'Hết hàng'),
+('SP000016', 'LSP003', N'Men vi sinh Synteract Baby Drops Oil 10mL', '2024-01-01', '4/2/2025', 'PicSanPham/men_vi_sinh_synteract_baby_drops_oil_10ml.jpg',N'Hết hàng'),
+('SP000017', 'LSP003', N'Bioamicus Vitamin K2D3', '2024-01-01', '4/2/2025', 'PicSanPham/bioamicus_vitamin_k2d3.jpg',N'Hết hàng'),
+('SP000018', 'LSP003', N'Thực phẩm bảo vệ sức khỏe WELLBABY MULTI-VITAMIN LIQUID', '2024-01-01', '4/2/2025', 'PicSanPham/wellbaby_multi_vitamin_liquid.jpg',N'Hết hàng'),
+('SP000019', 'LSP003', N'Siro Tăng Đề Kháng Bé GADOPAX FORTE', '2024-01-01', '4/2/2025', 'PicSanPham/siro_tang_de_khang_be_gadopax_forte.jpg',N'Hết hàng'),
+('SP000020', 'LSP003', N'Biolizin', '2024-01-01', '4/2/2025', 'PicSanPham/biolizin.jpg',N'Hết hàng')
 GO
 -- LSP004: Thời trang - phụ kiện
-INSERT INTO SanPham (maSanPham,maLoaiSanPham,tenSanPham,donGiaBan,soLuong,ngaySanXuat,hanSuDung,hinhAnh,trangThai)
+INSERT INTO SanPham (maSanPham,maLoaiSanPham,tenSanPham,ngaySanXuat,hanSuDung,hinhAnh,trangThai)
 VALUES 
-('SP000021', 'LSP004', N'Ba lô trẻ em Space Animo A2307_MN013 (Xanh)', 299000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/balo_tre_em_space_animo_a2307_mn013_xanh.jpg', N'Còn hàng'),
-('SP000022', 'LSP004', N'Ba lô bé gái hình thỏ Animo A2307_MN016 (Hồng)', 249000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/balo_be_gai_hinh_tho_animo_a2307_mn016_hong.jpg', N'Còn hàng'),
-('SP000023', 'LSP004', N'Ba lô bé trai hình vũ trụ Animo A2307_MN015 (Xanh)', 249000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/balo_be_trai_hinh_vu_tru_animo_a2307_mn015_xanh.jpg', N'Còn hàng'),
-('SP000024', 'LSP004', N'Sandal bé trai cao cấp Animo A2301_JK014', 259000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/sandal_be_trai_cao_cap_animo_a2301_jk014.jpg', N'Còn hàng'),
-('SP000025', 'LSP004', N'Giày tập đi chút chít Animo BG A2408_MN023', 229000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/giay_tap_di_chut_chit_animo_bg_a2408_mn023.jpg', N'Còn hàng'),
-('SP000026', 'LSP004', N'Ba lô bé trai con hà mã Animo A2307_MN017 (Xanh)', 249000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/balo_be_trai_con_ha_ma_animo_a2307_mn017_xanh.jpg', N'Còn hàng'),
-('SP000027', 'LSP004', N'Giày bé gái phát sáng Animo A2207_JK047', 269000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/giay_be_gai_phat_sang_animo_a2207_jk047.jpg', N'Còn hàng'),
-('SP000028', 'LSP004', N'Giày tập đi Animo A2204_MN004', 165000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/giay_tap_di_animo_a2204_mn004.jpg', N'Còn hàng'),
-('SP000029', 'LSP004', N'Đầm bé gái Hoa và Bướm Animo VD1223056', 259000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/dam_be_gai_hoa_va_buom_animo_vd1223056.jpg', N'Còn hàng'),
-('SP000030', 'LSP004', N'Giày bé gái búp bê Animo A2205_MN001', 269000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/giay_be_gai_bup_be_animo_a2205_mn001.jpg', N'Còn hàng')
+('SP000021', 'LSP004', N'Ba lô trẻ em Space Animo A2307_MN013 (Xanh)', '2024-01-01', '4/2/2025', 'PicSanPham/balo_tre_em_space_animo_a2307_mn013_xanh.jpg',N'Hết hàng'),
+('SP000022', 'LSP004', N'Ba lô bé gái hình thỏ Animo A2307_MN016 (Hồng)', '2024-01-01', '4/2/2025', 'PicSanPham/balo_be_gai_hinh_tho_animo_a2307_mn016_hong.jpg',N'Hết hàng'),
+('SP000023', 'LSP004', N'Ba lô bé trai hình vũ trụ Animo A2307_MN015 (Xanh)', '2024-01-01', '4/2/2025', 'PicSanPham/balo_be_trai_hinh_vu_tru_animo_a2307_mn015_xanh.jpg',N'Hết hàng'),
+('SP000024', 'LSP004', N'Sandal bé trai cao cấp Animo A2301_JK014', '2024-01-01', '4/2/2025', 'PicSanPham/sandal_be_trai_cao_cap_animo_a2301_jk014.jpg',N'Hết hàng'),
+('SP000025', 'LSP004', N'Giày tập đi chút chít Animo BG A2408_MN023', '2024-01-01', '4/2/2025', 'PicSanPham/giay_tap_di_chut_chit_animo_bg_a2408_mn023.jpg',N'Hết hàng'),
+('SP000026', 'LSP004', N'Ba lô bé trai con hà mã Animo A2307_MN017 (Xanh)', '2024-01-01', '4/2/2025', 'PicSanPham/balo_be_trai_con_ha_ma_animo_a2307_mn017_xanh.jpg',N'Hết hàng'),
+('SP000027', 'LSP004', N'Giày bé gái phát sáng Animo A2207_JK047', '2024-01-01', '4/2/2025', 'PicSanPham/giay_be_gai_phat_sang_animo_a2207_jk047.jpg',N'Hết hàng'),
+('SP000028', 'LSP004', N'Giày tập đi Animo A2204_MN004', '2024-01-01', '4/2/2025', 'PicSanPham/giay_tap_di_animo_a2204_mn004.jpg',N'Hết hàng'),
+('SP000029', 'LSP004', N'Đầm bé gái Hoa và Bướm Animo VD1223056', '2024-01-01', '4/2/2025', 'PicSanPham/dam_be_gai_hoa_va_buom_animo_vd1223056.jpg',N'Hết hàng'),
+('SP000030', 'LSP004', N'Giày bé gái búp bê Animo A2205_MN001', '2024-01-01', '4/2/2025', 'PicSanPham/giay_be_gai_bup_be_animo_a2205_mn001.jpg',N'Hết hàng')
 GO
 -- LSP005: Giặt xả quần áo
-INSERT INTO SanPham (maSanPham,maLoaiSanPham,tenSanPham,donGiaBan,soLuong,ngaySanXuat,hanSuDung,hinhAnh,trangThai)
+INSERT INTO SanPham (maSanPham,maLoaiSanPham,tenSanPham,ngaySanXuat,hanSuDung,hinhAnh,trangThai)
 VALUES 
-('SP000031', 'LSP005', N'Nước xả vải Hàn Quốc ConCung Gentle Care hương tươi mát, chai 3L', 185000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_xa_vai_hanquoc_concung_gentle_care_huong_tuoi_mat_chai_3l.jpg', N'Còn hàng'),
-('SP000032', 'LSP005', N'Nước Giặt OMO Matic Cửa trên túi 4kg', 209000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_giat_omo_matic_4kg.jpg', N'Còn hàng'),
-('SP000033', 'LSP005', N'Dung dịch xả quần áo D-nee 3L/2,8L Tím', 215000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/dung_dich_xa_quan_ao_d_nee_tim.jpg', N'Còn hàng'),
-('SP000034', 'LSP005', N'Nước xả Downy Hương Huyền bí túi 3L', 241000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_xa_downy_huong_huyen_bi_tui_3l.jpg', N'Còn hàng'),
-('SP000035', 'LSP005', N'Nước giặt Ariel hương Downy túi 3.2kg', 236500, 250, '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_giat_ariel_huong_downy_tui_3_2kg.jpg', N'Còn hàng'),
-('SP000036', 'LSP005', N'Nước giặt xả MaxKleen hương sớm mai túi 3.8kg', 210000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_giat_xa_maxkleen_huong_som_mai_tui_3_8kg.jpg', N'Còn hàng'),
-('SP000037', 'LSP005', N'Nước xả Downy Hương nắng mai túi 3L', 236500, 250, '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_xa_downy_huong_nang_mai_tui_3l.jpg', N'Còn hàng'),
-('SP000038', 'LSP005', N'Nước xả vải Comfort Đậm đặc Hương nước hoa thiên nhiên Bella túi 3.2L', 219000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_xa_vai_comfort_dam_dac_bella.jpg', N'Còn hàng')
+('SP000031', 'LSP005', N'Nước xả vải Hàn Quốc ConCung Gentle Care hương tươi mát, chai 3L', '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_xa_vai_hanquoc_concung_gentle_care_huong_tuoi_mat_chai_3l.jpg',N'Hết hàng'),
+('SP000032', 'LSP005', N'Nước Giặt OMO Matic Cửa trên túi 4kg', '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_giat_omo_matic_4kg.jpg',N'Hết hàng'),
+('SP000033', 'LSP005', N'Dung dịch xả quần áo D-nee 3L/2,8L Tím', '2024-01-01', '4/2/2025', 'PicSanPham/dung_dich_xa_quan_ao_d_nee_tim.jpg',N'Hết hàng'),
+('SP000034', 'LSP005', N'Nước xả Downy Hương Huyền bí túi 3L', '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_xa_downy_huong_huyen_bi_tui_3l.jpg',N'Hết hàng'),
+('SP000035', 'LSP005', N'Nước giặt Ariel hương Downy túi 3.2kg', '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_giat_ariel_huong_downy_tui_3_2kg.jpg',N'Hết hàng'),
+('SP000036', 'LSP005', N'Nước giặt xả MaxKleen hương sớm mai túi 3.8kg', '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_giat_xa_maxkleen_huong_som_mai_tui_3_8kg.jpg',N'Hết hàng'),
+('SP000037', 'LSP005', N'Nước xả Downy Hương nắng mai túi 3L', '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_xa_downy_huong_nang_mai_tui_3l.jpg',N'Hết hàng'),
+('SP000038', 'LSP005', N'Nước xả vải Comfort Đậm đặc Hương nước hoa thiên nhiên Bella túi 3.2L', '2024-01-01', '4/2/2025', 'PicSanPham/nuoc_xa_vai_comfort_dam_dac_bella.jpg',N'Hết hàng')
 GO
 -- LSP006 Thực phẩm chế biến
-INSERT INTO SanPham (maSanPham,maLoaiSanPham,tenSanPham,donGiaBan,soLuong,ngaySanXuat,hanSuDung,hinhAnh,trangThai)
+INSERT INTO SanPham (maSanPham,maLoaiSanPham,tenSanPham,ngaySanXuat,hanSuDung,hinhAnh,trangThai)
 VALUES 
-('SP000039', 'LSP006', N'Rong biển hữu cơ tách muối cho bé BeBecook', 135000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/rong_bien_huu_co_tach_muoi_cho_be_bebecook.jpg', N'Còn hàng'),
-('SP000040', 'LSP006', N'Dầu Sachi Nguyên Chất Thuyền Xưa Ăn Dặm Cho Con 65ml', 96000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/dau_sachi_nguyen_chat_thuyen_xua.jpg', N'Còn hàng'),
-('SP000041', 'LSP006', N'Dầu mè dinh dưỡng - Thuyền Xưa ăn dặm cho con', 55000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/dau_me_thuyen_xua_an_dam.jpg', N'Còn hàng'),
-('SP000042', 'LSP006', N'Yến mạch ăn liền Primal 200g', 59000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/yen_mach_an_lien_primal.jpg', N'Còn hàng'),
-('SP000043', 'LSP006', N'Yến mạch Úc Primal nguyên cán 200g', 59000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/yen_mach_uc_primal_nguyen_can.jpg', N'Còn hàng'),
-('SP000044', 'LSP006', N'Dầu hạt cải nhãn hiệu Simply 1L', 79000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/dau_hat_cai_simply.jpg', N'Còn hàng'),
-('SP000045', 'LSP006', N'Mì nui trứng Egg Pasta hình chữ cái ABC 90g', 74000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/mi_nui_trung_egg_pasta.jpg', N'Còn hàng'),
-('SP000046', 'LSP006', N'Rong biển Rắc cơm Hàn Quốc BADAONE vị Truyền thống', 65000, 250, '2024-01-01', '4/2/2025', 'PicSanPham/rong_bien_rac_com_badaone.jpg', N'Còn hàng')
+('SP000039', 'LSP006', N'Rong biển hữu cơ tách muối cho bé BeBecook', '2024-01-01', '4/2/2025', 'PicSanPham/rong_bien_huu_co_tach_muoi_cho_be_bebecook.jpg',N'Hết hàng'),
+('SP000040', 'LSP006', N'Dầu Sachi Nguyên Chất Thuyền Xưa Ăn Dặm Cho Con 65ml', '2024-01-01', '4/2/2025', 'PicSanPham/dau_sachi_nguyen_chat_thuyen_xua.jpg',N'Hết hàng'),
+('SP000041', 'LSP006', N'Dầu mè dinh dưỡng - Thuyền Xưa ăn dặm cho con', '2024-01-01', '4/2/2025', 'PicSanPham/dau_me_thuyen_xua_an_dam.jpg',N'Hết hàng'),
+('SP000042', 'LSP006', N'Yến mạch ăn liền Primal 200g', '2024-01-01', '4/2/2025', 'PicSanPham/yen_mach_an_lien_primal.jpg',N'Hết hàng'),
+('SP000043', 'LSP006', N'Yến mạch Úc Primal nguyên cán 200g', '2024-01-01', '4/2/2025', 'PicSanPham/yen_mach_uc_primal_nguyen_can.jpg',N'Hết hàng'),
+('SP000044', 'LSP006', N'Dầu hạt cải nhãn hiệu Simply 1L', '2024-01-01', '4/2/2025', 'PicSanPham/dau_hat_cai_simply.jpg',N'Hết hàng'),
+('SP000045', 'LSP006', N'Mì nui trứng Egg Pasta hình chữ cái ABC 90g', '2024-01-01', '4/2/2025', 'PicSanPham/mi_nui_trung_egg_pasta.jpg',N'Hết hàng'),
+('SP000046', 'LSP006', N'Rong biển Rắc cơm Hàn Quốc BADAONE vị Truyền thống', '2024-01-01', '4/2/2025', 'PicSanPham/rong_bien_rac_com_badaone.jpg',N'Hết hàng')
 GO
 INSERT INTO HangThanhVien (maHang, tenHang, mucTieuBatDau, mucTieuKetThuc, ghiChu)
 VALUES 
@@ -488,6 +497,23 @@ BEGIN
 			SET trangThai = N'Hết hàng' 
 			WHERE maSanPham = @maSP
 		END
+	ELSE
+		BEGIN
+			UPDATE SanPham
+			SET trangThai = N'Còn hàng' 
+			WHERE maSanPham = @maSP
+		END
+END
+GO
+CREATE TRIGGER TRG_TaoChiTietPhieuThanhLy ON ChiTietPhieuThanhLy
+AFTER INSERT
+AS
+BEGIN
+	DECLARE @maSP VARCHAR(50), @soLuong INT
+	SELECT @maSP = maSanPham, @soLuong = soLuong FROM inserted
+	UPDATE SanPham
+	SET soLuong = soLuong - @soLuong
+	WHERE maSanPham = @maSP
 END
 GO
 CREATE TRIGGER TRG_TaoPhieuNhap ON PhieuNhap
@@ -505,12 +531,12 @@ BEGIN
 		ROLLBACK
 END
 GO
-ALTER TRIGGER TRG_TaoChiTietPhieuNhap ON ChiTietPhieuNhap
+CREATE TRIGGER TRG_TaoChiTietPhieuNhap ON ChiTietPhieuNhap
 AFTER INSERT
 AS
 BEGIN
-	DECLARE @maSP VARCHAR(50),@maPD VARCHAR(50), @soLuong INT, @ngaySanXuat DATE, @hanSuDung DATE
-	SELECT @maSP = maSanPham, @maPD = maPhieuDat, @soLuong = soLuong, @ngaySanXuat = ngaySanXuat, @hanSuDung = hanSuDung FROM INSERTED
+	DECLARE @maSP VARCHAR(50),@maPD VARCHAR(50), @soLuong INT, @ngaySanXuat DATE, @hanSuDung DATE, @donGiaNhap DECIMAL(18,2)
+	SELECT @maSP = maSanPham, @maPD = maPhieuDat, @soLuong = soLuong, @ngaySanXuat = ngaySanXuat, @hanSuDung = hanSuDung, @donGiaNhap = donGia FROM INSERTED
 
 	DECLARE @soLuongDaNhan INT, @soLuongDat INT
 	SELECT @soLuongDaNhan = soLuongNhan, @soLuongDat = soLuongDat FROM ChiTietPhieuDat WHERE maSanPham = @maSP AND maPhieuDat = @maPD
@@ -521,6 +547,14 @@ BEGIN
 			--Cập nhật số lượng mới
 			UPDATE SanPham
 			SET soLuong = soLuong + @soLuong
+			WHERE maSanPham = @maSP
+			--Cập nhật đơn giá nhập
+			UPDATE SanPham
+			SET donGiaNhap = @donGiaNhap
+			WHERE maSanPham = @maSP
+			--Cập nhật đơn giá bán
+			UPDATE SanPham
+			SET donGiaBan = @donGiaNhap+(@donGiaNhap*70/100)
 			WHERE maSanPham = @maSP
 			--Cập nhật ngày sản xuất
 			UPDATE SanPham
@@ -627,7 +661,6 @@ BEGIN
 	);
 END
 GO
-
 CREATE TRIGGER TRG_UpdateDonGiaSaleKhiDungThuCong
 ON KhuyenMai
 AFTER UPDATE
@@ -638,12 +671,6 @@ BEGIN
 	FROM inserted i
 	WHERE i.trangThai = N'Đã kết thúc'
 END
-
-SELECT * FROM SanPham
-SELECT * FROM KhuyenMai
-SELECT * FROM KhuyenMaiSanPham
-
-
 GO
 --CREATE TRIGGER trg_UpdateHangThanhVien
 --ON HoaDon
