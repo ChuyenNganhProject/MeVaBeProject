@@ -17,11 +17,13 @@ namespace MeVaBeProject
         HoaDonBLL hdbll = new HoaDonBLL();
         ChiTietHoaDonSanPhamBLL cthdspbll = new ChiTietHoaDonSanPhamBLL();
         private string mahd;
-        public frmCTHD(string mahd)
+        private string TenKH;
+        public frmCTHD(string mahd, string tenKH)
         {
             InitializeComponent();
             this.Load += FrmCTHD_Load;
             this.mahd = mahd;
+            this.TenKH = tenKH;
 
             this.dgvCTHD.CellFormatting += DgvCTHD_CellFormatting;
             this.btnThoat.Click += BtnThoat_Click;
@@ -51,7 +53,7 @@ namespace MeVaBeProject
         {
             HoaDon hoadon = hdbll.LoadHoaDonTheoMa(mahd);
             lblMaHD.Text = mahd;
-            lblTenKH.Text = hoadon.tenKhachHang;
+            lblTenKH.Text = TenKH;
             lblTenNV.Text = hoadon.tenNhanVien;
             lblNgayLap.Text = hoadon.ngayLap.Value.ToString("dd/MM/yyyy");
             lblHinhThucTra.Text = hoadon.hinhThucTra;

@@ -220,8 +220,6 @@ CREATE TABLE PhieuGiaoHang (
 	FOREIGN KEY (maNhanVien) REFERENCES NhanVien(maNhanVien)
 );
 GO
-ALTER TABLE PhieuGiaoHang ALTER COLUMN ngayLap DATETIME
-ALTER TABLE PhieuGiaoHang ADD ngayDaGiao DATETIME
 
 CREATE TABLE ChiTietPhieuGiaoHang(
 	maPhieuGiao VARCHAR(50),
