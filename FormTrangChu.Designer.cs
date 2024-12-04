@@ -43,8 +43,9 @@
             this.btnDashboard = new Sunny.UI.UIImageButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnClose = new Sunny.UI.UILabel();
             this.btnVeTrangBanHang = new Sunny.UI.UISymbolButton();
+            this.btnClose = new Sunny.UI.UILabel();
+            this.btnThongTinNhanVien = new Sunny.UI.UIAvatar();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDatHang)).BeginInit();
@@ -62,6 +63,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(70)))), ((int)(((byte)(158)))));
+            this.panel2.Controls.Add(this.btnThongTinNhanVien);
             this.panel2.Controls.Add(this.lbChucVu);
             this.panel2.Controls.Add(this.btnNhanVien);
             this.panel2.Controls.Add(this.lbTenNV);
@@ -274,17 +276,6 @@
             this.panel1.Size = new System.Drawing.Size(985, 40);
             this.panel1.TabIndex = 3;
             // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.btnClose.Location = new System.Drawing.Point(946, 9);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(36, 23);
-            this.btnClose.TabIndex = 7;
-            this.btnClose.Text = "X";
-            // 
             // btnVeTrangBanHang
             // 
             this.btnVeTrangBanHang.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -316,6 +307,28 @@
             this.btnVeTrangBanHang.Text = "Về trang bán hàng";
             this.btnVeTrangBanHang.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnVeTrangBanHang.Visible = false;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.btnClose.Location = new System.Drawing.Point(946, 9);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(36, 23);
+            this.btnClose.TabIndex = 7;
+            this.btnClose.Text = "X";
+            // 
+            // btnThongTinNhanVien
+            // 
+            this.btnThongTinNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnThongTinNhanVien.Location = new System.Drawing.Point(91, 9);
+            this.btnThongTinNhanVien.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnThongTinNhanVien.Name = "btnThongTinNhanVien";
+            this.btnThongTinNhanVien.Size = new System.Drawing.Size(60, 60);
+            this.btnThongTinNhanVien.TabIndex = 14;
+            this.btnThongTinNhanVien.Text = "uiAvatar1";
+            this.btnThongTinNhanVien.Click += new System.EventHandler(this.btnThongTinNhanVien_Click);
             // 
             // frmTrangChu
             // 
@@ -364,5 +377,6 @@
         private Sunny.UI.UILabel lbChucVu;
         private Sunny.UI.UILabel lbTenNV;
         private Sunny.UI.UISymbolButton btnVeTrangBanHang;
+        private Sunny.UI.UIAvatar btnThongTinNhanVien;
     }
 }

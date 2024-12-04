@@ -36,6 +36,7 @@ CREATE TABLE NhanVien (
     matKhau NVARCHAR(255),
     luongCoBan INT,
     ngayVaoLam DATE,
+	trangThai NVARCHAR(50)
     CONSTRAINT FK_NV_LoaiNV FOREIGN KEY (maLoaiNhanVien) REFERENCES LoaiNhanVien(maLoaiNhanVien)
 );
 GO
@@ -475,16 +476,6 @@ AS
 	DELETE ChiTietPhieuDat WHERE maPhieuDat = @maPhieuDat
 	--Xóa phiếu đặt
 	DELETE PhieuDat WHERE maPhieuDat = @maPhieuDat
-GO
-CREATE TRIGGER trg_DeleteHoaDonOnKhachHangDelete
-ON KhachHang
-AFTER DELETE
-AS
-BEGIN
-    -- Delete related records in DonHang
-    DELETE FROM HoaDon
-    WHERE maKhachHang IN (SELECT maKhachHang FROM deleted);
-END;
 GO
 CREATE TRIGGER TRG_CapNhatTrangThaiSP ON SanPham
 AFTER UPDATE, INSERT 
