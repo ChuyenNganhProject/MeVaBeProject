@@ -39,7 +39,8 @@ namespace MeVaBeProject
         private void FrmNhapHang_Load(object sender, EventArgs e)
         {
             txtMaPhieuNhap.Text = maPhieuNhap;
-            dtHanSuDung.MinDate = dtNgaySanXuat.Value;
+            dtNgaySanXuat.MaxDate = DateTime.Now.Date;
+            dtHanSuDung.MinDate = DateTime.Now.AddYears(1);
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -300,8 +301,7 @@ namespace MeVaBeProject
             }
         }
         private void dtNgaySanXuat_ValueChanged(object sender, EventArgs e)
-        {
-            dtHanSuDung.MinDate = (dtNgaySanXuat.Value.Day < DateTime.Now.Day) ? DateTime.Now : dtNgaySanXuat.Value;
+        {            
             if (dtgvSanPhamTrongPhieuNhap.SelectedRows.Count > 0)
             {
                 foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuNhap.SelectedRows)

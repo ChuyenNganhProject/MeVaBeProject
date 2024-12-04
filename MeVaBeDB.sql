@@ -36,6 +36,7 @@ CREATE TABLE NhanVien (
     matKhau NVARCHAR(255),
     luongCoBan INT,
     ngayVaoLam DATE,
+	trangThai NVARCHAR(50),
     CONSTRAINT FK_NV_LoaiNV FOREIGN KEY (maLoaiNhanVien) REFERENCES LoaiNhanVien(maLoaiNhanVien)
 );
 GO
@@ -68,7 +69,7 @@ CREATE TABLE SanPham (
 );
 GO
 CREATE TABLE HoaDon (
-    maHoaDon VARCHAR(50) PRIMARY KEY,
+    maHoaDon VARCHAR(50) PRIMARY KEY,	
     maKhachHang VARCHAR(20),
     maNhanVien VARCHAR(50),
     ngayLap DATETIME,
@@ -274,6 +275,9 @@ CREATE TABLE ChiTietQuyenCuaLoaiNhanVien(
     FOREIGN KEY (maQuyen) REFERENCES QuyenHeThong(maQuyen)
 );
 GO
+ALTER TABLE NhanVien
+ADD CONSTRAINT TrangThaiDefault DEFAULT N'Đang hoạt động' FOR trangThai
+
 ALTER TABLE SanPham
 ADD CONSTRAINT DonGiaNhapDefault DEFAULT 0 FOR donGiaNhap
 
@@ -290,7 +294,7 @@ ALTER TABLE PhieuDat
 ADD CONSTRAINT NgayCapNhatCheck CHECK( ngayLap <= ngayCapNhat)
 
 ALTER TABLE PhieuDat
-ADD CONSTRAINT TrangThaiDefault DEFAULT N'Chưa duyệt' FOR trangThai
+ADD CONSTRAINT TrangThai_PhieuDat_Default DEFAULT N'Chưa duyệt' FOR trangThai
 
 ALTER TABLE PhieuDat
 ADD CONSTRAINT TongTienDefault DEFAULT 0 FOR tongTien
@@ -475,16 +479,6 @@ AS
 	DELETE ChiTietPhieuDat WHERE maPhieuDat = @maPhieuDat
 	--Xóa phiếu đặt
 	DELETE PhieuDat WHERE maPhieuDat = @maPhieuDat
-GO
-CREATE TRIGGER trg_DeleteHoaDonOnKhachHangDelete
-ON KhachHang
-AFTER DELETE
-AS
-BEGIN
-    -- Delete related records in DonHang
-    DELETE FROM HoaDon
-    WHERE maKhachHang IN (SELECT maKhachHang FROM deleted);
-END;
 GO
 CREATE TRIGGER TRG_CapNhatTrangThaiSP ON SanPham
 AFTER UPDATE, INSERT 
