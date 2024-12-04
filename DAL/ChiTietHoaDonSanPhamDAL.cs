@@ -30,7 +30,6 @@ namespace DAL
                 return false;
             }
         }
-
         public List<ChiTietHoaDonSanPham> LoadCTHDSanPham(string mahd)
         {
             if(!string.IsNullOrEmpty(mahd))
@@ -51,6 +50,10 @@ namespace DAL
         public ChiTietHoaDonSanPham LayTTSanPhamTrongHoaDon(string masp, string mahd)
         {
             return db.ChiTietHoaDonSanPhams.Where(cthd => cthd.maHoaDon == mahd && cthd.maSanPham == masp).Select(sp => sp).FirstOrDefault();
+        }
+        public ChiTietHoaDonSanPham TimChiTietHoaDonSanPham(string maHoaDon,string maSanPham)
+        {
+            return db.ChiTietHoaDonSanPhams.Where(ct => ct.maSanPham == maSanPham && ct.maHoaDon == maHoaDon).FirstOrDefault();
         }
     }
 }

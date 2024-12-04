@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChiTietHoaDonSanPhamBLL.cs" />
+    <Compile Include="ChiTietPhieuDoiHangBLL.cs" />
     <Compile Include="ChiTietPhieuGiaoBLL.cs" />
     <Compile Include="ChiTietPhieuNhapBLL.cs" />
+    <Compile Include="ChiTietPhieuThanhLyBLL.cs" />
     <Compile Include="ChiTietQuyenCuaLoaiNVBLL.cs" />
     <Compile Include="HangThanhVienBLL.cs" />
     <Compile Include="HoaDonBLL.cs" />
@@ -56,8 +58,10 @@
     <Compile Include="NhaCungCapBLL.cs" />
     <Compile Include="NhanVienBLL.cs" />
     <Compile Include="PhieuDatBLL.cs" />
+    <Compile Include="PhieuDoiHangBLL.cs" />
     <Compile Include="PhieuGiaoHangBLL.cs" />
     <Compile Include="PhieuNhapBLL.cs" />
+    <Compile Include="PhieuThanhLyBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuyenHeThongBLL.cs" />
     <Compile Include="SanPhamBLL.cs" />

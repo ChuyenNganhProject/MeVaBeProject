@@ -776,7 +776,7 @@
             this.dtpNgayKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpNgayKetThuc.Location = new System.Drawing.Point(266, 10);
             this.dtpNgayKetThuc.Name = "dtpNgayKetThuc";
-            this.dtpNgayKetThuc.Size = new System.Drawing.Size(151, 34);
+            this.dtpNgayKetThuc.Size = new System.Drawing.Size(151, 28);
             this.dtpNgayKetThuc.TabIndex = 48;
             // 
             // uiLabel2
@@ -801,7 +801,7 @@
             this.dtpNgayBatDau.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpNgayBatDau.Location = new System.Drawing.Point(75, 10);
             this.dtpNgayBatDau.Name = "dtpNgayBatDau";
-            this.dtpNgayBatDau.Size = new System.Drawing.Size(150, 34);
+            this.dtpNgayBatDau.Size = new System.Drawing.Size(150, 28);
             this.dtpNgayBatDau.TabIndex = 46;
             // 
             // uiPanel14
@@ -1659,7 +1659,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(539, 44);
+            this.panel2.Size = new System.Drawing.Size(404, 44);
             this.panel2.TabIndex = 0;
             // 
             // dtpChonThangInPhieu
@@ -1669,7 +1669,7 @@
             this.dtpChonThangInPhieu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpChonThangInPhieu.Location = new System.Drawing.Point(185, 10);
             this.dtpChonThangInPhieu.Name = "dtpChonThangInPhieu";
-            this.dtpChonThangInPhieu.Size = new System.Drawing.Size(114, 30);
+            this.dtpChonThangInPhieu.Size = new System.Drawing.Size(114, 26);
             this.dtpChonThangInPhieu.TabIndex = 52;
             // 
             // panel5
@@ -1677,7 +1677,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(185, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(133, 10);
+            this.panel5.Size = new System.Drawing.Size(0, 10);
             this.panel5.TabIndex = 51;
             // 
             // uiLabel9
@@ -1710,7 +1710,7 @@
             this.btnInPhieuBaoCao.FillSelectedColor = System.Drawing.Color.DeepPink;
             this.btnInPhieuBaoCao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnInPhieuBaoCao.ForeColor = System.Drawing.Color.HotPink;
-            this.btnInPhieuBaoCao.Location = new System.Drawing.Point(318, 0);
+            this.btnInPhieuBaoCao.Location = new System.Drawing.Point(183, 0);
             this.btnInPhieuBaoCao.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnInPhieuBaoCao.Name = "btnInPhieuBaoCao";
             this.btnInPhieuBaoCao.Radius = 2;

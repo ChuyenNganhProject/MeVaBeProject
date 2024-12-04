@@ -44,6 +44,14 @@
             this.uiLabel9 = new Sunny.UI.UILabel();
             this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
             this.dtgvSanPhamTrongPhieuNhap = new Sunny.UI.UIDataGridView();
+            this.maSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soLuongConLai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soLuongDaNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaySanXuat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hanSuDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.donGiaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.thanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiGroupBox4 = new Sunny.UI.UIGroupBox();
             this.uiPanel4 = new Sunny.UI.UIPanel();
             this.dtHanSuDung = new System.Windows.Forms.DateTimePicker();
@@ -69,14 +77,6 @@
             this.uiLabel5 = new Sunny.UI.UILabel();
             this.txtMaPhieuDat = new Sunny.UI.UITextBox();
             this.uiLabel3 = new Sunny.UI.UILabel();
-            this.maSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soLuongConLai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soLuongDaNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngaySanXuat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hanSuDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.donGiaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.thanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiPanel1.SuspendLayout();
             this.uiPanel2.SuspendLayout();
             this.uiGroupBox2.SuspendLayout();
@@ -231,7 +231,7 @@
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.HotPink;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtgvSanPhamTrongPhieuNhap.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
@@ -250,6 +250,74 @@
             this.dtgvSanPhamTrongPhieuNhap.TabIndex = 1;
             this.dtgvSanPhamTrongPhieuNhap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSanPhamTrongPhieuDat_CellClick);
             this.dtgvSanPhamTrongPhieuNhap.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSanPhamTrongPhieuDat_CellValueChanged);
+            // 
+            // maSP
+            // 
+            this.maSP.HeaderText = "Mã sản phẩm";
+            this.maSP.Name = "maSP";
+            this.maSP.ReadOnly = true;
+            this.maSP.Width = 129;
+            // 
+            // tenSP
+            // 
+            this.tenSP.HeaderText = "Tên sản phẩm";
+            this.tenSP.Name = "tenSP";
+            this.tenSP.ReadOnly = true;
+            this.tenSP.Width = 134;
+            // 
+            // soLuongConLai
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.soLuongConLai.DefaultCellStyle = dataGridViewCellStyle3;
+            this.soLuongConLai.HeaderText = "Số lượng chưa nhận";
+            this.soLuongConLai.Name = "soLuongConLai";
+            this.soLuongConLai.ReadOnly = true;
+            this.soLuongConLai.Width = 175;
+            // 
+            // soLuongDaNhan
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.soLuongDaNhan.DefaultCellStyle = dataGridViewCellStyle4;
+            this.soLuongDaNhan.HeaderText = "Số lượng nhận";
+            this.soLuongDaNhan.Name = "soLuongDaNhan";
+            this.soLuongDaNhan.ReadOnly = true;
+            this.soLuongDaNhan.Width = 136;
+            // 
+            // ngaySanXuat
+            // 
+            this.ngaySanXuat.HeaderText = "Ngày sản xuất";
+            this.ngaySanXuat.Name = "ngaySanXuat";
+            this.ngaySanXuat.ReadOnly = true;
+            this.ngaySanXuat.Width = 133;
+            // 
+            // hanSuDung
+            // 
+            this.hanSuDung.HeaderText = "Hạn sử dụng";
+            this.hanSuDung.Name = "hanSuDung";
+            this.hanSuDung.ReadOnly = true;
+            this.hanSuDung.Width = 124;
+            // 
+            // donGiaSP
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "C0";
+            dataGridViewCellStyle5.NullValue = null;
+            this.donGiaSP.DefaultCellStyle = dataGridViewCellStyle5;
+            this.donGiaSP.HeaderText = "Đơn giá";
+            this.donGiaSP.Name = "donGiaSP";
+            this.donGiaSP.ReadOnly = true;
+            this.donGiaSP.Width = 88;
+            // 
+            // thanhTien
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "C0";
+            dataGridViewCellStyle6.NullValue = null;
+            this.thanhTien.DefaultCellStyle = dataGridViewCellStyle6;
+            this.thanhTien.HeaderText = "Thành tiền";
+            this.thanhTien.Name = "thanhTien";
+            this.thanhTien.ReadOnly = true;
+            this.thanhTien.Width = 108;
             // 
             // uiGroupBox4
             // 
@@ -626,74 +694,6 @@
             this.uiLabel3.Size = new System.Drawing.Size(123, 23);
             this.uiLabel3.TabIndex = 18;
             this.uiLabel3.Text = "Mã phiếu đặt:";
-            // 
-            // maSP
-            // 
-            this.maSP.HeaderText = "Mã sản phẩm";
-            this.maSP.Name = "maSP";
-            this.maSP.ReadOnly = true;
-            this.maSP.Width = 129;
-            // 
-            // tenSP
-            // 
-            this.tenSP.HeaderText = "Tên sản phẩm";
-            this.tenSP.Name = "tenSP";
-            this.tenSP.ReadOnly = true;
-            this.tenSP.Width = 134;
-            // 
-            // soLuongConLai
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.soLuongConLai.DefaultCellStyle = dataGridViewCellStyle3;
-            this.soLuongConLai.HeaderText = "Số lượng chưa nhận";
-            this.soLuongConLai.Name = "soLuongConLai";
-            this.soLuongConLai.ReadOnly = true;
-            this.soLuongConLai.Width = 175;
-            // 
-            // soLuongDaNhan
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.soLuongDaNhan.DefaultCellStyle = dataGridViewCellStyle4;
-            this.soLuongDaNhan.HeaderText = "Số lượng nhận";
-            this.soLuongDaNhan.Name = "soLuongDaNhan";
-            this.soLuongDaNhan.ReadOnly = true;
-            this.soLuongDaNhan.Width = 136;
-            // 
-            // ngaySanXuat
-            // 
-            this.ngaySanXuat.HeaderText = "Ngày sản xuất";
-            this.ngaySanXuat.Name = "ngaySanXuat";
-            this.ngaySanXuat.ReadOnly = true;
-            this.ngaySanXuat.Width = 133;
-            // 
-            // hanSuDung
-            // 
-            this.hanSuDung.HeaderText = "Hạn sử dụng";
-            this.hanSuDung.Name = "hanSuDung";
-            this.hanSuDung.ReadOnly = true;
-            this.hanSuDung.Width = 124;
-            // 
-            // donGiaSP
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "C0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.donGiaSP.DefaultCellStyle = dataGridViewCellStyle5;
-            this.donGiaSP.HeaderText = "Đơn giá";
-            this.donGiaSP.Name = "donGiaSP";
-            this.donGiaSP.ReadOnly = true;
-            this.donGiaSP.Width = 88;
-            // 
-            // thanhTien
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "C0";
-            dataGridViewCellStyle6.NullValue = null;
-            this.thanhTien.DefaultCellStyle = dataGridViewCellStyle6;
-            this.thanhTien.HeaderText = "Thành tiền";
-            this.thanhTien.Name = "thanhTien";
-            this.thanhTien.ReadOnly = true;
-            this.thanhTien.Width = 108;
             // 
             // frmNhapHang
             // 

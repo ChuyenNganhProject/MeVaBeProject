@@ -15,7 +15,6 @@ namespace DAL
         {
 
         }
-
         public NhanVien DangNhap(string username, string password)
         {
             var hashedPassword = MaHoaMatKhauKieuSha256Hash(password);
@@ -23,7 +22,6 @@ namespace DAL
             nhanVien.tenLoaiNhanVien = db.LoaiNhanViens.Where(lnv => lnv.maLoaiNhanVien == nhanVien.maLoaiNhanVien).Select(lnv => lnv.tenLoaiNhanVien).FirstOrDefault();
             return nhanVien;
         }
-
         public string MaHoaMatKhauKieuSha256Hash(string pass)
         {
             using(var sha256 = System.Security.Cryptography.SHA256.Create())
@@ -33,7 +31,6 @@ namespace DAL
             }
 
         }
-
         public NhanVien LayTTNhanVienTuTenDangNhap(string maNhanVien) 
         {
             try
@@ -46,12 +43,12 @@ namespace DAL
                 return null;
             }
         }
-
         public NhanVien LayTTNhanVienTuMa(string ma)
         {
             try
             {
                 NhanVien nhanVien = db.NhanViens.FirstOrDefault(nv => nv.maNhanVien == ma);
+                nhanVien.tenLoaiNhanVien = db.LoaiNhanViens.Where(lnv => lnv.maLoaiNhanVien == nhanVien.maLoaiNhanVien).Select(lnv => lnv.tenLoaiNhanVien).FirstOrDefault();
                 return nhanVien;
             }
             catch
@@ -149,7 +146,6 @@ namespace DAL
                 return false;
             }
         }
-
         public bool UpdateNhanVien(NhanVien nv)
         {
             try
@@ -213,7 +209,6 @@ namespace DAL
                 return null;
             }
         }
-
         public int TongSoLuongNhanVien()
         {
             return db.NhanViens.Count();

@@ -16,10 +16,11 @@ namespace MeVaBeProject
     {
         PhieuGiaoHangBLL pgbll = new PhieuGiaoHangBLL();
         private frmTrangChu parentfrm;
+        private string maNhanVien;
         private string MaPG;
         private string MaHD;
         private string TenNV;
-        public frmQLPhieuGiaoHang(frmTrangChu parentfrm)
+        public frmQLPhieuGiaoHang(frmTrangChu parentfrm, string maNhanVien)
         {
             InitializeComponent();
             this.parentfrm = parentfrm;
@@ -38,6 +39,7 @@ namespace MeVaBeProject
             this.cboTieuChi.SelectedIndexChanged += CboTieuChi_SelectedIndexChanged;
             this.dtpNgayBatDau.ValueChanged += DtpNgayBatDau_ValueChanged;
             this.dtpNgayKetThuc.ValueChanged += DtpNgayKetThuc_ValueChanged;
+            this.maNhanVien = maNhanVien;
         }
 
         private void DgvPhieuGiao_SelectionChanged(object sender, EventArgs e)
@@ -152,7 +154,7 @@ namespace MeVaBeProject
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            frmQLHoaDon frm = new frmQLHoaDon(parentfrm);
+            frmQLHoaDon frm = new frmQLHoaDon(parentfrm,maNhanVien);
             parentfrm.OpenChildForm(frm);
         }
 

@@ -52,7 +52,7 @@ namespace MeVaBeProject
 
         private void BtnHoaDon_Click(object sender, EventArgs e)
         {
-            frmQLHoaDon frm = new frmQLHoaDon(this);
+            frmQLHoaDon frm = new frmQLHoaDon(this,nhanVien.maNhanVien);            
             OpenChildForm(frm);
         }
 
@@ -118,6 +118,12 @@ namespace MeVaBeProject
                             break;
                         case "Q0013":
                             btnVeTrangBanHang.Visible = true;
+                            break;
+                        case "Q0014":
+                            btnHoaDon.Enabled = true;
+                            break;
+                        case "Q0015":
+                            btnSanPham.Enabled = true;
                             break;
                         default:
                             break;

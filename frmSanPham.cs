@@ -25,6 +25,7 @@ namespace MeVaBeProject
         private bool QuyenThemXoaSua;
         private bool QuyenQLLoaiSanPham;
         private bool QuyenQLKhuyenMai;
+        private bool QuyenTaoPhieuThanhLy;
 
         private string selectedFilePath;
         private string saveFilePath;
@@ -89,6 +90,11 @@ namespace MeVaBeProject
             {
                 btnLoaiSanPham.Enabled = false;
             }
+            QuyenTaoPhieuThanhLy = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0015") != null) ? true : false;
+            if (!QuyenTaoPhieuThanhLy)
+            {
+                btnLapPhieuThanhLy.Enabled = false;
+            }
         }        
         private bool IsImageFile(string filePath)
         {
@@ -148,8 +154,7 @@ namespace MeVaBeProject
             if (e.RowIndex>=0)
             {
                 txtMaSanPham.Text = dgvProducts.Rows[e.RowIndex].Cells["maSanPham"].Value.ToString();
-                txtTenSanPham.Text = dgvProducts.Rows[e.RowIndex].Cells["tenSanPham"].Value.ToString();
-                txtDonGiaBan.Text = dgvProducts.Rows[e.RowIndex].Cells["donGiaBan"].Value.ToString().Split(',')[0];                
+                txtTenSanPham.Text = dgvProducts.Rows[e.RowIndex].Cells["tenSanPham"].Value.ToString();               
                 string ngaySanXuat = dgvProducts.Rows[e.RowIndex].Cells["ngaySanXuat"].Value.ToString();
                 string hanSuDung = dgvProducts.Rows[e.RowIndex].Cells["hanSuDung"].Value.ToString();
                 dtNgaySanXuat.Value = DateTime.Parse(ngaySanXuat);
@@ -177,8 +182,7 @@ namespace MeVaBeProject
         }
         private void EnableTextBox(bool enable)
         {
-            txtTenSanPham.Enabled = enable;
-            txtDonGiaBan.Enabled = enable;
+            txtTenSanPham.Enabled = enable;           
             cbLoaiSP.Enabled = enable;
             btnChonAnh.Enabled = enable;
             dtNgaySanXuat.Enabled = enable; 
@@ -188,7 +192,6 @@ namespace MeVaBeProject
         {
             txtMaSanPham.Text = "";
             txtTenSanPham.Text = "";
-            txtDonGiaBan.Text = "";
             hinhAnh.Image = null;
             selectedFilePath = null;
             saveFilePath = null;
@@ -205,12 +208,7 @@ namespace MeVaBeProject
             {
                 MessageBox.Show("Vui lòng nhập tên loại sản phẩm.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
-            }
-            if (string.IsNullOrWhiteSpace(txtDonGiaBan.Text))
-            {
-                MessageBox.Show("Vui lòng nhập giá bán.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
+            }           
             if (imagePath == null)
             {
                 MessageBox.Show("Vui lòng chọn ảnh sản phẩm.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -283,7 +281,7 @@ namespace MeVaBeProject
                         maSanPham = maSanPham,
                         tenSanPham = tenSanPham,
                         maLoaiSanPham = cbLoaiSP.SelectedValue.ToString(),
-                        donGiaBan = Decimal.Parse(txtDonGiaBan.Text.Trim()),
+                        donGiaBan = 0,
                         hinhAnh = imagePath,
                         ngaySanXuat = dtNgaySanXuat.Value,
                         hanSuDung = dtHanSuDung.Value,
@@ -385,8 +383,7 @@ namespace MeVaBeProject
                         {
                             maSanPham = txtMaSanPham.Text.Trim(),
                             tenSanPham = txtTenSanPham.Text.Trim(),
-                            maLoaiSanPham = cbLoaiSP.SelectedValue.ToString(),
-                            donGiaBan = Decimal.Parse(txtDonGiaBan.Text.Trim()),
+                            maLoaiSanPham = cbLoaiSP.SelectedValue.ToString(),                            
                             ngaySanXuat = dtNgaySanXuat.Value,
                             hanSuDung = dtHanSuDung.Value,
                             hinhAnh = imagePath,
@@ -540,6 +537,48 @@ namespace MeVaBeProject
 
                 // Xóa hết dữ liệu trong DataGridView nếu không có kết quả tìm kiếm
                 bindingSource.DataSource = null;
+            }
+        }
+        private void btnLapPhieuThanhLy_Click(object sender, EventArgs e)
+        {
+            List<SanPham> danhSachSanPhamHetHan = sanPhamBLL.LayDanhSachSanPhamHetHan();
+            if (danhSachSanPhamHetHan.Count>0)
+            {
+                PhieuThanhLyBLL phieuThanhLyBLL = new PhieuThanhLyBLL();
+                PhieuThanhLy newPhieu = new PhieuThanhLy()
+                {
+                    maThanhLy = phieuThanhLyBLL.TaoMaPhieuThanhLy(),
+                    maNhanVien = nhanVien.maNhanVien,
+                    ngayThanhLy = DateTime.Now,
+                    lyDo = "Sản phẩm hết hạn sử dụng"
+                };
+                phieuThanhLyBLL.TaoPhieuThanhLy(newPhieu);
+                ChiTietPhieuThanhLyBLL ctPhieuThanhLyBLL = new ChiTietPhieuThanhLyBLL();
+                foreach(SanPham sanPham in danhSachSanPhamHetHan)
+                {
+                    ChiTietPhieuThanhLy chiTietPhieuThanhLy =new ChiTietPhieuThanhLy()
+                    {
+                        maThanhLy = newPhieu.maThanhLy,
+                        maSanPham = sanPham.maSanPham,
+                        soLuong = sanPham.soLuong,
+                        ngayHetHan = sanPham.hanSuDung
+                    };
+                    ctPhieuThanhLyBLL.TaoChiTietPhieuThanhLy(chiTietPhieuThanhLy);
+                }
+                frmPhieuThanhLy frmPhieuThanhLy = new frmPhieuThanhLy(newPhieu.maThanhLy);
+                frmPhieuThanhLy.DongForm += FrmPhieuThanhLy_DongForm;
+                frmPhieuThanhLy.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(this, "Không có sản phẩm hết hạn để thanh lý", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void FrmPhieuThanhLy_DongForm(bool loadData)
+        {
+            if (loadData)
+            {
+                LoadData();
             }
         }
     }
