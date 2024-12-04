@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,46 +55,50 @@ namespace CustomControl
 
         public void SetSanPhamData(string image, string maSp, string tenSp, decimal? giaSp)
         {
-            string picFolder = GetPicSanPhamFolderPath();
-            if (!string.IsNullOrEmpty(image))
+            SanPham sp = spbll.TimKiemSanPhamTheoMaSP(maSp);
+            if (sp != null)
             {
-                string imagePath = Path.Combine(picFolder, Path.GetFileName(image)).Replace("/", "\\");
-
-                if (File.Exists(imagePath))
+                string picFolder = GetPicSanPhamFolderPath();
+                if (!string.IsNullOrEmpty(image))
                 {
-                    try
-                    {
-                        if (pbAnhSp.Image != null)
-                        {
-                            pbAnhSp.Image.Dispose();
-                            pbAnhSp.Image = null;
-                        }
+                    string imagePath = Path.Combine(picFolder, Path.GetFileName(image)).Replace("/", "\\");
 
-                        using (FileStream fs = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
+                    if (File.Exists(imagePath))
+                    {
+                        try
                         {
-                            Image img = Image.FromStream(fs);
-                            pbAnhSp.Image = new Bitmap(img);
+                            if (pbAnhSp.Image != null)
+                            {
+                                pbAnhSp.Image.Dispose();
+                                pbAnhSp.Image = null;
+                            }
+
+                            using (FileStream fs = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
+                            {
+                                Image img = Image.FromStream(fs);
+                                pbAnhSp.Image = new Bitmap(img);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Lỗi tải hình ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show($"Lỗi tải hình ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Hình ảnh không tồn tại tại đường dẫn: {imagePath}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show($"Hình ảnh không tồn tại tại đường dẫn: {imagePath}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Đường dẫn hình ảnh trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            else
-            {
-                MessageBox.Show("Đường dẫn hình ảnh trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
-            labelMaSp.Text = maSp;
-            labelTenSp.Text = tenSp;
-            labelGiaSanPham.Text = giaSp.HasValue ? giaSp.Value.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ" : "N/A";
-            lblSoLuong.Text = "SL: " + spbll.TimKiemSanPhamTheoMaSP(maSp).soLuong.Value;
+                labelMaSp.Text = maSp;
+                labelTenSp.Text = tenSp;
+                labelGiaSanPham.Text = giaSp.HasValue ? giaSp.Value.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ" : "N/A";
+                lblSoLuong.Text = "SL: " + spbll.TimKiemSanPhamTheoMaSP(maSp).soLuong.Value;
+            }
         }
 
     }

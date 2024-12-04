@@ -18,6 +18,10 @@ namespace MeVaBeProject
         private NhanVien nhanVien;
         private ChiTietQuyenCuaLoaiNVBLL ctQuyen;
         private List<ChiTietQuyenCuaLoaiNhanVien> quyens;
+
+        //Hàm để lấy maNhanVienDangNhap và chức vụ cho frmThongTinNhanVien
+        public static string maNhanVienDangNhap;
+        public static string chucVuNhanVienDangNhap;
         public frmTrangChu(NhanVien nhanVien)
         {
             InitializeComponent();
@@ -223,6 +227,12 @@ namespace MeVaBeProject
         {
             frmQLNhaCungCap frmQLNhaCungCap = new frmQLNhaCungCap();
             OpenChildForm(frmQLNhaCungCap);
+        }
+
+        private void btnThongTinNhanVien_Click(object sender, EventArgs e)
+        {
+            frmThongTinNhanVien nv = new frmThongTinNhanVien();
+            nv.ShowDialog();
         }
     }
 }

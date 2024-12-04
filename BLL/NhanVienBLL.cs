@@ -20,6 +20,10 @@ namespace BLL
             return nvdal.MaHoaMatKhauKieuSha256Hash(pass);
 
         }
+        public string MaHoaMKMoi(string mkmoi)
+        {
+            return nvdal.MaHoaMKMoi(mkmoi);
+        }
         public NhanVien DangNhap(string username, string pass)
         {
             return nvdal.DangNhap(username, pass);
@@ -74,7 +78,41 @@ namespace BLL
         {
             return nvdal.GetPhoneNumberById(maNhanVien);
         }
+        public string GetPasswordById(string maNhanVien)
+        {
+            return nvdal.GetPasswordById(maNhanVien);
+        }
+        public bool UpdateTrangThai(string maNhanVien, string trangThaiMoi)
+        {
+            return nvdal.UpdateTrangThai(maNhanVien, trangThaiMoi);
+        }
+        public List<NhanVien> GetNhanVienBiKhoa()
+        {
+            return nvdal.GetNhanVienBiKhoa();
+        }
+        //Loc nhan vien dang hoat dong
+        public List<NhanVien> GetNhanVienHoatDong()
+        {
+            return nvdal.GetNhanVienHoatDong();
+        }
 
+        public bool UpdateSDT_DiaChi(NhanVien nv)
+        {
+            return nvdal.UpdateSDT_DiaChi(nv);
+        }
+        public string LayTrangThaiNhanVienTheoTenDangNhap(string tenDN)
+        {
+            return nvdal.LayTrangThaiNhanVienTheoTenDangNhap(tenDN);
+        }
+
+        public bool KiemTraMatKhauCu(string taikhoan, string matkhau)
+        {
+            return nvdal.KiemTraMatKhauCu(taikhoan, matkhau);
+        }
+        public bool UpdateMatKhauMoi(NhanVien nv)
+        {
+            return nvdal.UpdateMatKhauMoi(nv);
+        }
         public int TongSoLuongNhanVien()
         {
             return nvdal.TongSoLuongNhanVien();
