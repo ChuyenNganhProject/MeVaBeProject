@@ -17,9 +17,8 @@ namespace MeVaBeProject
         HoaDonBLL hdbll = new HoaDonBLL();
         private string MaHoaDon;
         private string maNhanVien;
-        public frmQLHoaDon(string maNhanVien)
         private frmTrangChu parentfrm;
-        public frmQLHoaDon(frmTrangChu parentfrm)
+        public frmQLHoaDon(frmTrangChu parentfrm, string maNhanVien)
         {
             InitializeComponent();
             this.parentfrm = parentfrm;
@@ -45,7 +44,7 @@ namespace MeVaBeProject
 
         private void BtnXemDSGiao_Click(object sender, EventArgs e)
         {
-            frmQLPhieuGiaoHang frm = new frmQLPhieuGiaoHang(parentfrm);
+            frmQLPhieuGiaoHang frm = new frmQLPhieuGiaoHang(parentfrm,maNhanVien);
             parentfrm.OpenChildForm(frm);
         }
 

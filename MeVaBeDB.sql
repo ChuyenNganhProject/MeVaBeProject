@@ -218,18 +218,11 @@ CREATE TABLE PhieuGiaoHang (
     ngayGiaoDuKien DATE,
 	ngayLap DATETIME,
     chiPhi DECIMAL(18, 2),
+	ngayDaGiao DATETIME,
     tinhTrang NVARCHAR(50)
 	FOREIGN KEY (maNhanVien) REFERENCES NhanVien(maNhanVien)
 );
 GO
-    tinhTrang NVARCHAR(50),
-	ngayDaGiao DATETIME,
-	FOREIGN KEY (maNhanVien) REFERENCES NhanVien(maNhanVien)
-);
-GO
-ALTER TABLE PhieuGiaoHang ALTER COLUMN ngayLap DATETIME
-ALTER TABLE PhieuGiaoHang ADD ngayDaGiao DATETIME
-
 CREATE TABLE ChiTietPhieuGiaoHang(
 	maPhieuGiao VARCHAR(50),
     maHoaDon VARCHAR(50),
@@ -240,9 +233,8 @@ CREATE TABLE ChiTietPhieuGiaoHang(
     PRIMARY KEY (maPhieuGiao, maHoaDon, maSanPham),
     FOREIGN KEY (maPhieuGiao) REFERENCES PhieuGiaoHang(maPhieuGiao),
     FOREIGN KEY (maHoaDon, maSanPham) REFERENCES ChiTietHoaDonSanPham(maHoaDon, maSanPham)
-)
+);
 GO
-
 CREATE TABLE PhieuNhap (
     maPhieuNhap VARCHAR(50) PRIMARY KEY,
 	maPhieuDat VARCHAR(50),
@@ -672,7 +664,6 @@ BEGIN
 	WHERE i.trangThai = N'Đã kết thúc'
 END
 GO
-
 CREATE PROCEDURE sp_ResetDiemTichLuy
 AS
 BEGIN
@@ -681,23 +672,12 @@ BEGIN
     WHERE YEAR(GETDATE()) <> YEAR(ngayCapNhatDiem)
 END
 GO
-
 CREATE PROCEDURE XoaPhieuGiao_Proc @maPhieuGiao VARCHAR(50)
 AS
 	--Xóa chi tiết phiếu giao
 	DELETE ChiTietPhieuGiaoHang WHERE maPhieuGiao = @maPhieuGiao
 	--Xóa phiếu giao
 	DELETE PhieuGiaoHang WHERE maPhieuGiao = @maPhieuGiao
-GO
-
-SELECT * FROM SanPham
-SELECT * FROM KhuyenMai
-SELECT * FROM KhuyenMaiSanPham
-Select * FROM HoaDon
-SELECT * FROM PhieuGiaoHang
-SELECT * FROM ChiTietPhieuGiaoHang
-DELETE PhieuGiaoHang
-DELETE ChiTietPhieuGiaoHang
 GO
 --CREATE TRIGGER trg_UpdateHangThanhVien
 --ON HoaDon

@@ -52,8 +52,7 @@ namespace MeVaBeProject
 
         private void BtnHoaDon_Click(object sender, EventArgs e)
         {
-            frmQLHoaDon frm = new frmQLHoaDon(nhanVien.maNhanVien);
-            frmQLHoaDon frm = new frmQLHoaDon(this);
+            frmQLHoaDon frm = new frmQLHoaDon(this,nhanVien.maNhanVien);            
             OpenChildForm(frm);
         }
 

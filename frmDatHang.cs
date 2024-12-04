@@ -82,6 +82,7 @@ namespace MeVaBeProject
             dtgvDanhSachSP.Columns["LoaiSanPham"].Visible = false;
             dtgvDanhSachSP.Columns["hinhAnh"].Visible = false;
             dtgvDanhSachSP.Columns["donGiaSale"].Visible = false;
+            dtgvDanhSachSP.Columns["donGiaNhap"].Visible = false;
             SetHinhAnh(danhSachSanPham);
         }
         private void frmDatHang_Load(object sender, EventArgs e)
