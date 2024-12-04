@@ -16,16 +16,20 @@ namespace MeVaBeProject
     {
         HoaDonBLL hdbll = new HoaDonBLL();
         private string MaHoaDon;
-        public frmQLHoaDon()
+        private frmTrangChu parentfrm;
+        public frmQLHoaDon(frmTrangChu parentfrm)
         {
             InitializeComponent();
+            this.parentfrm = parentfrm;
             this.Load += FrmQLHoaDon_Load;
-            this.dtpNgayBatDau.Value = dtpNgayKetThuc.Value;
+            this.dtpNgayBatDau.Value = this.dtpNgayKetThuc.Value;
 
             this.btnReset.Click += BtnReset_Click;
             this.btnTimKiem.Click += BtnTimKiem_Click;
+
             this.cboTieuChi.SelectedIndexChanged += CboTieuChi_SelectedIndexChanged;
             this.btnLocTheoNgay.Click += BtnLocTheoNgay_Click;
+            this.btnLocHienTai.Click += BtnLocHienTai_Click;
             this.dtpNgayBatDau.ValueChanged += DtpNgayBatDau_ValueChanged;
             this.dtpNgayKetThuc.ValueChanged += DtpNgayKetThuc_ValueChanged;
 
@@ -33,6 +37,13 @@ namespace MeVaBeProject
             this.dgvHoaDon.CellFormatting += DgvHoaDon_CellFormatting;
 
             this.btnXemChiTiet.Click += BtnXemChiTiet_Click;
+            this.btnXemDSGiao.Click += BtnXemDSGiao_Click;
+        }
+
+        private void BtnXemDSGiao_Click(object sender, EventArgs e)
+        {
+            frmQLPhieuGiaoHang frm = new frmQLPhieuGiaoHang(parentfrm);
+            parentfrm.OpenChildForm(frm);
         }
 
         private void DtpNgayBatDau_ValueChanged(object sender, EventArgs e)
@@ -77,13 +88,14 @@ namespace MeVaBeProject
         {
             try
             {
-                dtpNgayKetThuc.Value = DateTime.Now;
-                dtpNgayBatDau.Value = dtpNgayKetThuc.Value;
+                dtpNgayKetThuc.Value = DateTime.Now.Date;
+                dtpNgayBatDau.Value = DateTime.Now.Date;
                 txtTimKiem.Text = "";
                 txtTimKiem.Enabled = false;
                 List<HoaDon> dsHoaDon = hdbll.LoadDanhSachHoaDon();
                 SettingDgv(dsHoaDon);
                 LoadTieuChiCombobox();
+                LoadLoaiKHCombobox();
 
                 decimal tongDoanhThu = hdbll.TinhTongDoanhThu();
                 lblTongDoanhThu.Text = "Tổng doanh thu: " + tongDoanhThu.ToString("N0").Replace(",", ".") + "đ";
@@ -94,17 +106,34 @@ namespace MeVaBeProject
             }
         }
 
-        private void BtnLocTheoNgay_Click(object sender, EventArgs e)
+        private void BtnLocHienTai_Click(object sender, EventArgs e)
         {
-            LoadDanhSachHoaDonTheoNgayLoc(dtpNgayBatDau.Value, dtpNgayKetThuc.Value);
+            this.dtpNgayKetThuc.Value = DateTime.Now.Date;
+            this.dtpNgayBatDau.Value = DateTime.Now.Date;
+            string tieuChi = cboTieuChi.SelectedItem.ToString();
+            string tenTimKiem = txtTimKiem.Text.Trim();
+            DateTime ngayBatDau = DateTime.Now.Date;
+            DateTime ngayKetThuc = DateTime.Now.Date;
+            string loaikh = cboLoaiKH.SelectedItem.ToString();
+            LoadDanhSachHoaDonTheoNgayLoc(tieuChi, tenTimKiem, ngayBatDau, ngayKetThuc, loaikh);
         }
 
-        private void LoadDanhSachHoaDonTheoNgayLoc(DateTime ngayBatDau, DateTime ngayKetThuc)
+        private void BtnLocTheoNgay_Click(object sender, EventArgs e)
         {
-            List<HoaDon> dsHoaDon = hdbll.LoadDanhSachHoaDonTheoNgayLoc(ngayBatDau, ngayKetThuc);
-            SettingDgv(dsHoaDon);
+            string tieuChi = cboTieuChi.SelectedItem.ToString();
+            string tenTimKiem = txtTimKiem.Text.Trim();
+            string loaikh = cboLoaiKH.SelectedItem.ToString();
+            LoadDanhSachHoaDonTheoNgayLoc(tieuChi, tenTimKiem, dtpNgayBatDau.Value, dtpNgayKetThuc.Value, loaikh);
+        }
 
-            decimal tongDoanhThu = dsHoaDon.Sum(hd => hd.tongTienSauGiam) ?? 0;
+        private void LoadDanhSachHoaDonTheoNgayLoc(string tieuChi, string tenTimKiem, DateTime ngayBatDau, DateTime ngayKetThuc, string loaikh)
+        {
+            decimal tongDoanhThu = 0;
+
+            List<HoaDon> ketQuaTimKiem = hdbll.TimKiemVaLocHoaDon(tieuChi, tenTimKiem, ngayBatDau, ngayKetThuc, loaikh)
+                                             .OrderByDescending(hd => hd.ngayLap.Value).ToList();
+            tongDoanhThu = ketQuaTimKiem.Sum(hd => hd.tongTienSauGiam) ?? 0;
+            SettingDgv(ketQuaTimKiem);
             lblTongDoanhThu.Text = "Tổng doanh thu: " + tongDoanhThu.ToString("N0").Replace(",", ".") + "đ";
         }
 
@@ -112,22 +141,8 @@ namespace MeVaBeProject
         {
             string tieuChi = cboTieuChi.SelectedItem.ToString();
             string tenTimKiem = txtTimKiem.Text.Trim();
-            decimal tongDoanhThu = 0;
-
-            if (string.IsNullOrWhiteSpace(tenTimKiem))
-            {
-                List<HoaDon> dsHoaDon = hdbll.LoadDanhSachHoaDon();
-                SettingDgv(dsHoaDon);
-                tongDoanhThu = hdbll.TinhTongDoanhThu();
-            }
-            else
-            {
-                List<HoaDon> ketQuaTimKiem = hdbll.TimKiemHoaDon(tieuChi, tenTimKiem);
-                SettingDgv(ketQuaTimKiem);
-                tongDoanhThu = ketQuaTimKiem.Sum(hd => hd.tongTienSauGiam) ?? 0;
-            }
-
-            lblTongDoanhThu.Text = "Tổng doanh thu: " + tongDoanhThu.ToString("N0").Replace(",", ".") + "đ";
+            string loaikh = cboLoaiKH.SelectedItem.ToString();
+            LoadDanhSachHoaDonTheoNgayLoc(tieuChi, tenTimKiem, dtpNgayBatDau.Value, dtpNgayKetThuc.Value, loaikh);
         }
 
         // Dữ liệu số nằm bên phải
@@ -136,26 +151,29 @@ namespace MeVaBeProject
             if (e.Value != null && decimal.TryParse(e.Value.ToString(), out decimal tien))
             {
                 dgvHoaDon.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-                e.Value = tien.ToString("N0").Replace(",", ".");
+                if(tien != 0)
+                {
+                    e.Value = tien.ToString("N0").Replace(",", ".") + "đ";
+                }
+                else
+                {
+                    e.Value = tien.ToString("N0").Replace(",", ".");
+                }
                 e.FormattingApplied = true;
             }
         }
 
         private void FrmQLHoaDon_Load(object sender, EventArgs e)
         {
-            try
-            {
-                List<HoaDon> dsHoaDon = hdbll.LoadDanhSachHoaDon();
-                SettingDgv(dsHoaDon);
-                LoadTieuChiCombobox();
+            this.dtpNgayBatDau.MaxDate = DateTime.Now.Date;
+            this.dtpNgayKetThuc.MaxDate = DateTime.Now.Date;
+            List<HoaDon> dsHoaDon = hdbll.LoadDanhSachHoaDon();
+            SettingDgv(dsHoaDon);
+            LoadTieuChiCombobox();
+            LoadLoaiKHCombobox();
 
-                decimal tongDoanhThu = hdbll.TinhTongDoanhThu();
-                lblTongDoanhThu.Text = "Tổng doanh thu: " + tongDoanhThu.ToString("N0").Replace(",", ".") + "đ";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi tải hóa đơn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            decimal tongDoanhThu = hdbll.TinhTongDoanhThu();
+            lblTongDoanhThu.Text = "Tổng doanh thu: " + tongDoanhThu.ToString("N0").Replace(",", ".") + "đ";
         }
 
         private void CboTieuChi_SelectedIndexChanged(object sender, EventArgs e)
@@ -257,11 +275,23 @@ namespace MeVaBeProject
                 "Các tiêu chí",
                 "Mã hóa đơn",
                 "Tên khách hàng",
-                "Tên nhân viên",
-                "Ngày lập"
+                "Tên nhân viên"
             };
             cboTieuChi.DataSource = tieuChi;
             
+            cboTieuChi.SelectedIndex = 0;
+        }
+
+        private void LoadLoaiKHCombobox()
+        {
+            List<string> loaiKH = new List<string>
+            {
+                "Loại khách hàng",
+                "Khách vãng lai",
+                "Khách thành viên"
+            };
+            cboLoaiKH.DataSource = loaiKH;
+
             cboTieuChi.SelectedIndex = 0;
         }
     }

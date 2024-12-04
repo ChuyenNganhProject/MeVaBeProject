@@ -19,7 +19,8 @@ namespace DAL
         public NhanVien DangNhap(string username, string password)
         {
             var hashedPassword = MaHoaMatKhauKieuSha256Hash(password);
-            var nhanVien = db.NhanViens.SingleOrDefault(nv => nv.tenDangNhap == username&& nv.matKhau == hashedPassword);
+            var nhanVien = db.NhanViens.SingleOrDefault(nv => nv.tenDangNhap == username && nv.matKhau == hashedPassword);
+            nhanVien.tenLoaiNhanVien = db.LoaiNhanViens.Where(lnv => lnv.maLoaiNhanVien == nhanVien.maLoaiNhanVien).Select(lnv => lnv.tenLoaiNhanVien).FirstOrDefault();
             return nhanVien;
         }
 
@@ -32,22 +33,6 @@ namespace DAL
             }
 
         }
-
-        //public List<NhanVien> LoadNhanVien()
-        //{
-        //    var nhanViens = (from nv in db.NhanViens 
-        //                    join loainv in db.LoaiNhanViens on nv.maLoaiNhanVien equals loainv.maLoaiNhanVien
-        //                    select nv).ToList();
-        //    foreach(var nv in nhanViens)
-        //    {
-        //        var loainv = db.LoaiNhanViens.FirstOrDefault(lnv => lnv.maLoaiNhanVien == nv.maLoaiNhanVien);
-        //        if(loainv != null)
-        //        {
-        //            nv.tenLoaiNhanVien = loainv.tenLoaiNhanVien;
-        //        }
-        //    }
-        //    return nhanViens;
-        //}
 
         public NhanVien LayTTNhanVienTuTenDangNhap(string maNhanVien) 
         {

@@ -25,6 +25,10 @@ namespace DAL
                     {
                         hoaDon.tenKhachHang = khachhangs.tenKhachHang;
                     }
+                    else
+                    {
+                        hoaDon.tenKhachHang = "Khách vãng lai";
+                    }
                     var nhanviens = db.NhanViens.FirstOrDefault(nv => nv.maNhanVien == hoaDon.maNhanVien);
                     if (nhanviens != null)
                     {
@@ -94,11 +98,13 @@ namespace DAL
 
             return input;
         }
-        public List<HoaDon> TimKiemHoaDon(string tieuChi, string giaTriTimKiem)
+        public List<HoaDon> TimKiemVaLocHoaDon(string tieuChi, string giaTriTimKiem, DateTime ngayBatDau, DateTime ngayKetThuc, string loaikh)
         {
             try
             {
-                var hoadons = db.HoaDons.ToList();
+                var hoadons = db.HoaDons.Where(hd => hd.ngayLap.HasValue && hd.ngayLap.Value.Date >= ngayBatDau.Date 
+                                            && hd.ngayLap.Value.Date <= ngayKetThuc.Date)
+                                        .ToList();
                 foreach (var hoaDon in hoadons)
                 {
                     var khachhang = db.KhachHangs.FirstOrDefault(kh => kh.maKhachHang == hoaDon.maKhachHang);
@@ -112,34 +118,40 @@ namespace DAL
                     {
                         hoaDon.tenNhanVien = nhanvien.tenNhanVien;
                     }
+                    hoaDon.tenTrangThai = hoaDon.trangThai == true ? "Đã thanh toán" : "Chưa thanh toán";
                 }
 
-                giaTriTimKiem = RemoveVietnameseDaus(giaTriTimKiem.ToLower());
-                switch (tieuChi)
+                if (!string.IsNullOrEmpty(giaTriTimKiem))
                 {
-                    case "Các tiêu chí":
-                        {
-                            hoadons = hoadons.ToList();
+                    giaTriTimKiem = RemoveVietnameseDaus(giaTriTimKiem.ToLower());
+                    switch (tieuChi)
+                    {
+                        case "Các tiêu chí":
                             break;
-                        }
-                    case "Mã hóa đơn":
-                        hoadons = hoadons.Where(hd => RemoveVietnameseDaus(hd.maHoaDon.ToLower()).Contains(giaTriTimKiem)).ToList();
+                        case "Mã hóa đơn":
+                            hoadons = hoadons.Where(hd => RemoveVietnameseDaus(hd.maHoaDon.ToLower()).Contains(giaTriTimKiem)).ToList();
+                            break;
+                        case "Tên khách hàng":
+                            hoadons = hoadons
+                                .Where(hd => hd.tenKhachHang != null && RemoveVietnameseDaus(hd.tenKhachHang.ToLower())
+                                .Contains(giaTriTimKiem)).ToList();
+                            break;
+                        case "Tên nhân viên":
+                            hoadons = hoadons
+                                .Where(hd => hd.tenNhanVien != null && RemoveVietnameseDaus(hd.tenNhanVien.ToLower())
+                                .Contains(giaTriTimKiem)).ToList();
+                            break;
+                    }
+                }
+                switch(loaikh)
+                {
+                    case "Loại khách hàng":
                         break;
-                    case "Tên khách hàng":
-                        hoadons = hoadons
-                            .Where(hd => hd.tenKhachHang != null && RemoveVietnameseDaus(hd.tenKhachHang.ToLower())
-                            .Contains(giaTriTimKiem)).ToList();
+                    case "Khách vãng lai":
+                        hoadons = hoadons.Where(hd => hd.tenKhachHang == loaikh).ToList();
                         break;
-                    case "Tên nhân viên":
-                        hoadons = hoadons
-                            .Where(hd => hd.tenNhanVien != null && RemoveVietnameseDaus(hd.tenNhanVien.ToLower())
-                            .Contains(giaTriTimKiem)).ToList();
-                        break;
-                    case "Ngày lập":
-                        if (DateTime.TryParse(giaTriTimKiem, out DateTime ngayLap))
-                        {
-                            hoadons = hoadons.Where(hd => hd.ngayLap.HasValue && hd.ngayLap.Value.Date == ngayLap.Date).ToList();
-                        }
+                    case "Khách thành viên":
+                        hoadons = hoadons.Where(hd => hd.tenKhachHang == loaikh).ToList();
                         break;
                 }
                 return hoadons;
