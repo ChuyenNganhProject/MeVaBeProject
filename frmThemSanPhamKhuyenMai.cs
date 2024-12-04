@@ -43,6 +43,14 @@ namespace MeVaBeProject
 
             this.btnXacNhan.Click += BtnXacNhan_Click;
             this.btnHuyGiam.Click += BtnHuyGiam_Click;
+            this.btnTimKiem.Click += BtnTimKiem_Click;
+        }
+
+        private void BtnTimKiem_Click(object sender, EventArgs e)
+        {
+            string tenHoacMaTimKiem = txtNhapMaHoacTenSP.Text.Trim();
+            var dsKetQuaTimKiem = spbll.LoadSpTheoTenHoacMaSp(tenHoacMaTimKiem);
+            SettingDgv(dsKetQuaTimKiem);
         }
 
         private void DgvDSSP_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -390,25 +398,17 @@ namespace MeVaBeProject
         private void LoadSanPhamTheoLoai(string maLoaiSanPham)
         {
             List<SanPham> danhSachSanPham = spbll.LayDanhSachSanPhamTheoMaLoai(maLoaiSanPham);
-
-            var dataSource = danhSachSanPham.Select(sp => new
-            {
-                maSanPham = sp.maSanPham,
-                tenSanPham = sp.tenSanPham,
-                duocChon = false
-            }).ToList();
-
-            dgvDSSP.DataSource = null;
-            dgvDSSP.DataSource = dataSource;
-
-            dgvDSSP.Columns["maSanPham"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvDSSP.Columns["tenSanPham"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            SettingDgv(danhSachSanPham);
         }
 
         private void LoadTatCaSanPham()
         {
             List<SanPham> danhSachSanPham = spbll.LoadTatCaSanPham();
+            SettingDgv(danhSachSanPham);
+        }
 
+        private void SettingDgv(List<SanPham> danhSachSanPham)
+        {
             var dataSource = danhSachSanPham.Select(sp => new
             {
                 maSanPham = sp.maSanPham,

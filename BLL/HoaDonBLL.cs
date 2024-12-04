@@ -27,9 +27,9 @@ namespace BLL
             return hddal.TaoMaHoaDonTuDong();
         }
 
-        public List<HoaDon> TimKiemHoaDon(string tieuChi, string giaTriTimKiem)
+        public List<HoaDon> TimKiemVaLocHoaDon(string tieuChi, string giaTriTimKiem, DateTime ngayBatDau, DateTime ngayKetThuc, string loaikh)
         {
-            return hddal.TimKiemHoaDon(tieuChi, giaTriTimKiem);
+            return hddal.TimKiemVaLocHoaDon(tieuChi, giaTriTimKiem, ngayBatDau, ngayKetThuc, loaikh);
         }
 
         public HoaDon LoadHoaDonTheoMa(string mahd)

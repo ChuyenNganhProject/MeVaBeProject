@@ -29,7 +29,6 @@ namespace CustomControl
         public decimal TongTienTruocKhiGiamGiaSp { get; private set; }
         public decimal TongGiaTri { get; private set; }
         public string TenSanPham { get; private set; }
-        private int SoLuongMax;
 
         public GioHangItemControl()
         {

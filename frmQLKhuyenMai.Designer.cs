@@ -44,6 +44,7 @@
             this.uiPanel16 = new Sunny.UI.UIPanel();
             this.uiPanel23 = new Sunny.UI.UIPanel();
             this.cboTrangThai = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiPanel6 = new Sunny.UI.UIPanel();
             this.btnTaoKhuyenMai = new Sunny.UI.UISymbolButton();
@@ -209,14 +210,14 @@
             // uiPanel22
             // 
             this.uiPanel22.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiPanel22.FillColor = System.Drawing.SystemColors.Window;
+            this.uiPanel22.FillColor = System.Drawing.SystemColors.Control;
             this.uiPanel22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiPanel22.Location = new System.Drawing.Point(543, 0);
             this.uiPanel22.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel22.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel22.Name = "uiPanel22";
-            this.uiPanel22.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel22.Size = new System.Drawing.Size(13, 37);
+            this.uiPanel22.RectColor = System.Drawing.SystemColors.Control;
+            this.uiPanel22.Size = new System.Drawing.Size(13, 51);
             this.uiPanel22.TabIndex = 45;
             this.uiPanel22.Text = null;
             this.uiPanel22.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -246,14 +247,14 @@
             // uiPanel16
             // 
             this.uiPanel16.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiPanel16.FillColor = System.Drawing.SystemColors.Window;
+            this.uiPanel16.FillColor = System.Drawing.SystemColors.Control;
             this.uiPanel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiPanel16.Location = new System.Drawing.Point(415, 0);
             this.uiPanel16.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel16.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel16.Name = "uiPanel16";
-            this.uiPanel16.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel16.Size = new System.Drawing.Size(13, 37);
+            this.uiPanel16.RectColor = System.Drawing.SystemColors.Control;
+            this.uiPanel16.Size = new System.Drawing.Size(13, 51);
             this.uiPanel16.TabIndex = 43;
             this.uiPanel16.Text = null;
             this.uiPanel16.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -261,15 +262,16 @@
             // uiPanel23
             // 
             this.uiPanel23.Controls.Add(this.cboTrangThai);
+            this.uiPanel23.Controls.Add(this.panel1);
             this.uiPanel23.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiPanel23.FillColor = System.Drawing.SystemColors.Window;
+            this.uiPanel23.FillColor = System.Drawing.SystemColors.Control;
             this.uiPanel23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiPanel23.Location = new System.Drawing.Point(235, 0);
             this.uiPanel23.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel23.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel23.Name = "uiPanel23";
-            this.uiPanel23.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel23.Size = new System.Drawing.Size(180, 37);
+            this.uiPanel23.RectColor = System.Drawing.SystemColors.Control;
+            this.uiPanel23.Size = new System.Drawing.Size(180, 51);
             this.uiPanel23.TabIndex = 39;
             this.uiPanel23.Text = null;
             this.uiPanel23.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -283,10 +285,18 @@
             "Chưa diễn ra",
             "Đang diễn ra",
             "Đã kết thúc"});
-            this.cboTrangThai.Location = new System.Drawing.Point(0, 0);
+            this.cboTrangThai.Location = new System.Drawing.Point(0, 10);
             this.cboTrangThai.Name = "cboTrangThai";
-            this.cboTrangThai.Size = new System.Drawing.Size(180, 28);
-            this.cboTrangThai.TabIndex = 45;
+            this.cboTrangThai.Size = new System.Drawing.Size(180, 33);
+            this.cboTrangThai.TabIndex = 47;
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(180, 10);
+            this.panel1.TabIndex = 46;
             // 
             // uiLabel2
             // 
@@ -614,7 +624,7 @@
             // 
             // uiLabel4
             // 
-            this.uiLabel4.BackColor = System.Drawing.SystemColors.Window;
+            this.uiLabel4.BackColor = System.Drawing.SystemColors.Control;
             this.uiLabel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.uiLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
@@ -734,7 +744,7 @@
             this.dgvKhuyenMai.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepPink;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -743,7 +753,7 @@
             this.dgvKhuyenMai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DeepPink;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -846,11 +856,12 @@
         private System.Windows.Forms.DateTimePicker dtpNgayKetThuc;
         private Sunny.UI.UILabel uiLabel4;
         private System.Windows.Forms.DateTimePicker dtpNgayBatDau;
-        private Sunny.UI.UIPanel uiPanel23;
         private Sunny.UI.UIButton btnHuyLoc;
         private Sunny.UI.UIPanel uiPanel22;
         private Sunny.UI.UIButton btnXacNhan;
         private Sunny.UI.UIPanel uiPanel16;
+        private Sunny.UI.UIPanel uiPanel23;
         private System.Windows.Forms.ComboBox cboTrangThai;
+        private System.Windows.Forms.Panel panel1;
     }
 }

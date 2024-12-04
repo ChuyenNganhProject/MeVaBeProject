@@ -24,12 +24,14 @@ namespace MeVaBeProject
         private string diemTichLuyDuocCongText;
         private string hinhThucTra;
         private int soLuong;
+        private string maHDText;
 
         private List<ChiTietHoaDonSanPham> _chiTietHoaDons;
         KhachHangBLL khbll = new KhachHangBLL();
         NhanVienBLL nvbll = new NhanVienBLL();
         public frmBill(HoaDon hoaDon, List<ChiTietHoaDonSanPham> chiTietHoaDons, 
-            string tienBiGiamText, string tienTruocKhiGiamText, string hangThanhVienText, string phanTramGiamText, string diemTichLuyDuocCongText, string hinhThucTra) 
+                        string tienBiGiamText, string tienTruocKhiGiamText, string hangThanhVienText, 
+                        string phanTramGiamText, string diemTichLuyDuocCongText, string hinhThucTra, string maHD) 
         { 
             InitializeComponent(); 
             _hoaDon = hoaDon; 
@@ -40,6 +42,7 @@ namespace MeVaBeProject
             this.phanTramGiamText = phanTramGiamText;
             this.diemTichLuyDuocCongText = diemTichLuyDuocCongText;
             this.hinhThucTra = hinhThucTra;
+            this.maHDText = maHD;
         }
 
         private void frmBill_Load(object sender, EventArgs e)
@@ -85,7 +88,8 @@ namespace MeVaBeProject
                 new ReportParameter("TongSoLuong", tongSoLuongText),
                 new ReportParameter("DiemTichLuyDuocCong", diemTichLuyDuocCongText),
                 new ReportParameter("TongDiemTichLuy", tongDiemTichLuyText),
-                new ReportParameter("HinhThucTra", hinhThucTraText)
+                new ReportParameter("HinhThucTra", hinhThucTraText),
+                new ReportParameter("MaHD", maHDText)
             };
 
             ReportDataSource rdsChiTiet = new ReportDataSource("ChiTietHoaDonSanPhamDataSet", _chiTietHoaDons);

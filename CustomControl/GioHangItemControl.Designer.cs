@@ -100,10 +100,20 @@
             this.numericSoLuongSp.Dock = System.Windows.Forms.DockStyle.Left;
             this.numericSoLuongSp.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.numericSoLuongSp.Location = new System.Drawing.Point(231, 0);
+            this.numericSoLuongSp.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericSoLuongSp.Name = "numericSoLuongSp";
             this.numericSoLuongSp.Size = new System.Drawing.Size(61, 30);
             this.numericSoLuongSp.TabIndex = 14;
             this.numericSoLuongSp.ThousandsSeparator = true;
+            this.numericSoLuongSp.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // panel1
             // 

@@ -118,8 +118,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>6.63929cm</Top>
-            <Left>1.71781cm</Left>
+            <Top>7.58447cm</Top>
+            <Left>1.75309cm</Left>
             <Height>0.6cm</Height>
             <Width>2.627cm</Width>
             <ZIndex>1</ZIndex>
@@ -151,8 +151,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>7.66009cm</Top>
-            <Left>1.71781cm</Left>
+            <Top>8.60527cm</Top>
+            <Left>1.75309cm</Left>
             <Height>0.6cm</Height>
             <Width>2.627cm</Width>
             <ZIndex>2</ZIndex>
@@ -181,8 +181,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TenKhachHang</rd:DefaultName>
-            <Top>6.63929cm</Top>
-            <Left>4.5212cm</Left>
+            <Top>7.58447cm</Top>
+            <Left>4.55648cm</Left>
             <Height>0.6cm</Height>
             <Width>4.63783cm</Width>
             <ZIndex>3</ZIndex>
@@ -214,8 +214,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TenNhanVien</rd:DefaultName>
-            <Top>7.66009cm</Top>
-            <Left>4.5212cm</Left>
+            <Top>8.60527cm</Top>
+            <Left>4.55648cm</Left>
             <Height>0.6cm</Height>
             <Width>4.63783cm</Width>
             <ZIndex>4</ZIndex>
@@ -290,8 +290,8 @@
             </Style>
           </Line>
           <Line Name="Line2">
-            <Top>8.72886cm</Top>
-            <Left>1.71781cm</Left>
+            <Top>9.67404cm</Top>
+            <Left>1.75309cm</Left>
             <Height>0cm</Height>
             <Width>11.58054cm</Width>
             <ZIndex>8</ZIndex>
@@ -536,7 +536,7 @@
                                 <TextRun>
                                   <Value>=Fields!donGia.Value</Value>
                                   <Style>
-                                    <Format>N0</Format>
+                                    <Format>#,##0 đ</Format>
                                     <Language>vi-VN</Language>
                                   </Style>
                                 </TextRun>
@@ -618,8 +618,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>ChiTietHoaDonSanPhamDataSet</DataSetName>
-            <Top>9.2284cm</Top>
-            <Left>1.71781cm</Left>
+            <Top>10.17358cm</Top>
+            <Left>1.75309cm</Left>
             <Height>1.55983cm</Height>
             <Width>11.58054cm</Width>
             <ZIndex>9</ZIndex>
@@ -650,8 +650,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
-            <Top>16.00256cm</Top>
-            <Left>8.40176cm</Left>
+            <Top>16.94774cm</Top>
+            <Left>8.43704cm</Left>
             <Height>0.76933cm</Height>
             <Width>4.93187cm</Width>
             <ZIndex>10</ZIndex>
@@ -666,8 +666,8 @@
             </Style>
           </Textbox>
           <Line Name="Line3">
-            <Top>11.33236cm</Top>
-            <Left>1.71781cm</Left>
+            <Top>12.27754cm</Top>
+            <Left>1.75309cm</Left>
             <Height>0cm</Height>
             <Width>11.58054cm</Width>
             <ZIndex>11</ZIndex>
@@ -695,8 +695,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox34</rd:DefaultName>
-            <Top>16.00256cm</Top>
-            <Left>1.75309cm</Left>
+            <Top>16.94774cm</Top>
+            <Left>1.78837cm</Left>
             <Height>0.6cm</Height>
             <Width>3.59598cm</Width>
             <ZIndex>12</ZIndex>
@@ -727,8 +727,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>11.50875cm</Top>
-            <Left>9.55885cm</Left>
+            <Top>12.45393cm</Top>
+            <Left>9.59413cm</Left>
             <Height>0.6cm</Height>
             <Width>3.7395cm</Width>
             <ZIndex>13</ZIndex>
@@ -759,8 +759,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TienBiGiam</rd:DefaultName>
-            <Top>15.11384cm</Top>
-            <Left>9.59413cm</Left>
+            <Top>16.05902cm</Top>
+            <Left>9.62941cm</Left>
             <Height>0.6cm</Height>
             <Width>3.7395cm</Width>
             <ZIndex>14</ZIndex>
@@ -792,8 +792,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>HangThanhVien</rd:DefaultName>
-            <Top>14.37273cm</Top>
-            <Left>1.75309cm</Left>
+            <Top>15.31791cm</Top>
+            <Left>1.78837cm</Left>
             <Height>0.6cm</Height>
             <Width>3.59598cm</Width>
             <ZIndex>15</ZIndex>
@@ -825,8 +825,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>PhanTramGiam</rd:DefaultName>
-            <Top>15.11384cm</Top>
-            <Left>1.75309cm</Left>
+            <Top>16.05902cm</Top>
+            <Left>1.78837cm</Left>
             <Height>0.6cm</Height>
             <Width>3.59598cm</Width>
             <ZIndex>16</ZIndex>
@@ -860,8 +860,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox34</rd:DefaultName>
-            <Top>11.47884cm</Top>
-            <Left>1.75309cm</Left>
+            <Top>12.42402cm</Top>
+            <Left>1.78837cm</Left>
             <Height>0.6cm</Height>
             <Width>3.5607cm</Width>
             <ZIndex>17</ZIndex>
@@ -922,8 +922,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>12.21995cm</Top>
-            <Left>1.75309cm</Left>
+            <Top>13.16513cm</Top>
+            <Left>1.78837cm</Left>
             <Height>0.6cm</Height>
             <Width>3.5607cm</Width>
             <ZIndex>19</ZIndex>
@@ -952,8 +952,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>DiemTichLuyDuocCong</rd:DefaultName>
-            <Top>12.96106cm</Top>
-            <Left>1.75309cm</Left>
+            <Top>13.90624cm</Top>
+            <Left>1.78837cm</Left>
             <Height>0.6cm</Height>
             <Width>6.78277cm</Width>
             <ZIndex>20</ZIndex>
@@ -985,8 +985,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TongDiemTichluy</rd:DefaultName>
-            <Top>13.66689cm</Top>
-            <Left>1.75309cm</Left>
+            <Top>14.61207cm</Top>
+            <Left>1.78837cm</Left>
             <Height>0.6cm</Height>
             <Width>6.78277cm</Width>
             <ZIndex>21</ZIndex>
@@ -1018,8 +1018,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>5.69411cm</Top>
-            <Left>1.75309cm</Left>
+            <Top>6.63929cm</Top>
+            <Left>1.78837cm</Left>
             <Height>0.6cm</Height>
             <Width>2.627cm</Width>
             <ZIndex>22</ZIndex>
@@ -1051,8 +1051,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>HinhThucTra</rd:DefaultName>
-            <Top>5.69411cm</Top>
-            <Left>4.5212cm</Left>
+            <Top>6.63929cm</Top>
+            <Left>4.55648cm</Left>
             <Height>0.6cm</Height>
             <Width>4.63783cm</Width>
             <ZIndex>23</ZIndex>
@@ -1066,8 +1066,68 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Mã HD:</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox8</rd:DefaultName>
+            <Top>5.64303cm</Top>
+            <Left>1.78837cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>24</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="MaHD">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!MaHD.Value</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>MaHD</rd:DefaultName>
+            <Top>5.64303cm</Top>
+            <Left>4.55648cm</Left>
+            <Height>0.6cm</Height>
+            <Width>4.5625cm</Width>
+            <ZIndex>25</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>6.60311in</Height>
+        <Height>7.54478in</Height>
         <Style />
       </Body>
       <Width>6.21982in</Width>
@@ -1132,11 +1192,15 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="MaHD">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>3</NumberOfRows>
+      <NumberOfRows>4</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -1197,6 +1261,11 @@
           <ColumnIndex>3</ColumnIndex>
           <RowIndex>2</RowIndex>
           <ParameterName>HinhThucTra</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>MaHD</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

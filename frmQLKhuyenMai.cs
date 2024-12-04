@@ -60,7 +60,14 @@ namespace MeVaBeProject
 
         private void BtnHuyLoc_Click(object sender, EventArgs e)
         {
-            
+            var result = MessageBox.Show("Bạn có chắc là muốn hủy lọc?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if(result == DialogResult.Yes)
+            {
+                List<KhuyenMai> khuyenMais = kmbll.LoadDanhSachKhuyenMai();
+                SettingDgv(khuyenMais);
+                this.btnHuyLoc.Enabled = false;
+                cboTrangThai.SelectedIndex = 0;
+            }
         }
 
         private void BtnXacNhan_Click(object sender, EventArgs e)
@@ -70,6 +77,7 @@ namespace MeVaBeProject
             string trangThai = cboTrangThai.SelectedItem.ToString();
             List<KhuyenMai> dsKhuyenMaiLoc = kmbll.LocDanhSachKhuyenMai(tgBatDau, tgKetThuc, trangThai);
             SettingDgv(dsKhuyenMaiLoc);
+            this.btnHuyLoc.Enabled = true;
         }
 
         private void BtnReset_Click(object sender, EventArgs e)

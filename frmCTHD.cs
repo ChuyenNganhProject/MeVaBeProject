@@ -33,18 +33,22 @@ namespace MeVaBeProject
 
         private void DgvCTHD_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvCTHD.Columns[e.ColumnIndex].Name == "soLuong")
+            {
+                dgvCTHD.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                return;
+            }
             if (e.Value != null && decimal.TryParse(e.Value.ToString(), out decimal tien))
             {
                 dgvCTHD.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-                // Định dạng giá trị và loại bỏ phần thập phân
-                e.Value = tien.ToString("N0").Replace(",", "."); // Thay đổi dấu phẩy thành dấu chấm
-                e.FormattingApplied = true; // Đánh dấu rằng định dạng đã được áp dụng
+                e.Value = tien.ToString("N0").Replace(",", ".") + "đ";
+                e.FormattingApplied = true;
             }
         }
 
         private void BtnThoat_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private void FrmCTHD_Load(object sender, EventArgs e)
@@ -58,6 +62,8 @@ namespace MeVaBeProject
             {
                 btnTaoPhieuDoi.Enabled = false;
             }
+            lblHinhThucTra.Text = hoadon.hinhThucTra;
+            
             dgvCTHD.DataSource = cthdspbll.LoadCTHDSanPham(mahd);
             dgvCTHD.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             SettingDgv();
@@ -108,6 +114,7 @@ namespace MeVaBeProject
             }
 
             dgvCTHD.Columns["tenSanPham"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvCTHD.Columns["soLuong"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             dgvCTHD.Columns["maSanPham"].DisplayIndex = 0;
             dgvCTHD.Columns["tenSanPham"].DisplayIndex = 1;

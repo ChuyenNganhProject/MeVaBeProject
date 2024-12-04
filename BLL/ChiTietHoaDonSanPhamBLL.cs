@@ -25,6 +25,10 @@ namespace BLL
         public ChiTietHoaDonSanPham TimChiTietHoaDonSanPham(string maHoaDon, string maSanPham)
         {
             return ctdal.TimChiTietHoaDonSanPham(maHoaDon, maSanPham);
+
+        public ChiTietHoaDonSanPham LayTTSanPhamTrongHoaDon(string masp, string mahd)
+        {
+            return ctdal.LayTTSanPhamTrongHoaDon(masp, mahd);
         }
     }
 }

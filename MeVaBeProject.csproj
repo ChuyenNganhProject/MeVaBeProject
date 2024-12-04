@@ -160,6 +160,12 @@
     <Compile Include="frmCTHD.Designer.cs">
       <DependentUpon>frmCTHD.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCTPhieuGiao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCTPhieuGiao.Designer.cs">
+      <DependentUpon>frmCTPhieuGiao.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDanhSachPhieuDat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -286,6 +292,12 @@
     <Compile Include="frmQLNhaCungCap.Designer.cs">
       <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmQLPhieuGiaoHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQLPhieuGiaoHang.Designer.cs">
+      <DependentUpon>frmQLPhieuGiaoHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmQRCodeThanhToan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -344,6 +356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCTHD.resx">
       <DependentUpon>frmCTHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCTPhieuGiao.resx">
+      <DependentUpon>frmCTPhieuGiao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDanhSachPhieuDat.resx">
       <DependentUpon>frmDanhSachPhieuDat.cs</DependentUpon>
@@ -408,6 +423,9 @@
     <EmbeddedResource Include="frmQLNhaCungCap.resx">
       <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmQLPhieuGiaoHang.resx">
+      <DependentUpon>frmQLPhieuGiaoHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmQRCodeThanhToan.resx">
       <DependentUpon>frmQRCodeThanhToan.cs</DependentUpon>
     </EmbeddedResource>
@@ -431,7 +449,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PhieuDatHang.rdlc" />
     <EmbeddedResource Include="PhieuDoiHang.rdlc" />
-    <EmbeddedResource Include="PhieuGiaoHang.rdlc" />
+    <EmbeddedResource Include="PhieuGiaoHang.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="PhieuNhapHang.rdlc" />
     <EmbeddedResource Include="PhieuThanhLy.rdlc" />
     <EmbeddedResource Include="PhieuThongKeBaoCao.rdlc">
@@ -450,6 +470,7 @@
     <None Include="Properties\DataSources\DTO.ChiTietHoaDonSanPham.datasource" />
     <None Include="Properties\DataSources\DTO.ChiTietPhieuDat.datasource" />
     <None Include="Properties\DataSources\DTO.ChiTietPhieuDoiHang.datasource" />
+    <None Include="Properties\DataSources\DTO.ChiTietPhieuGiaoHang.datasource" />
     <None Include="Properties\DataSources\DTO.ChiTietPhieuNhap.datasource" />
     <None Include="Properties\DataSources\DTO.ChiTietPhieuThanhLy.datasource" />
     <None Include="Properties\DataSources\DTO.SanPham.datasource" />
