@@ -22,6 +22,35 @@ namespace DAL
             nhanVien.tenLoaiNhanVien = db.LoaiNhanViens.Where(lnv => lnv.maLoaiNhanVien == nhanVien.maLoaiNhanVien).Select(lnv => lnv.tenLoaiNhanVien).FirstOrDefault();
             return nhanVien;
         }
+
+        public string MaHoaMKMoi(string mkmoi)
+        {
+            var hashedPassword = MaHoaMatKhauKieuSha256Hash(mkmoi);
+            return hashedPassword;
+
+        }
+
+        public bool KiemTraMatKhauCu(string taikhoan, string matkhau)
+        {
+            try
+            {
+                // Lấy thông tin người dùng theo tài khoản
+                var nhanVienCheck = db.NhanViens.SingleOrDefault(nv => nv.tenDangNhap == taikhoan);
+                if (nhanVienCheck != null)
+                {
+                    // So sánh mật khẩu băm cũ với mật khẩu băm lưu trong cơ sở dữ liệu
+                    return nhanVienCheck.matKhau.Equals(matkhau, StringComparison.OrdinalIgnoreCase);
+
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return false;
+            }
+        }
+
         public string MaHoaMatKhauKieuSha256Hash(string pass)
         {
             using(var sha256 = System.Security.Cryptography.SHA256.Create())
@@ -74,7 +103,17 @@ namespace DAL
         }
         public bool IsTaiKhoanDuplicate(string tk)
         {
-            return LoadNhanVien().Any(nv => nv.tenDangNhap.Equals(tk, StringComparison.OrdinalIgnoreCase));
+
+            if (string.IsNullOrWhiteSpace(tk))
+            {
+                return false;
+            }
+
+            // Chuẩn hóa dữ liệu: loại bỏ khoảng trắng
+            string normalizedTk = tk.Trim();
+
+            // Kiểm tra trùng lặp tên đăng nhập, phân biệt hoa-thường
+            return LoadNhanVien().Any(nv => nv.tenDangNhap.Trim().Equals(normalizedTk, StringComparison.Ordinal));
         }
         public bool IsSDTDuplicate(string sdt)
         {
@@ -130,22 +169,55 @@ namespace DAL
         }
         public bool DeleteNhanVien(string manv)
         {
+
             try
             {
-                var nv = db.NhanViens.FirstOrDefault(n => n.maNhanVien == manv);
+
+                bool existsInHoaDon = db.HoaDons.Any(hd => hd.maNhanVien == manv);
+                bool existsInPhieuDoiHang = db.PhieuDoiHangs.Any(pdh => pdh.maNhanVien == manv);
+                bool existsInPhieuDat = db.PhieuDats.Any(pd => pd.maNhanVien == manv);
+                bool existsInPhieuNhap = db.PhieuNhaps.Any(pn => pn.maNhanVien == manv);
+                bool existsInPieuThanhLy = db.PhieuThanhLies.Any(ptl => ptl.maNhanVien == manv);
+
+                if (existsInHoaDon || existsInPhieuDoiHang || existsInPhieuDat || existsInPhieuNhap || existsInPieuThanhLy)
+                {
+
+                    return false;
+                }
+
+
+                var nv = db.NhanViens.FirstOrDefault(k => k.maNhanVien == manv);
                 if (nv != null)
                 {
                     db.NhanViens.DeleteOnSubmit(nv);
                     db.SubmitChanges();
                     return true;
                 }
-                return false; // Không tìm thấy để xóa
+                return false;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine("Xóa khách hàng thất bại: " + ex.Message);
                 return false;
             }
+            #region
+            //try
+            //{
+            //    var nv = db.NhanViens.FirstOrDefault(n => n.maNhanVien == manv);
+            //    if (nv != null)
+            //    {
+            //        db.NhanViens.DeleteOnSubmit(nv);
+            //        db.SubmitChanges();
+            //        return true;
+            //    }
+            //    return false;
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //    return false;
+            //}
+            #endregion
         }
         public bool UpdateNhanVien(NhanVien nv)
         {
@@ -174,6 +246,49 @@ namespace DAL
                 return false;
             }
         }
+
+        public bool UpdateSDT_DiaChi(NhanVien nv)
+        {
+            try
+            {
+                var exnv = db.NhanViens.FirstOrDefault(n => n.maNhanVien == nv.maNhanVien);
+                if (exnv != null)
+                {
+                    exnv.maNhanVien = nv.maNhanVien;
+                    exnv.diaChi = nv.diaChi;
+                    exnv.soDienThoai = nv.soDienThoai;
+                    db.SubmitChanges();
+                    return true;
+                }
+                return false; // Không tìm thấy để sửa
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+        public bool UpdateMatKhauMoi(NhanVien nv)
+        {
+            try
+            {
+                var exnv = db.NhanViens.SingleOrDefault(n => n.maNhanVien == nv.maNhanVien);
+                if (exnv != null)
+                {
+                    exnv.maNhanVien = nv.maNhanVien;
+                    //exnv.tenDangNhap = nv.tenDangNhap;
+                    exnv.matKhau = nv.matKhau;
+                    db.SubmitChanges();
+                    return true;
+                }
+                return false; // Không tìm thấy để sửa
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
         public List<NhanVien> SearchNhanVien(string keyword)
         {
             // Kiểm tra từ khóa có phải null hay không
@@ -186,7 +301,8 @@ namespace DAL
             // Tìm kiếm nhân viên 
             var filteredNhanVien = LoadNhanVien().Where(nv => (nv.tenNhanVien != null && nv.tenNhanVien.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0) ||
                      (nv.soDienThoai != null && nv.soDienThoai.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                     (nv.diaChi != null && nv.diaChi.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)).ToList();
+                     (nv.diaChi != null && nv.diaChi.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                     (nv.tenDangNhap != null && nv.tenDangNhap.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)).ToList();
 
             return filteredNhanVien;
         }
@@ -207,6 +323,87 @@ namespace DAL
             catch (Exception ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");
+                return null;
+            }
+        }
+        public string GetPasswordById(string maNhanVien)
+        {
+            try
+            {
+                var nhanVien = db.NhanViens.FirstOrDefault(nv => nv.maNhanVien == maNhanVien);
+                if (nhanVien != null)
+                {
+                    return nhanVien.matKhau;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return null; // Return null if an exception occurs
+            }
+        }
+        //Update khi khoa tai khoan 
+        public bool UpdateTrangThai(string maNhanVien, string trangThaiMoi)
+        {
+            try
+            {
+                var nhanVien = db.NhanViens.SingleOrDefault(nv => nv.maNhanVien == maNhanVien);
+                if (nhanVien != null)
+                {
+                    nhanVien.trangThai = trangThaiMoi;
+                    db.SubmitChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Lỗi khi cập trạng thái đăng nhập: {ex.Message}");
+                return false;
+            }
+        }
+
+        //Lay trang thai nhan vien theo tên đăng nhập 
+        public string LayTrangThaiNhanVienTheoTenDangNhap(string tenDangNhap)
+        {
+            try
+            {
+
+                return db.NhanViens
+                         .Where(nv => nv.tenDangNhap == tenDangNhap)
+                         .Select(nv => nv.trangThai)
+                         .FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return null;
+            }
+        }
+        public List<NhanVien> GetNhanVienBiKhoa()
+        {
+            var danhSachNhanVien = LoadNhanVien();
+            var nhanVienBiKhoa = danhSachNhanVien.Where(nv => nv.trangThai == "Ngưng hoạt động").ToList();
+            return nhanVienBiKhoa;
+        }
+        public List<NhanVien> GetNhanVienHoatDong()
+        {
+            var danhSachNhanVien = LoadNhanVien();
+            var nhanVienHD = danhSachNhanVien.Where(nv => nv.trangThai == "Đang hoạt động").ToList();
+            return nhanVienHD;
+        }
+
+        ///Lấy tt từ tên tài khoản FormThongTinNhanVien
+        public NhanVien LayTTNhanVienTuTenDangNhap_FormTTNV(string tenDN)
+        {
+            try
+            {
+                NhanVien nhanvien = db.NhanViens.FirstOrDefault(nv => nv.tenDangNhap == tenDN);
+                return nhanvien;
+            }
+            catch
+            {
                 return null;
             }
         }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MeVaBeDB" Class="MeVaBeDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=ADMIN-PC;Initial Catalog=MeVaBeDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="MeVaBeDBConnectionString4" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MSI;Initial Catalog=MeVaBeDB;Integrated Security=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="MeVaBeDBConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ChiTietHoaDonSanPham" Member="ChiTietHoaDonSanPhams">
     <Type Name="ChiTietHoaDonSanPham">
       <Column Name="maHoaDon" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -104,8 +104,8 @@
       <Column Name="mucTieuBatDau" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
       <Column Name="mucTieuKetThuc" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
       <Column Name="ghiChu" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Association Name="HangThanhVien_KhachHang" Member="KhachHangs" ThisKey="maHang" OtherKey="maHang" Type="KhachHang" />
       <Association Name="HangThanhVien_UuDaiThanhVien" Member="UuDaiThanhViens" ThisKey="maHang" OtherKey="maHang" Type="UuDaiThanhVien" />
+      <Association Name="HangThanhVien_KhachHang" Member="KhachHangs" ThisKey="maHang" OtherKey="maHang" Type="KhachHang" />
     </Type>
   </Table>
   <Table Name="dbo.HoaDon" Member="HoaDons">

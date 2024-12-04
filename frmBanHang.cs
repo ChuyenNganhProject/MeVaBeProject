@@ -802,57 +802,64 @@ namespace MeVaBeProject
             sanPhamPanel.Visible = false;
             this.sanPhamPanel.BackColor = Color.HotPink;
             List<SanPham> sanPhams = spbll.LoadTatCaSanPham();
-
-            sanPhamPanel.Controls.Clear();
-            SanPhamItemControl tempItem = new SanPhamItemControl();
-            int itemWidth = tempItem.Width;
-            int itemHeight = tempItem.Height;
-            int padding = 10;
-            int availableWidth = sanPhamPanel.ClientSize.Width;
-
-            // Tính số cột
-            int columnCount = Math.Max(1, availableWidth / (itemWidth + padding));
-
-            // Cập nhật RowCount và ColumnCount
-            sanPhamPanel.ColumnCount = columnCount;
-            sanPhamPanel.RowCount = 0;
-
-            // Xóa các RowStyle và ColumnStyle cũ
-            sanPhamPanel.RowStyles.Clear();
-            sanPhamPanel.ColumnStyles.Clear();
-
-            for (int i = 0; i < sanPhamPanel.RowCount; i++)
+            if (sanPhams != null)
             {
-                sanPhamPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize)); // Chiều cao tự động
-            }
+                sanPhamPanel.Controls.Clear();
+                SanPhamItemControl tempItem = new SanPhamItemControl();
+                int itemWidth = tempItem.Width;
+                int itemHeight = tempItem.Height;
+                int padding = 10;
+                int availableWidth = sanPhamPanel.ClientSize.Width;
 
-            for (int i = 0; i < columnCount; i++)
-            {
-                sanPhamPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F / columnCount)); // Chiều rộng chia đều
-            }
+                // Tính số cột
+                int columnCount = Math.Max(1, availableWidth / (itemWidth + padding));
 
-            int row = 0;
-            int column = 0;
+                // Cập nhật RowCount và ColumnCount
+                sanPhamPanel.ColumnCount = columnCount;
+                sanPhamPanel.RowCount = 0;
 
-            foreach (var sp in sanPhams)
-            {
-                SanPhamItemControl sanPhamItem = new SanPhamItemControl();
-                sanPhamItem.SetSanPhamData(sp.hinhAnh, sp.maSanPham, sp.tenSanPham, sp.donGiaBan);
-                sanPhamItem.Margin = new Padding(padding);
-                sanPhamItem.Size = new Size(itemWidth, itemHeight);
-                sanPhamItem.SanPhamClicked += SanPhamItem_SanPhamClicked;
+                // Xóa các RowStyle và ColumnStyle cũ
+                sanPhamPanel.RowStyles.Clear();
+                sanPhamPanel.ColumnStyles.Clear();
 
-                sanPhamPanel.Controls.Add(sanPhamItem, column, row);
-
-                column++;
-                if (column >= columnCount)
+                for (int i = 0; i < sanPhamPanel.RowCount; i++)
                 {
-                    column = 0;
-                    row++;
+                    sanPhamPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize)); // Chiều cao tự động
                 }
-            }
 
-            sanPhamPanel.Visible = true; // Hiện panel sau khi đã cập nhật
+                for (int i = 0; i < columnCount; i++)
+                {
+                    sanPhamPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F / columnCount)); // Chiều rộng chia đều
+                }
+
+                int row = 0;
+                int column = 0;
+
+                foreach (var sp in sanPhams)
+                {
+                    SanPhamItemControl sanPhamItem = new SanPhamItemControl();
+                    sanPhamItem.SetSanPhamData(sp.hinhAnh, sp.maSanPham, sp.tenSanPham, sp.donGiaBan);
+                    sanPhamItem.Margin = new Padding(padding);
+                    sanPhamItem.Size = new Size(itemWidth, itemHeight);
+                    sanPhamItem.SanPhamClicked += SanPhamItem_SanPhamClicked;
+
+                    sanPhamPanel.Controls.Add(sanPhamItem, column, row);
+
+                    column++;
+                    if (column >= columnCount)
+                    {
+                        column = 0;
+                        row++;
+                    }
+                }
+
+                sanPhamPanel.Visible = true; // Hiện panel sau khi đã cập nhật
+            }
+            else
+            {
+                MessageBox.Show("Không có sản phẩm nào còn hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
         }
 
         private void LoadSanPhamTheoLoai(string maLoaiSanPham)
@@ -863,58 +870,65 @@ namespace MeVaBeProject
             sanPhamPanel.Visible = false;
             this.sanPhamPanel.BackColor = Color.HotPink;
             List<SanPham> sanPhams = spbll.LayDanhSachSanPhamTheoMaLoai(maLoaiSanPham);
-
-            sanPhamPanel.Controls.Clear();
-
-            SanPhamItemControl tempItem = new SanPhamItemControl();
-            int itemWidth = tempItem.Width;
-            int itemHeight = tempItem.Height;
-            int padding = 10;
-            int availableWidth = sanPhamPanel.ClientSize.Width;
-
-            // Tính số cột
-            int columnCount = Math.Max(1, availableWidth / (itemWidth + padding));
-
-            // Cập nhật RowCount và ColumnCount
-            sanPhamPanel.ColumnCount = columnCount;
-            sanPhamPanel.RowCount = 0;
-
-            // Xóa các RowStyle và ColumnStyle cũ
-            sanPhamPanel.RowStyles.Clear();
-            sanPhamPanel.ColumnStyles.Clear();
-
-            for (int i = 0; i < sanPhamPanel.RowCount; i++)
+            if (sanPhams != null)
             {
-                sanPhamPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize)); // Chiều cao tự động
-            }
+                sanPhamPanel.Controls.Clear();
 
-            for (int i = 0; i < columnCount; i++)
-            {
-                sanPhamPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F / columnCount)); // Chiều rộng chia đều
-            }
+                SanPhamItemControl tempItem = new SanPhamItemControl();
+                int itemWidth = tempItem.Width;
+                int itemHeight = tempItem.Height;
+                int padding = 10;
+                int availableWidth = sanPhamPanel.ClientSize.Width;
 
-            int row = 0;
-            int column = 0;
+                // Tính số cột
+                int columnCount = Math.Max(1, availableWidth / (itemWidth + padding));
 
-            foreach (var sp in sanPhams)
-            {
-                SanPhamItemControl sanPhamItem = new SanPhamItemControl();
-                sanPhamItem.SetSanPhamData(sp.hinhAnh, sp.maSanPham, sp.tenSanPham, sp.donGiaBan);
-                sanPhamItem.Margin = new Padding(padding);
-                sanPhamItem.Size = new Size(itemWidth, itemHeight);
-                sanPhamItem.SanPhamClicked += SanPhamItem_SanPhamClicked;
+                // Cập nhật RowCount và ColumnCount
+                sanPhamPanel.ColumnCount = columnCount;
+                sanPhamPanel.RowCount = 0;
 
-                sanPhamPanel.Controls.Add(sanPhamItem, column, row);
+                // Xóa các RowStyle và ColumnStyle cũ
+                sanPhamPanel.RowStyles.Clear();
+                sanPhamPanel.ColumnStyles.Clear();
 
-                column++;
-                if (column >= columnCount)
+                for (int i = 0; i < sanPhamPanel.RowCount; i++)
                 {
-                    column = 0;
-                    row++;
+                    sanPhamPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize)); // Chiều cao tự động
                 }
-            }
 
-            sanPhamPanel.Visible = true;
+                for (int i = 0; i < columnCount; i++)
+                {
+                    sanPhamPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F / columnCount)); // Chiều rộng chia đều
+                }
+
+                int row = 0;
+                int column = 0;
+
+                foreach (var sp in sanPhams)
+                {
+                    SanPhamItemControl sanPhamItem = new SanPhamItemControl();
+                    sanPhamItem.SetSanPhamData(sp.hinhAnh, sp.maSanPham, sp.tenSanPham, sp.donGiaBan);
+                    sanPhamItem.Margin = new Padding(padding);
+                    sanPhamItem.Size = new Size(itemWidth, itemHeight);
+                    sanPhamItem.SanPhamClicked += SanPhamItem_SanPhamClicked;
+
+                    sanPhamPanel.Controls.Add(sanPhamItem, column, row);
+
+                    column++;
+                    if (column >= columnCount)
+                    {
+                        column = 0;
+                        row++;
+                    }
+                }
+
+                sanPhamPanel.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Không có sản phẩm nào còn hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
         }
 
         // Bộ lọc
@@ -937,58 +951,66 @@ namespace MeVaBeProject
             sanPhamPanel.Visible = false;
             this.sanPhamPanel.BackColor = Color.HotPink;
             List<SanPham> sanPhams = spbll.LoadSpTheoTenHoacMaSp(tenHoacMaSpTimKiem);
-
-            sanPhamPanel.Controls.Clear();
-
-            SanPhamItemControl tempItem = new SanPhamItemControl();
-            int itemWidth = tempItem.Width;
-            int itemHeight = tempItem.Height;
-            int padding = 10;
-            int availableWidth = sanPhamPanel.ClientSize.Width;
-
-            // Tính số cột
-            int columnCount = Math.Max(1, availableWidth / (itemWidth + padding));
-
-            // Cập nhật RowCount và ColumnCount
-            sanPhamPanel.ColumnCount = columnCount;
-            sanPhamPanel.RowCount = 0;
-
-            // Xóa các RowStyle và ColumnStyle cũ
-            sanPhamPanel.RowStyles.Clear();
-            sanPhamPanel.ColumnStyles.Clear();
-
-            for (int i = 0; i < sanPhamPanel.RowCount; i++)
+            if(sanPhams != null)
             {
-                sanPhamPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize)); // Chiều cao tự động
-            }
+                sanPhamPanel.Controls.Clear();
 
-            for (int i = 0; i < columnCount; i++)
-            {
-                sanPhamPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F / columnCount)); // Chiều rộng chia đều
-            }
+                SanPhamItemControl tempItem = new SanPhamItemControl();
+                int itemWidth = tempItem.Width;
+                int itemHeight = tempItem.Height;
+                int padding = 10;
+                int availableWidth = sanPhamPanel.ClientSize.Width;
 
-            int row = 0;
-            int column = 0;
+                // Tính số cột
+                int columnCount = Math.Max(1, availableWidth / (itemWidth + padding));
 
-            foreach (var sp in sanPhams)
-            {
-                SanPhamItemControl sanPhamItem = new SanPhamItemControl();
-                sanPhamItem.SetSanPhamData(sp.hinhAnh, sp.maSanPham, sp.tenSanPham, sp.donGiaBan);
-                sanPhamItem.Margin = new Padding(padding);
-                sanPhamItem.Size = new Size(itemWidth, itemHeight);
-                sanPhamItem.SanPhamClicked += SanPhamItem_SanPhamClicked;
+                // Cập nhật RowCount và ColumnCount
+                sanPhamPanel.ColumnCount = columnCount;
+                sanPhamPanel.RowCount = 0;
 
-                sanPhamPanel.Controls.Add(sanPhamItem, column, row);
+                // Xóa các RowStyle và ColumnStyle cũ
+                sanPhamPanel.RowStyles.Clear();
+                sanPhamPanel.ColumnStyles.Clear();
 
-                column++;
-                if (column >= columnCount)
+                for (int i = 0; i < sanPhamPanel.RowCount; i++)
                 {
-                    column = 0;
-                    row++;
+                    sanPhamPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize)); // Chiều cao tự động
                 }
-            }
 
-            sanPhamPanel.Visible = true;
+                for (int i = 0; i < columnCount; i++)
+                {
+                    sanPhamPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F / columnCount)); // Chiều rộng chia đều
+                }
+
+                int row = 0;
+                int column = 0;
+
+                foreach (var sp in sanPhams)
+                {
+                    SanPhamItemControl sanPhamItem = new SanPhamItemControl();
+                    sanPhamItem.SetSanPhamData(sp.hinhAnh, sp.maSanPham, sp.tenSanPham, sp.donGiaBan);
+                    sanPhamItem.Margin = new Padding(padding);
+                    sanPhamItem.Size = new Size(itemWidth, itemHeight);
+                    sanPhamItem.SanPhamClicked += SanPhamItem_SanPhamClicked;
+
+                    sanPhamPanel.Controls.Add(sanPhamItem, column, row);
+
+                    column++;
+                    if (column >= columnCount)
+                    {
+                        column = 0;
+                        row++;
+                    }
+                }
+
+                sanPhamPanel.Visible = true;
+            }
+            
+            else
+            {
+                MessageBox.Show("Không có sản phẩm nào còn hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
         }
 
         // Nut cua form
