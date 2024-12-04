@@ -45,6 +45,7 @@
     <Compile Include="APIRequest.cs" />
     <Compile Include="Bank.cs" />
     <Compile Include="ChiTietHoaDonSanPham.cs" />
+    <Compile Include="ChiTietPhieuGiaoHang.cs" />
     <Compile Include="ChiTietPhieuNhap.cs" />
     <Compile Include="ChiTietQuyenCuaLoaiNhanVien.cs" />
     <Compile Include="HoaDon.cs" />
@@ -58,6 +59,7 @@
     </Compile>
     <Compile Include="NhanVien.cs" />
     <Compile Include="PhieuDat.cs" />
+    <Compile Include="PhieuGiaoHang.cs" />
     <Compile Include="PhieuNhap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -67,6 +69,7 @@
     </Compile>
     <Compile Include="SanPham.cs" />
     <Compile Include="SanPhamBanChay.cs" />
+    <Compile Include="SanPhamGiao.cs" />
     <Compile Include="ThongKeDoanhThuTheoThang.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +82,7 @@
     <None Include="MeVaBeDB.dbml.layout">
       <DependentUpon>MeVaBeDB.dbml</DependentUpon>
     </None>
+    <None Include="Properties\DataSources\ChiTietPhieuGiaoHang.datasource" />
     <None Include="Properties\DataSources\ThongKeDoanhThuTheoThang.datasource" />
     <None Include="Properties\DataSources\ThongKeDoanhThuTheoThangDataSet.datasource" />
     <None Include="Properties\Settings.settings">

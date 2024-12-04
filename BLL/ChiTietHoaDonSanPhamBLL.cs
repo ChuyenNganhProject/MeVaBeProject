@@ -22,5 +22,10 @@ namespace BLL
         {
             return ctdal.LoadCTHDSanPham(mahd);
         }
+
+        public ChiTietHoaDonSanPham LayTTSanPhamTrongHoaDon(string masp, string mahd)
+        {
+            return ctdal.LayTTSanPhamTrongHoaDon(masp, mahd);
+        }
     }
 }

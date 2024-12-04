@@ -33,12 +33,24 @@ namespace DAL
 
         public List<ChiTietHoaDonSanPham> LoadCTHDSanPham(string mahd)
         {
-            var list = db.ChiTietHoaDonSanPhams.Where(ct => ct.maHoaDon == mahd).Select(ct => ct).ToList<ChiTietHoaDonSanPham>();
-            foreach(var item in list)
+            if(!string.IsNullOrEmpty(mahd))
             {
-                item.tenSanPham = db.SanPhams.Where(sp => sp.maSanPham == item.maSanPham).Select(sp => sp.tenSanPham).First();
+                var list = db.ChiTietHoaDonSanPhams.Where(ct => ct.maHoaDon == mahd).Select(ct => ct).ToList<ChiTietHoaDonSanPham>();
+                foreach (var item in list)
+                {
+                    item.tenSanPham = db.SanPhams.Where(sp => sp.maSanPham == item.maSanPham).Select(sp => sp.tenSanPham).First();
+                }
+                return list;
             }
-            return list;
+            else
+            {
+                return new List<ChiTietHoaDonSanPham> { };
+            }
+        }
+
+        public ChiTietHoaDonSanPham LayTTSanPhamTrongHoaDon(string masp, string mahd)
+        {
+            return db.ChiTietHoaDonSanPhams.Where(cthd => cthd.maHoaDon == mahd && cthd.maSanPham == masp).Select(sp => sp).FirstOrDefault();
         }
     }
 }

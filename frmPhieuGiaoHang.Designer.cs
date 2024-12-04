@@ -34,19 +34,21 @@
             // rptPhieuGiaoHang
             // 
             this.rptPhieuGiaoHang.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rptPhieuGiaoHang.LocalReport.ReportEmbeddedResource = "MeVaBeProject.PhieuGiaoHang.rdlc";
             this.rptPhieuGiaoHang.Location = new System.Drawing.Point(0, 0);
             this.rptPhieuGiaoHang.Name = "rptPhieuGiaoHang";
             this.rptPhieuGiaoHang.ServerReport.BearerToken = null;
-            this.rptPhieuGiaoHang.Size = new System.Drawing.Size(800, 450);
+            this.rptPhieuGiaoHang.Size = new System.Drawing.Size(919, 769);
             this.rptPhieuGiaoHang.TabIndex = 0;
             // 
             // frmPhieuGiaoHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(919, 769);
             this.Controls.Add(this.rptPhieuGiaoHang);
             this.Name = "frmPhieuGiaoHang";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPhieuGiaoHang";
             this.ResumeLayout(false);
 
