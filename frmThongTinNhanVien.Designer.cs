@@ -29,53 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThongTinNhanVien));
-            this.btnDangXuat = new Sunny.UI.UISymbolButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnDong = new Sunny.UI.UISymbolButton();
-            this.lbTenNhanVien = new Sunny.UI.UILabel();
-            this.uiAvatar1 = new Sunny.UI.UIAvatar();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
-            this.panel74 = new System.Windows.Forms.Panel();
-            this.uiPanel1 = new Sunny.UI.UIPanel();
-            this.panel76 = new System.Windows.Forms.Panel();
-            this.panel77 = new System.Windows.Forms.Panel();
-            this.panel75 = new System.Windows.Forms.Panel();
-            this.panel78 = new System.Windows.Forms.Panel();
-            this.panel69 = new System.Windows.Forms.Panel();
-            this.btnChon = new Sunny.UI.UISymbolButton();
-            this.uiLabel3 = new Sunny.UI.UILabel();
-            this.btnDoi = new Sunny.UI.UISymbolButton();
-            this.panel70 = new System.Windows.Forms.Panel();
-            this.panel71 = new System.Windows.Forms.Panel();
-            this.panel72 = new System.Windows.Forms.Panel();
-            this.panel73 = new System.Windows.Forms.Panel();
-            this.panel64 = new System.Windows.Forms.Panel();
-            this.btnHuy = new Sunny.UI.UISymbolButton();
-            this.panel65 = new System.Windows.Forms.Panel();
-            this.panel66 = new System.Windows.Forms.Panel();
-            this.panel67 = new System.Windows.Forms.Panel();
-            this.panel68 = new System.Windows.Forms.Panel();
-            this.panel58 = new System.Windows.Forms.Panel();
-            this.uiLabel15 = new Sunny.UI.UILabel();
-            this.panel60 = new System.Windows.Forms.Panel();
-            this.panel61 = new System.Windows.Forms.Panel();
-            this.panel62 = new System.Windows.Forms.Panel();
-            this.panel53 = new System.Windows.Forms.Panel();
-            this.txtMatKhauCu = new Sunny.UI.UITextBox();
-            this.uiLabel9 = new Sunny.UI.UILabel();
-            this.panel54 = new System.Windows.Forms.Panel();
-            this.panel55 = new System.Windows.Forms.Panel();
-            this.panel56 = new System.Windows.Forms.Panel();
-            this.panel57 = new System.Windows.Forms.Panel();
-            this.panel48 = new System.Windows.Forms.Panel();
-            this.txtTaiKhoan = new Sunny.UI.UITextBox();
-            this.uiLabel16 = new Sunny.UI.UILabel();
-            this.panel49 = new System.Windows.Forms.Panel();
-            this.panel50 = new System.Windows.Forms.Panel();
-            this.panel51 = new System.Windows.Forms.Panel();
-            this.panel52 = new System.Windows.Forms.Panel();
             this.uiLine1 = new Sunny.UI.UILine();
+            this.uiLine2 = new Sunny.UI.UILine();
+            this.uiLine3 = new Sunny.UI.UILine();
             this.txtChucVu = new Sunny.UI.UIGroupBox();
             this.panel43 = new System.Windows.Forms.Panel();
             this.uiPanel2 = new Sunny.UI.UIPanel();
@@ -139,20 +95,59 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.uiLabel5 = new Sunny.UI.UILabel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel59 = new System.Windows.Forms.Panel();
-            this.pictureBoxMo = new System.Windows.Forms.PictureBox();
-            this.pictureBoxDong = new System.Windows.Forms.PictureBox();
-            this.panel63 = new System.Windows.Forms.Panel();
+            this.uiLine4 = new Sunny.UI.UILine();
+            this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
+            this.panel74 = new System.Windows.Forms.Panel();
+            this.uiPanel1 = new Sunny.UI.UIPanel();
+            this.panel76 = new System.Windows.Forms.Panel();
+            this.panel77 = new System.Windows.Forms.Panel();
+            this.panel75 = new System.Windows.Forms.Panel();
+            this.panel78 = new System.Windows.Forms.Panel();
+            this.panel69 = new System.Windows.Forms.Panel();
+            this.btnChon = new Sunny.UI.UISymbolButton();
+            this.uiLabel3 = new Sunny.UI.UILabel();
+            this.btnDoi = new Sunny.UI.UISymbolButton();
+            this.panel70 = new System.Windows.Forms.Panel();
+            this.panel71 = new System.Windows.Forms.Panel();
+            this.panel72 = new System.Windows.Forms.Panel();
+            this.panel73 = new System.Windows.Forms.Panel();
+            this.panel64 = new System.Windows.Forms.Panel();
+            this.btnHuy = new Sunny.UI.UISymbolButton();
+            this.panel65 = new System.Windows.Forms.Panel();
+            this.panel66 = new System.Windows.Forms.Panel();
+            this.panel67 = new System.Windows.Forms.Panel();
+            this.panel68 = new System.Windows.Forms.Panel();
+            this.panel58 = new System.Windows.Forms.Panel();
             this.txtMatKhauMoi = new Sunny.UI.UITextBox();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.uiGroupBox1.SuspendLayout();
-            this.panel74.SuspendLayout();
-            this.panel69.SuspendLayout();
-            this.panel64.SuspendLayout();
-            this.panel58.SuspendLayout();
-            this.panel53.SuspendLayout();
-            this.panel48.SuspendLayout();
+            this.panel63 = new System.Windows.Forms.Panel();
+            this.pictureBoxDong = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMo = new System.Windows.Forms.PictureBox();
+            this.panel59 = new System.Windows.Forms.Panel();
+            this.uiLabel15 = new Sunny.UI.UILabel();
+            this.panel60 = new System.Windows.Forms.Panel();
+            this.panel61 = new System.Windows.Forms.Panel();
+            this.panel62 = new System.Windows.Forms.Panel();
+            this.panel53 = new System.Windows.Forms.Panel();
+            this.txtMatKhauCu = new Sunny.UI.UITextBox();
+            this.uiLabel9 = new Sunny.UI.UILabel();
+            this.panel54 = new System.Windows.Forms.Panel();
+            this.panel55 = new System.Windows.Forms.Panel();
+            this.panel56 = new System.Windows.Forms.Panel();
+            this.panel57 = new System.Windows.Forms.Panel();
+            this.panel48 = new System.Windows.Forms.Panel();
+            this.txtTaiKhoan = new Sunny.UI.UITextBox();
+            this.uiLabel16 = new Sunny.UI.UILabel();
+            this.panel49 = new System.Windows.Forms.Panel();
+            this.panel50 = new System.Windows.Forms.Panel();
+            this.panel51 = new System.Windows.Forms.Panel();
+            this.panel52 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDong = new Sunny.UI.UISymbolButton();
+            this.lbTenNhanVien = new Sunny.UI.UILabel();
+            this.uiAvatar1 = new Sunny.UI.UIAvatar();
+            this.uiLine5 = new Sunny.UI.UILine();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnDangXuat = new Sunny.UI.UISymbolButton();
             this.txtChucVu.SuspendLayout();
             this.panel43.SuspendLayout();
             this.panel38.SuspendLayout();
@@ -163,105 +158,798 @@
             this.panel13.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMo)).BeginInit();
+            this.uiGroupBox1.SuspendLayout();
+            this.panel74.SuspendLayout();
+            this.panel69.SuspendLayout();
+            this.panel64.SuspendLayout();
+            this.panel58.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDong)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMo)).BeginInit();
+            this.panel53.SuspendLayout();
+            this.panel48.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnDangXuat
+            // uiLine1
             // 
-            this.btnDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDangXuat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDangXuat.FillColor = System.Drawing.Color.Red;
-            this.btnDangXuat.FillColor2 = System.Drawing.Color.Fuchsia;
-            this.btnDangXuat.FillHoverColor = System.Drawing.Color.LightPink;
-            this.btnDangXuat.FillPressColor = System.Drawing.Color.DeepPink;
-            this.btnDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnDangXuat.Location = new System.Drawing.Point(1006, 18);
-            this.btnDangXuat.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.RectColor = System.Drawing.Color.LightPink;
-            this.btnDangXuat.RectSelectedColor = System.Drawing.Color.DeepPink;
-            this.btnDangXuat.Size = new System.Drawing.Size(167, 45);
-            this.btnDangXuat.Symbol = 61579;
-            this.btnDangXuat.SymbolSize = 30;
-            this.btnDangXuat.TabIndex = 165;
-            this.btnDangXuat.Text = "Đăng xuất ";
-            this.btnDangXuat.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
+            this.uiLine1.BackColor = System.Drawing.Color.Transparent;
+            this.uiLine1.Direction = Sunny.UI.UILine.LineDirection.Vertical;
+            this.uiLine1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiLine1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLine1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLine1.LineColor = System.Drawing.Color.HotPink;
+            this.uiLine1.LineSize = 3;
+            this.uiLine1.Location = new System.Drawing.Point(0, 0);
+            this.uiLine1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLine1.Name = "uiLine1";
+            this.uiLine1.Size = new System.Drawing.Size(11, 750);
+            this.uiLine1.TabIndex = 169;
             // 
-            // panel1
+            // uiLine2
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Window;
-            this.panel1.Controls.Add(this.btnDong);
-            this.panel1.Controls.Add(this.lbTenNhanVien);
-            this.panel1.Controls.Add(this.uiAvatar1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1200, 63);
-            this.panel1.TabIndex = 167;
+            this.uiLine2.BackColor = System.Drawing.Color.Transparent;
+            this.uiLine2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.uiLine2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLine2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLine2.LineColor = System.Drawing.Color.HotPink;
+            this.uiLine2.LineSize = 3;
+            this.uiLine2.Location = new System.Drawing.Point(11, 739);
+            this.uiLine2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLine2.Name = "uiLine2";
+            this.uiLine2.Size = new System.Drawing.Size(1189, 11);
+            this.uiLine2.TabIndex = 170;
             // 
-            // btnDong
+            // uiLine3
             // 
-            this.btnDong.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDong.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnDong.FillColor = System.Drawing.Color.Transparent;
-            this.btnDong.FillColor2 = System.Drawing.Color.Fuchsia;
-            this.btnDong.FillHoverColor = System.Drawing.Color.LightPink;
-            this.btnDong.FillPressColor = System.Drawing.Color.DeepPink;
-            this.btnDong.FillSelectedColor = System.Drawing.Color.White;
-            this.btnDong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnDong.Location = new System.Drawing.Point(1073, 0);
-            this.btnDong.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnDong.Name = "btnDong";
-            this.btnDong.Radius = 1;
-            this.btnDong.RectColor = System.Drawing.Color.Transparent;
-            this.btnDong.RectHoverColor = System.Drawing.Color.White;
-            this.btnDong.RectPressColor = System.Drawing.Color.White;
-            this.btnDong.RectSelectedColor = System.Drawing.Color.DeepPink;
-            this.btnDong.Size = new System.Drawing.Size(127, 63);
-            this.btnDong.Symbol = 61527;
-            this.btnDong.SymbolColor = System.Drawing.Color.DeepPink;
-            this.btnDong.SymbolHoverColor = System.Drawing.Color.Pink;
-            this.btnDong.SymbolSize = 45;
-            this.btnDong.TabIndex = 168;
-            this.btnDong.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.uiLine3.BackColor = System.Drawing.Color.Transparent;
+            this.uiLine3.Direction = Sunny.UI.UILine.LineDirection.Vertical;
+            this.uiLine3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.uiLine3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLine3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLine3.LineColor = System.Drawing.Color.HotPink;
+            this.uiLine3.LineSize = 3;
+            this.uiLine3.Location = new System.Drawing.Point(1190, 0);
+            this.uiLine3.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLine3.Name = "uiLine3";
+            this.uiLine3.Size = new System.Drawing.Size(10, 739);
+            this.uiLine3.TabIndex = 171;
             // 
-            // lbTenNhanVien
+            // txtChucVu
             // 
-            this.lbTenNhanVien.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbTenNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTenNhanVien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.lbTenNhanVien.Location = new System.Drawing.Point(80, 0);
-            this.lbTenNhanVien.Name = "lbTenNhanVien";
-            this.lbTenNhanVien.Size = new System.Drawing.Size(622, 63);
-            this.lbTenNhanVien.TabIndex = 169;
-            this.lbTenNhanVien.Text = "Nhân viên: ";
-            this.lbTenNhanVien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtChucVu.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.txtChucVu.Controls.Add(this.panel43);
+            this.txtChucVu.Controls.Add(this.panel38);
+            this.txtChucVu.Controls.Add(this.panel33);
+            this.txtChucVu.Controls.Add(this.panel28);
+            this.txtChucVu.Controls.Add(this.panel23);
+            this.txtChucVu.Controls.Add(this.panel18);
+            this.txtChucVu.Controls.Add(this.panel13);
+            this.txtChucVu.Controls.Add(this.panel8);
+            this.txtChucVu.Controls.Add(this.panel3);
+            this.txtChucVu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtChucVu.FillColor = System.Drawing.Color.White;
+            this.txtChucVu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtChucVu.ForeColor = System.Drawing.Color.DeepPink;
+            this.txtChucVu.Location = new System.Drawing.Point(11, 63);
+            this.txtChucVu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtChucVu.MinimumSize = new System.Drawing.Size(1, 1);
+            this.txtChucVu.Name = "txtChucVu";
+            this.txtChucVu.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.txtChucVu.Radius = 20;
+            this.txtChucVu.RectColor = System.Drawing.Color.HotPink;
+            this.txtChucVu.Size = new System.Drawing.Size(669, 601);
+            this.txtChucVu.TabIndex = 189;
+            this.txtChucVu.Text = "Thông tin nhân viên ";
+            this.txtChucVu.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiAvatar1
+            // panel43
             // 
-            this.uiAvatar1.AvatarSize = 50;
-            this.uiAvatar1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiAvatar1.FillColor = System.Drawing.Color.LavenderBlush;
-            this.uiAvatar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.uiAvatar1.ForeColor = System.Drawing.Color.HotPink;
-            this.uiAvatar1.Location = new System.Drawing.Point(0, 0);
-            this.uiAvatar1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiAvatar1.Name = "uiAvatar1";
-            this.uiAvatar1.Size = new System.Drawing.Size(80, 63);
-            this.uiAvatar1.SymbolSize = 26;
-            this.uiAvatar1.TabIndex = 170;
-            this.uiAvatar1.Text = "uiAvatar1";
+            this.panel43.Controls.Add(this.uiPanel2);
+            this.panel43.Controls.Add(this.panel44);
+            this.panel43.Controls.Add(this.panel45);
+            this.panel43.Controls.Add(this.panel46);
+            this.panel43.Controls.Add(this.panel47);
+            this.panel43.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel43.Location = new System.Drawing.Point(0, 307);
+            this.panel43.Name = "panel43";
+            this.panel43.Size = new System.Drawing.Size(669, 129);
+            this.panel43.TabIndex = 136;
             // 
-            // panel2
+            // uiPanel2
             // 
-            this.panel2.Controls.Add(this.btnDangXuat);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 675);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1200, 75);
-            this.panel2.TabIndex = 168;
+            this.uiPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiPanel2.FillColor = System.Drawing.Color.HotPink;
+            this.uiPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.uiPanel2.Location = new System.Drawing.Point(42, 71);
+            this.uiPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPanel2.Name = "uiPanel2";
+            this.uiPanel2.Radius = 1;
+            this.uiPanel2.RectColor = System.Drawing.Color.DeepPink;
+            this.uiPanel2.Size = new System.Drawing.Size(606, 1);
+            this.uiPanel2.TabIndex = 126;
+            this.uiPanel2.Text = null;
+            this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel44
+            // 
+            this.panel44.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel44.Location = new System.Drawing.Point(648, 71);
+            this.panel44.Name = "panel44";
+            this.panel44.Size = new System.Drawing.Size(21, 0);
+            this.panel44.TabIndex = 125;
+            // 
+            // panel45
+            // 
+            this.panel45.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel45.Location = new System.Drawing.Point(42, 66);
+            this.panel45.Name = "panel45";
+            this.panel45.Size = new System.Drawing.Size(627, 63);
+            this.panel45.TabIndex = 124;
+            // 
+            // panel46
+            // 
+            this.panel46.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel46.Location = new System.Drawing.Point(42, 0);
+            this.panel46.Name = "panel46";
+            this.panel46.Size = new System.Drawing.Size(627, 71);
+            this.panel46.TabIndex = 123;
+            // 
+            // panel47
+            // 
+            this.panel47.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel47.Location = new System.Drawing.Point(0, 0);
+            this.panel47.Name = "panel47";
+            this.panel47.Size = new System.Drawing.Size(42, 129);
+            this.panel47.TabIndex = 122;
+            // 
+            // panel38
+            // 
+            this.panel38.Controls.Add(this.txtNgayVaoLam);
+            this.panel38.Controls.Add(this.uiLabel2);
+            this.panel38.Controls.Add(this.panel39);
+            this.panel38.Controls.Add(this.panel40);
+            this.panel38.Controls.Add(this.panel41);
+            this.panel38.Controls.Add(this.panel42);
+            this.panel38.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel38.Location = new System.Drawing.Point(0, 436);
+            this.panel38.Name = "panel38";
+            this.panel38.Size = new System.Drawing.Size(669, 55);
+            this.panel38.TabIndex = 134;
+            // 
+            // txtNgayVaoLam
+            // 
+            this.txtNgayVaoLam.DateFormat = "dd-MM-yyyy";
+            this.txtNgayVaoLam.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtNgayVaoLam.FillColor = System.Drawing.Color.White;
+            this.txtNgayVaoLam.FillColor2 = System.Drawing.Color.HotPink;
+            this.txtNgayVaoLam.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtNgayVaoLam.Location = new System.Drawing.Point(215, 10);
+            this.txtNgayVaoLam.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNgayVaoLam.MaxLength = 10;
+            this.txtNgayVaoLam.MinimumSize = new System.Drawing.Size(63, 0);
+            this.txtNgayVaoLam.Name = "txtNgayVaoLam";
+            this.txtNgayVaoLam.Padding = new System.Windows.Forms.Padding(10, 10, 30, 10);
+            this.txtNgayVaoLam.RectColor = System.Drawing.Color.HotPink;
+            this.txtNgayVaoLam.Size = new System.Drawing.Size(433, 35);
+            this.txtNgayVaoLam.SymbolDropDown = 61555;
+            this.txtNgayVaoLam.SymbolNormal = 61555;
+            this.txtNgayVaoLam.SymbolSize = 24;
+            this.txtNgayVaoLam.TabIndex = 127;
+            this.txtNgayVaoLam.Text = "29-10-2024";
+            this.txtNgayVaoLam.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtNgayVaoLam.Value = new System.DateTime(2024, 10, 29, 0, 0, 0, 0);
+            this.txtNgayVaoLam.Watermark = "";
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel2.Location = new System.Drawing.Point(42, 10);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(173, 35);
+            this.uiLabel2.TabIndex = 126;
+            this.uiLabel2.Text = "Ngày vào làm:";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel39
+            // 
+            this.panel39.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel39.Location = new System.Drawing.Point(648, 10);
+            this.panel39.Name = "panel39";
+            this.panel39.Size = new System.Drawing.Size(21, 35);
+            this.panel39.TabIndex = 125;
+            // 
+            // panel40
+            // 
+            this.panel40.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel40.Location = new System.Drawing.Point(42, 45);
+            this.panel40.Name = "panel40";
+            this.panel40.Size = new System.Drawing.Size(627, 10);
+            this.panel40.TabIndex = 124;
+            // 
+            // panel41
+            // 
+            this.panel41.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel41.Location = new System.Drawing.Point(42, 0);
+            this.panel41.Name = "panel41";
+            this.panel41.Size = new System.Drawing.Size(627, 10);
+            this.panel41.TabIndex = 123;
+            // 
+            // panel42
+            // 
+            this.panel42.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel42.Location = new System.Drawing.Point(0, 0);
+            this.panel42.Name = "panel42";
+            this.panel42.Size = new System.Drawing.Size(42, 55);
+            this.panel42.TabIndex = 122;
+            // 
+            // panel33
+            // 
+            this.panel33.Controls.Add(this.txtLuong);
+            this.panel33.Controls.Add(this.uiLabel12);
+            this.panel33.Controls.Add(this.panel34);
+            this.panel33.Controls.Add(this.panel35);
+            this.panel33.Controls.Add(this.panel36);
+            this.panel33.Controls.Add(this.panel37);
+            this.panel33.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel33.Location = new System.Drawing.Point(0, 491);
+            this.panel33.Name = "panel33";
+            this.panel33.Size = new System.Drawing.Size(669, 55);
+            this.panel33.TabIndex = 133;
+            // 
+            // txtLuong
+            // 
+            this.txtLuong.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtLuong.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtLuong.Location = new System.Drawing.Point(215, 10);
+            this.txtLuong.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLuong.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtLuong.Name = "txtLuong";
+            this.txtLuong.Padding = new System.Windows.Forms.Padding(10);
+            this.txtLuong.Radius = 10;
+            this.txtLuong.RectColor = System.Drawing.Color.HotPink;
+            this.txtLuong.ShowText = false;
+            this.txtLuong.Size = new System.Drawing.Size(433, 35);
+            this.txtLuong.TabIndex = 127;
+            this.txtLuong.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtLuong.Watermark = "";
+            // 
+            // uiLabel12
+            // 
+            this.uiLabel12.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel12.Location = new System.Drawing.Point(42, 10);
+            this.uiLabel12.Name = "uiLabel12";
+            this.uiLabel12.Size = new System.Drawing.Size(173, 35);
+            this.uiLabel12.TabIndex = 126;
+            this.uiLabel12.Text = "Lương cơ bản:";
+            this.uiLabel12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel34
+            // 
+            this.panel34.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel34.Location = new System.Drawing.Point(648, 10);
+            this.panel34.Name = "panel34";
+            this.panel34.Size = new System.Drawing.Size(21, 35);
+            this.panel34.TabIndex = 125;
+            // 
+            // panel35
+            // 
+            this.panel35.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel35.Location = new System.Drawing.Point(42, 45);
+            this.panel35.Name = "panel35";
+            this.panel35.Size = new System.Drawing.Size(627, 10);
+            this.panel35.TabIndex = 124;
+            // 
+            // panel36
+            // 
+            this.panel36.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel36.Location = new System.Drawing.Point(42, 0);
+            this.panel36.Name = "panel36";
+            this.panel36.Size = new System.Drawing.Size(627, 10);
+            this.panel36.TabIndex = 123;
+            // 
+            // panel37
+            // 
+            this.panel37.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel37.Location = new System.Drawing.Point(0, 0);
+            this.panel37.Name = "panel37";
+            this.panel37.Size = new System.Drawing.Size(42, 55);
+            this.panel37.TabIndex = 122;
+            // 
+            // panel28
+            // 
+            this.panel28.Controls.Add(this.btnSua);
+            this.panel28.Controls.Add(this.btnLamMoi);
+            this.panel28.Controls.Add(this.panel29);
+            this.panel28.Controls.Add(this.panel30);
+            this.panel28.Controls.Add(this.panel31);
+            this.panel28.Controls.Add(this.panel32);
+            this.panel28.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel28.Location = new System.Drawing.Point(0, 546);
+            this.panel28.Name = "panel28";
+            this.panel28.Size = new System.Drawing.Size(669, 55);
+            this.panel28.TabIndex = 132;
+            // 
+            // btnSua
+            // 
+            this.btnSua.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSua.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSua.FillColor = System.Drawing.Color.HotPink;
+            this.btnSua.FillColor2 = System.Drawing.Color.Fuchsia;
+            this.btnSua.FillHoverColor = System.Drawing.Color.LightPink;
+            this.btnSua.FillPressColor = System.Drawing.Color.DeepPink;
+            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnSua.Location = new System.Drawing.Point(481, 10);
+            this.btnSua.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.RectColor = System.Drawing.Color.LightPink;
+            this.btnSua.RectHoverColor = System.Drawing.Color.DeepPink;
+            this.btnSua.RectSelectedColor = System.Drawing.Color.DeepPink;
+            this.btnSua.Size = new System.Drawing.Size(167, 35);
+            this.btnSua.Symbol = 61508;
+            this.btnSua.TabIndex = 127;
+            this.btnSua.Text = "Sửa ";
+            this.btnSua.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            // 
+            // btnLamMoi
+            // 
+            this.btnLamMoi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLamMoi.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnLamMoi.FillColor = System.Drawing.Color.HotPink;
+            this.btnLamMoi.FillColor2 = System.Drawing.Color.Fuchsia;
+            this.btnLamMoi.FillHoverColor = System.Drawing.Color.LightPink;
+            this.btnLamMoi.FillPressColor = System.Drawing.Color.DeepPink;
+            this.btnLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnLamMoi.Location = new System.Drawing.Point(42, 10);
+            this.btnLamMoi.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnLamMoi.Name = "btnLamMoi";
+            this.btnLamMoi.RectColor = System.Drawing.Color.LightPink;
+            this.btnLamMoi.RectSelectedColor = System.Drawing.Color.DeepPink;
+            this.btnLamMoi.Size = new System.Drawing.Size(167, 35);
+            this.btnLamMoi.Symbol = 61473;
+            this.btnLamMoi.TabIndex = 126;
+            this.btnLamMoi.Text = "Làm mới ";
+            this.btnLamMoi.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            // 
+            // panel29
+            // 
+            this.panel29.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel29.Location = new System.Drawing.Point(648, 10);
+            this.panel29.Name = "panel29";
+            this.panel29.Size = new System.Drawing.Size(21, 35);
+            this.panel29.TabIndex = 125;
+            // 
+            // panel30
+            // 
+            this.panel30.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel30.Location = new System.Drawing.Point(42, 45);
+            this.panel30.Name = "panel30";
+            this.panel30.Size = new System.Drawing.Size(627, 10);
+            this.panel30.TabIndex = 124;
+            // 
+            // panel31
+            // 
+            this.panel31.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel31.Location = new System.Drawing.Point(42, 0);
+            this.panel31.Name = "panel31";
+            this.panel31.Size = new System.Drawing.Size(627, 10);
+            this.panel31.TabIndex = 123;
+            // 
+            // panel32
+            // 
+            this.panel32.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel32.Location = new System.Drawing.Point(0, 0);
+            this.panel32.Name = "panel32";
+            this.panel32.Size = new System.Drawing.Size(42, 55);
+            this.panel32.TabIndex = 122;
+            // 
+            // panel23
+            // 
+            this.panel23.Controls.Add(this.txtChucVuNV);
+            this.panel23.Controls.Add(this.panel24);
+            this.panel23.Controls.Add(this.panel25);
+            this.panel23.Controls.Add(this.panel26);
+            this.panel23.Controls.Add(this.uiLabel8);
+            this.panel23.Controls.Add(this.panel27);
+            this.panel23.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel23.Location = new System.Drawing.Point(0, 252);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(669, 55);
+            this.panel23.TabIndex = 131;
+            // 
+            // txtChucVuNV
+            // 
+            this.txtChucVuNV.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtChucVuNV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtChucVuNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtChucVuNV.Location = new System.Drawing.Point(215, 10);
+            this.txtChucVuNV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtChucVuNV.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtChucVuNV.Name = "txtChucVuNV";
+            this.txtChucVuNV.Padding = new System.Windows.Forms.Padding(10);
+            this.txtChucVuNV.Radius = 10;
+            this.txtChucVuNV.RectColor = System.Drawing.Color.HotPink;
+            this.txtChucVuNV.ShowText = false;
+            this.txtChucVuNV.Size = new System.Drawing.Size(433, 35);
+            this.txtChucVuNV.TabIndex = 127;
+            this.txtChucVuNV.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtChucVuNV.Watermark = "";
+            // 
+            // panel24
+            // 
+            this.panel24.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel24.Location = new System.Drawing.Point(648, 10);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(21, 35);
+            this.panel24.TabIndex = 125;
+            // 
+            // panel25
+            // 
+            this.panel25.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel25.Location = new System.Drawing.Point(215, 45);
+            this.panel25.Name = "panel25";
+            this.panel25.Size = new System.Drawing.Size(454, 10);
+            this.panel25.TabIndex = 124;
+            // 
+            // panel26
+            // 
+            this.panel26.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel26.Location = new System.Drawing.Point(215, 0);
+            this.panel26.Name = "panel26";
+            this.panel26.Size = new System.Drawing.Size(454, 10);
+            this.panel26.TabIndex = 123;
+            // 
+            // uiLabel8
+            // 
+            this.uiLabel8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel8.Location = new System.Drawing.Point(42, 0);
+            this.uiLabel8.Name = "uiLabel8";
+            this.uiLabel8.Size = new System.Drawing.Size(173, 55);
+            this.uiLabel8.TabIndex = 120;
+            this.uiLabel8.Text = "Chức vụ:";
+            this.uiLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel27
+            // 
+            this.panel27.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel27.Location = new System.Drawing.Point(0, 0);
+            this.panel27.Name = "panel27";
+            this.panel27.Size = new System.Drawing.Size(42, 55);
+            this.panel27.TabIndex = 122;
+            // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.txtSDT);
+            this.panel18.Controls.Add(this.panel19);
+            this.panel18.Controls.Add(this.panel20);
+            this.panel18.Controls.Add(this.panel21);
+            this.panel18.Controls.Add(this.uiLabel7);
+            this.panel18.Controls.Add(this.panel22);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel18.Location = new System.Drawing.Point(0, 197);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(669, 55);
+            this.panel18.TabIndex = 130;
+            // 
+            // txtSDT
+            // 
+            this.txtSDT.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSDT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtSDT.Location = new System.Drawing.Point(215, 10);
+            this.txtSDT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSDT.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Padding = new System.Windows.Forms.Padding(10);
+            this.txtSDT.Radius = 10;
+            this.txtSDT.RectColor = System.Drawing.Color.HotPink;
+            this.txtSDT.ShowText = false;
+            this.txtSDT.Size = new System.Drawing.Size(433, 35);
+            this.txtSDT.TabIndex = 126;
+            this.txtSDT.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtSDT.Watermark = "";
+            // 
+            // panel19
+            // 
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel19.Location = new System.Drawing.Point(648, 10);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(21, 35);
+            this.panel19.TabIndex = 125;
+            // 
+            // panel20
+            // 
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel20.Location = new System.Drawing.Point(215, 45);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(454, 10);
+            this.panel20.TabIndex = 124;
+            // 
+            // panel21
+            // 
+            this.panel21.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel21.Location = new System.Drawing.Point(215, 0);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(454, 10);
+            this.panel21.TabIndex = 123;
+            // 
+            // uiLabel7
+            // 
+            this.uiLabel7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel7.Location = new System.Drawing.Point(42, 0);
+            this.uiLabel7.Name = "uiLabel7";
+            this.uiLabel7.Size = new System.Drawing.Size(173, 55);
+            this.uiLabel7.TabIndex = 120;
+            this.uiLabel7.Text = "Số điện thoại:";
+            this.uiLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel22
+            // 
+            this.panel22.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel22.Location = new System.Drawing.Point(0, 0);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(42, 55);
+            this.panel22.TabIndex = 122;
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.txtDiaChi);
+            this.panel13.Controls.Add(this.panel14);
+            this.panel13.Controls.Add(this.panel15);
+            this.panel13.Controls.Add(this.panel16);
+            this.panel13.Controls.Add(this.uiLabel4);
+            this.panel13.Controls.Add(this.panel17);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel13.Location = new System.Drawing.Point(0, 142);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(669, 55);
+            this.panel13.TabIndex = 129;
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDiaChi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtDiaChi.Location = new System.Drawing.Point(215, 10);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDiaChi.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Padding = new System.Windows.Forms.Padding(10);
+            this.txtDiaChi.Radius = 10;
+            this.txtDiaChi.RectColor = System.Drawing.Color.HotPink;
+            this.txtDiaChi.ShowText = false;
+            this.txtDiaChi.Size = new System.Drawing.Size(433, 35);
+            this.txtDiaChi.TabIndex = 126;
+            this.txtDiaChi.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtDiaChi.Watermark = "";
+            // 
+            // panel14
+            // 
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel14.Location = new System.Drawing.Point(648, 10);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(21, 35);
+            this.panel14.TabIndex = 125;
+            // 
+            // panel15
+            // 
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel15.Location = new System.Drawing.Point(215, 45);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(454, 10);
+            this.panel15.TabIndex = 124;
+            // 
+            // panel16
+            // 
+            this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel16.Location = new System.Drawing.Point(215, 0);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(454, 10);
+            this.panel16.TabIndex = 123;
+            // 
+            // uiLabel4
+            // 
+            this.uiLabel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel4.Location = new System.Drawing.Point(42, 0);
+            this.uiLabel4.Name = "uiLabel4";
+            this.uiLabel4.Size = new System.Drawing.Size(173, 55);
+            this.uiLabel4.TabIndex = 120;
+            this.uiLabel4.Text = "Địa chỉ:";
+            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel17
+            // 
+            this.panel17.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel17.Location = new System.Drawing.Point(0, 0);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(42, 55);
+            this.panel17.TabIndex = 122;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.txtNgaySinh);
+            this.panel8.Controls.Add(this.panel9);
+            this.panel8.Controls.Add(this.panel10);
+            this.panel8.Controls.Add(this.panel11);
+            this.panel8.Controls.Add(this.uiLabel1);
+            this.panel8.Controls.Add(this.panel12);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 87);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(669, 55);
+            this.panel8.TabIndex = 128;
+            // 
+            // txtNgaySinh
+            // 
+            this.txtNgaySinh.DateFormat = "dd-MM-yyyy";
+            this.txtNgaySinh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtNgaySinh.FillColor = System.Drawing.Color.White;
+            this.txtNgaySinh.FillColor2 = System.Drawing.Color.HotPink;
+            this.txtNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtNgaySinh.Location = new System.Drawing.Point(215, 10);
+            this.txtNgaySinh.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNgaySinh.MaxLength = 10;
+            this.txtNgaySinh.MinimumSize = new System.Drawing.Size(63, 0);
+            this.txtNgaySinh.Name = "txtNgaySinh";
+            this.txtNgaySinh.Padding = new System.Windows.Forms.Padding(10, 10, 30, 10);
+            this.txtNgaySinh.Radius = 10;
+            this.txtNgaySinh.RectColor = System.Drawing.Color.HotPink;
+            this.txtNgaySinh.Size = new System.Drawing.Size(433, 35);
+            this.txtNgaySinh.SymbolDropDown = 61555;
+            this.txtNgaySinh.SymbolNormal = 61555;
+            this.txtNgaySinh.SymbolSize = 24;
+            this.txtNgaySinh.TabIndex = 126;
+            this.txtNgaySinh.Text = "29-10-2024";
+            this.txtNgaySinh.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtNgaySinh.Value = new System.DateTime(2024, 10, 29, 0, 0, 0, 0);
+            this.txtNgaySinh.Watermark = "";
+            // 
+            // panel9
+            // 
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel9.Location = new System.Drawing.Point(648, 10);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(21, 35);
+            this.panel9.TabIndex = 125;
+            // 
+            // panel10
+            // 
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel10.Location = new System.Drawing.Point(215, 45);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(454, 10);
+            this.panel10.TabIndex = 124;
+            // 
+            // panel11
+            // 
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel11.Location = new System.Drawing.Point(215, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(454, 10);
+            this.panel11.TabIndex = 123;
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel1.Location = new System.Drawing.Point(42, 0);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(173, 55);
+            this.uiLabel1.TabIndex = 120;
+            this.uiLabel1.Text = "Ngày sinh:";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel12
+            // 
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel12.Location = new System.Drawing.Point(0, 0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(42, 55);
+            this.panel12.TabIndex = 122;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txtTenNV);
+            this.panel3.Controls.Add(this.panel7);
+            this.panel3.Controls.Add(this.panel6);
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Controls.Add(this.uiLabel5);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 32);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(669, 55);
+            this.panel3.TabIndex = 127;
+            // 
+            // txtTenNV
+            // 
+            this.txtTenNV.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTenNV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtTenNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtTenNV.Location = new System.Drawing.Point(215, 10);
+            this.txtTenNV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTenNV.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtTenNV.Name = "txtTenNV";
+            this.txtTenNV.Padding = new System.Windows.Forms.Padding(10);
+            this.txtTenNV.Radius = 10;
+            this.txtTenNV.RectColor = System.Drawing.Color.HotPink;
+            this.txtTenNV.ShowText = false;
+            this.txtTenNV.Size = new System.Drawing.Size(433, 35);
+            this.txtTenNV.TabIndex = 126;
+            this.txtTenNV.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtTenNV.Watermark = "";
+            // 
+            // panel7
+            // 
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel7.Location = new System.Drawing.Point(648, 10);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(21, 35);
+            this.panel7.TabIndex = 125;
+            // 
+            // panel6
+            // 
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(215, 45);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(454, 10);
+            this.panel6.TabIndex = 124;
+            // 
+            // panel5
+            // 
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(215, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(454, 10);
+            this.panel5.TabIndex = 123;
+            // 
+            // uiLabel5
+            // 
+            this.uiLabel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel5.Location = new System.Drawing.Point(42, 0);
+            this.uiLabel5.Name = "uiLabel5";
+            this.uiLabel5.Size = new System.Drawing.Size(173, 55);
+            this.uiLabel5.TabIndex = 120;
+            this.uiLabel5.Text = "Tên nhân viên:";
+            this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel4
+            // 
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(42, 55);
+            this.panel4.TabIndex = 122;
+            // 
+            // uiLine4
+            // 
+            this.uiLine4.BackColor = System.Drawing.Color.Transparent;
+            this.uiLine4.Direction = Sunny.UI.UILine.LineDirection.Vertical;
+            this.uiLine4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.uiLine4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLine4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLine4.LineColor = System.Drawing.Color.HotPink;
+            this.uiLine4.LineSize = 3;
+            this.uiLine4.Location = new System.Drawing.Point(680, 63);
+            this.uiLine4.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLine4.Name = "uiLine4";
+            this.uiLine4.Size = new System.Drawing.Size(12, 601);
+            this.uiLine4.TabIndex = 186;
             // 
             // uiGroupBox1
             // 
@@ -276,15 +964,15 @@
             this.uiGroupBox1.FillColor = System.Drawing.Color.White;
             this.uiGroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.uiGroupBox1.ForeColor = System.Drawing.Color.DeepPink;
-            this.uiGroupBox1.Location = new System.Drawing.Point(702, 63);
+            this.uiGroupBox1.Location = new System.Drawing.Point(692, 63);
             this.uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox1.Name = "uiGroupBox1";
             this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox1.Radius = 20;
             this.uiGroupBox1.RectColor = System.Drawing.Color.HotPink;
-            this.uiGroupBox1.Size = new System.Drawing.Size(498, 612);
-            this.uiGroupBox1.TabIndex = 175;
+            this.uiGroupBox1.Size = new System.Drawing.Size(498, 601);
+            this.uiGroupBox1.TabIndex = 188;
             this.uiGroupBox1.Text = "Đổi mật khẩu ";
             this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -298,7 +986,7 @@
             this.panel74.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel74.Location = new System.Drawing.Point(0, 197);
             this.panel74.Name = "panel74";
-            this.panel74.Size = new System.Drawing.Size(498, 305);
+            this.panel74.Size = new System.Drawing.Size(498, 294);
             this.panel74.TabIndex = 166;
             // 
             // uiPanel1
@@ -312,7 +1000,7 @@
             this.uiPanel1.Name = "uiPanel1";
             this.uiPanel1.Radius = 1;
             this.uiPanel1.RectColor = System.Drawing.Color.DeepPink;
-            this.uiPanel1.Size = new System.Drawing.Size(435, 6);
+            this.uiPanel1.Size = new System.Drawing.Size(435, 1);
             this.uiPanel1.TabIndex = 128;
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -320,7 +1008,7 @@
             // panel76
             // 
             this.panel76.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel76.Location = new System.Drawing.Point(42, 187);
+            this.panel76.Location = new System.Drawing.Point(42, 176);
             this.panel76.Name = "panel76";
             this.panel76.Size = new System.Drawing.Size(435, 118);
             this.panel76.TabIndex = 127;
@@ -338,7 +1026,7 @@
             this.panel75.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel75.Location = new System.Drawing.Point(477, 0);
             this.panel75.Name = "panel75";
-            this.panel75.Size = new System.Drawing.Size(21, 305);
+            this.panel75.Size = new System.Drawing.Size(21, 294);
             this.panel75.TabIndex = 125;
             // 
             // panel78
@@ -346,7 +1034,7 @@
             this.panel78.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel78.Location = new System.Drawing.Point(0, 0);
             this.panel78.Name = "panel78";
-            this.panel78.Size = new System.Drawing.Size(42, 305);
+            this.panel78.Size = new System.Drawing.Size(42, 294);
             this.panel78.TabIndex = 122;
             // 
             // panel69
@@ -359,7 +1047,7 @@
             this.panel69.Controls.Add(this.panel72);
             this.panel69.Controls.Add(this.panel73);
             this.panel69.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel69.Location = new System.Drawing.Point(0, 502);
+            this.panel69.Location = new System.Drawing.Point(0, 491);
             this.panel69.Name = "panel69";
             this.panel69.Size = new System.Drawing.Size(498, 55);
             this.panel69.TabIndex = 165;
@@ -383,7 +1071,6 @@
             this.btnChon.Symbol = 61508;
             this.btnChon.TabIndex = 163;
             this.btnChon.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnChon.Click += new System.EventHandler(this.btnChon_Click_1);
             // 
             // uiLabel3
             // 
@@ -416,7 +1103,6 @@
             this.btnDoi.TabIndex = 160;
             this.btnDoi.Text = "Đổi";
             this.btnDoi.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnDoi.Click += new System.EventHandler(this.btnDoi_Click);
             // 
             // panel70
             // 
@@ -458,7 +1144,7 @@
             this.panel64.Controls.Add(this.panel67);
             this.panel64.Controls.Add(this.panel68);
             this.panel64.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel64.Location = new System.Drawing.Point(0, 557);
+            this.panel64.Location = new System.Drawing.Point(0, 546);
             this.panel64.Name = "panel64";
             this.panel64.Size = new System.Drawing.Size(498, 55);
             this.panel64.TabIndex = 164;
@@ -482,7 +1168,6 @@
             this.btnHuy.TabIndex = 151;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // panel65
             // 
@@ -532,6 +1217,62 @@
             this.panel58.Name = "panel58";
             this.panel58.Size = new System.Drawing.Size(498, 55);
             this.panel58.TabIndex = 163;
+            // 
+            // txtMatKhauMoi
+            // 
+            this.txtMatKhauMoi.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMatKhauMoi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtMatKhauMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtMatKhauMoi.Location = new System.Drawing.Point(181, 10);
+            this.txtMatKhauMoi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtMatKhauMoi.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtMatKhauMoi.Name = "txtMatKhauMoi";
+            this.txtMatKhauMoi.Padding = new System.Windows.Forms.Padding(10);
+            this.txtMatKhauMoi.Radius = 10;
+            this.txtMatKhauMoi.RectColor = System.Drawing.Color.HotPink;
+            this.txtMatKhauMoi.ShowText = false;
+            this.txtMatKhauMoi.Size = new System.Drawing.Size(231, 35);
+            this.txtMatKhauMoi.TabIndex = 165;
+            this.txtMatKhauMoi.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtMatKhauMoi.Watermark = "";
+            // 
+            // panel63
+            // 
+            this.panel63.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel63.Location = new System.Drawing.Point(412, 10);
+            this.panel63.Name = "panel63";
+            this.panel63.Size = new System.Drawing.Size(12, 35);
+            this.panel63.TabIndex = 164;
+            // 
+            // pictureBoxDong
+            // 
+            this.pictureBoxDong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxDong.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxDong.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxDong.Image")));
+            this.pictureBoxDong.Location = new System.Drawing.Point(424, 10);
+            this.pictureBoxDong.Name = "pictureBoxDong";
+            this.pictureBoxDong.Size = new System.Drawing.Size(36, 35);
+            this.pictureBoxDong.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDong.TabIndex = 163;
+            this.pictureBoxDong.TabStop = false;
+            // 
+            // pictureBoxMo
+            // 
+            this.pictureBoxMo.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBoxMo.Location = new System.Drawing.Point(424, 10);
+            this.pictureBoxMo.Name = "pictureBoxMo";
+            this.pictureBoxMo.Size = new System.Drawing.Size(36, 35);
+            this.pictureBoxMo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxMo.TabIndex = 160;
+            this.pictureBoxMo.TabStop = false;
+            // 
+            // panel59
+            // 
+            this.panel59.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel59.Location = new System.Drawing.Point(460, 10);
+            this.panel59.Name = "panel59";
+            this.panel59.Size = new System.Drawing.Size(38, 35);
+            this.panel59.TabIndex = 157;
             // 
             // uiLabel15
             // 
@@ -721,800 +1462,115 @@
             this.panel52.Size = new System.Drawing.Size(42, 55);
             this.panel52.TabIndex = 122;
             // 
-            // uiLine1
-            // 
-            this.uiLine1.BackColor = System.Drawing.Color.Transparent;
-            this.uiLine1.Direction = Sunny.UI.UILine.LineDirection.Vertical;
-            this.uiLine1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.uiLine1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiLine1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLine1.LineColor = System.Drawing.Color.HotPink;
-            this.uiLine1.LineSize = 3;
-            this.uiLine1.Location = new System.Drawing.Point(690, 63);
-            this.uiLine1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiLine1.Name = "uiLine1";
-            this.uiLine1.Size = new System.Drawing.Size(12, 612);
-            this.uiLine1.TabIndex = 137;
-            // 
-            // txtChucVu
-            // 
-            this.txtChucVu.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.txtChucVu.Controls.Add(this.panel43);
-            this.txtChucVu.Controls.Add(this.panel38);
-            this.txtChucVu.Controls.Add(this.panel33);
-            this.txtChucVu.Controls.Add(this.panel28);
-            this.txtChucVu.Controls.Add(this.panel23);
-            this.txtChucVu.Controls.Add(this.panel18);
-            this.txtChucVu.Controls.Add(this.panel13);
-            this.txtChucVu.Controls.Add(this.panel8);
-            this.txtChucVu.Controls.Add(this.panel3);
-            this.txtChucVu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtChucVu.FillColor = System.Drawing.Color.White;
-            this.txtChucVu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtChucVu.ForeColor = System.Drawing.Color.DeepPink;
-            this.txtChucVu.Location = new System.Drawing.Point(0, 63);
-            this.txtChucVu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtChucVu.MinimumSize = new System.Drawing.Size(1, 1);
-            this.txtChucVu.Name = "txtChucVu";
-            this.txtChucVu.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.txtChucVu.Radius = 20;
-            this.txtChucVu.RectColor = System.Drawing.Color.HotPink;
-            this.txtChucVu.Size = new System.Drawing.Size(690, 612);
-            this.txtChucVu.TabIndex = 180;
-            this.txtChucVu.Text = "Thông tin nhân viên ";
-            this.txtChucVu.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel43
-            // 
-            this.panel43.Controls.Add(this.uiPanel2);
-            this.panel43.Controls.Add(this.panel44);
-            this.panel43.Controls.Add(this.panel45);
-            this.panel43.Controls.Add(this.panel46);
-            this.panel43.Controls.Add(this.panel47);
-            this.panel43.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel43.Location = new System.Drawing.Point(0, 307);
-            this.panel43.Name = "panel43";
-            this.panel43.Size = new System.Drawing.Size(690, 140);
-            this.panel43.TabIndex = 136;
-            // 
-            // uiPanel2
-            // 
-            this.uiPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiPanel2.FillColor = System.Drawing.Color.HotPink;
-            this.uiPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.uiPanel2.Location = new System.Drawing.Point(42, 71);
-            this.uiPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiPanel2.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiPanel2.Name = "uiPanel2";
-            this.uiPanel2.Radius = 1;
-            this.uiPanel2.RectColor = System.Drawing.Color.DeepPink;
-            this.uiPanel2.Size = new System.Drawing.Size(627, 6);
-            this.uiPanel2.TabIndex = 126;
-            this.uiPanel2.Text = null;
-            this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel44
-            // 
-            this.panel44.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel44.Location = new System.Drawing.Point(669, 71);
-            this.panel44.Name = "panel44";
-            this.panel44.Size = new System.Drawing.Size(21, 6);
-            this.panel44.TabIndex = 125;
-            // 
-            // panel45
-            // 
-            this.panel45.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel45.Location = new System.Drawing.Point(42, 77);
-            this.panel45.Name = "panel45";
-            this.panel45.Size = new System.Drawing.Size(648, 63);
-            this.panel45.TabIndex = 124;
-            // 
-            // panel46
-            // 
-            this.panel46.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel46.Location = new System.Drawing.Point(42, 0);
-            this.panel46.Name = "panel46";
-            this.panel46.Size = new System.Drawing.Size(648, 71);
-            this.panel46.TabIndex = 123;
-            // 
-            // panel47
-            // 
-            this.panel47.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel47.Location = new System.Drawing.Point(0, 0);
-            this.panel47.Name = "panel47";
-            this.panel47.Size = new System.Drawing.Size(42, 140);
-            this.panel47.TabIndex = 122;
-            // 
-            // panel38
-            // 
-            this.panel38.Controls.Add(this.txtNgayVaoLam);
-            this.panel38.Controls.Add(this.uiLabel2);
-            this.panel38.Controls.Add(this.panel39);
-            this.panel38.Controls.Add(this.panel40);
-            this.panel38.Controls.Add(this.panel41);
-            this.panel38.Controls.Add(this.panel42);
-            this.panel38.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel38.Location = new System.Drawing.Point(0, 447);
-            this.panel38.Name = "panel38";
-            this.panel38.Size = new System.Drawing.Size(690, 55);
-            this.panel38.TabIndex = 134;
-            // 
-            // txtNgayVaoLam
-            // 
-            this.txtNgayVaoLam.DateFormat = "dd-MM-yyyy";
-            this.txtNgayVaoLam.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNgayVaoLam.FillColor = System.Drawing.Color.White;
-            this.txtNgayVaoLam.FillColor2 = System.Drawing.Color.HotPink;
-            this.txtNgayVaoLam.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtNgayVaoLam.Location = new System.Drawing.Point(215, 10);
-            this.txtNgayVaoLam.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtNgayVaoLam.MaxLength = 10;
-            this.txtNgayVaoLam.MinimumSize = new System.Drawing.Size(63, 0);
-            this.txtNgayVaoLam.Name = "txtNgayVaoLam";
-            this.txtNgayVaoLam.Padding = new System.Windows.Forms.Padding(10, 10, 30, 10);
-            this.txtNgayVaoLam.RectColor = System.Drawing.Color.HotPink;
-            this.txtNgayVaoLam.Size = new System.Drawing.Size(454, 35);
-            this.txtNgayVaoLam.SymbolDropDown = 61555;
-            this.txtNgayVaoLam.SymbolNormal = 61555;
-            this.txtNgayVaoLam.SymbolSize = 24;
-            this.txtNgayVaoLam.TabIndex = 127;
-            this.txtNgayVaoLam.Text = "29-10-2024";
-            this.txtNgayVaoLam.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txtNgayVaoLam.Value = new System.DateTime(2024, 10, 29, 0, 0, 0, 0);
-            this.txtNgayVaoLam.Watermark = "";
-            // 
-            // uiLabel2
-            // 
-            this.uiLabel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel2.Location = new System.Drawing.Point(42, 10);
-            this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(173, 35);
-            this.uiLabel2.TabIndex = 126;
-            this.uiLabel2.Text = "Ngày vào làm:";
-            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel39
-            // 
-            this.panel39.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel39.Location = new System.Drawing.Point(669, 10);
-            this.panel39.Name = "panel39";
-            this.panel39.Size = new System.Drawing.Size(21, 35);
-            this.panel39.TabIndex = 125;
-            // 
-            // panel40
-            // 
-            this.panel40.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel40.Location = new System.Drawing.Point(42, 45);
-            this.panel40.Name = "panel40";
-            this.panel40.Size = new System.Drawing.Size(648, 10);
-            this.panel40.TabIndex = 124;
-            // 
-            // panel41
-            // 
-            this.panel41.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel41.Location = new System.Drawing.Point(42, 0);
-            this.panel41.Name = "panel41";
-            this.panel41.Size = new System.Drawing.Size(648, 10);
-            this.panel41.TabIndex = 123;
-            // 
-            // panel42
-            // 
-            this.panel42.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel42.Location = new System.Drawing.Point(0, 0);
-            this.panel42.Name = "panel42";
-            this.panel42.Size = new System.Drawing.Size(42, 55);
-            this.panel42.TabIndex = 122;
-            // 
-            // panel33
-            // 
-            this.panel33.Controls.Add(this.txtLuong);
-            this.panel33.Controls.Add(this.uiLabel12);
-            this.panel33.Controls.Add(this.panel34);
-            this.panel33.Controls.Add(this.panel35);
-            this.panel33.Controls.Add(this.panel36);
-            this.panel33.Controls.Add(this.panel37);
-            this.panel33.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel33.Location = new System.Drawing.Point(0, 502);
-            this.panel33.Name = "panel33";
-            this.panel33.Size = new System.Drawing.Size(690, 55);
-            this.panel33.TabIndex = 133;
-            // 
-            // txtLuong
-            // 
-            this.txtLuong.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtLuong.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtLuong.Location = new System.Drawing.Point(215, 10);
-            this.txtLuong.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtLuong.MinimumSize = new System.Drawing.Size(1, 16);
-            this.txtLuong.Name = "txtLuong";
-            this.txtLuong.Padding = new System.Windows.Forms.Padding(10);
-            this.txtLuong.Radius = 10;
-            this.txtLuong.RectColor = System.Drawing.Color.HotPink;
-            this.txtLuong.ShowText = false;
-            this.txtLuong.Size = new System.Drawing.Size(454, 35);
-            this.txtLuong.TabIndex = 127;
-            this.txtLuong.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txtLuong.Watermark = "";
-            // 
-            // uiLabel12
-            // 
-            this.uiLabel12.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel12.Location = new System.Drawing.Point(42, 10);
-            this.uiLabel12.Name = "uiLabel12";
-            this.uiLabel12.Size = new System.Drawing.Size(173, 35);
-            this.uiLabel12.TabIndex = 126;
-            this.uiLabel12.Text = "Lương cơ bản:";
-            this.uiLabel12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel34
-            // 
-            this.panel34.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel34.Location = new System.Drawing.Point(669, 10);
-            this.panel34.Name = "panel34";
-            this.panel34.Size = new System.Drawing.Size(21, 35);
-            this.panel34.TabIndex = 125;
-            // 
-            // panel35
-            // 
-            this.panel35.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel35.Location = new System.Drawing.Point(42, 45);
-            this.panel35.Name = "panel35";
-            this.panel35.Size = new System.Drawing.Size(648, 10);
-            this.panel35.TabIndex = 124;
-            // 
-            // panel36
-            // 
-            this.panel36.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel36.Location = new System.Drawing.Point(42, 0);
-            this.panel36.Name = "panel36";
-            this.panel36.Size = new System.Drawing.Size(648, 10);
-            this.panel36.TabIndex = 123;
-            // 
-            // panel37
-            // 
-            this.panel37.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel37.Location = new System.Drawing.Point(0, 0);
-            this.panel37.Name = "panel37";
-            this.panel37.Size = new System.Drawing.Size(42, 55);
-            this.panel37.TabIndex = 122;
-            // 
-            // panel28
-            // 
-            this.panel28.Controls.Add(this.btnSua);
-            this.panel28.Controls.Add(this.btnLamMoi);
-            this.panel28.Controls.Add(this.panel29);
-            this.panel28.Controls.Add(this.panel30);
-            this.panel28.Controls.Add(this.panel31);
-            this.panel28.Controls.Add(this.panel32);
-            this.panel28.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel28.Location = new System.Drawing.Point(0, 557);
-            this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(690, 55);
-            this.panel28.TabIndex = 132;
-            // 
-            // btnSua
-            // 
-            this.btnSua.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSua.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSua.FillColor = System.Drawing.Color.HotPink;
-            this.btnSua.FillColor2 = System.Drawing.Color.Fuchsia;
-            this.btnSua.FillHoverColor = System.Drawing.Color.LightPink;
-            this.btnSua.FillPressColor = System.Drawing.Color.DeepPink;
-            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnSua.Location = new System.Drawing.Point(502, 10);
-            this.btnSua.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.RectColor = System.Drawing.Color.LightPink;
-            this.btnSua.RectHoverColor = System.Drawing.Color.DeepPink;
-            this.btnSua.RectSelectedColor = System.Drawing.Color.DeepPink;
-            this.btnSua.Size = new System.Drawing.Size(167, 35);
-            this.btnSua.Symbol = 61508;
-            this.btnSua.TabIndex = 127;
-            this.btnSua.Text = "Sửa ";
-            this.btnSua.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnLamMoi
-            // 
-            this.btnLamMoi.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLamMoi.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnLamMoi.FillColor = System.Drawing.Color.HotPink;
-            this.btnLamMoi.FillColor2 = System.Drawing.Color.Fuchsia;
-            this.btnLamMoi.FillHoverColor = System.Drawing.Color.LightPink;
-            this.btnLamMoi.FillPressColor = System.Drawing.Color.DeepPink;
-            this.btnLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnLamMoi.Location = new System.Drawing.Point(42, 10);
-            this.btnLamMoi.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.RectColor = System.Drawing.Color.LightPink;
-            this.btnLamMoi.RectSelectedColor = System.Drawing.Color.DeepPink;
-            this.btnLamMoi.Size = new System.Drawing.Size(167, 35);
-            this.btnLamMoi.Symbol = 61473;
-            this.btnLamMoi.TabIndex = 126;
-            this.btnLamMoi.Text = "Làm mới ";
-            this.btnLamMoi.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
-            // 
-            // panel29
-            // 
-            this.panel29.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel29.Location = new System.Drawing.Point(669, 10);
-            this.panel29.Name = "panel29";
-            this.panel29.Size = new System.Drawing.Size(21, 35);
-            this.panel29.TabIndex = 125;
-            // 
-            // panel30
-            // 
-            this.panel30.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel30.Location = new System.Drawing.Point(42, 45);
-            this.panel30.Name = "panel30";
-            this.panel30.Size = new System.Drawing.Size(648, 10);
-            this.panel30.TabIndex = 124;
-            // 
-            // panel31
-            // 
-            this.panel31.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel31.Location = new System.Drawing.Point(42, 0);
-            this.panel31.Name = "panel31";
-            this.panel31.Size = new System.Drawing.Size(648, 10);
-            this.panel31.TabIndex = 123;
-            // 
-            // panel32
-            // 
-            this.panel32.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel32.Location = new System.Drawing.Point(0, 0);
-            this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(42, 55);
-            this.panel32.TabIndex = 122;
-            // 
-            // panel23
-            // 
-            this.panel23.Controls.Add(this.txtChucVuNV);
-            this.panel23.Controls.Add(this.panel24);
-            this.panel23.Controls.Add(this.panel25);
-            this.panel23.Controls.Add(this.panel26);
-            this.panel23.Controls.Add(this.uiLabel8);
-            this.panel23.Controls.Add(this.panel27);
-            this.panel23.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel23.Location = new System.Drawing.Point(0, 252);
-            this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(690, 55);
-            this.panel23.TabIndex = 131;
-            // 
-            // txtChucVuNV
-            // 
-            this.txtChucVuNV.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtChucVuNV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtChucVuNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtChucVuNV.Location = new System.Drawing.Point(215, 10);
-            this.txtChucVuNV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtChucVuNV.MinimumSize = new System.Drawing.Size(1, 16);
-            this.txtChucVuNV.Name = "txtChucVuNV";
-            this.txtChucVuNV.Padding = new System.Windows.Forms.Padding(10);
-            this.txtChucVuNV.Radius = 10;
-            this.txtChucVuNV.RectColor = System.Drawing.Color.HotPink;
-            this.txtChucVuNV.ShowText = false;
-            this.txtChucVuNV.Size = new System.Drawing.Size(454, 35);
-            this.txtChucVuNV.TabIndex = 127;
-            this.txtChucVuNV.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txtChucVuNV.Watermark = "";
-            // 
-            // panel24
-            // 
-            this.panel24.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel24.Location = new System.Drawing.Point(669, 10);
-            this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(21, 35);
-            this.panel24.TabIndex = 125;
-            // 
-            // panel25
-            // 
-            this.panel25.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel25.Location = new System.Drawing.Point(215, 45);
-            this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(475, 10);
-            this.panel25.TabIndex = 124;
-            // 
-            // panel26
-            // 
-            this.panel26.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel26.Location = new System.Drawing.Point(215, 0);
-            this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(475, 10);
-            this.panel26.TabIndex = 123;
-            // 
-            // uiLabel8
-            // 
-            this.uiLabel8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel8.Location = new System.Drawing.Point(42, 0);
-            this.uiLabel8.Name = "uiLabel8";
-            this.uiLabel8.Size = new System.Drawing.Size(173, 55);
-            this.uiLabel8.TabIndex = 120;
-            this.uiLabel8.Text = "Chức vụ:";
-            this.uiLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel27
-            // 
-            this.panel27.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel27.Location = new System.Drawing.Point(0, 0);
-            this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(42, 55);
-            this.panel27.TabIndex = 122;
-            // 
-            // panel18
-            // 
-            this.panel18.Controls.Add(this.txtSDT);
-            this.panel18.Controls.Add(this.panel19);
-            this.panel18.Controls.Add(this.panel20);
-            this.panel18.Controls.Add(this.panel21);
-            this.panel18.Controls.Add(this.uiLabel7);
-            this.panel18.Controls.Add(this.panel22);
-            this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel18.Location = new System.Drawing.Point(0, 197);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(690, 55);
-            this.panel18.TabIndex = 130;
-            // 
-            // txtSDT
-            // 
-            this.txtSDT.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSDT.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtSDT.Location = new System.Drawing.Point(215, 10);
-            this.txtSDT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtSDT.MinimumSize = new System.Drawing.Size(1, 16);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Padding = new System.Windows.Forms.Padding(10);
-            this.txtSDT.Radius = 10;
-            this.txtSDT.RectColor = System.Drawing.Color.HotPink;
-            this.txtSDT.ShowText = false;
-            this.txtSDT.Size = new System.Drawing.Size(454, 35);
-            this.txtSDT.TabIndex = 126;
-            this.txtSDT.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txtSDT.Watermark = "";
-            // 
-            // panel19
-            // 
-            this.panel19.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel19.Location = new System.Drawing.Point(669, 10);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(21, 35);
-            this.panel19.TabIndex = 125;
-            // 
-            // panel20
-            // 
-            this.panel20.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel20.Location = new System.Drawing.Point(215, 45);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(475, 10);
-            this.panel20.TabIndex = 124;
-            // 
-            // panel21
-            // 
-            this.panel21.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel21.Location = new System.Drawing.Point(215, 0);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(475, 10);
-            this.panel21.TabIndex = 123;
-            // 
-            // uiLabel7
-            // 
-            this.uiLabel7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel7.Location = new System.Drawing.Point(42, 0);
-            this.uiLabel7.Name = "uiLabel7";
-            this.uiLabel7.Size = new System.Drawing.Size(173, 55);
-            this.uiLabel7.TabIndex = 120;
-            this.uiLabel7.Text = "Số điện thoại:";
-            this.uiLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel22
-            // 
-            this.panel22.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel22.Location = new System.Drawing.Point(0, 0);
-            this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(42, 55);
-            this.panel22.TabIndex = 122;
-            // 
-            // panel13
-            // 
-            this.panel13.Controls.Add(this.txtDiaChi);
-            this.panel13.Controls.Add(this.panel14);
-            this.panel13.Controls.Add(this.panel15);
-            this.panel13.Controls.Add(this.panel16);
-            this.panel13.Controls.Add(this.uiLabel4);
-            this.panel13.Controls.Add(this.panel17);
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel13.Location = new System.Drawing.Point(0, 142);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(690, 55);
-            this.panel13.TabIndex = 129;
-            // 
-            // txtDiaChi
-            // 
-            this.txtDiaChi.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtDiaChi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtDiaChi.Location = new System.Drawing.Point(215, 10);
-            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtDiaChi.MinimumSize = new System.Drawing.Size(1, 16);
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Padding = new System.Windows.Forms.Padding(10);
-            this.txtDiaChi.Radius = 10;
-            this.txtDiaChi.RectColor = System.Drawing.Color.HotPink;
-            this.txtDiaChi.ShowText = false;
-            this.txtDiaChi.Size = new System.Drawing.Size(454, 35);
-            this.txtDiaChi.TabIndex = 126;
-            this.txtDiaChi.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txtDiaChi.Watermark = "";
-            // 
-            // panel14
-            // 
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel14.Location = new System.Drawing.Point(669, 10);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(21, 35);
-            this.panel14.TabIndex = 125;
-            // 
-            // panel15
-            // 
-            this.panel15.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel15.Location = new System.Drawing.Point(215, 45);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(475, 10);
-            this.panel15.TabIndex = 124;
-            // 
-            // panel16
-            // 
-            this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel16.Location = new System.Drawing.Point(215, 0);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(475, 10);
-            this.panel16.TabIndex = 123;
-            // 
-            // uiLabel4
-            // 
-            this.uiLabel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel4.Location = new System.Drawing.Point(42, 0);
-            this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(173, 55);
-            this.uiLabel4.TabIndex = 120;
-            this.uiLabel4.Text = "Địa chỉ:";
-            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel17
-            // 
-            this.panel17.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel17.Location = new System.Drawing.Point(0, 0);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(42, 55);
-            this.panel17.TabIndex = 122;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.txtNgaySinh);
-            this.panel8.Controls.Add(this.panel9);
-            this.panel8.Controls.Add(this.panel10);
-            this.panel8.Controls.Add(this.panel11);
-            this.panel8.Controls.Add(this.uiLabel1);
-            this.panel8.Controls.Add(this.panel12);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(0, 87);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(690, 55);
-            this.panel8.TabIndex = 128;
-            // 
-            // txtNgaySinh
-            // 
-            this.txtNgaySinh.DateFormat = "dd-MM-yyyy";
-            this.txtNgaySinh.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNgaySinh.FillColor = System.Drawing.Color.White;
-            this.txtNgaySinh.FillColor2 = System.Drawing.Color.HotPink;
-            this.txtNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtNgaySinh.Location = new System.Drawing.Point(215, 10);
-            this.txtNgaySinh.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtNgaySinh.MaxLength = 10;
-            this.txtNgaySinh.MinimumSize = new System.Drawing.Size(63, 0);
-            this.txtNgaySinh.Name = "txtNgaySinh";
-            this.txtNgaySinh.Padding = new System.Windows.Forms.Padding(10, 10, 30, 10);
-            this.txtNgaySinh.Radius = 10;
-            this.txtNgaySinh.RectColor = System.Drawing.Color.HotPink;
-            this.txtNgaySinh.Size = new System.Drawing.Size(454, 35);
-            this.txtNgaySinh.SymbolDropDown = 61555;
-            this.txtNgaySinh.SymbolNormal = 61555;
-            this.txtNgaySinh.SymbolSize = 24;
-            this.txtNgaySinh.TabIndex = 126;
-            this.txtNgaySinh.Text = "29-10-2024";
-            this.txtNgaySinh.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txtNgaySinh.Value = new System.DateTime(2024, 10, 29, 0, 0, 0, 0);
-            this.txtNgaySinh.Watermark = "";
-            // 
-            // panel9
-            // 
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel9.Location = new System.Drawing.Point(669, 10);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(21, 35);
-            this.panel9.TabIndex = 125;
-            // 
-            // panel10
-            // 
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel10.Location = new System.Drawing.Point(215, 45);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(475, 10);
-            this.panel10.TabIndex = 124;
-            // 
-            // panel11
-            // 
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel11.Location = new System.Drawing.Point(215, 0);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(475, 10);
-            this.panel11.TabIndex = 123;
-            // 
-            // uiLabel1
-            // 
-            this.uiLabel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel1.Location = new System.Drawing.Point(42, 0);
-            this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(173, 55);
-            this.uiLabel1.TabIndex = 120;
-            this.uiLabel1.Text = "Ngày sinh:";
-            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel12
-            // 
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel12.Location = new System.Drawing.Point(0, 0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(42, 55);
-            this.panel12.TabIndex = 122;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.txtTenNV);
-            this.panel3.Controls.Add(this.panel7);
-            this.panel3.Controls.Add(this.panel6);
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.uiLabel5);
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 32);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(690, 55);
-            this.panel3.TabIndex = 127;
-            // 
-            // txtTenNV
-            // 
-            this.txtTenNV.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTenNV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTenNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtTenNV.Location = new System.Drawing.Point(215, 10);
-            this.txtTenNV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtTenNV.MinimumSize = new System.Drawing.Size(1, 16);
-            this.txtTenNV.Name = "txtTenNV";
-            this.txtTenNV.Padding = new System.Windows.Forms.Padding(10);
-            this.txtTenNV.Radius = 10;
-            this.txtTenNV.RectColor = System.Drawing.Color.HotPink;
-            this.txtTenNV.ShowText = false;
-            this.txtTenNV.Size = new System.Drawing.Size(454, 35);
-            this.txtTenNV.TabIndex = 126;
-            this.txtTenNV.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txtTenNV.Watermark = "";
-            // 
-            // panel7
-            // 
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(669, 10);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(21, 35);
-            this.panel7.TabIndex = 125;
-            // 
-            // panel6
-            // 
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(215, 45);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(475, 10);
-            this.panel6.TabIndex = 124;
-            // 
-            // panel5
-            // 
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(215, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(475, 10);
-            this.panel5.TabIndex = 123;
-            // 
-            // uiLabel5
-            // 
-            this.uiLabel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel5.Location = new System.Drawing.Point(42, 0);
-            this.uiLabel5.Name = "uiLabel5";
-            this.uiLabel5.Size = new System.Drawing.Size(173, 55);
-            this.uiLabel5.TabIndex = 120;
-            this.uiLabel5.Text = "Tên nhân viên:";
-            this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel4
-            // 
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(42, 55);
-            this.panel4.TabIndex = 122;
-            // 
-            // panel59
-            // 
-            this.panel59.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel59.Location = new System.Drawing.Point(460, 10);
-            this.panel59.Name = "panel59";
-            this.panel59.Size = new System.Drawing.Size(38, 35);
-            this.panel59.TabIndex = 157;
-            // 
-            // pictureBoxMo
-            // 
-            this.pictureBoxMo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBoxMo.Location = new System.Drawing.Point(424, 10);
-            this.pictureBoxMo.Name = "pictureBoxMo";
-            this.pictureBoxMo.Size = new System.Drawing.Size(36, 35);
-            this.pictureBoxMo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxMo.TabIndex = 160;
-            this.pictureBoxMo.TabStop = false;
-            this.pictureBoxMo.Click += new System.EventHandler(this.pictureBoxMo_Click);
-            // 
-            // pictureBoxDong
-            // 
-            this.pictureBoxDong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxDong.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxDong.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxDong.Image")));
-            this.pictureBoxDong.Location = new System.Drawing.Point(424, 10);
-            this.pictureBoxDong.Name = "pictureBoxDong";
-            this.pictureBoxDong.Size = new System.Drawing.Size(36, 35);
-            this.pictureBoxDong.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxDong.TabIndex = 163;
-            this.pictureBoxDong.TabStop = false;
-            // 
-            // panel63
-            // 
-            this.panel63.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel63.Location = new System.Drawing.Point(412, 10);
-            this.panel63.Name = "panel63";
-            this.panel63.Size = new System.Drawing.Size(12, 35);
-            this.panel63.TabIndex = 164;
-            // 
-            // txtMatKhauMoi
-            // 
-            this.txtMatKhauMoi.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMatKhauMoi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMatKhauMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtMatKhauMoi.Location = new System.Drawing.Point(181, 10);
-            this.txtMatKhauMoi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtMatKhauMoi.MinimumSize = new System.Drawing.Size(1, 16);
-            this.txtMatKhauMoi.Name = "txtMatKhauMoi";
-            this.txtMatKhauMoi.Padding = new System.Windows.Forms.Padding(10);
-            this.txtMatKhauMoi.Radius = 10;
-            this.txtMatKhauMoi.RectColor = System.Drawing.Color.HotPink;
-            this.txtMatKhauMoi.ShowText = false;
-            this.txtMatKhauMoi.Size = new System.Drawing.Size(231, 35);
-            this.txtMatKhauMoi.TabIndex = 165;
-            this.txtMatKhauMoi.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txtMatKhauMoi.Watermark = "";
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Window;
+            this.panel1.Controls.Add(this.btnDong);
+            this.panel1.Controls.Add(this.lbTenNhanVien);
+            this.panel1.Controls.Add(this.uiAvatar1);
+            this.panel1.Controls.Add(this.uiLine5);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(11, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1179, 63);
+            this.panel1.TabIndex = 187;
+            // 
+            // btnDong
+            // 
+            this.btnDong.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDong.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnDong.FillColor = System.Drawing.Color.Transparent;
+            this.btnDong.FillColor2 = System.Drawing.Color.Fuchsia;
+            this.btnDong.FillHoverColor = System.Drawing.Color.LightPink;
+            this.btnDong.FillPressColor = System.Drawing.Color.DeepPink;
+            this.btnDong.FillSelectedColor = System.Drawing.Color.White;
+            this.btnDong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnDong.Location = new System.Drawing.Point(1052, 10);
+            this.btnDong.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnDong.Name = "btnDong";
+            this.btnDong.Radius = 1;
+            this.btnDong.RectColor = System.Drawing.Color.Transparent;
+            this.btnDong.RectHoverColor = System.Drawing.Color.White;
+            this.btnDong.RectPressColor = System.Drawing.Color.White;
+            this.btnDong.RectSelectedColor = System.Drawing.Color.DeepPink;
+            this.btnDong.Size = new System.Drawing.Size(127, 53);
+            this.btnDong.Symbol = 61527;
+            this.btnDong.SymbolColor = System.Drawing.Color.DeepPink;
+            this.btnDong.SymbolHoverColor = System.Drawing.Color.Pink;
+            this.btnDong.SymbolSize = 45;
+            this.btnDong.TabIndex = 172;
+            this.btnDong.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            // 
+            // lbTenNhanVien
+            // 
+            this.lbTenNhanVien.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbTenNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTenNhanVien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.lbTenNhanVien.Location = new System.Drawing.Point(80, 10);
+            this.lbTenNhanVien.Name = "lbTenNhanVien";
+            this.lbTenNhanVien.Size = new System.Drawing.Size(622, 53);
+            this.lbTenNhanVien.TabIndex = 173;
+            this.lbTenNhanVien.Text = "Nhân viên: ";
+            this.lbTenNhanVien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiAvatar1
+            // 
+            this.uiAvatar1.AvatarSize = 50;
+            this.uiAvatar1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiAvatar1.FillColor = System.Drawing.Color.LavenderBlush;
+            this.uiAvatar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.uiAvatar1.ForeColor = System.Drawing.Color.HotPink;
+            this.uiAvatar1.Location = new System.Drawing.Point(0, 10);
+            this.uiAvatar1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiAvatar1.Name = "uiAvatar1";
+            this.uiAvatar1.Size = new System.Drawing.Size(80, 53);
+            this.uiAvatar1.SymbolSize = 26;
+            this.uiAvatar1.TabIndex = 174;
+            this.uiAvatar1.Text = "uiAvatar1";
+            // 
+            // uiLine5
+            // 
+            this.uiLine5.BackColor = System.Drawing.Color.Transparent;
+            this.uiLine5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.uiLine5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLine5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLine5.LineColor = System.Drawing.Color.HotPink;
+            this.uiLine5.LineSize = 3;
+            this.uiLine5.Location = new System.Drawing.Point(0, 0);
+            this.uiLine5.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLine5.Name = "uiLine5";
+            this.uiLine5.Size = new System.Drawing.Size(1179, 10);
+            this.uiLine5.TabIndex = 171;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnDangXuat);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(11, 664);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1179, 75);
+            this.panel2.TabIndex = 185;
+            // 
+            // btnDangXuat
+            // 
+            this.btnDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDangXuat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDangXuat.FillColor = System.Drawing.Color.Red;
+            this.btnDangXuat.FillColor2 = System.Drawing.Color.Fuchsia;
+            this.btnDangXuat.FillHoverColor = System.Drawing.Color.LightPink;
+            this.btnDangXuat.FillPressColor = System.Drawing.Color.DeepPink;
+            this.btnDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnDangXuat.Location = new System.Drawing.Point(985, 18);
+            this.btnDangXuat.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.RectColor = System.Drawing.Color.LightPink;
+            this.btnDangXuat.RectSelectedColor = System.Drawing.Color.DeepPink;
+            this.btnDangXuat.Size = new System.Drawing.Size(167, 45);
+            this.btnDangXuat.Symbol = 61579;
+            this.btnDangXuat.SymbolSize = 30;
+            this.btnDangXuat.TabIndex = 165;
+            this.btnDangXuat.Text = "Đăng xuất ";
+            this.btnDangXuat.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // frmThongTinNhanVien
             // 
@@ -1522,23 +1578,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 750);
             this.Controls.Add(this.txtChucVu);
-            this.Controls.Add(this.uiLine1);
+            this.Controls.Add(this.uiLine4);
             this.Controls.Add(this.uiGroupBox1);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.uiLine3);
+            this.Controls.Add(this.uiLine2);
+            this.Controls.Add(this.uiLine1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmThongTinNhanVien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmThongTinNhanVien";
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.uiGroupBox1.ResumeLayout(false);
-            this.panel74.ResumeLayout(false);
-            this.panel69.ResumeLayout(false);
-            this.panel64.ResumeLayout(false);
-            this.panel58.ResumeLayout(false);
-            this.panel53.ResumeLayout(false);
-            this.panel48.ResumeLayout(false);
             this.txtChucVu.ResumeLayout(false);
             this.panel43.ResumeLayout(false);
             this.panel38.ResumeLayout(false);
@@ -1549,60 +1599,26 @@
             this.panel13.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMo)).EndInit();
+            this.uiGroupBox1.ResumeLayout(false);
+            this.panel74.ResumeLayout(false);
+            this.panel69.ResumeLayout(false);
+            this.panel64.ResumeLayout(false);
+            this.panel58.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMo)).EndInit();
+            this.panel53.ResumeLayout(false);
+            this.panel48.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Sunny.UI.UISymbolButton btnDangXuat;
-        private System.Windows.Forms.Panel panel1;
-        private Sunny.UI.UISymbolButton btnDong;
-        private Sunny.UI.UILabel lbTenNhanVien;
-        private Sunny.UI.UIAvatar uiAvatar1;
-        private System.Windows.Forms.Panel panel2;
-        private Sunny.UI.UIGroupBox uiGroupBox1;
-        private System.Windows.Forms.Panel panel58;
-        private Sunny.UI.UILabel uiLabel15;
-        private System.Windows.Forms.Panel panel60;
-        private System.Windows.Forms.Panel panel61;
-        private System.Windows.Forms.Panel panel62;
-        private System.Windows.Forms.Panel panel53;
-        private Sunny.UI.UILabel uiLabel9;
-        private System.Windows.Forms.Panel panel54;
-        private System.Windows.Forms.Panel panel55;
-        private System.Windows.Forms.Panel panel56;
-        private System.Windows.Forms.Panel panel57;
-        private System.Windows.Forms.Panel panel48;
-        private Sunny.UI.UITextBox txtTaiKhoan;
-        private Sunny.UI.UILabel uiLabel16;
-        private System.Windows.Forms.Panel panel49;
-        private System.Windows.Forms.Panel panel50;
-        private System.Windows.Forms.Panel panel51;
-        private System.Windows.Forms.Panel panel52;
-        private Sunny.UI.UITextBox txtMatKhauCu;
-        private System.Windows.Forms.Panel panel64;
-        private Sunny.UI.UISymbolButton btnHuy;
-        private System.Windows.Forms.Panel panel65;
-        private System.Windows.Forms.Panel panel66;
-        private System.Windows.Forms.Panel panel67;
-        private System.Windows.Forms.Panel panel68;
-        private System.Windows.Forms.Panel panel69;
-        private Sunny.UI.UISymbolButton btnChon;
-        private Sunny.UI.UILabel uiLabel3;
-        private Sunny.UI.UISymbolButton btnDoi;
-        private System.Windows.Forms.Panel panel70;
-        private System.Windows.Forms.Panel panel71;
-        private System.Windows.Forms.Panel panel72;
-        private System.Windows.Forms.Panel panel73;
-        private System.Windows.Forms.Panel panel74;
-        private Sunny.UI.UIPanel uiPanel1;
-        private System.Windows.Forms.Panel panel76;
-        private System.Windows.Forms.Panel panel77;
-        private System.Windows.Forms.Panel panel75;
-        private System.Windows.Forms.Panel panel78;
+
         private Sunny.UI.UILine uiLine1;
+        private Sunny.UI.UILine uiLine2;
+        private Sunny.UI.UILine uiLine3;
         private Sunny.UI.UIGroupBox txtChucVu;
         private System.Windows.Forms.Panel panel43;
         private Sunny.UI.UIPanel uiPanel2;
@@ -1666,10 +1682,58 @@
         private System.Windows.Forms.Panel panel5;
         private Sunny.UI.UILabel uiLabel5;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel59;
-        private System.Windows.Forms.PictureBox pictureBoxDong;
-        private System.Windows.Forms.PictureBox pictureBoxMo;
+        private Sunny.UI.UILine uiLine4;
+        private Sunny.UI.UIGroupBox uiGroupBox1;
+        private System.Windows.Forms.Panel panel74;
+        private Sunny.UI.UIPanel uiPanel1;
+        private System.Windows.Forms.Panel panel76;
+        private System.Windows.Forms.Panel panel77;
+        private System.Windows.Forms.Panel panel75;
+        private System.Windows.Forms.Panel panel78;
+        private System.Windows.Forms.Panel panel69;
+        private Sunny.UI.UISymbolButton btnChon;
+        private Sunny.UI.UILabel uiLabel3;
+        private Sunny.UI.UISymbolButton btnDoi;
+        private System.Windows.Forms.Panel panel70;
+        private System.Windows.Forms.Panel panel71;
+        private System.Windows.Forms.Panel panel72;
+        private System.Windows.Forms.Panel panel73;
+        private System.Windows.Forms.Panel panel64;
+        private Sunny.UI.UISymbolButton btnHuy;
+        private System.Windows.Forms.Panel panel65;
+        private System.Windows.Forms.Panel panel66;
+        private System.Windows.Forms.Panel panel67;
+        private System.Windows.Forms.Panel panel68;
+        private System.Windows.Forms.Panel panel58;
         private Sunny.UI.UITextBox txtMatKhauMoi;
         private System.Windows.Forms.Panel panel63;
+        private System.Windows.Forms.PictureBox pictureBoxDong;
+        private System.Windows.Forms.PictureBox pictureBoxMo;
+        private System.Windows.Forms.Panel panel59;
+        private Sunny.UI.UILabel uiLabel15;
+        private System.Windows.Forms.Panel panel60;
+        private System.Windows.Forms.Panel panel61;
+        private System.Windows.Forms.Panel panel62;
+        private System.Windows.Forms.Panel panel53;
+        private Sunny.UI.UITextBox txtMatKhauCu;
+        private Sunny.UI.UILabel uiLabel9;
+        private System.Windows.Forms.Panel panel54;
+        private System.Windows.Forms.Panel panel55;
+        private System.Windows.Forms.Panel panel56;
+        private System.Windows.Forms.Panel panel57;
+        private System.Windows.Forms.Panel panel48;
+        private Sunny.UI.UITextBox txtTaiKhoan;
+        private Sunny.UI.UILabel uiLabel16;
+        private System.Windows.Forms.Panel panel49;
+        private System.Windows.Forms.Panel panel50;
+        private System.Windows.Forms.Panel panel51;
+        private System.Windows.Forms.Panel panel52;
+        private System.Windows.Forms.Panel panel1;
+        private Sunny.UI.UISymbolButton btnDong;
+        private Sunny.UI.UILabel lbTenNhanVien;
+        private Sunny.UI.UIAvatar uiAvatar1;
+        private Sunny.UI.UILine uiLine5;
+        private System.Windows.Forms.Panel panel2;
+        private Sunny.UI.UISymbolButton btnDangXuat;
     }
 }
