@@ -39,13 +39,13 @@ namespace MeVaBeProject
             this.dgvHoaDon.CellFormatting += DgvHoaDon_CellFormatting;
 
             this.btnXemChiTiet.Click += BtnXemChiTiet_Click;
+            this.btnXemDSPG.Click += BtnXemDSPG_Click;
             this.maNhanVien = maNhanVien;
-            this.btnXemDSGiao.Click += BtnXemDSGiao_Click;
         }
 
-        private void BtnXemDSGiao_Click(object sender, EventArgs e)
+        private void BtnXemDSPG_Click(object sender, EventArgs e)
         {
-            frmQLPhieuGiaoHang frm = new frmQLPhieuGiaoHang(parentfrm,maNhanVien);
+            frmQLPhieuGiaoHang frm = new frmQLPhieuGiaoHang(parentfrm, maNhanVien);
             parentfrm.OpenChildForm(frm);
         }
 

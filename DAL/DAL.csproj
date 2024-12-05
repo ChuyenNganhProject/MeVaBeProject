@@ -45,7 +45,6 @@
     <Compile Include="ChiTietPhieuDatDAL.cs" />
     <Compile Include="ChiTietHoaDonSanPhamDAL.cs" />
     <Compile Include="ChiTietPhieuDoiHangDAL.cs" />
-    <Compile Include="ChiTietPhieuGiaoDAL.cs" />
     <Compile Include="ChiTietPhieuNhapDAL.cs" />
     <Compile Include="ChiTietPhieuThanhLyDAL.cs" />
     <Compile Include="ChiTietQuyenCuaLoaiNVDAL.cs" />

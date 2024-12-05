@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="ChiTietHoaDonSanPhamBLL.cs" />
     <Compile Include="ChiTietPhieuDoiHangBLL.cs" />
-    <Compile Include="ChiTietPhieuGiaoBLL.cs" />
     <Compile Include="ChiTietPhieuNhapBLL.cs" />
     <Compile Include="ChiTietPhieuThanhLyBLL.cs" />
     <Compile Include="ChiTietQuyenCuaLoaiNVBLL.cs" />

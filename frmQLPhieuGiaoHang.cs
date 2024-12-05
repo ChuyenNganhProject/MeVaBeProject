@@ -17,9 +17,6 @@ namespace MeVaBeProject
         PhieuGiaoHangBLL pgbll = new PhieuGiaoHangBLL();
         private frmTrangChu parentfrm;
         private string maNhanVien;
-        private string MaPG;
-        private string MaHD;
-        private string TenNV;
         public frmQLPhieuGiaoHang(frmTrangChu parentfrm, string maNhanVien)
         {
             InitializeComponent();
@@ -27,43 +24,17 @@ namespace MeVaBeProject
             this.Load += FrmQLPhieuGiaoHang_Load;
             this.dgvPhieuGiao.CellClick += DgvPhieuGiao_CellClick;
             this.dgvPhieuGiao.CellFormatting += DgvPhieuGiao_CellFormatting;
-            this.dgvPhieuGiao.SelectionChanged += DgvPhieuGiao_SelectionChanged;
             this.btnBack.Click += BtnBack_Click;
 
             this.btnTimKiem.Click += BtnTimKiem_Click;
             this.btnLocHienTai.Click += BtnLocHienTai_Click;
             this.btnLocTheoNgay.Click += BtnLocTheoNgay_Click;
             this.btnReset.Click += BtnReset_Click;
-            this.btnXemChiTiet.Click += BtnXemChiTiet_Click;
 
             this.cboTieuChi.SelectedIndexChanged += CboTieuChi_SelectedIndexChanged;
             this.dtpNgayBatDau.ValueChanged += DtpNgayBatDau_ValueChanged;
             this.dtpNgayKetThuc.ValueChanged += DtpNgayKetThuc_ValueChanged;
             this.maNhanVien = maNhanVien;
-        }
-
-        private void DgvPhieuGiao_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvPhieuGiao.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = dgvPhieuGiao.SelectedRows[0];
-                MaPG = selectedRow.Cells["maPhieuGiao"].Value.ToString();
-                MaHD = selectedRow.Cells["maHD"].Value.ToString();
-                TenNV = selectedRow.Cells["tenNhanVien"].Value.ToString();
-            }
-        }
-
-        private void BtnXemChiTiet_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(MaPG))
-            {
-                frmCTPhieuGiao frm = new frmCTPhieuGiao(MaPG, MaHD, TenNV);
-                frm.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn một hóa đơn để xem chi tiết.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
 
         private void DgvPhieuGiao_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -97,9 +68,14 @@ namespace MeVaBeProject
             {
                 string maPhieuGiao = dgvPhieuGiao.Rows[e.RowIndex].Cells["maPhieuGiao"].Value.ToString();
                 PhieuGiaoHang phieuGiao = pgbll.LayTTPhieuGiaoTuMaPG(maPhieuGiao);
-                if (phieuGiao.tinhTrang != "Chưa giao")
+                if (phieuGiao.tinhTrang == "Đã giao")
                 {
                     MessageBox.Show("Phiếu giao này đã được giao, không thể cập nhật tình trạng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else if (phieuGiao.tinhTrang == "Chưa xác nhận")
+                {
+                    MessageBox.Show("Phiếu giao này chưa được khách hàng xác nhận, không thể cập nhật tình trạng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -211,13 +187,17 @@ namespace MeVaBeProject
             {
                 dgvPhieuGiao.Columns["NhanVien"].Visible = false;
             }
+            if (dgvPhieuGiao.Columns["HoaDon"] != null)
+            {
+                dgvPhieuGiao.Columns["HoaDon"].Visible = false;
+            }
             if (dgvPhieuGiao.Columns["maPhieuGiao"] != null)
             {
                 dgvPhieuGiao.Columns["maPhieuGiao"].HeaderText = "Mã phiếu giao";
             }
-            if (dgvPhieuGiao.Columns["maHD"] != null)
+            if (dgvPhieuGiao.Columns["maHoaDon"] != null)
             {
-                dgvPhieuGiao.Columns["maHD"].HeaderText = "Mã hóa đơn";
+                dgvPhieuGiao.Columns["maHoaDon"].HeaderText = "Mã hóa đơn";
             }
             if (dgvPhieuGiao.Columns["tenNhanVien"] != null)
             {
@@ -261,7 +241,7 @@ namespace MeVaBeProject
             }
 
             dgvPhieuGiao.Columns["maPhieuGiao"].DisplayIndex = 0;
-            dgvPhieuGiao.Columns["maHD"].DisplayIndex = 1;
+            dgvPhieuGiao.Columns["maHoaDon"].DisplayIndex = 1;
             dgvPhieuGiao.Columns["maNhanVien"].DisplayIndex = 2;
             dgvPhieuGiao.Columns["tenNhanVien"].DisplayIndex = 3;
             dgvPhieuGiao.Columns["tenKhachHang"].DisplayIndex = 4;

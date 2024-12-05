@@ -46,7 +46,7 @@
     <Compile Include="Bank.cs" />
     <Compile Include="ChiTietHoaDonSanPham.cs" />
     <Compile Include="ChiTietPhieuDoiHang.cs" />
-    <Compile Include="ChiTietPhieuGiaoHang.cs" />
+    <Compile Include="ChiTietPhieuGiaoHangWithSTT.cs" />
     <Compile Include="ChiTietPhieuNhap.cs" />
     <Compile Include="ChiTietPhieuThanhLy.cs" />
     <Compile Include="ChiTietQuyenCuaLoaiNhanVien.cs" />
@@ -71,7 +71,6 @@
     </Compile>
     <Compile Include="SanPham.cs" />
     <Compile Include="SanPhamBanChay.cs" />
-    <Compile Include="SanPhamGiao.cs" />
     <Compile Include="ThongKeDoanhThuTheoThang.cs" />
   </ItemGroup>
   <ItemGroup>

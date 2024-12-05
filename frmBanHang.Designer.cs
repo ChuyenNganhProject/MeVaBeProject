@@ -31,13 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBanHang));
             this.uiPanel1 = new Sunny.UI.UIPanel();
+            this.lbTenNV = new Sunny.UI.UILabel();
+            this.uiPanel36 = new Sunny.UI.UIPanel();
+            this.btnQuaFormTrangChu = new Sunny.UI.UIButton();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.btnMinimize = new Sunny.UI.UISymbolButton();
             this.btnPhongToThuNho = new Sunny.UI.UISymbolButton();
             this.btnClose = new Sunny.UI.UISymbolButton();
             this.leftPanel = new Sunny.UI.UIPanel();
-            this.loaiSpPanel = new Sunny.UI.UIFlowLayoutPanel();
-            this.btnDangXuat = new Sunny.UI.UIImageButton();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.btnTatCaSanPham = new Sunny.UI.UIButton();
             this.listView2 = new System.Windows.Forms.ListView();
             this.errorTTKhach = new System.Windows.Forms.ErrorProvider(this.components);
@@ -109,14 +111,20 @@
             this.uiLine2 = new Sunny.UI.UILine();
             this.uiRadioButtonGroup1 = new Sunny.UI.UIRadioButtonGroup();
             this.btnThanhToan = new Sunny.UI.UIButton();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.rdoChuyenKhoan = new Sunny.UI.UIRadioButton();
             this.rdoTienMat = new Sunny.UI.UIRadioButton();
-            this.uiPanel36 = new Sunny.UI.UIPanel();
-            this.lbTenNV = new Sunny.UI.UILabel();
-            this.btnQuaFormTrangChu = new Sunny.UI.UIButton();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.loaiSpPanel = new Sunny.UI.UIFlowLayoutPanel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.btnDangXuat = new Sunny.UI.UIImageButton();
             this.uiPanel1.SuspendLayout();
+            this.uiPanel36.SuspendLayout();
             this.leftPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).BeginInit();
+            this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorTTKhach)).BeginInit();
             this.uiPanel14.SuspendLayout();
             this.uiGroupBox1.SuspendLayout();
@@ -137,7 +145,7 @@
             this.uiPanel8.SuspendLayout();
             this.uiPanel2.SuspendLayout();
             this.uiRadioButtonGroup1.SuspendLayout();
-            this.uiPanel36.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).BeginInit();
             this.SuspendLayout();
             // 
             // uiPanel1
@@ -160,6 +168,61 @@
             this.uiPanel1.TabIndex = 0;
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbTenNV
+            // 
+            this.lbTenNV.BackColor = System.Drawing.Color.HotPink;
+            this.lbTenNV.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbTenNV.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTenNV.ForeColor = System.Drawing.Color.Snow;
+            this.lbTenNV.Location = new System.Drawing.Point(438, 0);
+            this.lbTenNV.Name = "lbTenNV";
+            this.lbTenNV.Size = new System.Drawing.Size(246, 39);
+            this.lbTenNV.TabIndex = 15;
+            this.lbTenNV.Text = "Xin chào: ";
+            this.lbTenNV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiPanel36
+            // 
+            this.uiPanel36.BackColor = System.Drawing.Color.HotPink;
+            this.uiPanel36.Controls.Add(this.btnQuaFormTrangChu);
+            this.uiPanel36.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiPanel36.FillColor = System.Drawing.Color.HotPink;
+            this.uiPanel36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiPanel36.Location = new System.Drawing.Point(165, 0);
+            this.uiPanel36.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel36.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPanel36.Name = "uiPanel36";
+            this.uiPanel36.RectColor = System.Drawing.Color.HotPink;
+            this.uiPanel36.Size = new System.Drawing.Size(273, 39);
+            this.uiPanel36.TabIndex = 14;
+            this.uiPanel36.Text = null;
+            this.uiPanel36.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnQuaFormTrangChu
+            // 
+            this.btnQuaFormTrangChu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuaFormTrangChu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnQuaFormTrangChu.FillColor = System.Drawing.Color.HotPink;
+            this.btnQuaFormTrangChu.FillHoverColor = System.Drawing.Color.White;
+            this.btnQuaFormTrangChu.FillPressColor = System.Drawing.Color.White;
+            this.btnQuaFormTrangChu.FillSelectedColor = System.Drawing.Color.White;
+            this.btnQuaFormTrangChu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnQuaFormTrangChu.ForeHoverColor = System.Drawing.Color.HotPink;
+            this.btnQuaFormTrangChu.ForePressColor = System.Drawing.Color.HotPink;
+            this.btnQuaFormTrangChu.ForeSelectedColor = System.Drawing.Color.HotPink;
+            this.btnQuaFormTrangChu.Location = new System.Drawing.Point(0, 0);
+            this.btnQuaFormTrangChu.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnQuaFormTrangChu.Name = "btnQuaFormTrangChu";
+            this.btnQuaFormTrangChu.Radius = 10;
+            this.btnQuaFormTrangChu.RectColor = System.Drawing.Color.White;
+            this.btnQuaFormTrangChu.RectHoverColor = System.Drawing.Color.White;
+            this.btnQuaFormTrangChu.RectPressColor = System.Drawing.Color.White;
+            this.btnQuaFormTrangChu.RectSelectedColor = System.Drawing.Color.White;
+            this.btnQuaFormTrangChu.Size = new System.Drawing.Size(152, 39);
+            this.btnQuaFormTrangChu.TabIndex = 11;
+            this.btnQuaFormTrangChu.Text = "Trang chủ";
+            this.btnQuaFormTrangChu.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             // 
             // uiLabel1
             // 
@@ -249,7 +312,7 @@
             // leftPanel
             // 
             this.leftPanel.Controls.Add(this.loaiSpPanel);
-            this.leftPanel.Controls.Add(this.btnDangXuat);
+            this.leftPanel.Controls.Add(this.panel6);
             this.leftPanel.Controls.Add(this.btnTatCaSanPham);
             this.leftPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.leftPanel.FillColor = System.Drawing.SystemColors.Window;
@@ -264,42 +327,19 @@
             this.leftPanel.Text = null;
             this.leftPanel.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // loaiSpPanel
+            // panel6
             // 
-            this.loaiSpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loaiSpPanel.FillColor = System.Drawing.SystemColors.Window;
-            this.loaiSpPanel.FillColorGradientDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.loaiSpPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.loaiSpPanel.Location = new System.Drawing.Point(0, 62);
-            this.loaiSpPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.loaiSpPanel.MinimumSize = new System.Drawing.Size(1, 1);
-            this.loaiSpPanel.Name = "loaiSpPanel";
-            this.loaiSpPanel.Padding = new System.Windows.Forms.Padding(2);
-            this.loaiSpPanel.Radius = 1;
-            this.loaiSpPanel.RectColor = System.Drawing.SystemColors.Window;
-            this.loaiSpPanel.ScrollBarColor = System.Drawing.Color.HotPink;
-            this.loaiSpPanel.ScrollBarStyleInherited = false;
-            this.loaiSpPanel.ShowText = false;
-            this.loaiSpPanel.Size = new System.Drawing.Size(342, 666);
-            this.loaiSpPanel.TabIndex = 11;
-            this.loaiSpPanel.Text = null;
-            this.loaiSpPanel.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnDangXuat
-            // 
-            this.btnDangXuat.BackColor = System.Drawing.Color.HotPink;
-            this.btnDangXuat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDangXuat.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnDangXuat.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnDangXuat.Image = ((System.Drawing.Image)(resources.GetObject("btnDangXuat.Image")));
-            this.btnDangXuat.ImageOffset = new System.Drawing.Point(20, 20);
-            this.btnDangXuat.Location = new System.Drawing.Point(0, 728);
-            this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(342, 70);
-            this.btnDangXuat.TabIndex = 10;
-            this.btnDangXuat.TabStop = false;
-            this.btnDangXuat.Text = "Đăng xuất";
+            this.panel6.BackColor = System.Drawing.SystemColors.Window;
+            this.panel6.Controls.Add(this.btnDangXuat);
+            this.panel6.Controls.Add(this.panel10);
+            this.panel6.Controls.Add(this.panel8);
+            this.panel6.Controls.Add(this.panel9);
+            this.panel6.Controls.Add(this.panel7);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 724);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(342, 74);
+            this.panel6.TabIndex = 12;
             // 
             // btnTatCaSanPham
             // 
@@ -1431,6 +1471,8 @@
             // uiRadioButtonGroup1
             // 
             this.uiRadioButtonGroup1.Controls.Add(this.btnThanhToan);
+            this.uiRadioButtonGroup1.Controls.Add(this.panel5);
+            this.uiRadioButtonGroup1.Controls.Add(this.panel4);
             this.uiRadioButtonGroup1.Controls.Add(this.rdoChuyenKhoan);
             this.uiRadioButtonGroup1.Controls.Add(this.rdoTienMat);
             this.uiRadioButtonGroup1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -1458,17 +1500,35 @@
             this.btnThanhToan.FillPressColor = System.Drawing.Color.DeepPink;
             this.btnThanhToan.FillSelectedColor = System.Drawing.Color.DeepPink;
             this.btnThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnThanhToan.Location = new System.Drawing.Point(338, 32);
+            this.btnThanhToan.Location = new System.Drawing.Point(300, 32);
             this.btnThanhToan.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.RectColor = System.Drawing.Color.HotPink;
             this.btnThanhToan.RectHoverColor = System.Drawing.Color.LightPink;
             this.btnThanhToan.RectPressColor = System.Drawing.Color.DeepPink;
             this.btnThanhToan.RectSelectedColor = System.Drawing.Color.DeepPink;
-            this.btnThanhToan.Size = new System.Drawing.Size(344, 56);
-            this.btnThanhToan.TabIndex = 10;
+            this.btnThanhToan.Size = new System.Drawing.Size(345, 44);
+            this.btnThanhToan.TabIndex = 13;
             this.btnThanhToan.Text = "THANH TOÁN";
             this.btnThanhToan.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.Window;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel5.Location = new System.Drawing.Point(645, 32);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(37, 44);
+            this.panel5.TabIndex = 12;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.Window;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(300, 76);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(382, 12);
+            this.panel4.TabIndex = 11;
             // 
             // rdoChuyenKhoan
             // 
@@ -1476,11 +1536,11 @@
             this.rdoChuyenKhoan.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdoChuyenKhoan.Dock = System.Windows.Forms.DockStyle.Left;
             this.rdoChuyenKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.rdoChuyenKhoan.Location = new System.Drawing.Point(150, 32);
+            this.rdoChuyenKhoan.Location = new System.Drawing.Point(124, 32);
             this.rdoChuyenKhoan.MinimumSize = new System.Drawing.Size(1, 1);
             this.rdoChuyenKhoan.Name = "rdoChuyenKhoan";
             this.rdoChuyenKhoan.RadioButtonColor = System.Drawing.Color.HotPink;
-            this.rdoChuyenKhoan.Size = new System.Drawing.Size(188, 56);
+            this.rdoChuyenKhoan.Size = new System.Drawing.Size(176, 56);
             this.rdoChuyenKhoan.TabIndex = 9;
             this.rdoChuyenKhoan.Text = "Chuyển khoản";
             // 
@@ -1494,64 +1554,82 @@
             this.rdoTienMat.MinimumSize = new System.Drawing.Size(1, 1);
             this.rdoTienMat.Name = "rdoTienMat";
             this.rdoTienMat.RadioButtonColor = System.Drawing.Color.HotPink;
-            this.rdoTienMat.Size = new System.Drawing.Size(150, 56);
+            this.rdoTienMat.Size = new System.Drawing.Size(124, 56);
             this.rdoTienMat.TabIndex = 8;
             this.rdoTienMat.Text = "Tiền mặt";
             // 
-            // uiPanel36
+            // panel8
             // 
-            this.uiPanel36.BackColor = System.Drawing.Color.HotPink;
-            this.uiPanel36.Controls.Add(this.btnQuaFormTrangChu);
-            this.uiPanel36.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiPanel36.FillColor = System.Drawing.Color.HotPink;
-            this.uiPanel36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel36.Location = new System.Drawing.Point(165, 0);
-            this.uiPanel36.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiPanel36.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiPanel36.Name = "uiPanel36";
-            this.uiPanel36.RectColor = System.Drawing.Color.HotPink;
-            this.uiPanel36.Size = new System.Drawing.Size(273, 39);
-            this.uiPanel36.TabIndex = 14;
-            this.uiPanel36.Text = null;
-            this.uiPanel36.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel8.BackColor = System.Drawing.SystemColors.Window;
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel8.Location = new System.Drawing.Point(37, 62);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(268, 12);
+            this.panel8.TabIndex = 33;
             // 
-            // lbTenNV
+            // panel9
             // 
-            this.lbTenNV.BackColor = System.Drawing.Color.HotPink;
-            this.lbTenNV.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbTenNV.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTenNV.ForeColor = System.Drawing.Color.Snow;
-            this.lbTenNV.Location = new System.Drawing.Point(438, 0);
-            this.lbTenNV.Name = "lbTenNV";
-            this.lbTenNV.Size = new System.Drawing.Size(246, 39);
-            this.lbTenNV.TabIndex = 15;
-            this.lbTenNV.Text = "Xin chào: ";
-            this.lbTenNV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.panel9.BackColor = System.Drawing.SystemColors.Window;
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel9.Location = new System.Drawing.Point(305, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(37, 74);
+            this.panel9.TabIndex = 32;
             // 
-            // btnQuaFormTrangChu
+            // panel7
             // 
-            this.btnQuaFormTrangChu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnQuaFormTrangChu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnQuaFormTrangChu.FillColor = System.Drawing.Color.HotPink;
-            this.btnQuaFormTrangChu.FillHoverColor = System.Drawing.Color.White;
-            this.btnQuaFormTrangChu.FillPressColor = System.Drawing.Color.White;
-            this.btnQuaFormTrangChu.FillSelectedColor = System.Drawing.Color.White;
-            this.btnQuaFormTrangChu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnQuaFormTrangChu.ForeHoverColor = System.Drawing.Color.HotPink;
-            this.btnQuaFormTrangChu.ForePressColor = System.Drawing.Color.HotPink;
-            this.btnQuaFormTrangChu.ForeSelectedColor = System.Drawing.Color.HotPink;
-            this.btnQuaFormTrangChu.Location = new System.Drawing.Point(0, 0);
-            this.btnQuaFormTrangChu.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnQuaFormTrangChu.Name = "btnQuaFormTrangChu";
-            this.btnQuaFormTrangChu.Radius = 10;
-            this.btnQuaFormTrangChu.RectColor = System.Drawing.Color.White;
-            this.btnQuaFormTrangChu.RectHoverColor = System.Drawing.Color.White;
-            this.btnQuaFormTrangChu.RectPressColor = System.Drawing.Color.White;
-            this.btnQuaFormTrangChu.RectSelectedColor = System.Drawing.Color.White;
-            this.btnQuaFormTrangChu.Size = new System.Drawing.Size(152, 39);
-            this.btnQuaFormTrangChu.TabIndex = 11;
-            this.btnQuaFormTrangChu.Text = "Trang chủ";
-            this.btnQuaFormTrangChu.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.panel7.BackColor = System.Drawing.SystemColors.Window;
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(37, 74);
+            this.panel7.TabIndex = 31;
+            // 
+            // loaiSpPanel
+            // 
+            this.loaiSpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loaiSpPanel.FillColor = System.Drawing.SystemColors.Window;
+            this.loaiSpPanel.FillColorGradientDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.loaiSpPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.loaiSpPanel.Location = new System.Drawing.Point(0, 62);
+            this.loaiSpPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.loaiSpPanel.MinimumSize = new System.Drawing.Size(1, 1);
+            this.loaiSpPanel.Name = "loaiSpPanel";
+            this.loaiSpPanel.Padding = new System.Windows.Forms.Padding(2);
+            this.loaiSpPanel.Radius = 1;
+            this.loaiSpPanel.RectColor = System.Drawing.SystemColors.Window;
+            this.loaiSpPanel.ScrollBarColor = System.Drawing.Color.HotPink;
+            this.loaiSpPanel.ScrollBarStyleInherited = false;
+            this.loaiSpPanel.ShowText = false;
+            this.loaiSpPanel.Size = new System.Drawing.Size(342, 662);
+            this.loaiSpPanel.TabIndex = 14;
+            this.loaiSpPanel.Text = null;
+            this.loaiSpPanel.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.SystemColors.Window;
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(37, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(268, 12);
+            this.panel10.TabIndex = 35;
+            // 
+            // btnDangXuat
+            // 
+            this.btnDangXuat.BackColor = System.Drawing.Color.HotPink;
+            this.btnDangXuat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDangXuat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnDangXuat.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnDangXuat.Image = ((System.Drawing.Image)(resources.GetObject("btnDangXuat.Image")));
+            this.btnDangXuat.ImageOffset = new System.Drawing.Point(20, 8);
+            this.btnDangXuat.Location = new System.Drawing.Point(37, 12);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Size = new System.Drawing.Size(268, 50);
+            this.btnDangXuat.TabIndex = 36;
+            this.btnDangXuat.TabStop = false;
+            this.btnDangXuat.Text = "Đăng xuất";
             // 
             // frmBanHang
             // 
@@ -1570,8 +1648,9 @@
             this.Text = "`";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.uiPanel1.ResumeLayout(false);
+            this.uiPanel36.ResumeLayout(false);
             this.leftPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).EndInit();
+            this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorTTKhach)).EndInit();
             this.uiPanel14.ResumeLayout(false);
             this.uiGroupBox1.ResumeLayout(false);
@@ -1593,7 +1672,7 @@
             this.uiPanel8.ResumeLayout(false);
             this.uiPanel2.ResumeLayout(false);
             this.uiRadioButtonGroup1.ResumeLayout(false);
-            this.uiPanel36.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1608,9 +1687,7 @@
         private Sunny.UI.UILabel uiLabel1;
         private Sunny.UI.UIPanel leftPanel;
         private Sunny.UI.UIButton btnTatCaSanPham;
-        private Sunny.UI.UIImageButton btnDangXuat;
         private System.Windows.Forms.ListView listView2;
-        private Sunny.UI.UIFlowLayoutPanel loaiSpPanel;
         private System.Windows.Forms.ErrorProvider errorTTKhach;
         private Sunny.UI.UITableLayoutPanel sanPhamPanel;
         private Sunny.UI.UIPanel uiPanel13;
@@ -1655,7 +1732,6 @@
         private Sunny.UI.UIRadioButtonGroup uiRadioButtonGroup1;
         private Sunny.UI.UIRadioButton rdoTienMat;
         private Sunny.UI.UIRadioButton rdoChuyenKhoan;
-        private Sunny.UI.UIButton btnThanhToan;
         private Sunny.UI.UIFlowLayoutPanel gioHangPanel;
         private Sunny.UI.UIPanel uiPanel12;
         private Sunny.UI.UILabel lblPhanTramGiam;
@@ -1685,5 +1761,15 @@
         private Sunny.UI.UILabel lbTenNV;
         private Sunny.UI.UIPanel uiPanel36;
         private Sunny.UI.UIButton btnQuaFormTrangChu;
+        private Sunny.UI.UIButton btnThanhToan;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel7;
+        private Sunny.UI.UIFlowLayoutPanel loaiSpPanel;
+        private Sunny.UI.UIImageButton btnDangXuat;
+        private System.Windows.Forms.Panel panel10;
     }
 }

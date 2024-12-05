@@ -19,7 +19,7 @@ namespace DAL
         {
             try
             {
-                var phieuGiao = db.PhieuGiaoHangs.FirstOrDefault(pgiao => pgiao.maPhieuGiao == pg.maPhieuGiao && pgiao.maNhanVien == pg.maNhanVien);
+                var phieuGiao = db.PhieuGiaoHangs.FirstOrDefault(pgiao => pgiao.maPhieuGiao == pg.maPhieuGiao && pgiao.maNhanVien == pg.maNhanVien && pgiao.maHoaDon == pg.maHoaDon);
                 if(phieuGiao == null)
                 {
                     db.PhieuGiaoHangs.InsertOnSubmit(pg);
@@ -57,6 +57,10 @@ namespace DAL
         public PhieuGiaoHang LayTTPhieuGiaoTuMaPG(string mapg)
         {
             return db.PhieuGiaoHangs.FirstOrDefault(pg => pg.maPhieuGiao == mapg);
+        }
+        public PhieuGiaoHang LayTTPhieuGiaoTuMaHoaDon(string mahd)
+        {
+            return db.PhieuGiaoHangs.FirstOrDefault(pg => pg.maHoaDon == mahd);
         }
 
         public bool XoaPhieuGiao(PhieuGiaoHang phieuGiaoHang)
@@ -117,7 +121,7 @@ namespace DAL
                             phieugiaos = phieugiaos.Where(pg => RemoveVietnameseDaus(pg.maPhieuGiao.ToLower()).Contains(giaTriTimKiem)).ToList();
                             break;
                         case "Mã hóa đơn":
-                            phieugiaos = phieugiaos.Where(pg => RemoveVietnameseDaus(pg.maHD.ToLower()).Contains(giaTriTimKiem)).ToList();
+                            phieugiaos = phieugiaos.Where(pg => RemoveVietnameseDaus(pg.maHoaDon.ToLower()).Contains(giaTriTimKiem)).ToList();
                             break;
                         case "Tên khách hàng":
                             phieugiaos = phieugiaos
@@ -146,11 +150,6 @@ namespace DAL
                     if (nhanviens != null)
                     {
                         phieuGiao.tenNhanVien = nhanviens.tenNhanVien;
-                    }
-                    var chiTietPhieuGiao = db.ChiTietPhieuGiaoHangs.FirstOrDefault(ct => ct.maPhieuGiao == phieuGiao.maPhieuGiao);
-                    if (chiTietPhieuGiao != null)
-                    {
-                        phieuGiao.maHD = chiTietPhieuGiao.maHoaDon;
                     }
                 }
                 return phieugiaos;
