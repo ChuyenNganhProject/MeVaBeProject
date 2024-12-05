@@ -28,7 +28,10 @@ namespace BLL
         {
             return nvdal.DangNhap(username, pass);
         }
-
+        public int DemSoNhanVienThuocLoai(string maLoaiNhanVien)
+        {
+            return nvdal.DemSoNhanVienThuocLoai(maLoaiNhanVien);
+        }
         public List<NhanVien> LoadNhanVien()
         {
             return nvdal.LoadNhanVien(); 
