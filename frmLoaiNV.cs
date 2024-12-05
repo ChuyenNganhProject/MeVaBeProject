@@ -16,12 +16,12 @@ namespace MeVaBeProject
     public partial class frmLoaiNV : Form
     {
         LoaiNhanVienBLL lnvbll = new LoaiNhanVienBLL();
+        NhanVienBLL nvBLL = new NhanVienBLL();
         public frmLoaiNV()
         {
             InitializeComponent();
             SetForm();
             this.Load += frmLoaiNV_Load;
-            uiPanel2.Visible = false;
             dgvLoaiNhanVien.Columns["maLoaiNhanVien"].ReadOnly = true;
             dgvLoaiNhanVien.Columns["tenLoaiNhanVien"].ReadOnly = false;
         }
@@ -273,29 +273,37 @@ namespace MeVaBeProject
                 btnXoa.Enabled = false;
             }
         }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.No)
+            if (txtMaLoaiNV.Text!=null)
             {
-                return;
-            }
-            if (dgvLoaiNhanVien.SelectedRows.Count > 0)
-            {
-                string malnv = dgvLoaiNhanVien.SelectedRows[0].Cells["maLoaiNhanVien"].Value.ToString();
-                if (lnvbll.DeleteLoaiNhanVien(malnv))
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No)
                 {
-                    MessageBox.Show("Xóa thành công!");
+                    return;
                 }
                 else
                 {
-                    MessageBox.Show("Xóa thất bại!");
+                    string malnv = txtMaLoaiNV.Text;
+                    if (nvBLL.DemSoNhanVienThuocLoai(malnv)==0)
+                    {
+                        if (lnvbll.DeleteLoaiNhanVien(malnv))
+                        {
+                            MessageBox.Show("Xóa thành công!");
+                            LoadLoaiNhanVien();
+                            SetForm();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa thất bại!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, "Không thể xóa loại nhân viên do có nhân viên thuộc loại này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-                LoadLoaiNhanVien();
-                SetForm();
-            }
+            }  
         }
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
