@@ -60,6 +60,10 @@ namespace DAL
             }
 
         }
+        public int DemSoNhanVienThuocLoai(string maLoaiNhanVien)
+        {
+            return db.NhanViens.Where(nv=>nv.maLoaiNhanVien == maLoaiNhanVien).Count();
+        }
         public NhanVien LayTTNhanVienTuTenDangNhap(string maNhanVien) 
         {
             try

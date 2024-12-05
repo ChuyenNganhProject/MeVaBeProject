@@ -213,6 +213,7 @@ GO
 CREATE TABLE PhieuGiaoHang (
     maPhieuGiao VARCHAR(50) PRIMARY KEY,
 	maNhanVien VARCHAR(50),
+	maHoaDon VARCHAR(50),
 	tenKhachHang NVARCHAR(50),
 	soDienThoai VARCHAR(15),
 	DiaChiGiaoHang NVARCHAR(255) NOT NULL,
@@ -221,19 +222,8 @@ CREATE TABLE PhieuGiaoHang (
     chiPhi DECIMAL(18, 2),
 	ngayDaGiao DATETIME,
     tinhTrang NVARCHAR(50)
-	FOREIGN KEY (maNhanVien) REFERENCES NhanVien(maNhanVien)
-);
-GO
-CREATE TABLE ChiTietPhieuGiaoHang(
-	maPhieuGiao VARCHAR(50),
-    maHoaDon VARCHAR(50),
-    maSanPham VARCHAR(50),
-    soLuong INT,
-    donGia DECIMAL(18, 2),
-    tongTien DECIMAL(18, 2),
-    PRIMARY KEY (maPhieuGiao, maHoaDon, maSanPham),
-    FOREIGN KEY (maPhieuGiao) REFERENCES PhieuGiaoHang(maPhieuGiao),
-    FOREIGN KEY (maHoaDon, maSanPham) REFERENCES ChiTietHoaDonSanPham(maHoaDon, maSanPham)
+	FOREIGN KEY (maNhanVien) REFERENCES NhanVien(maNhanVien),
+	FOREIGN KEY (maHoaDon) REFERENCES HoaDon(maHoaDon)
 );
 GO
 CREATE TABLE PhieuNhap (
