@@ -26,6 +26,10 @@ namespace BLL
         {
             return pgdal.LayTTPhieuGiaoTuMaPG(mapg);
         }
+        public PhieuGiaoHang LayTTPhieuGiaoTuMaHoaDon(string mahd)
+        {
+            return pgdal.LayTTPhieuGiaoTuMaHoaDon(mahd);
+        }
         public bool XoaPhieuGiao(PhieuGiaoHang phieuGiaoHang)
         {
             return pgdal.XoaPhieuGiao(phieuGiaoHang);

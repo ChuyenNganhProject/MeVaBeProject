@@ -37,6 +37,7 @@ namespace MeVaBeProject
             InitializeComponent();
 
             this.maNhanVien = maNhanVien;
+            lbTenNV.Text += nvbll.LayTTNhanVienTuTenDangNhap(maNhanVien).tenNhanVien;
 
             this.btnQuaFormTrangChu.Click += BtnQuaFormTrangChu_Click;
             this.btnClose.Click += BtnClose_Click;

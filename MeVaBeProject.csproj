@@ -207,12 +207,6 @@
     <Compile Include="frmCTHD.Designer.cs">
       <DependentUpon>frmCTHD.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCTPhieuGiao.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCTPhieuGiao.Designer.cs">
-      <DependentUpon>frmCTPhieuGiao.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmDanhSachPhieuDat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +224,12 @@
     </Compile>
     <Compile Include="frmDatHang.Designer.cs">
       <DependentUpon>frmDatHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHangThanhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHangThanhVien.Designer.cs">
+      <DependentUpon>frmHangThanhVien.cs</DependentUpon>
     </Compile>
     <Compile Include="frmKhachHang.cs">
       <SubType>Form</SubType>
@@ -410,9 +410,6 @@
     <EmbeddedResource Include="frmCTHD.resx">
       <DependentUpon>frmCTHD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCTPhieuGiao.resx">
-      <DependentUpon>frmCTPhieuGiao.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmDanhSachPhieuDat.resx">
       <DependentUpon>frmDanhSachPhieuDat.cs</DependentUpon>
     </EmbeddedResource>
@@ -527,6 +524,7 @@
     <None Include="Properties\DataSources\DTO.ChiTietPhieuDat.datasource" />
     <None Include="Properties\DataSources\DTO.ChiTietPhieuDoiHang.datasource" />
     <None Include="Properties\DataSources\DTO.ChiTietPhieuGiaoHang.datasource" />
+    <None Include="Properties\DataSources\DTO.ChiTietPhieuGiaoHangWithSTT.datasource" />
     <None Include="Properties\DataSources\DTO.ChiTietPhieuNhap.datasource" />
     <None Include="Properties\DataSources\DTO.ChiTietPhieuThanhLy.datasource" />
     <None Include="Properties\DataSources\DTO.SanPham.datasource" />

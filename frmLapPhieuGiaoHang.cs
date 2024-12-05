@@ -23,16 +23,16 @@ namespace MeVaBeProject
         private string maNhanVien;
         private string MaHD;
         private string MaPGSauKhiHuyPhieu;
+        private string TongTienHoaDonText;
 
-        List<ChiTietPhieuGiaoHang> chiTietPhieuGiaoHangList = new List<ChiTietPhieuGiaoHang>();
-        private List<SanPhamGiao> danhSachSanPhamGiao = new List<SanPhamGiao>();
+        private List<ChiTietHoaDonSanPham> chiTietPhieuGiaoHangList;
 
         HoaDonBLL hdbll = new HoaDonBLL();
         ChiTietHoaDonSanPhamBLL cthdbll = new ChiTietHoaDonSanPhamBLL();
         PhieuGiaoHangBLL pgbll = new PhieuGiaoHangBLL();
-        ChiTietPhieuGiaoBLL ctpgbll = new ChiTietPhieuGiaoBLL();
         NhanVienBLL nvbll = new NhanVienBLL();
         KhachHangBLL khbll = new KhachHangBLL();
+        SanPhamBLL spbll = new SanPhamBLL();
         public frmLapPhieuGiaoHang(string maNhanVien)
         {
             InitializeComponent();
@@ -64,17 +64,11 @@ namespace MeVaBeProject
             this.btnXacNhanPhieuGiao.Click += BtnXacNhanPhieuGiao_Click;
             this.btnHuyPhieuGiao.Click += BtnHuyPhieuGiao_Click;
 
-            this.btnThemSPVaoPhieuGiao.Click += BtnThemSPVaoPhieuGiao_Click;
-            this.btnXoaSPTrongPhieuGiao.Click += BtnXoaSPTrongPhieuGiao_Click;
             this.btnLuuPhieuGiao.Click += BtnLuuPhieuGiao_Click;
 
             // TT Phiếu giao
-            this.dgvSanPhamGiao.CellFormatting += DgvSanPhamGiao_CellFormatting;
             this.txtTenKhachHang.KeyPress += TxtTenKhachHang_KeyPress;
             this.txtSDT.KeyPress += TxtSDT_KeyPress;
-            this.numericSoLuongSp.ValueChanged += NumericSoLuongSp_ValueChanged;
-            this.dgvSanPhamGiao.SelectionChanged += DgvSanPhamGiao_SelectionChanged;
-            this.dgvSanPhamGiao.CellValueChanged += DgvSanPhamGiao_CellValueChanged;
         }
 
         private void BtnTimKiem_Click(object sender, EventArgs e)
@@ -155,41 +149,6 @@ namespace MeVaBeProject
             }
         }
 
-        private void NumericSoLuongSp_ValueChanged(object sender, EventArgs e)
-        {
-            string maSp = txtMaSPGiao.Text;
-            if(!string.IsNullOrEmpty(maSp))
-            {
-                foreach (var item in danhSachSanPhamGiao) 
-                {
-                    if (item.MaSanPham == maSp)
-                    {
-                        item.SoLuong = (int)numericSoLuongSp.Value;
-                        item.TongTien = item.SoLuong * item.DonGia;
-                        break;
-                    }
-                }
-                CapNhatDgvSanPhamGiao();
-                CapNhatTongTienCuaSP();
-            }
-        }
-
-        private void DgvSanPhamGiao_SelectionChanged(object sender, EventArgs e)
-        {
-            if(dgvSanPhamGiao.SelectedRows.Count > 0)
-            {
-                foreach (DataGridViewRow selectedRow in dgvSanPhamGiao.SelectedRows)
-                {
-                    string maSp = selectedRow.Cells["maSanPhamGiao"].Value.ToString();
-                    txtMaSPGiao.Text = maSp;
-                    ChiTietHoaDonSanPham sp = cthdbll.LayTTSanPhamTrongHoaDon(maSp, MaHD);
-                    numericSoLuongSp.Maximum = sp.soLuong.Value;
-                    numericSoLuongSp.Enabled = true;
-                    numericSoLuongSp.Value = int.Parse(selectedRow.Cells["soLuongGiao"].Value.ToString());
-                }
-            }
-        }
-
         private void BtnHuyMaHD_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Bạn muốn hủy chọn hóa đơn này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -216,141 +175,23 @@ namespace MeVaBeProject
             this.btnXacNhanPhieuGiao.Enabled = false;
             this.btnHuyPhieuGiao.Enabled = false;
 
-            btnThemSPVaoPhieuGiao.Enabled = true;
-            btnXoaSPTrongPhieuGiao.Enabled = true;
             btnLuuPhieuGiao.Enabled = true;
-
-            txtTongGíaTri.Text = "";
             txtPhiVanChuyen.Text = "";
-            danhSachSanPhamGiao.Clear();
-            CapNhatDgvSanPhamGiao();
         }
 
         private void BtnXacNhanMaHD_Click(object sender, EventArgs e)
         {
-            string mahd = txtMaHD.Text;
-            if (!string.IsNullOrEmpty(mahd)) {
-                LoadDanhSachSanPhamCuaHoaDon(mahd);
+            if (!string.IsNullOrEmpty(MaHD)) {
+                LoadDanhSachSanPhamCuaHoaDon(MaHD);
                 btnXacNhanMaHD.Enabled = false;
                 btnHuyMaHD.Enabled = true;
                 dgvHoaDon.Enabled = false;
 
-                KiemTraSuTonTaiPhieuGiaoCuaHoaDon(mahd);
+                KiemTraSuTonTaiPhieuGiaoCuaHoaDon(MaHD);
             }
             else
             {
                 MessageBox.Show("Hãy chọn hóa đơn để xác nhận.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-        private void DgvSanPhamGiao_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {       
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                DataGridViewRow row = dgvSanPhamGiao.Rows[e.RowIndex];
-                string maSanPham = row.Cells["maSanPhamGiao"].Value?.ToString();
-
-                if (dgvSanPhamGiao.Columns[e.ColumnIndex].Name == "soLuongGiao")
-                {
-                    int soLuong = Convert.ToInt32(row.Cells["soLuongGiao"].Value);
-                    var sanPham = danhSachSanPhamGiao.FirstOrDefault(sp => sp.MaSanPham == maSanPham);
-
-                    if (sanPham != null)
-                    {
-                        sanPham.SoLuong = soLuong;
-                        sanPham.TongTien = sanPham.SoLuong * sanPham.DonGia;
-
-                        CapNhatDgvSanPhamGiao();
-                        CapNhatTongTienCuaSP();
-                    }
-                }
-            }
-        }
-
-        private void BtnThemSPVaoPhieuGiao_Click(object sender, EventArgs e)
-        {
-            if (dgvDSSP.SelectedRows.Count > 0)
-            {
-                List<string> sanPhamDatSoLuongMax = new List<string>();
-
-                foreach (DataGridViewRow selectedRow in dgvDSSP.SelectedRows)
-                {
-                    string maSanPham = selectedRow.Cells["maSanPham"].Value?.ToString();
-                    int soLuongDSSP = int.Parse(selectedRow.Cells["soLuong"].Value?.ToString() ?? "0");
-                    ChiTietHoaDonSanPham sp = cthdbll.LayTTSanPhamTrongHoaDon(maSanPham, MaHD);
-
-                    bool trungLap = false;
-                    foreach (var item in danhSachSanPhamGiao)
-                    {
-                        if (item.MaSanPham == maSanPham)
-                        {
-                            if (item.SoLuong < soLuongDSSP)
-                            {
-                                trungLap = true;
-                                // Tăng số lượng nếu trùng lặp
-                                item.SoLuong += 1;
-                                item.TongTien = item.SoLuong * sp.donGia.Value;
-                            }
-                            else
-                            {
-                                sanPhamDatSoLuongMax.Add(maSanPham);
-                            }
-                            break;
-                        }
-                    }
-                    if (!trungLap && !sanPhamDatSoLuongMax.Contains(maSanPham))
-                    {
-                        danhSachSanPhamGiao.Add(new SanPhamGiao
-                        {
-                            MaSanPham = maSanPham,
-                            SoLuong = 1,
-                            DonGia = sp.donGia.Value,
-                            TongTien = sp.donGia.Value
-                        });
-                    }
-                }
-                dgvDSSP.ClearSelection();
-
-                if (sanPhamDatSoLuongMax.Count > 0)
-                {
-                    CapNhatDgvSanPhamGiao();
-                    string message = "Các sản phẩm sau đã đạt số lượng tối đa:\n" + string.Join("\n", sanPhamDatSoLuongMax);
-                    MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                else
-                {
-                    CapNhatDgvSanPhamGiao();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn ít nhất một sản phẩm để thêm vào phiếu giao.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            CapNhatTongTienCuaSP();
-        }
-        
-        private void BtnXoaSPTrongPhieuGiao_Click(object sender, EventArgs e)
-        {
-            if(dgvSanPhamGiao.SelectedRows.Count > 0)
-            {
-                List<string> sanPhamCanXoa = new List<string>();
-                foreach (DataGridViewRow selectedRow in dgvSanPhamGiao.SelectedRows)
-                {
-                    if (selectedRow.Cells["maSanPhamGiao"].Value != null)
-                    {
-                        string maSanPham = selectedRow.Cells["maSanPhamGiao"].Value.ToString();
-                        sanPhamCanXoa.Add(maSanPham);
-                    }
-                }
-                MessageBox.Show("Đã xóa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // Xóa sản phẩm khỏi danh sách
-                danhSachSanPhamGiao.RemoveAll(sp => sanPhamCanXoa.Contains(sp.MaSanPham));
-                CapNhatDgvSanPhamGiao();
-                CapNhatTongTienCuaSP();
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn ít nhất một sản phẩm để xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -367,6 +208,7 @@ namespace MeVaBeProject
                     {
                         maPhieuGiao = maPhieuGiao,
                         maNhanVien = maNhanVien,
+                        maHoaDon = MaHD,
                         tenKhachHang = txtTenKhachHang.Text.Trim(),
                         soDienThoai = txtSDT.Text,
                         DiaChiGiaoHang = txtDiaChi.Text.Trim(),
@@ -377,32 +219,6 @@ namespace MeVaBeProject
                     };
                     if (pgbll.ThemHoacSuaPhieuGiao(phieuGiao))
                     {
-                        chiTietPhieuGiaoHangList = new List<ChiTietPhieuGiaoHang>();
-                        foreach (DataGridViewRow row in dgvSanPhamGiao.Rows)
-                        {
-                            int soLuongGiao = int.Parse(row.Cells["soLuongGiao"].Value.ToString());
-                            decimal donGia = decimal.Parse(row.Cells["donGia"].Value.ToString());
-                            decimal tongTienGiao = decimal.Parse(row.Cells["tongTienGiao"].Value.ToString());
-
-                            ChiTietPhieuGiaoHang ctpg = new ChiTietPhieuGiaoHang
-                            {
-                                maPhieuGiao = phieuGiao.maPhieuGiao,
-                                maHoaDon = txtMaHD.Text,
-                                maSanPham = row.Cells["maSanPhamGiao"].Value.ToString(),
-                                soLuong = soLuongGiao,
-                                donGia = donGia,
-                                tongTien = tongTienGiao
-                            };
-
-                            chiTietPhieuGiaoHangList.Add(ctpg);
-
-                            if (!ctpgbll.ThemHoacSuaChiTietPhieuGiao(ctpg))
-                            {
-                                MessageBox.Show("Lỗi khi thêm chi tiết phiếu giao", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                        }
-
                         MessageBox.Show("Cập nhật phiếu giao thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         
                         btnInPhieuGiao.Enabled = true;
@@ -414,7 +230,7 @@ namespace MeVaBeProject
                 }
                 else if(string.IsNullOrEmpty(txtPhiVanChuyen.Text))
                 {
-                    MessageBox.Show("Chưa có sản phẩm giao!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Không thể thực hiện lập phiếu giao\nTổng tiền hóa đơn dưới 199.000đ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -430,10 +246,8 @@ namespace MeVaBeProject
                 string sdt = txtSDT.Text;
                 NhanVien nv = nvbll.LayTTNhanVienTuTenDangNhap(maNhanVien);
                 string tenNV = nv.tenNhanVien;
-                chiTietPhieuGiaoHangList = ctpgbll.LayDanhSachChiTietPhieuGiao(mapg);
-                string tongGiaTriText = txtTongGíaTri.Text;
                 string phiVanChuyenText = txtPhiVanChuyen.Text;
-                frmPhieuGiaoHang frm = new frmPhieuGiaoHang(chiTietPhieuGiaoHangList, mahd, mapg, tenKH, diaChiNhanHang, sdt, tenNV, tongGiaTriText, phiVanChuyenText);
+                frmPhieuGiaoHang frm = new frmPhieuGiaoHang(chiTietPhieuGiaoHangList, mahd, mapg, tenKH, diaChiNhanHang, sdt, tenNV, TongTienHoaDonText, phiVanChuyenText);
                 frm.ShowDialog();
                 PhieuGiaoHang phieuGiao = pgbll.LayTTPhieuGiaoTuMaPG(mapg);
                 if(phieuGiao.tinhTrang == "Chưa xác nhận")
@@ -471,10 +285,6 @@ namespace MeVaBeProject
                         btnHuyPhieuGiao.Enabled = false;
                         btnInPhieuGiao.Enabled = false;
                         LoadForm();
-                        danhSachSanPhamGiao.Clear();
-                        CapNhatDgvSanPhamGiao();
-
-                        LoadDSSanPhamCuaPhieuGiao("");
 
                         txtMaPhieuGiao.Text = MaPGSauKhiHuyPhieu;
                     }
@@ -498,40 +308,16 @@ namespace MeVaBeProject
                         LoadForm();
                         LoadSauKhiHuyMaHD();
 
-                        LoadDSSanPhamCuaPhieuGiao("");
                         btnHuyMaHD.Enabled = false;
                         btnXacNhanMaHD.Enabled = true;
 
                         txtMaPhieuGiao.Text = pgbll.TaoMaPhieuGiaoHangTuDong();
                     }
+                    else
+                    {
+                        MessageBox.Show("Xác nhận phiếu giao hàng thất bại cho đơn hàng " + MaHD, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-            }
-        }
-        private void CapNhatDgvSanPhamGiao()
-        {
-            dgvSanPhamGiao.DataSource = null;
-            dgvSanPhamGiao.DataSource = danhSachSanPhamGiao.Select(ctpg => new
-            {
-                maSanPhamGiao = ctpg.MaSanPham,
-                soLuongGiao = ctpg.SoLuong,
-                donGia = ctpg.DonGia,
-                tongTienGiao = ctpg.TongTien
-            }).ToList();
-            if (dgvSanPhamGiao.Columns["maSanPhamGiao"] != null)
-            {
-                dgvSanPhamGiao.Columns["maSanPhamGiao"].HeaderText = "Mã sản phẩm";
-            }
-            if (dgvSanPhamGiao.Columns["soLuongGiao"] != null)
-            {
-                dgvSanPhamGiao.Columns["soLuongGiao"].HeaderText = "Số lượng";
-            }
-            if (dgvSanPhamGiao.Columns["donGia"] != null)
-            {
-                dgvSanPhamGiao.Columns["donGia"].HeaderText = "Đơn giá (đ)";
-            }
-            if (dgvSanPhamGiao.Columns["tongTienGiao"] != null)
-            {
-                dgvSanPhamGiao.Columns["tongTienGiao"].HeaderText = "Tổng tiền (đ)";
             }
         }
         private bool KiemTraTruocKhiLuuHoacIn()
@@ -572,79 +358,37 @@ namespace MeVaBeProject
             return dinhDang;
         }
 
-        private void CapNhatTongTienCuaSP()
-        {
-            decimal tongTienTatCaSanPham = 0;
-            decimal phiVanChuyen;
-            foreach (var item in danhSachSanPhamGiao)
-            {
-                if (item.MaSanPham != null)
-                {
-                    int soLuongGiao = item.SoLuong;
-                    decimal donGiaSp = item.DonGia;
-                    decimal tongTienGiao = soLuongGiao * donGiaSp;
-                    item.TongTien = tongTienGiao;
-
-                    tongTienTatCaSanPham += tongTienGiao;
-                }
-            }
-            txtTongGíaTri.Text = tongTienTatCaSanPham.ToString("N0").Replace(",", ".") + "đ";
-
-            if(tongTienTatCaSanPham < 199000)
-            {
-                phiVanChuyen = 0;
-            }
-            else if(tongTienTatCaSanPham < 399000)
-            {
-                phiVanChuyen = 20000;
-            }
-            else if (tongTienTatCaSanPham < 699000)
-            {
-                phiVanChuyen = 15000;
-            }
-            else
-            {
-                phiVanChuyen = 5000;
-            }
-            txtPhiVanChuyen.Text = phiVanChuyen.ToString("N0").Replace(",", ".") + "đ";
-        }
-
         private void DgvHoaDon_SelectionChanged(object sender, EventArgs e)
         {
             if(dgvHoaDon.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvHoaDon.SelectedRows[0];
                 string maHoaDon = row.Cells["maHoaDon"].Value.ToString();
+                string tongTienHD = row.Cells["tongTien"].Value.ToString();
                 MaHD = maHoaDon;
                 txtMaHD.Text = maHoaDon;
+                TongTienHoaDonText = tongTienHD.Replace(".00", "") + "đ";
             }
         }
         public void KiemTraSuTonTaiPhieuGiaoCuaHoaDon(string mahd)
         {
-            string mapg = ctpgbll.LayMaPGTuHoaDon(mahd);
-            if (mapg != null)
+            PhieuGiaoHang phieuGiao = pgbll.LayTTPhieuGiaoTuMaHoaDon(mahd);
+            if (phieuGiao != null)
             {
-                PhieuGiaoHang phieuGiao = pgbll.LayTTPhieuGiaoTuMaPG(mapg);
                 if (phieuGiao.tinhTrang != "Chưa xác nhận")
                 {
                     EnableKhiCoSuTonTaiPhieuGiaoCuaHoaDon(false);
-                    
-                    dgvSanPhamGiao.Enabled = false;
-                    numericSoLuongSp.Enabled = false;
                 }
                 else if (phieuGiao.tinhTrang == "Chưa xác nhận")
                 {
                     EnableKhiCoSuTonTaiPhieuGiaoCuaHoaDon(true);
-                    
-                    dgvSanPhamGiao.Enabled = true;
-                    numericSoLuongSp.Enabled = true;
                 }
 
                 btnXacNhanPhieuGiao.Enabled = false;
                 btnHuyPhieuGiao.Enabled = false;
                 btnInPhieuGiao.Enabled = true;
 
-                txtMaPhieuGiao.Text = mapg;
+                txtMaPhieuGiao.Text = phieuGiao.maPhieuGiao;
                 txtDiaChi.Text = phieuGiao.DiaChiGiaoHang;
                 dtpNgayGiaoDuKien.Value = phieuGiao.ngayGiaoDuKien.Value;
 
@@ -656,7 +400,6 @@ namespace MeVaBeProject
                 btnXacNhanPhieuGiao.Enabled = false;
                 btnHuyPhieuGiao.Enabled = false;
                 btnInPhieuGiao.Enabled = false;
-                dgvSanPhamGiao.Enabled = true;
                 ResetForm();
                 EnableKhiCoSuTonTaiPhieuGiaoCuaHoaDon(true);
                 dtpNgayGiaoDuKien.MinDate = DateTime.Now;
@@ -679,7 +422,6 @@ namespace MeVaBeProject
             }
 
             LoadDanhSachSanPhamCuaHoaDon(mahd);
-            LoadDSSanPhamCuaPhieuGiao(mapg);
         }
         private void ResetForm()
         {
@@ -688,37 +430,7 @@ namespace MeVaBeProject
             txtTenKhachHang.Text = "";
             txtSDT.Text = "";
             dtpNgayGiaoDuKien.Value = DateTime.Now.AddDays(2);
-            txtTongGíaTri.Text = "";
             txtPhiVanChuyen.Text = "";
-            txtMaSPGiao.Text = "";
-            numericSoLuongSp.Value = 1;
-        }
-        private void LoadDSSanPhamCuaPhieuGiao(string mapg)
-        {
-            if (string.IsNullOrEmpty(mapg))
-            {
-                danhSachSanPhamGiao.Clear();
-            }
-            else
-            {
-                var dsChiTietPG = ctpgbll.LayDanhSachChiTietPhieuGiao(mapg);
-                danhSachSanPhamGiao = dsChiTietPG.Select(ctpg => new SanPhamGiao
-                {
-                    MaSanPham = ctpg.maSanPham,
-                    SoLuong = ctpg.soLuong.Value,
-                    DonGia = ctpg.donGia.Value,
-                    TongTien = ctpg.tongTien.Value
-                }).ToList();
-            }
-            dgvSanPhamGiao.DataSource = danhSachSanPhamGiao.Select(ctpg => new
-            {
-                maSanPhamGiao = ctpg.MaSanPham,
-                soLuongGiao = ctpg.SoLuong,
-                donGia = ctpg.DonGia,
-                tongTienGiao = ctpg.TongTien
-            }).ToList();
-
-            CapNhatTongTienCuaSP();
         }
         private void EnableKhiCoSuTonTaiPhieuGiaoCuaHoaDon(bool enable)
         {
@@ -727,8 +439,6 @@ namespace MeVaBeProject
             txtTenKhachHang.Enabled = enable;
             txtSDT.Enabled = enable;
             dtpNgayGiaoDuKien.Enabled = enable;
-            btnXoaSPTrongPhieuGiao.Enabled = enable;
-            btnThemSPVaoPhieuGiao.Enabled = enable;
         }
 
         private void TxtSDT_KeyPress(object sender, KeyPressEventArgs e)
@@ -815,17 +525,77 @@ namespace MeVaBeProject
 
         private void LoadDanhSachSanPhamCuaHoaDon(string mahd)
         {
-            var dsSanPhamCuaHoaDon = cthdbll.LoadCTHDSanPham(mahd);
-            dgvDSSP.DataSource = dsSanPhamCuaHoaDon.Select(ds => new
+            if(!string.IsNullOrEmpty(mahd))
             {
-                maSanPham = ds.maSanPham,
-                tenSanPham = ds.tenSanPham,
-                soLuong = ds.soLuong
-            }).ToList();
-            dgvDSSP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                var dsSanPhamCuaHoaDon = cthdbll.LoadCTHDSanPham(mahd);
+                dgvDSSP.DataSource = dsSanPhamCuaHoaDon.Select(ds => new
+                {
+                    maSanPham = ds.maSanPham,
+                    tenSanPham = ds.tenSanPham,
+                    soLuong = ds.soLuong,
+                    donGia = ds.donGia,
+                    tongTienSP = ds.tongTien
+                }).ToList();
+                dgvDSSP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            dgvDSSP.Columns["maSanPham"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvDSSP.Columns["soLuong"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgvDSSP.Columns["maSanPham"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgvDSSP.Columns["donGia"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgvDSSP.Columns["soLuong"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgvDSSP.Columns["tongTienSP"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                if (dgvDSSP.Columns["maSanPham"] != null)
+                {
+                    dgvDSSP.Columns["maSanPham"].HeaderText = "Mã sản phẩm";
+                }
+                if (dgvDSSP.Columns["tenSanPham"] != null)
+                {
+                    dgvDSSP.Columns["tenSanPham"].HeaderText = "Tên sản phẩm";
+                }
+                if (dgvDSSP.Columns["soLuong"] != null)
+                {
+                    dgvDSSP.Columns["soLuong"].HeaderText = "Số lượng";
+                }
+                if (dgvDSSP.Columns["donGia"] != null)
+                {
+                    dgvDSSP.Columns["donGia"].HeaderText = "Đơn giá (đ)";
+                }
+                if (dgvDSSP.Columns["tongTienSP"] != null)
+                {
+                    dgvDSSP.Columns["tongTienSP"].HeaderText = "Tổng tiền (đ)";
+                }
+
+                chiTietPhieuGiaoHangList = new List<ChiTietHoaDonSanPham>();
+                foreach (DataGridViewRow row in dgvDSSP.Rows)
+                {
+                    string maSp = row.Cells["maSanPham"].Value.ToString();
+                    ChiTietHoaDonSanPham sp = cthdbll.LayTTSanPhamTrongHoaDon(maSp, mahd);
+                    chiTietPhieuGiaoHangList.Add(sp);
+                }
+                decimal phiVanChuyen = 0;
+                HoaDon hd = hdbll.LoadHoaDonTheoMa(MaHD);
+                if (hd.tongTienSauGiam < 199000)
+                {
+                    return;
+                }
+                else if (hd.tongTienSauGiam < 399000)
+                {
+                    phiVanChuyen = 20000;
+                }
+                else if (hd.tongTienSauGiam < 699000)
+                {
+                    phiVanChuyen = 15000;
+                }
+                else
+                {
+                    phiVanChuyen = 5000;
+                }
+                txtPhiVanChuyen.Text = phiVanChuyen.ToString("N0").Replace(",", ".") + "đ";
+            }
+            else
+            {
+                dgvDSSP.DataSource = null;
+                return;
+            }
         }
 
         private void DgvSanPhamGiao_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -844,10 +614,9 @@ namespace MeVaBeProject
             if (e.RowIndex >= 0 && dgvHoaDon.Columns[e.ColumnIndex].Name == "maHoaDon")
             {
                 string maHD = dgvHoaDon.Rows[e.RowIndex].Cells["maHoaDon"].Value.ToString();
-                string maPGCuaHoaDonDuocChon = ctpgbll.LayMaPGTuHoaDon(maHD);
-                if (!string.IsNullOrEmpty(maPGCuaHoaDonDuocChon))
+                PhieuGiaoHang phieuGiao = pgbll.LayTTPhieuGiaoTuMaHoaDon(maHD);
+                if (phieuGiao != null)
                 {
-                    PhieuGiaoHang phieuGiao = pgbll.LayTTPhieuGiaoTuMaPG(maPGCuaHoaDonDuocChon);
                     if(phieuGiao.tinhTrang == "Chưa xác nhận")
                     {
                         dgvHoaDon.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightPink;

@@ -1095,9 +1095,5 @@ namespace MeVaBeProject
             // Đặt lại vị trí con trỏ vào cuối
             txtLuong.SelectionStart = cursorPosition + 1;
         }
-
-
     }
-
-
 }

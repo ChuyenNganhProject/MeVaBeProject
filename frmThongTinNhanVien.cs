@@ -19,11 +19,13 @@ namespace MeVaBeProject
             SetEnableFalse();
             btnDoi.Enabled = false;
             btnHuy.Enabled = false;
+
+            this.btnDong.Click += BtnDong_Click;
         }
 
-        private void FrmThongTinNhanVien_Load(object sender, EventArgs e)
+        private void BtnDong_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            this.Close();
         }
         public void SetEnableTrue()
         {
@@ -43,7 +45,6 @@ namespace MeVaBeProject
         }
         public void loadThongTinNhanVien()
         {
-
             var nv = nvbll.LayTTNhanVienTuMa(frmTrangChu.maNhanVienDangNhap);
             if (nv != null)
             {

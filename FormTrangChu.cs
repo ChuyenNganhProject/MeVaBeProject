@@ -82,7 +82,9 @@ namespace MeVaBeProject
                 // Hiển thị tên loại nhân viên (chức vụ)
                 lbChucVu.Text += $" {nhanVien.tenLoaiNhanVien}";
                 quyens = ctQuyen.LayDanhSachQuyenCuaLoaiNhanVien(nhanVien.maLoaiNhanVien);
-                foreach(ChiTietQuyenCuaLoaiNhanVien item in quyens)
+                maNhanVienDangNhap = nhanVien.maNhanVien;
+                chucVuNhanVienDangNhap = nhanVien.tenLoaiNhanVien;
+                foreach (ChiTietQuyenCuaLoaiNhanVien item in quyens)
                 {
                     switch (item.maQuyen)
                     {

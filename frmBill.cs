@@ -71,8 +71,8 @@ namespace MeVaBeProject
             }
             else
             {
-                diemTichLuyDuocCongText = "Điểm tích lũy được cộng: " + this.diemTichLuyDuocCongText + "đ";
-                tongDiemTichLuyText = "Tổng điểm tích lũy: " + tongDiemTichLuy.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
+                diemTichLuyDuocCongText = "Điểm tích lũy được cộng: " + this.diemTichLuyDuocCongText;
+                tongDiemTichLuyText = "Tổng điểm tích lũy: " + tongDiemTichLuy.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"));
             }
             string hinhThucTraText = this.hinhThucTra;
 

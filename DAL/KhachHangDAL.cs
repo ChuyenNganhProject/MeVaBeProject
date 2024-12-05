@@ -111,8 +111,50 @@ namespace DAL
         }
         public bool DeleteKhachHang(string maKhachHang)
         {
+            //try
+            //{
+            //    var kh = db.KhachHangs.FirstOrDefault(k => k.maKhachHang == maKhachHang);
+            //    if (kh != null)
+            //    {
+            //        db.KhachHangs.DeleteOnSubmit(kh);
+            //        db.SubmitChanges();
+            //        return true;
+            //    }
+            //    return false; // Customer not found
+            //}
+            //catch (Exception ex)
+            //{
+            //    Debug.WriteLine("Xóa khách hàng thất bại: " + ex.Message);
+            //    return false;
+            //}
+            #region
+            //try
+            //{
+            //    var kh = db.KhachHangs.FirstOrDefault(k => k.maKhachHang == maKhachHang);
+            //    if (kh != null)
+            //    {
+            //        db.KhachHangs.DeleteOnSubmit(kh);
+            //        db.SubmitChanges();
+            //        return true;
+            //    }
+            //    return false; // Customer not found
+            //}
+            //catch (Exception ex)
+            //{
+            //    Debug.WriteLine("Xóa khách hàng thất bại: " + ex.Message);
+            //    return false;
+            //}
+            #endregion
             try
             {
+
+                bool existsInHoaDon = db.HoaDons.Any(hd => hd.maKhachHang == maKhachHang);
+                if (existsInHoaDon)
+                {
+                    return false;
+                }
+
+
                 var kh = db.KhachHangs.FirstOrDefault(k => k.maKhachHang == maKhachHang);
                 if (kh != null)
                 {
@@ -120,7 +162,7 @@ namespace DAL
                     db.SubmitChanges();
                     return true;
                 }
-                return false; // Customer not found
+                return false;
             }
             catch (Exception ex)
             {
@@ -134,35 +176,62 @@ namespace DAL
         }
         public string GetTenHangFromMaHang(string maHang)
         {
+            //try
+            //{
+
+            //    var tenHang = db.HangThanhViens
+            //                    .Where(h => h.maHang == maHang)  // Điều kiện lọc theo maHang
+            //                    .Select(h => h.tenHang)         // Chọn trường TenHang
+            //                    .FirstOrDefault();              // Lấy phần tử đầu tiên hoặc null nếu không tìm thấy
+
+            //    return tenHang ?? string.Empty;    // Nếu không tìm thấy, trả về chuỗi rỗng
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    throw new Exception("Lỗi khi lấy tên hạng: " + ex.Message);
+            //}
+
+
             try
             {
+                if (string.IsNullOrWhiteSpace(maHang))
+                {
+                    Debug.WriteLine("Mã hạng bị rỗng hoặc chỉ chứa khoảng trắng.");
+                    return string.Empty;
+                }
 
+                // Ghi log mã hạng nhận được
+                Debug.WriteLine($"Mã hạng được truyền vào: '{maHang}'");
+
+                // Truy vấn tên hạng dựa trên mã hạng
                 var tenHang = db.HangThanhViens
-                                .Where(h => h.maHang == maHang)  // Điều kiện lọc theo maHang
-                                .Select(h => h.tenHang)         // Chọn trường TenHang
-                                .FirstOrDefault();              // Lấy phần tử đầu tiên hoặc null nếu không tìm thấy
+                                .Where(h => h.maHang == maHang)
+                                .Select(h => h.tenHang)
+                                .FirstOrDefault();
 
-                return tenHang ?? string.Empty;    // Nếu không tìm thấy, trả về chuỗi rỗng
+                Debug.WriteLine($"Tên hạng lấy được: {tenHang ?? "Không tìm thấy"}");
+                return tenHang ?? string.Empty; // Trả về chuỗi rỗng nếu không tìm thấy
             }
             catch (Exception ex)
             {
-
-                throw new Exception("Lỗi khi lấy tên hạng: " + ex.Message);
+                Debug.WriteLine($"Lỗi trong GetTenHangFromMaHang: {ex.Message}");
+                return string.Empty;
             }
         }
+
         public List<KhachHang> LoadKhachHang()
         {
             var khachHangs = (from kh in db.KhachHangs
                               join hang in db.HangThanhViens on kh.maHang equals hang.maHang
                               select kh).ToList();
 
-            // Attach membership type name to each customer
             foreach (var kh in khachHangs)
             {
                 var hang = db.HangThanhViens.FirstOrDefault(h => h.maHang == kh.maHang);
                 if (hang != null)
                 {
-                    kh.tenHang = hang.tenHang; // Assuming 'tenHang' exists in the DTO
+                    kh.tenHang = hang.tenHang;
                 }
             }
             return khachHangs;
@@ -171,7 +240,7 @@ namespace DAL
         {
             if (string.IsNullOrEmpty(keyword))
             {
-                return LoadKhachHang(); // Assuming you have a method to load all customers
+                return LoadKhachHang();
             }
 
             var filteredKhachHang = LoadKhachHang()
@@ -185,6 +254,27 @@ namespace DAL
         public int TongSoKhachHang()
         {
             return db.KhachHangs.Count();
+        }
+
+        public string GetPhoneNumberById(string maKH)
+        {
+            try
+            {
+                var khachhang = db.KhachHangs.FirstOrDefault(kh => kh.maKhachHang == maKH);
+
+                if (khachhang != null)
+                {
+
+                    return khachhang.soDienThoai;
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return null;
+            }
         }
     }
 }

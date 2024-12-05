@@ -59,6 +59,10 @@ namespace BLL
         {
             return khdal.TongSoKhachHang();
         }
-
+        
+        public string GetPhoneNumberById(string maKH)
+        {
+            return khdal.GetPhoneNumberById(maKH);
+        }
     }
 }
