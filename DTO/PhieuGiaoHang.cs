@@ -9,6 +9,5 @@ namespace DTO
     public partial class PhieuGiaoHang
     {
         public string tenNhanVien { get; set; }
-        public string maHD { get; set; }
     }
 }

@@ -23,8 +23,8 @@ namespace MeVaBeProject
         private string TenNhanVien;
         private string PhiVanChuyenText;
         private string TongGiaTriText;
-        private List<ChiTietPhieuGiaoHang> _chiTietPGList;
-        public frmPhieuGiaoHang(List<ChiTietPhieuGiaoHang> chiTietPGList, string maHD, string maPG, 
+        private List<ChiTietHoaDonSanPham> _chiTietPGList;
+        public frmPhieuGiaoHang(List<ChiTietHoaDonSanPham> chiTietPGList, string maHD, string maPG, 
                                 string tenKH, string diaChiNhanHang, string sdt, string tenNhanVien, string tongGiaTriText, string phiVanChuyenText)
         {
             InitializeComponent();
@@ -59,7 +59,17 @@ namespace MeVaBeProject
                 new ReportParameter("PhiVanChuyen", PhiVanChuyenText)
             };
 
-            ReportDataSource reportDataSource = new ReportDataSource("ChiTietPhieuGiaoHangDataSet", _chiTietPGList);
+            var chiTietPGListWithSTT = _chiTietPGList.Select((item, index) => new ChiTietPhieuGiaoHangWithSTT
+            {
+                STT = index + 1,
+                MaSanPham = item.maSanPham,
+                TenSanPham = item.tenSanPham,
+                SoLuong = Convert.ToInt32(item.soLuong?.ToString()),
+                DonGia = item.donGia?.ToString("N0").Replace(",", ".") + "đ",
+                ThanhTien = item.tongTien?.ToString("N0").Replace(",", ".") + "đ"
+            }).ToList();
+
+            ReportDataSource reportDataSource = new ReportDataSource("ChiTietPhieuGHDataSet", chiTietPGListWithSTT);
 
             rptPhieuGiaoHang.LocalReport.DataSources.Clear();
             rptPhieuGiaoHang.LocalReport.DataSources.Add(reportDataSource);

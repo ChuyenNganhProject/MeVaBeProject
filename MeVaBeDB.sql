@@ -36,7 +36,7 @@ CREATE TABLE NhanVien (
     matKhau NVARCHAR(255),
     luongCoBan INT,
     ngayVaoLam DATE,
-	trangThai NVARCHAR(50),
+	trangThai NVARCHAR(50)
     CONSTRAINT FK_NV_LoaiNV FOREIGN KEY (maLoaiNhanVien) REFERENCES LoaiNhanVien(maLoaiNhanVien)
 );
 GO
@@ -69,7 +69,7 @@ CREATE TABLE SanPham (
 );
 GO
 CREATE TABLE HoaDon (
-    maHoaDon VARCHAR(50) PRIMARY KEY,	
+    maHoaDon VARCHAR(50) PRIMARY KEY,
     maKhachHang VARCHAR(20),
     maNhanVien VARCHAR(50),
     ngayLap DATETIME,
@@ -265,9 +265,6 @@ CREATE TABLE ChiTietQuyenCuaLoaiNhanVien(
     FOREIGN KEY (maQuyen) REFERENCES QuyenHeThong(maQuyen)
 );
 GO
-ALTER TABLE NhanVien
-ADD CONSTRAINT TrangThaiDefault DEFAULT N'Đang hoạt động' FOR trangThai
-
 ALTER TABLE SanPham
 ADD CONSTRAINT DonGiaNhapDefault DEFAULT 0 FOR donGiaNhap
 
@@ -284,7 +281,7 @@ ALTER TABLE PhieuDat
 ADD CONSTRAINT NgayCapNhatCheck CHECK( ngayLap <= ngayCapNhat)
 
 ALTER TABLE PhieuDat
-ADD CONSTRAINT TrangThai_PhieuDat_Default DEFAULT N'Chưa duyệt' FOR trangThai
+ADD CONSTRAINT TrangThaiDefault DEFAULT N'Chưa duyệt' FOR trangThai
 
 ALTER TABLE PhieuDat
 ADD CONSTRAINT TongTienDefault DEFAULT 0 FOR tongTien
@@ -430,22 +427,15 @@ VALUES
 GO
 INSERT INTO HangThanhVien (maHang, tenHang, mucTieuBatDau, mucTieuKetThuc, ghiChu)
 VALUES 
-    ('HTV001', N'Hạng Thường', 10000, 50000, N'Hạng dành cho khách hàng thường xuyên'),
-    ('HTV002', N'Hạng Bạc', 50000, 200000, N'Hạng dành cho khách hàng VIP Bạc'),
-    ('HTV003', N'Hạng Vàng', 200000, 500000, N'Hạng dành cho khách hàng VIP Vàng'),
-    ('HTV004', N'Hạng Kim Cương', 500000, 1000000, N'Hạng dành cho khách hàng VIP Kim Cương');
+    ('HTV001', N'Hạng Thường', 10000, 200000, N'Hạng dành cho khách hàng thường'),
+    ('HTV002', N'Hạng Vàng', 200000, 500000, N'Hạng dành cho khách hàng VIP Vàng'),
+    ('HTV003', N'Hạng Kim Cương', 500000, 1000000, N'Hạng dành cho khách hàng VIP Kim Cương');
 GO
 -- Thêm dữ liệu vào bảng UuDaiThanhVien
 INSERT INTO UuDaiThanhVien (maUuDai, tenUuDai, phanTramGiam, maHang)
 VALUES 
-    ('UD001', N'Giảm giá 10% toàn bộ sản phẩm', 10, 'HTV003'),
-	('UD002', N'Giảm giá 15% toàn bộ sản phẩm', 15, 'HTV004')
-GO
-INSERT INTO KhachHang (maKhachHang, tenKhachHang, soDienThoai,maHang)
-VALUES
-    ('KH000001', N'Nguyễn Văn A', '0912345678','HTV001'),
-    ('KH000002', N'Lê Thị B', '0912345679','HTV001'),
-    ('KH000003', N'Trần Văn C', '0912345680','HTV001');
+    ('UD001', N'Giảm giá 10% toàn bộ sản phẩm', 10, 'HTV002'),
+	('UD002', N'Giảm giá 15% toàn bộ sản phẩm', 15, 'HTV003')
 GO
 INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALUES('NCC001',N'Nhà cung cấp sữa','0888003346',N'469/32 Nguyễn Kiệm','hoangPhuc@gmail.com')
 INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALUES('NCC002',N'Nhà cung cấp đồ chơi','0888003345',N'180 Hoa Lan','hoangMy@gmail.com')
@@ -656,11 +646,8 @@ BEGIN
     WHERE YEAR(GETDATE()) <> YEAR(ngayCapNhatDiem)
 END
 GO
-CREATE PROCEDURE XoaPhieuGiao_Proc @maPhieuGiao VARCHAR(50)
+ALTER PROCEDURE XoaPhieuGiao_Proc @maPhieuGiao VARCHAR(50)
 AS
-	--Xóa chi tiết phiếu giao
-	DELETE ChiTietPhieuGiaoHang WHERE maPhieuGiao = @maPhieuGiao
-	--Xóa phiếu giao
 	DELETE PhieuGiaoHang WHERE maPhieuGiao = @maPhieuGiao
 GO
 --CREATE TRIGGER trg_UpdateHangThanhVien

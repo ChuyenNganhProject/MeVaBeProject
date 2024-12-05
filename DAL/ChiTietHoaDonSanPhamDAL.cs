@@ -43,7 +43,7 @@ namespace DAL
             }
             else
             {
-                return new List<ChiTietHoaDonSanPham> { };
+                return new List<ChiTietHoaDonSanPham> ();
             }
         }
 
