@@ -22,11 +22,6 @@ namespace MeVaBeProject
 
             this.btnDong.Click += BtnDong_Click;
         }
-
-        private void BtnDong_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
         public void SetEnableTrue()
         {
 
@@ -48,7 +43,7 @@ namespace MeVaBeProject
             var nv = nvbll.LayTTNhanVienTuMa(frmTrangChu.maNhanVienDangNhap);
             if (nv != null)
             {
-
+                
                 tenNV = lbTenNhanVien.Text = txtTenNV.Text = nv.tenNhanVien;
                 txtNgaySinh.Value = nv.ngaySinh.Value;
                 txtNgayVaoLam.Value = nv.ngayVaoLam.Value;
@@ -77,7 +72,7 @@ namespace MeVaBeProject
 
         }
 
-        private void uiSymbolButton2_Click(object sender, EventArgs e)
+        private void BtnDong_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
