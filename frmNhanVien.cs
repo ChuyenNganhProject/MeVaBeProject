@@ -24,8 +24,6 @@ namespace MeVaBeProject
             txtTrangThaiHD.Enabled = false;
             this.txtSDT.KeyPress += txtSDT_KeyPress;
             txtTenDN.Enabled = false;
-
-
         }
         public void SetForm()
         {
@@ -34,7 +32,6 @@ namespace MeVaBeProject
             btnSua.Enabled = false;
             btnKhoaTK.Enabled = false;
             txtMatKhau.Enabled = false;
-
         }
         public void SetDataGirdView()
         {
@@ -47,16 +44,6 @@ namespace MeVaBeProject
             txtTenDN.Enabled = false;
             txtMatKhau.Enabled = false;
             //
-            dgvNhanVien.Columns["maNhanVien"].ReadOnly = true;
-            dgvNhanVien.Columns["tenNhanVien"].ReadOnly = true;
-            dgvNhanVien.Columns["luongCoBan"].ReadOnly = true;
-            dgvNhanVien.Columns["diaChi"].ReadOnly = true;
-            dgvNhanVien.Columns["ngaySinh"].ReadOnly = true;
-            dgvNhanVien.Columns["ngayVaoLam"].ReadOnly = true;
-            dgvNhanVien.Columns["tenDangNhap"].ReadOnly = true;
-            dgvNhanVien.Columns["matKhau"].ReadOnly = true;
-            dgvNhanVien.Columns["soDienThoai"].ReadOnly = true;
-            dgvNhanVien.Columns["tenLoaiNhanVien"].ReadOnly = true;
         }
         private void EnableControls()
         {
@@ -96,7 +83,6 @@ namespace MeVaBeProject
             btnKhoaTK.Enabled = false;
             btnLamMoi.Enabled = false;
         }
-
         private void ClearForm()
         {
             txtTenNV.Text = "";
@@ -108,14 +94,10 @@ namespace MeVaBeProject
             txtDiaChi.Text = "";
             cboLoaiNV.SelectedIndex = 0;
         }
-
         private void ExportToExcelNhanVien(string filePath)
         {
-
             IWorkbook wb = new XSSFWorkbook();  // Khởi tạo workbook cho định dạng .xlsx
             ISheet sheet = wb.CreateSheet("NhanVien");  // Tạo sheet có tên "NhanVien"
-
-
             IRow rowhead = sheet.CreateRow(0);
             int colIndex = 0;
             for (int i = 0; i < dgvNhanVien.Columns.Count; i++)
@@ -127,7 +109,6 @@ namespace MeVaBeProject
                     colIndex++;
                 }
             }
-
             for (int i = 0; i < dgvNhanVien.Rows.Count; i++)
             {
                 IRow row = sheet.CreateRow(i + 1);
@@ -142,104 +123,11 @@ namespace MeVaBeProject
                     }
                 }
             }
-
-
             using (FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
             {
                 wb.Write(stream);
             }
         }
-
-
-        //private bool ValidateInput_Them()
-        //{
-        //    // Kiểm tra tên nhân viên
-        //    if (string.IsNullOrWhiteSpace(txtTenNV.Text))
-        //    {
-        //        MessageBox.Show("Vui lòng nhập tên nhân viên.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-
-        //    // Kiểm tra tên đăng nhập
-        //    if (string.IsNullOrWhiteSpace(txtTenDN.Text))
-        //    {
-        //        MessageBox.Show("Vui lòng nhập tên đăng nhập.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-
-        //    // Kiểm tra trùng tên đăng nhập
-        //    if (nvbll.IsTaiKhoanDuplicate(txtTenDN.Text))
-        //    {
-        //        MessageBox.Show("Tên đăng nhập đã tồn tại. Vui lòng nhập tên khác.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-
-        //    // Kiểm tra mật khẩu
-        //    if (string.IsNullOrWhiteSpace(txtMatKhau.Text))
-        //    {
-        //        MessageBox.Show("Vui lòng nhập mật khẩu.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-
-        //    // Kiểm tra số điện thoại
-        //    if (string.IsNullOrWhiteSpace(txtSDT.Text))
-        //    {
-        //        MessageBox.Show("Vui lòng nhập số điện thoại.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-
-        //    // Kiểm tra định dạng số điện thoại
-        //    if (!System.Text.RegularExpressions.Regex.IsMatch(txtSDT.Text, @"^\d{10}$"))
-        //    {
-        //        MessageBox.Show("Số điện thoại phải bao gồm đúng 10 chữ số và không chứa ký tự đặc biệt.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-
-        //    // Kiểm tra trùng số điện thoại
-        //    if (nvbll.IsSDTDuplicate(txtSDT.Text))
-        //    {
-        //        MessageBox.Show("Số điện thoại đã tồn tại. Vui lòng nhập số điện thoại khác.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-
-        //    // Kiểm tra địa chỉ
-        //    if (string.IsNullOrWhiteSpace(txtDiaChi.Text))
-        //    {
-        //        MessageBox.Show("Vui lòng nhập địa chỉ.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-
-        //    // Kiểm tra ngày sinh và độ tuổi
-        //    DateTime selectedDateOfBirth = txtNgaySinh.Value;
-        //    int age = DateTime.Now.Year - selectedDateOfBirth.Year;
-        //    if (selectedDateOfBirth > DateTime.Now.AddYears(-age)) age--;
-        //    if (age < 18)
-        //    {
-        //        MessageBox.Show("Nhân viên phải có tuổi từ 18 trở lên.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-
-        //    // Kiểm tra ngày vào làm
-        //    DateTime minDate = new DateTime(2003, 1, 19);
-        //    DateTime today = DateTime.Today;
-        //    if (txtNgayVaoLam.Value <= minDate || txtNgayVaoLam.Value > today)
-        //    {
-        //        MessageBox.Show("Ngày vào làm không được để trống và phải lớn hơn ngày 19/01/2003 và không vượt quá ngày hôm nay.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-
-
-        //    // Kiểm tra lương cơ bản
-        //    if (string.IsNullOrWhiteSpace(txtLuong.Text) ||
-        //        (!int.TryParse(txtLuong.Text.Replace(" VND", "").Replace(",", "").Trim(), out int luongCoBan) && !isUpdate) ||
-        //        luongCoBan <= 0)
-        //    {
-        //        MessageBox.Show("Lương cơ bản không hợp lệ. Vui lòng nhập một số nguyên dương.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-
-        //    return true;
-        //}
         private bool ValidateInput_Them()
         {
             // Kiểm tra tên nhân viên
@@ -248,23 +136,18 @@ namespace MeVaBeProject
                 MessageBox.Show("Vui lòng nhập tên nhân viên.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
-
             // Kiểm tra tên đăng nhập và loại bỏ tất cả khoảng trắng
-
             if (string.IsNullOrWhiteSpace(txtTenDN.Text))
             {
                 MessageBox.Show("Vui lòng nhập tên đăng nhập.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             if (txtTenDN.Text.Length < 6)
             {
                 MessageBox.Show("Tên đăng nhập phải có độ dài trên 6 kí tự ", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             // Kiểm tra mật khẩu 
-
             if (string.IsNullOrWhiteSpace(txtMatKhau.Text))
             {
                 MessageBox.Show("Vui lòng nhập mật khẩu.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -314,7 +197,6 @@ namespace MeVaBeProject
                 MessageBox.Show("Nhân viên phải có tuổi từ 18 trở lên.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             // Kiểm tra ngày vào làm
             DateTime today = DateTime.Today;
             DateTime minHireDate = selectedDateOfBirth.AddYears(18); // Ngày vào làm phải sau sinh nhật 18 tuổi
@@ -334,9 +216,7 @@ namespace MeVaBeProject
                 MessageBox.Show($"Ngày vào làm không được nhỏ hơn ngày {minHireDate.ToString("dd/MM/yyyy")}, khi nhân viên đủ 18 tuổi.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             string inputLuong = txtLuong.Text.Trim();
-
             // Kiểm tra nếu rỗng lương
             if (string.IsNullOrWhiteSpace(inputLuong))
             {
@@ -351,7 +231,6 @@ namespace MeVaBeProject
             }
             return true;
         }
-
         private bool ValidateInput_Sua(string oldPhoneNumber = "")
         {
             // Kiểm tra tên nhân viên
@@ -360,7 +239,6 @@ namespace MeVaBeProject
                 MessageBox.Show("Vui lòng nhập tên nhân viên.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             // Kiểm tra mật khẩu và loại bỏ tất cả khoảng trắng
             if (string.IsNullOrWhiteSpace(txtMatKhau.Text))
             {
@@ -372,23 +250,18 @@ namespace MeVaBeProject
                 MessageBox.Show("Mật khẩu phải có độ dài từ 6 kí tự.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
-
             // Kiểm tra số điện thoại
             if (string.IsNullOrWhiteSpace(txtSDT.Text))
             {
                 MessageBox.Show("Vui lòng nhập số điện thoại.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             // Kiểm tra định dạng số điện thoại
             if (txtSDT.Text.Length < 10)
             {
                 MessageBox.Show("Số điện thoại phải đúng 10 chữ số.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
-
             // Kiểm tra số điện thoại mới có trùng với số điện thoại của nhân viên khác không
             string newPhoneNumber = txtSDT.Text.Trim();
             if (oldPhoneNumber != newPhoneNumber && nvbll.IsSDTDuplicate(newPhoneNumber)) // Kiểm tra số điện thoại mới
@@ -396,15 +269,12 @@ namespace MeVaBeProject
                 MessageBox.Show("Số điện thoại này đã tồn tại trong hệ thống. Vui lòng nhập số điện thoại khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
-
             // Kiểm tra địa chỉ
             if (string.IsNullOrWhiteSpace(txtDiaChi.Text))
             {
                 MessageBox.Show("Vui lòng nhập địa chỉ.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             // Kiểm tra ngày sinh và độ tuổi
             DateTime selectedDateOfBirth = txtNgaySinh.Value;
             int age = DateTime.Now.Year - selectedDateOfBirth.Year;
@@ -414,7 +284,6 @@ namespace MeVaBeProject
                 MessageBox.Show("Nhân viên phải có tuổi từ 18 trở lên.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             // Kiểm tra ngày vào làm
             DateTime today = DateTime.Today;
             DateTime minHireDate = selectedDateOfBirth.AddYears(18); // Ngày vào làm phải sau sinh nhật 18 tuổi
@@ -442,7 +311,6 @@ namespace MeVaBeProject
             }
             return true;
         }
-
         private void FrmNhanVien_Load(object sender, EventArgs e)
         {
             LoadNhanVien();
@@ -451,10 +319,8 @@ namespace MeVaBeProject
             cboLoaiNV.DisplayMember = "tenLoaiNhanVien";
             cboLoaiNV.ValueMember = "maLoaiNhanVien";
         }
-
         public void LoadNhanVien()
         {
-
             try
             {
                 // Tải dữ liệu từ BLL
@@ -468,30 +334,19 @@ namespace MeVaBeProject
                 {
                     dgvNhanVien.Columns["maLoaiNhanVien"].Visible = false; // Ẩn mã loại nhân viên
                 }
-
-                dgvNhanVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi tải nhân viên: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void dgvNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thêm nhân viên?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
             if (result == DialogResult.No)
             {
                 return;
             }
-
-
             // Xử lý giá trị lương
             int luongchuyendoi = int.Parse(txtLuong.Text.Replace(".", "").Trim());
             string maLoaiNV = cboLoaiNV.SelectedValue.ToString();
@@ -499,7 +354,6 @@ namespace MeVaBeProject
             {
                 return;
             }
-
             var nv = new NhanVien
             {
                 tenNhanVien = txtTenNV.Text.Trim(),
@@ -513,7 +367,6 @@ namespace MeVaBeProject
                 trangThai = "Đang hoạt động",
                 maLoaiNhanVien = maLoaiNV
             };
-
             try
             {
                 bool kq = nvbll.InsertNhanVien(nv);
@@ -530,10 +383,7 @@ namespace MeVaBeProject
                 // Thông báo lỗi khi không thể thêm nhân viên
                 MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
-
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             ClearForm();
@@ -548,11 +398,8 @@ namespace MeVaBeProject
             //load db 
             LoadNhanVien();
         }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
-
-
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa nhân viên này không?",
         "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -560,7 +407,6 @@ namespace MeVaBeProject
             {
                 return;
             }
-
             if (dgvNhanVien.SelectedRows.Count > 0)
             {
                 string manv = dgvNhanVien.SelectedRows[0].Cells["maNhanVien"].Value.ToString();
@@ -573,25 +419,18 @@ namespace MeVaBeProject
                 {
                     MessageBox.Show("Nhân viên đã thực hiện giao dịch, không thể xóa!");
                 }
-
                 LoadNhanVien();
                 //SetForm();
-
             }
         }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn sửa nhân viên này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
             if (result == DialogResult.No)
             {
                 return;
             }
-
-
             string maNV = txtMaNV.Text;
-
             // Lấy số điện thoại cũ và mật khẩu cũ từ cơ sở dữ liệu
             string OldPhoneNumber = nvbll.GetPhoneNumberById(maNV);
             string OldPassword = nvbll.GetPasswordById(maNV); // Get old password 
@@ -604,23 +443,17 @@ namespace MeVaBeProject
             // Xử lý giá trị lương
             int luongchuyendoi = int.Parse(txtLuong.Text.Replace(".", "").Trim());
             string luongText = txtLuong.Text.Replace(".", "").Trim();
-
-
-
             // Kiểm tra nếu rỗng lương
             if (string.IsNullOrWhiteSpace(txtLuong.Text))
             {
                 MessageBox.Show("Lương cơ bản không được để trống. Vui lòng nhập một số nguyên dương.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             string newPassword = txtMatKhau.Text.Trim();
-
             // Nếu mật khẩu không thay đổi (trường mật khẩu để trống hoặc giống với mật khẩu cũ), sử dụng mật khẩu cũ
             string passwordToSave = string.IsNullOrWhiteSpace(newPassword) || newPassword == OldPassword
                 ? OldPassword
                 : nvbll.MaHoaMatKhauKieuSha256Hash(newPassword); //Chỉ Mã hóa lại khi mật khẩu thay đổi
-
             var nv = new NhanVien
             {
                 maNhanVien = txtMaNV.Text.Trim(),
@@ -636,7 +469,6 @@ namespace MeVaBeProject
                 maLoaiNhanVien = cboLoaiNV.SelectedValue.ToString(),
                 ////tenLoaiNhanVien = cboLoaiNV.Text.Trim(),
             };
-
             // Cập nhật cơ sở dữ liệu
             bool kq = nvbll.UpdateNhanVien(nv);
             if (kq)
@@ -650,17 +482,8 @@ namespace MeVaBeProject
                 MessageBox.Show("Sửa thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 MessageBox.Show($"Cập nhật không thành công cho nhân viên: {nv.tenNhanVien}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-
-
-
-
         }
-
-
-
-        private void dgvNhanVien_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //dgvNhanVien.ReadOnly = false;
             if (e.RowIndex >= 0)
@@ -676,11 +499,7 @@ namespace MeVaBeProject
                 int luongCoBan = int.Parse(selectedRow.Cells["luongCoBan"].Value.ToString());
                 DateTime ngayVaoLam = DateTime.Parse(selectedRow.Cells["ngayVaoLam"].Value.ToString());
                 string maLoaiNhanVien = selectedRow.Cells["maLoaiNhanVien"].Value.ToString();
-                /////////
                 string trangThai = selectedRow.Cells["trangThai"].Value.ToString();
-                ////////
-
-
                 // Kiểm tra trạng thái để vô hiệu hóa/kích hoạt các điều khiển
                 if (trangThai == "Ngưng hoạt động")
                 {
@@ -711,36 +530,20 @@ namespace MeVaBeProject
                 cboLoaiNV.SelectedValue = maLoaiNhanVien;
             }
         }
-
-        private void uiSymbolButton6_Click_1(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            frmLoaiNV loaiNhanVienForm = new frmLoaiNV();
-            loaiNhanVienForm.ShowDialog();
-
-        }
-
-        private void uiSymbolButton3_Click(object sender, EventArgs e)
-        {
-
-
             var results = nvbll.SearchNhanVien(txtSearch.Text.Trim());
-
-
             if (results != null && results.Count > 0)
             {
-
                 dgvNhanVien.DataSource = results;
             }
             else
             {
-
                 MessageBox.Show("Không tìm thấy nhân viên nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 // Xóa hết dữ liệu trong DataGridView nếu không có kết quả tìm kiếm
                 dgvNhanVien.DataSource = null;
             }
         }
-
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Kiểm tra xem phím nhấn có phải là Enter không
@@ -753,19 +556,10 @@ namespace MeVaBeProject
                 e.Handled = true;
             }
         }
-
         private void btnOpen_Click(object sender, EventArgs e)
         {
-
             txtMatKhau.Enabled = !txtMatKhau.Enabled;
-
         }
-
-        private void txtNgaySinh_ValueChanged(object sender, DateTime value)
-        {
-
-        }
-
         private void txtSearch_Enter(object sender, EventArgs e)
         {
             if (txtSearch.Text == "Nhập tên, địa chỉ, hoặc số điện thoại để tìm kiếm")
@@ -775,7 +569,6 @@ namespace MeVaBeProject
                 txtSearch.Font = new Font(txtSearch.Font, FontStyle.Regular);
             }
         }
-
         private void txtSearch_Leave(object sender, EventArgs e)
         {
             if (txtSearch.Text == "")
@@ -787,9 +580,6 @@ namespace MeVaBeProject
 
             }
         }
-
-
-
         private void dgvNhanVien_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             // Kiểm tra nếu cột là "trangThai"
@@ -821,7 +611,6 @@ namespace MeVaBeProject
                 }
             }
         }
-
         private void btnMoTK_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn mở khóa tài khoản này ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -873,7 +662,6 @@ namespace MeVaBeProject
                 SetForm();
             }
         }
-
         private void txtTimNVOFF_Click(object sender, EventArgs e)
         {
             //Ngung hoat dong
@@ -912,14 +700,6 @@ namespace MeVaBeProject
                 MessageBox.Show("Vui lòng chọn trạng thái nhân viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-
-
-
-
-
-
-
         private void btnKhoaTK_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn khóa tài khoản này ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -973,9 +753,6 @@ namespace MeVaBeProject
                 SetForm();
             }
         }
-
-
-
         private void btnHuyLoc_Click(object sender, EventArgs e)
         {
             ClearForm();
@@ -983,12 +760,8 @@ namespace MeVaBeProject
             rdNgungHD.Checked = false;
             LoadNhanVien();
         }
-
-
         private void btnXuatFileExcel_Click(object sender, EventArgs e)
         {
-
-
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Excel Files (*.xlsx)|*.xlsx";
             //sfd.FileName = "NhanVienFile";
@@ -1007,11 +780,7 @@ namespace MeVaBeProject
                     MessageBox.Show($"Lỗi khi xuất file: {ex.Message}", "Lỗi", MessageBoxButtons.OK);
                 }
             }
-
-
-
         }
-
         private void txtSDT_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (txtSDT.Text.Length >= 10 && !char.IsControl(e.KeyChar))
@@ -1023,7 +792,6 @@ namespace MeVaBeProject
                 e.Handled = true;
             }
         }
-
         private void txtLuong_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -1077,7 +845,6 @@ namespace MeVaBeProject
                 e.Handled = true;
             }
         }
-
         private void txtLuong_TextChanged(object sender, EventArgs e)
         {
             // Lưu vị trí con trỏ hiện tại
@@ -1094,6 +861,12 @@ namespace MeVaBeProject
 
             // Đặt lại vị trí con trỏ vào cuối
             txtLuong.SelectionStart = cursorPosition + 1;
+        }
+
+        private void btnLoaiNV_Click(object sender, EventArgs e)
+        {
+            frmLoaiNV frmLoaiNV = new frmLoaiNV();
+            frmLoaiNV.ShowDialog();
         }
     }
 }

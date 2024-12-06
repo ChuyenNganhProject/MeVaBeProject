@@ -39,7 +39,8 @@ namespace MeVaBeProject
         private void FrmNhapHang_Load(object sender, EventArgs e)
         {
             txtMaPhieuNhap.Text = maPhieuNhap;
-            dtHanSuDung.MinDate = dtNgaySanXuat.Value;
+            dtNgaySanXuat.MaxDate = DateTime.Now;
+            dtHanSuDung.MinDate = DateTime.Now.AddYears(2);
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -222,8 +223,18 @@ namespace MeVaBeProject
                         }
                     }
                     MessageBox.Show(this, "Tạo phiếu nhập thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DongForm?.Invoke(true);
-                    this.Close();
+                    DialogResult r = MessageBox.Show(this, "Bạn có muốn in phiếu nhập ra không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (r == DialogResult.Yes)
+                    {
+                        frmPhieuNhapHang frmPhieuNhapHang = new frmPhieuNhapHang(maPhieuNhap);
+                        frmPhieuNhapHang.DongForm += FrmPhieuNhapHang_DongForm;
+                        frmPhieuNhapHang.ShowDialog();
+                    }
+                    else
+                    {
+                        DongForm?.Invoke(true);
+                        this.Close();
+                    }
                 }
                 else
                 {
@@ -236,6 +247,16 @@ namespace MeVaBeProject
                 MessageBox.Show(this, "Tạo phiếu nhập thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void FrmPhieuNhapHang_DongForm(bool loadData)
+        {
+            if (loadData)
+            {
+                DongForm?.Invoke(true);
+                this.Close();
+            }
+        }
+
         private bool CheckSoLuongDat()
         {
             int soLuongSanPham = dtgvSanPhamTrongPhieuNhap.RowCount;
@@ -300,8 +321,7 @@ namespace MeVaBeProject
             }
         }
         private void dtNgaySanXuat_ValueChanged(object sender, EventArgs e)
-        {
-            dtHanSuDung.MinDate = (dtNgaySanXuat.Value.Day < DateTime.Now.Day) ? DateTime.Now : dtNgaySanXuat.Value;
+        {            
             if (dtgvSanPhamTrongPhieuNhap.SelectedRows.Count > 0)
             {
                 foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuNhap.SelectedRows)
