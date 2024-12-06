@@ -51,6 +51,7 @@
             this.Name = "frmPhieuNhapHang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phiếu nhập hàng";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPhieuNhapHang_FormClosed);
             this.Load += new System.EventHandler(this.frmPhieuNhapHang_Load);
             this.ResumeLayout(false);
 

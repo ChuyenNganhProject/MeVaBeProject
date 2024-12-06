@@ -23,6 +23,8 @@ namespace MeVaBeProject
         private PhieuDatBLL phieuDatBLL;
         private NhaCungCapBLL nhaCungCapBLL;
         private ChiTietPhieuNhapBLL chiTietPhieuNhapBLL;
+        public delegate void SendDataHandler(bool loadData);
+        public event SendDataHandler DongForm;
         public frmPhieuNhapHang(string maPhieuNhap)
         {
             InitializeComponent();
@@ -53,6 +55,11 @@ namespace MeVaBeProject
             phieuNhapReportView.LocalReport.DataSources.Add(rdsChiTiet);
             phieuNhapReportView.LocalReport.SetParameters(reportParameters);
             this.phieuNhapReportView.RefreshReport();
+        }
+
+        private void frmPhieuNhapHang_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DongForm?.Invoke(true);
         }
     }
 }

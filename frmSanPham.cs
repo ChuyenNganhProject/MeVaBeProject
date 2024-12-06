@@ -57,6 +57,8 @@ namespace MeVaBeProject
             cbLocTheoLoai.DataSource = loaiSanPhamBLL.LayDanhSachLoaiSanPham();
             cbLocTheoLoai.ValueMember = "maLoaiSanPham";
             cbLocTheoLoai.DisplayMember = "tenLoaiSanPham";
+
+            cbTrangThai.SelectedIndex = 0;
         }
         private void LoadData()
         {
