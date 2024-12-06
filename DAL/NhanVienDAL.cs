@@ -19,7 +19,10 @@ namespace DAL
         {
             var hashedPassword = MaHoaMatKhauKieuSha256Hash(password);
             var nhanVien = db.NhanViens.SingleOrDefault(nv => nv.tenDangNhap == username && nv.matKhau == hashedPassword);
-            nhanVien.tenLoaiNhanVien = db.LoaiNhanViens.Where(lnv => lnv.maLoaiNhanVien == nhanVien.maLoaiNhanVien).Select(lnv => lnv.tenLoaiNhanVien).FirstOrDefault();
+            if (nhanVien!=null)
+            {
+                nhanVien.tenLoaiNhanVien = db.LoaiNhanViens.Where(lnv => lnv.maLoaiNhanVien == nhanVien.maLoaiNhanVien).Select(lnv => lnv.tenLoaiNhanVien).FirstOrDefault();
+            }           
             return nhanVien;
         }
 

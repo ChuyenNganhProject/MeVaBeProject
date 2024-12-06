@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTrangChu));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnThongTinNhanVien = new Sunny.UI.UIAvatar();
             this.lbChucVu = new Sunny.UI.UILabel();
             this.btnNhanVien = new Sunny.UI.UIImageButton();
             this.lbTenNV = new Sunny.UI.UILabel();
@@ -45,7 +46,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnVeTrangBanHang = new Sunny.UI.UISymbolButton();
             this.btnClose = new Sunny.UI.UILabel();
-            this.btnThongTinNhanVien = new Sunny.UI.UIAvatar();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDatHang)).BeginInit();
@@ -82,6 +82,17 @@
             this.panel2.Size = new System.Drawing.Size(249, 788);
             this.panel2.TabIndex = 1;
             // 
+            // btnThongTinNhanVien
+            // 
+            this.btnThongTinNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnThongTinNhanVien.Location = new System.Drawing.Point(91, 9);
+            this.btnThongTinNhanVien.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnThongTinNhanVien.Name = "btnThongTinNhanVien";
+            this.btnThongTinNhanVien.Size = new System.Drawing.Size(60, 60);
+            this.btnThongTinNhanVien.TabIndex = 14;
+            this.btnThongTinNhanVien.Text = "uiAvatar1";
+            this.btnThongTinNhanVien.Click += new System.EventHandler(this.btnThongTinNhanVien_Click);
+            // 
             // lbChucVu
             // 
             this.lbChucVu.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -96,7 +107,6 @@
             // 
             this.btnNhanVien.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNhanVien.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNhanVien.Enabled = false;
             this.btnNhanVien.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNhanVien.ForeColor = System.Drawing.Color.White;
             this.btnNhanVien.Image = ((System.Drawing.Image)(resources.GetObject("btnNhanVien.Image")));
@@ -108,6 +118,7 @@
             this.btnNhanVien.TabIndex = 12;
             this.btnNhanVien.TabStop = false;
             this.btnNhanVien.Text = "Nhân viên";
+            this.btnNhanVien.Visible = false;
             // 
             // lbTenNV
             // 
@@ -123,7 +134,6 @@
             // 
             this.btnDatHang.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDatHang.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDatHang.Enabled = false;
             this.btnDatHang.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDatHang.ForeColor = System.Drawing.Color.White;
             this.btnDatHang.Image = ((System.Drawing.Image)(resources.GetObject("btnDatHang.Image")));
@@ -135,6 +145,7 @@
             this.btnDatHang.TabIndex = 11;
             this.btnDatHang.TabStop = false;
             this.btnDatHang.Text = "Đặt hàng";
+            this.btnDatHang.Visible = false;
             this.btnDatHang.Click += new System.EventHandler(this.btnDatHang_Click);
             // 
             // btnDangXuat
@@ -156,7 +167,6 @@
             // 
             this.btnNhapHang.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNhapHang.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNhapHang.Enabled = false;
             this.btnNhapHang.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNhapHang.ForeColor = System.Drawing.Color.White;
             this.btnNhapHang.Image = ((System.Drawing.Image)(resources.GetObject("btnNhapHang.Image")));
@@ -168,12 +178,12 @@
             this.btnNhapHang.TabIndex = 6;
             this.btnNhapHang.TabStop = false;
             this.btnNhapHang.Text = "Nhập hàng";
+            this.btnNhapHang.Visible = false;
             // 
             // btnKhachHang
             // 
             this.btnKhachHang.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnKhachHang.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnKhachHang.Enabled = false;
             this.btnKhachHang.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKhachHang.ForeColor = System.Drawing.Color.White;
             this.btnKhachHang.Image = ((System.Drawing.Image)(resources.GetObject("btnKhachHang.Image")));
@@ -185,6 +195,7 @@
             this.btnKhachHang.TabIndex = 5;
             this.btnKhachHang.TabStop = false;
             this.btnKhachHang.Text = "Khách hàng";
+            this.btnKhachHang.Visible = false;
             // 
             // btnHoaDon
             // 
@@ -201,12 +212,12 @@
             this.btnHoaDon.TabIndex = 4;
             this.btnHoaDon.TabStop = false;
             this.btnHoaDon.Text = "Hóa đơn";
+            this.btnHoaDon.Visible = false;
             // 
             // btnSanPham
             // 
             this.btnSanPham.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSanPham.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSanPham.Enabled = false;
             this.btnSanPham.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSanPham.ForeColor = System.Drawing.Color.White;
             this.btnSanPham.Image = ((System.Drawing.Image)(resources.GetObject("btnSanPham.Image")));
@@ -218,12 +229,12 @@
             this.btnSanPham.TabIndex = 3;
             this.btnSanPham.TabStop = false;
             this.btnSanPham.Text = "Sản phẩm";
+            this.btnSanPham.Visible = false;
             // 
             // btnQLNhaCungCap
             // 
             this.btnQLNhaCungCap.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQLNhaCungCap.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnQLNhaCungCap.Enabled = false;
             this.btnQLNhaCungCap.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQLNhaCungCap.ForeColor = System.Drawing.Color.White;
             this.btnQLNhaCungCap.Image = ((System.Drawing.Image)(resources.GetObject("btnQLNhaCungCap.Image")));
@@ -235,13 +246,13 @@
             this.btnQLNhaCungCap.TabIndex = 2;
             this.btnQLNhaCungCap.TabStop = false;
             this.btnQLNhaCungCap.Text = "Nhà cung cấp";
+            this.btnQLNhaCungCap.Visible = false;
             this.btnQLNhaCungCap.Click += new System.EventHandler(this.btnQLNhaCungCap_Click);
             // 
             // btnDashboard
             // 
             this.btnDashboard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDashboard.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDashboard.Enabled = false;
             this.btnDashboard.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.ForeColor = System.Drawing.Color.White;
             this.btnDashboard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashboard.Image")));
@@ -253,6 +264,7 @@
             this.btnDashboard.TabIndex = 1;
             this.btnDashboard.TabStop = false;
             this.btnDashboard.Text = "Dashboard";
+            this.btnDashboard.Visible = false;
             // 
             // pictureBox1
             // 
@@ -318,17 +330,6 @@
             this.btnClose.Size = new System.Drawing.Size(36, 23);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "X";
-            // 
-            // btnThongTinNhanVien
-            // 
-            this.btnThongTinNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnThongTinNhanVien.Location = new System.Drawing.Point(91, 9);
-            this.btnThongTinNhanVien.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnThongTinNhanVien.Name = "btnThongTinNhanVien";
-            this.btnThongTinNhanVien.Size = new System.Drawing.Size(60, 60);
-            this.btnThongTinNhanVien.TabIndex = 14;
-            this.btnThongTinNhanVien.Text = "uiAvatar1";
-            this.btnThongTinNhanVien.Click += new System.EventHandler(this.btnThongTinNhanVien_Click);
             // 
             // frmTrangChu
             // 

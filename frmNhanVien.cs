@@ -216,7 +216,7 @@ namespace MeVaBeProject
                 MessageBox.Show($"Ngày vào làm không được nhỏ hơn ngày {minHireDate.ToString("dd/MM/yyyy")}, khi nhân viên đủ 18 tuổi.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            string inputLuong = txtLuong.Text.Trim();
+            string inputLuong = txtLuong.Text.Replace(".", "").Trim();
             // Kiểm tra nếu rỗng lương
             if (string.IsNullOrWhiteSpace(inputLuong))
             {
