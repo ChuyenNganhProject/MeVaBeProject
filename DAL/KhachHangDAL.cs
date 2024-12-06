@@ -276,5 +276,10 @@ namespace DAL
                 return null;
             }
         }
+
+        public List<string> LoadDSSoDienThoai()
+        {
+            return db.KhachHangs.Select(kh => kh.soDienThoai).ToList();
+        }
     }
 }

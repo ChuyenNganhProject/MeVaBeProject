@@ -35,6 +35,7 @@ namespace MeVaBeProject
         public frmBanHang(string maNhanVien)
         {
             InitializeComponent();
+            this.Load += FrmBanHang_Load;
 
             this.maNhanVien = maNhanVien;
             lbTenNV.Text += nvbll.LayTTNhanVienTuTenDangNhap(maNhanVien).tenNhanVien;
@@ -66,7 +67,21 @@ namespace MeVaBeProject
 
             // Nút bấm loại sản phẩm
             this.btnTatCaSanPham.Click += BtnTatCaSanPham_Click;
+        }
+
+        private void FrmBanHang_Load(object sender, EventArgs e)
+        {
             LoadLoaiSanPham();
+            txtSdt.AutoCompleteCustomSource = new AutoCompleteStringCollection();
+            LoadSdtCoSan();
+        }
+
+        private void LoadSdtCoSan()
+        {
+            List<string> danhSachSoDienThoai = khbll.LoadDSSoDienThoai();
+            AutoCompleteStringCollection autoCompleteStringCollection = new AutoCompleteStringCollection();
+            autoCompleteStringCollection.AddRange(danhSachSoDienThoai.ToArray());
+            txtSdt.AutoCompleteCustomSource = autoCompleteStringCollection;                                                                                                                                                                                                                                                                                                                            
         }
 
         private void BtnQuaFormTrangChu_Click(object sender, EventArgs e)
