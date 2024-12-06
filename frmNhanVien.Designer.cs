@@ -60,7 +60,7 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.uiSymbolButton6 = new Sunny.UI.UISymbolButton();
+            this.btnLoaiNV = new Sunny.UI.UISymbolButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.uiPanel3 = new Sunny.UI.UIPanel();
@@ -409,7 +409,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.uiSymbolButton6);
+            this.panel2.Controls.Add(this.btnLoaiNV);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 27);
@@ -417,25 +417,26 @@
             this.panel2.Size = new System.Drawing.Size(501, 39);
             this.panel2.TabIndex = 4;
             // 
-            // uiSymbolButton6
+            // btnLoaiNV
             // 
-            this.uiSymbolButton6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiSymbolButton6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiSymbolButton6.FillColor = System.Drawing.Color.HotPink;
-            this.uiSymbolButton6.FillColor2 = System.Drawing.Color.Fuchsia;
-            this.uiSymbolButton6.FillHoverColor = System.Drawing.Color.LightPink;
-            this.uiSymbolButton6.FillPressColor = System.Drawing.Color.DeepPink;
-            this.uiSymbolButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.uiSymbolButton6.Location = new System.Drawing.Point(24, 0);
-            this.uiSymbolButton6.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiSymbolButton6.Name = "uiSymbolButton6";
-            this.uiSymbolButton6.RectColor = System.Drawing.Color.LightPink;
-            this.uiSymbolButton6.RectSelectedColor = System.Drawing.Color.DeepPink;
-            this.uiSymbolButton6.Size = new System.Drawing.Size(188, 39);
-            this.uiSymbolButton6.Symbol = 557921;
-            this.uiSymbolButton6.TabIndex = 21;
-            this.uiSymbolButton6.Text = "Loại nhân viên ";
-            this.uiSymbolButton6.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnLoaiNV.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLoaiNV.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnLoaiNV.FillColor = System.Drawing.Color.HotPink;
+            this.btnLoaiNV.FillColor2 = System.Drawing.Color.Fuchsia;
+            this.btnLoaiNV.FillHoverColor = System.Drawing.Color.LightPink;
+            this.btnLoaiNV.FillPressColor = System.Drawing.Color.DeepPink;
+            this.btnLoaiNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnLoaiNV.Location = new System.Drawing.Point(24, 0);
+            this.btnLoaiNV.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnLoaiNV.Name = "btnLoaiNV";
+            this.btnLoaiNV.RectColor = System.Drawing.Color.LightPink;
+            this.btnLoaiNV.RectSelectedColor = System.Drawing.Color.DeepPink;
+            this.btnLoaiNV.Size = new System.Drawing.Size(188, 39);
+            this.btnLoaiNV.Symbol = 557921;
+            this.btnLoaiNV.TabIndex = 21;
+            this.btnLoaiNV.Text = "Loại nhân viên ";
+            this.btnLoaiNV.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnLoaiNV.Click += new System.EventHandler(this.btnLoaiNV_Click);
             // 
             // panel4
             // 
@@ -1608,7 +1609,7 @@
             this.dgvNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.dgvNhanVien.GridColor = System.Drawing.Color.White;
             this.dgvNhanVien.Location = new System.Drawing.Point(0, 176);
-            this.dgvNhanVien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvNhanVien.Margin = new System.Windows.Forms.Padding(2);
             this.dgvNhanVien.Name = "dgvNhanVien";
             this.dgvNhanVien.ReadOnly = true;
             this.dgvNhanVien.RectColor = System.Drawing.Color.DeepPink;
@@ -1760,7 +1761,7 @@
             this.Controls.Add(this.uiPanel3);
             this.Controls.Add(this.uiPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmNhanVien";
             this.Text = "frmSanPham";
             this.Click += new System.EventHandler(this.btnLamMoi_Click);
@@ -1825,7 +1826,7 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
-        private Sunny.UI.UISymbolButton uiSymbolButton6;
+        private Sunny.UI.UISymbolButton btnLoaiNV;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel29;

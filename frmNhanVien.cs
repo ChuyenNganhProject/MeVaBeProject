@@ -1095,5 +1095,11 @@ namespace MeVaBeProject
             // Đặt lại vị trí con trỏ vào cuối
             txtLuong.SelectionStart = cursorPosition + 1;
         }
+
+        private void btnLoaiNV_Click(object sender, EventArgs e)
+        {
+            frmLoaiNV frmLoaiNV = new frmLoaiNV();
+            frmLoaiNV.ShowDialog();
+        }
     }
 }
