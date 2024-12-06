@@ -39,7 +39,13 @@
             this.btnPhongToThuNho = new Sunny.UI.UISymbolButton();
             this.btnClose = new Sunny.UI.UISymbolButton();
             this.leftPanel = new Sunny.UI.UIPanel();
+            this.loaiSpPanel = new Sunny.UI.UIFlowLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnDangXuat = new Sunny.UI.UIImageButton();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.btnTatCaSanPham = new Sunny.UI.UIButton();
             this.listView2 = new System.Windows.Forms.ListView();
             this.errorTTKhach = new System.Windows.Forms.ErrorProvider(this.components);
@@ -115,16 +121,11 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.rdoChuyenKhoan = new Sunny.UI.UIRadioButton();
             this.rdoTienMat = new Sunny.UI.UIRadioButton();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.loaiSpPanel = new Sunny.UI.UIFlowLayoutPanel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.btnDangXuat = new Sunny.UI.UIImageButton();
             this.uiPanel1.SuspendLayout();
             this.uiPanel36.SuspendLayout();
             this.leftPanel.SuspendLayout();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorTTKhach)).BeginInit();
             this.uiPanel14.SuspendLayout();
             this.uiGroupBox1.SuspendLayout();
@@ -145,7 +146,6 @@
             this.uiPanel8.SuspendLayout();
             this.uiPanel2.SuspendLayout();
             this.uiRadioButtonGroup1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).BeginInit();
             this.SuspendLayout();
             // 
             // uiPanel1
@@ -327,6 +327,27 @@
             this.leftPanel.Text = null;
             this.leftPanel.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // loaiSpPanel
+            // 
+            this.loaiSpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loaiSpPanel.FillColor = System.Drawing.SystemColors.Window;
+            this.loaiSpPanel.FillColorGradientDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.loaiSpPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.loaiSpPanel.Location = new System.Drawing.Point(0, 62);
+            this.loaiSpPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.loaiSpPanel.MinimumSize = new System.Drawing.Size(1, 1);
+            this.loaiSpPanel.Name = "loaiSpPanel";
+            this.loaiSpPanel.Padding = new System.Windows.Forms.Padding(2);
+            this.loaiSpPanel.Radius = 1;
+            this.loaiSpPanel.RectColor = System.Drawing.SystemColors.Window;
+            this.loaiSpPanel.ScrollBarColor = System.Drawing.Color.HotPink;
+            this.loaiSpPanel.ScrollBarStyleInherited = false;
+            this.loaiSpPanel.ShowText = false;
+            this.loaiSpPanel.Size = new System.Drawing.Size(342, 662);
+            this.loaiSpPanel.TabIndex = 14;
+            this.loaiSpPanel.Text = null;
+            this.loaiSpPanel.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.Window;
@@ -340,6 +361,58 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(342, 74);
             this.panel6.TabIndex = 12;
+            // 
+            // btnDangXuat
+            // 
+            this.btnDangXuat.BackColor = System.Drawing.Color.HotPink;
+            this.btnDangXuat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDangXuat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnDangXuat.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnDangXuat.Image = ((System.Drawing.Image)(resources.GetObject("btnDangXuat.Image")));
+            this.btnDangXuat.ImageOffset = new System.Drawing.Point(20, 8);
+            this.btnDangXuat.Location = new System.Drawing.Point(37, 12);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Size = new System.Drawing.Size(268, 50);
+            this.btnDangXuat.TabIndex = 36;
+            this.btnDangXuat.TabStop = false;
+            this.btnDangXuat.Text = "Đăng xuất";
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.SystemColors.Window;
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(37, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(268, 12);
+            this.panel10.TabIndex = 35;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.SystemColors.Window;
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel8.Location = new System.Drawing.Point(37, 62);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(268, 12);
+            this.panel8.TabIndex = 33;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.Window;
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel9.Location = new System.Drawing.Point(305, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(37, 74);
+            this.panel9.TabIndex = 32;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.SystemColors.Window;
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(37, 74);
+            this.panel7.TabIndex = 31;
             // 
             // btnTatCaSanPham
             // 
@@ -760,6 +833,8 @@
             // 
             // txtSdt
             // 
+            this.txtSdt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtSdt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtSdt.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSdt.Dock = System.Windows.Forms.DockStyle.Right;
             this.txtSdt.Enabled = false;
@@ -1558,79 +1633,6 @@
             this.rdoTienMat.TabIndex = 8;
             this.rdoTienMat.Text = "Tiền mặt";
             // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.SystemColors.Window;
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(37, 62);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(268, 12);
-            this.panel8.TabIndex = 33;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.SystemColors.Window;
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel9.Location = new System.Drawing.Point(305, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(37, 74);
-            this.panel9.TabIndex = 32;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.SystemColors.Window;
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(37, 74);
-            this.panel7.TabIndex = 31;
-            // 
-            // loaiSpPanel
-            // 
-            this.loaiSpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loaiSpPanel.FillColor = System.Drawing.SystemColors.Window;
-            this.loaiSpPanel.FillColorGradientDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.loaiSpPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.loaiSpPanel.Location = new System.Drawing.Point(0, 62);
-            this.loaiSpPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.loaiSpPanel.MinimumSize = new System.Drawing.Size(1, 1);
-            this.loaiSpPanel.Name = "loaiSpPanel";
-            this.loaiSpPanel.Padding = new System.Windows.Forms.Padding(2);
-            this.loaiSpPanel.Radius = 1;
-            this.loaiSpPanel.RectColor = System.Drawing.SystemColors.Window;
-            this.loaiSpPanel.ScrollBarColor = System.Drawing.Color.HotPink;
-            this.loaiSpPanel.ScrollBarStyleInherited = false;
-            this.loaiSpPanel.ShowText = false;
-            this.loaiSpPanel.Size = new System.Drawing.Size(342, 662);
-            this.loaiSpPanel.TabIndex = 14;
-            this.loaiSpPanel.Text = null;
-            this.loaiSpPanel.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.SystemColors.Window;
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(37, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(268, 12);
-            this.panel10.TabIndex = 35;
-            // 
-            // btnDangXuat
-            // 
-            this.btnDangXuat.BackColor = System.Drawing.Color.HotPink;
-            this.btnDangXuat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDangXuat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnDangXuat.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnDangXuat.Image = ((System.Drawing.Image)(resources.GetObject("btnDangXuat.Image")));
-            this.btnDangXuat.ImageOffset = new System.Drawing.Point(20, 8);
-            this.btnDangXuat.Location = new System.Drawing.Point(37, 12);
-            this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(268, 50);
-            this.btnDangXuat.TabIndex = 36;
-            this.btnDangXuat.TabStop = false;
-            this.btnDangXuat.Text = "Đăng xuất";
-            // 
             // frmBanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1651,6 +1653,7 @@
             this.uiPanel36.ResumeLayout(false);
             this.leftPanel.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorTTKhach)).EndInit();
             this.uiPanel14.ResumeLayout(false);
             this.uiGroupBox1.ResumeLayout(false);
@@ -1672,7 +1675,6 @@
             this.uiPanel8.ResumeLayout(false);
             this.uiPanel2.ResumeLayout(false);
             this.uiRadioButtonGroup1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

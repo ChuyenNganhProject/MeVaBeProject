@@ -50,7 +50,7 @@ namespace MeVaBeProject
 
         private void BtnDashboard_Click(object sender, EventArgs e)
         {
-            frmDashboard frm = new frmDashboard();
+            frmDashboard frm = new frmDashboard(nhanVien.maNhanVien);
             OpenChildForm(frm);
         }
 

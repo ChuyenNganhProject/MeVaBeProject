@@ -18,6 +18,8 @@ namespace MeVaBeProject
 {
     public partial class frmDashboard : Form
     {
+        private string MaNhanVien;
+
         HoaDonBLL hdbll = new HoaDonBLL();
         KhachHangBLL khbll = new KhachHangBLL();
         NhanVienBLL nvbll = new NhanVienBLL();
@@ -27,10 +29,10 @@ namespace MeVaBeProject
 
         private List<Sunny.UI.UIButton> buttonList;
 
-        public frmDashboard()
+        public frmDashboard(string maNhanVien)
         {
             InitializeComponent();
-
+            this.MaNhanVien = maNhanVien;
             dtpChonThangInPhieu.MaxDate = DateTime.Today;
 
             this.Load += FrmDashboard_Load;
@@ -93,7 +95,9 @@ namespace MeVaBeProject
                 SoLuongBan = x.SoLuongBan
             }).ToList();
 
-            frmPhieuThongKeBaoCao frm = new frmPhieuThongKeBaoCao(reportData, month, year, loiNhuanText, top5SanPhamBanChay);
+            NhanVien nv = nvbll.LayTTNhanVienTuMa(MaNhanVien);
+
+            frmPhieuThongKeBaoCao frm = new frmPhieuThongKeBaoCao(reportData, month, year, loiNhuanText, top5SanPhamBanChay, nv.tenNhanVien);
             frm.ShowDialog();
         }
 
@@ -131,7 +135,7 @@ namespace MeVaBeProject
             Button_Click(btnLoc7NgayQua, EventArgs.Empty);
             LoadData(ngayBatDau, ngayKetThuc);
         }
-    
+
         private void LoadData(DateTime ngayBatDau, DateTime ngayKetThuc)
         {
             // 4 dữ liệu đầu
