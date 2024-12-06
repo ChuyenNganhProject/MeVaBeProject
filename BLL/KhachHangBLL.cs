@@ -64,5 +64,10 @@ namespace BLL
         {
             return khdal.GetPhoneNumberById(maKH);
         }
+
+        public List<string> LoadDSSoDienThoai()
+        {
+            return khdal.LoadDSSoDienThoai();
+        }
     }
 }
