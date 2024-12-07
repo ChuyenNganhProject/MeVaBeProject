@@ -50,6 +50,7 @@ namespace MeVaBeProject
             // Thông tin khách
             this.txtSdt.KeyPress += TxtSdt_KeyPress;
             this.txtSdt.Leave += TxtSdt_Leave;
+            this.txtSdt.KeyDown += TxtSdt_KeyDown;
             this.btnSuaSDT.Click += BtnSuaSDT_Click;
             this.txtTenKH.KeyPress += TxtTenKH_KeyPress;
             this.btnNhapTTKhach.Click += BtnNhapTTKhach_Click;
@@ -67,6 +68,61 @@ namespace MeVaBeProject
 
             // Nút bấm loại sản phẩm
             this.btnTatCaSanPham.Click += BtnTatCaSanPham_Click;
+        }
+
+        private void TxtSdt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (KiemTraInputSoDienThoai())
+                {
+                    KhachHang kh = khbll.LayKhachHangTheoSoDienThoai(txtSdt.Text);
+                    if (kh != null)
+                    {
+                        txtTenKH.Text = kh.tenKhachHang;
+                        if (uubll.CoUuDaiChoHang(kh.maHang))
+                        {
+                            string tenHang = kh.tenHang.ToString();
+                            lblMucTenHang.Visible = true;
+                            lblTenHangKH.Visible = true;
+                            lblTenHangKH.Text = tenHang;
+                            decimal phanTramGiam = uubll.GetPhanTramGiam(kh.maHang);
+                            lblMucGiam.Visible = true;
+                            lblPhanTramGiam.Visible = true;
+                            lblTienGiamGiaVip.Visible = true;
+                            lblPhanTramGiam.Text = phanTramGiam.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "%)";
+                            string tongTienText = lblTongTien.Text.Replace("đ", "").Trim();
+                            if (decimal.TryParse(tongTienText, NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"), out decimal tongTien))
+                            {
+                                decimal tienBiGiam = tongTien * ((decimal)phanTramGiam / 100);
+                                lblTienGiamGiaVip.Text = "-" + tienBiGiam.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + "đ";
+                            }
+                            CapNhatTongTien();
+                        }
+                        txtTenKH.Enabled = false;
+                        return;
+                    }
+                    else
+                    {
+                        txtTenKH.Enabled = true;
+                        txtTenKH.Text = "";
+                    }
+                }
+                else
+                {
+                    txtTenKH.Enabled = false;
+                    txtTenKH.Text = "";
+                }
+            }
+            lblMucGiam.Visible = false;
+            lblMucTenHang.Visible = false;
+            lblTenHangKH.Visible = false;
+            lblTenHangKH.Text = "";
+            lblPhanTramGiam.Visible = false;
+            lblPhanTramGiam.Text = "";
+            lblTienGiamGiaVip.Visible = false;
+            lblTienGiamGiaVip.Text = "";
+            CapNhatTongTien();
         }
 
         private void FrmBanHang_Load(object sender, EventArgs e)
@@ -214,33 +270,13 @@ namespace MeVaBeProject
                         }
                         CapNhatTongTien();
                     }
-                    else
-                    {
-                        lblMucGiam.Visible = false;
-                        lblMucTenHang.Visible = false;
-                        lblTenHangKH.Visible = false;
-                        lblTenHangKH.Text = "";
-                        lblPhanTramGiam.Visible = false;
-                        lblPhanTramGiam.Text = "";
-                        lblTienGiamGiaVip.Visible = false;
-                        lblTienGiamGiaVip.Text = "";
-                        CapNhatTongTien();
-                    }
                     txtTenKH.Enabled = false;
+                    return;
                 }
                 else
                 {
                     txtTenKH.Enabled = true;
                     txtTenKH.Text = "";
-                    lblMucGiam.Visible = false;
-                    lblMucTenHang.Visible = false;
-                    lblTenHangKH.Visible = false;
-                    lblTenHangKH.Text = "";
-                    lblPhanTramGiam.Visible = false;
-                    lblPhanTramGiam.Text = "";
-                    lblTienGiamGiaVip.Visible = false;
-                    lblTienGiamGiaVip.Text = "";
-                    CapNhatTongTien();
                 }
             }
             
@@ -248,16 +284,16 @@ namespace MeVaBeProject
             {
                 txtTenKH.Enabled = false;
                 txtTenKH.Text = "";
-                lblMucGiam.Visible = false;
-                lblMucTenHang.Visible = false;
-                lblTenHangKH.Visible = false;
-                lblTenHangKH.Text = "";
-                lblPhanTramGiam.Visible = false;
-                lblPhanTramGiam.Text = "";
-                lblTienGiamGiaVip.Visible = false;
-                lblTienGiamGiaVip.Text = "";
-                CapNhatTongTien();
             }
+            lblMucGiam.Visible = false;
+            lblMucTenHang.Visible = false;
+            lblTenHangKH.Visible = false;
+            lblTenHangKH.Text = "";
+            lblPhanTramGiam.Visible = false;
+            lblPhanTramGiam.Text = "";
+            lblTienGiamGiaVip.Visible = false;
+            lblTienGiamGiaVip.Text = "";
+            CapNhatTongTien();
         }
 
         private void BtnThanhToan_Click(object sender, EventArgs e)
