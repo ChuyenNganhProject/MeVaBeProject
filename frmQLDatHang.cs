@@ -128,7 +128,7 @@ namespace MeVaBeProject
             dtgvDanhSachPhieuDat.Columns["ghiChu"].Visible = false;
             dtgvDanhSachPhieuDat.Columns["ghiChuKhongDuyet"].DisplayIndex = dtgvDanhSachPhieuDat.Columns.Count - 1;
 
-            QuyenDuyetPhieu = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0011") != null) ? true : false;
+            QuyenDuyetPhieu = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0012") != null) ? true : false;
             if (!QuyenDuyetPhieu)
             {
                 btnDuyetPhieuDat.Visible = false;
@@ -136,7 +136,7 @@ namespace MeVaBeProject
                 btnKhongXacNhan.Visible = false;
                 btnXacNhan.Visible = false;
             }
-            QuyenTaoPhieu = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0009") != null) ? true : false;
+            QuyenTaoPhieu = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0011") != null) ? true : false;
             if (!QuyenTaoPhieu)
             {
                 btnTaoPhieuDat.Visible = false;

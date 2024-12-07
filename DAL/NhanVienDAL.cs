@@ -19,7 +19,10 @@ namespace DAL
         {
             var hashedPassword = MaHoaMatKhauKieuSha256Hash(password);
             var nhanVien = db.NhanViens.SingleOrDefault(nv => nv.tenDangNhap == username && nv.matKhau == hashedPassword);
-            nhanVien.tenLoaiNhanVien = db.LoaiNhanViens.Where(lnv => lnv.maLoaiNhanVien == nhanVien.maLoaiNhanVien).Select(lnv => lnv.tenLoaiNhanVien).FirstOrDefault();
+            if (nhanVien!=null)
+            {
+                nhanVien.tenLoaiNhanVien = db.LoaiNhanViens.Where(lnv => lnv.maLoaiNhanVien == nhanVien.maLoaiNhanVien).Select(lnv => lnv.tenLoaiNhanVien).FirstOrDefault();
+            }           
             return nhanVien;
         }
 
@@ -230,7 +233,6 @@ namespace DAL
                 var exnv = db.NhanViens.FirstOrDefault(n => n.maNhanVien == nv.maNhanVien);
                 if (exnv != null)
                 {
-                    exnv.maNhanVien = nv.maNhanVien;
                     exnv.tenNhanVien = nv.tenNhanVien;
                     exnv.diaChi = nv.diaChi;
                     exnv.ngaySinh = nv.ngaySinh;
@@ -239,6 +241,7 @@ namespace DAL
                     exnv.ngayVaoLam = nv.ngayVaoLam;
                     exnv.tenDangNhap = nv.tenDangNhap;
                     exnv.matKhau = nv.matKhau;
+                    exnv.maLoaiNhanVien = nv.maLoaiNhanVien;
                     db.SubmitChanges();
                     return true;
                 }

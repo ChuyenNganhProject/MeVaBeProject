@@ -42,6 +42,10 @@ namespace BLL
         {
             return spdal.LayDanhSachSanPhamHetHan();
         }
+        public List<SanPham> LayDanhSachSanPhamSapHetHan()
+        {
+            return spdal.LayDanhSachSanPhamSapHetHan();
+        }
         public List<SanPham> LayDanhSachSanPhamTheoTrangThai(string trangThai)
         {
             return spdal.LayDanhSachSanPhamTheoTrangThai(trangThai);

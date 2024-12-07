@@ -468,7 +468,7 @@
             this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.uiTableLayoutPanel1.Size = new System.Drawing.Size(176, 107);
+            this.uiTableLayoutPanel1.Size = new System.Drawing.Size(171, 107);
             this.uiTableLayoutPanel1.TabIndex = 25;
             this.uiTableLayoutPanel1.TagString = null;
             // 
@@ -486,7 +486,7 @@
             this.btnLoaiSanPham.Name = "btnLoaiSanPham";
             this.btnLoaiSanPham.RectColor = System.Drawing.Color.LightPink;
             this.btnLoaiSanPham.RectSelectedColor = System.Drawing.Color.DeepPink;
-            this.btnLoaiSanPham.Size = new System.Drawing.Size(170, 29);
+            this.btnLoaiSanPham.Size = new System.Drawing.Size(165, 29);
             this.btnLoaiSanPham.Symbol = 557921;
             this.btnLoaiSanPham.TabIndex = 28;
             this.btnLoaiSanPham.Text = "Loại sản phẩm ";
@@ -507,7 +507,7 @@
             this.btnLapPhieuThanhLy.Name = "btnLapPhieuThanhLy";
             this.btnLapPhieuThanhLy.RectColor = System.Drawing.Color.LightPink;
             this.btnLapPhieuThanhLy.RectSelectedColor = System.Drawing.Color.DeepPink;
-            this.btnLapPhieuThanhLy.Size = new System.Drawing.Size(170, 29);
+            this.btnLapPhieuThanhLy.Size = new System.Drawing.Size(165, 29);
             this.btnLapPhieuThanhLy.Symbol = 261788;
             this.btnLapPhieuThanhLy.TabIndex = 30;
             this.btnLapPhieuThanhLy.Text = "Thanh lý sản phẩm";
@@ -528,7 +528,7 @@
             this.btnKhuyenMai.Name = "btnKhuyenMai";
             this.btnKhuyenMai.RectColor = System.Drawing.Color.LightPink;
             this.btnKhuyenMai.RectSelectedColor = System.Drawing.Color.DeepPink;
-            this.btnKhuyenMai.Size = new System.Drawing.Size(170, 31);
+            this.btnKhuyenMai.Size = new System.Drawing.Size(165, 31);
             this.btnKhuyenMai.Symbol = 61484;
             this.btnKhuyenMai.TabIndex = 29;
             this.btnKhuyenMai.Text = "Xem khuyến mãi";
@@ -538,7 +538,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(199, 0);
+            this.panel3.Location = new System.Drawing.Point(194, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(134, 107);
             this.panel3.TabIndex = 27;
@@ -562,13 +562,13 @@
             this.uiGroupBox1.Controls.Add(this.uiLabel7);
             this.uiGroupBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.uiGroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.uiGroupBox1.Location = new System.Drawing.Point(333, 0);
+            this.uiGroupBox1.Location = new System.Drawing.Point(328, 0);
             this.uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox1.Name = "uiGroupBox1";
             this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox1.RectColor = System.Drawing.Color.HotPink;
-            this.uiGroupBox1.Size = new System.Drawing.Size(707, 107);
+            this.uiGroupBox1.Size = new System.Drawing.Size(712, 107);
             this.uiGroupBox1.TabIndex = 24;
             this.uiGroupBox1.Text = "Tìm kiếm";
             this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -609,7 +609,7 @@
             this.txtTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTimKiem.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTimKiem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtTimKiem.Location = new System.Drawing.Point(378, 29);
+            this.txtTimKiem.Location = new System.Drawing.Point(383, 29);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTimKiem.MinimumSize = new System.Drawing.Size(1, 16);
             this.txtTimKiem.Name = "txtTimKiem";
@@ -636,7 +636,7 @@
             this.btnSearch.FillHoverColor = System.Drawing.Color.LightPink;
             this.btnSearch.FillPressColor = System.Drawing.Color.DeepPink;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnSearch.Location = new System.Drawing.Point(670, 29);
+            this.btnSearch.Location = new System.Drawing.Point(675, 29);
             this.btnSearch.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.RectColor = System.Drawing.Color.LightPink;
@@ -657,7 +657,8 @@
             this.cbTrangThai.Items.AddRange(new object[] {
             "Còn hàng",
             "Hết hàng",
-            "Không tồn tại"});
+            "Không tồn tại",
+            "Sắp hết hạn"});
             this.cbTrangThai.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.cbTrangThai.Location = new System.Drawing.Point(173, 29);
             this.cbTrangThai.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

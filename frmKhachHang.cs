@@ -16,7 +16,11 @@ namespace MeVaBeProject
     public partial class frmKhachHang : Form
     {
         KhachHangBLL khbll = new KhachHangBLL();
-        public frmKhachHang()
+        private NhanVien nhanVien;
+        private ChiTietQuyenCuaLoaiNVBLL ctQuyen;
+        private bool QuyenQLKhachHang;
+        private bool QuyenQLHangThanhVien;
+        public frmKhachHang(NhanVien nhanVien)
         {
             InitializeComponent();
             this.Load += frmKhachHang_Load;
@@ -27,6 +31,8 @@ namespace MeVaBeProject
             DateTime currentDate = DateTime.Now.Date;
             txtNgayTichLuyDiem1.Text = currentDate.ToString("dd/MM/yyyy");
             txtNgayTichLuyDiem1.Enabled = false;
+            this.nhanVien = nhanVien;
+            this.ctQuyen= new ChiTietQuyenCuaLoaiNVBLL();
         }
         public void SetForm()
         {
@@ -35,7 +41,6 @@ namespace MeVaBeProject
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             txtHangTV1.Enabled = false;
-
         }
         public void SetDataGirdView()
         {
@@ -67,7 +72,6 @@ namespace MeVaBeProject
                 txtSearch.Font = new Font(txtSearch.Font, FontStyle.Regular);
             }
         }
-
         private void txtSearch_Leave(object sender, EventArgs e)
         {
             if (txtSearch.Text == "")
@@ -76,10 +80,8 @@ namespace MeVaBeProject
                 txtSearch.ForeColor = Color.Silver;
                 txtSearch.Font = new Font(txtSearch.Font, FontStyle.Italic);
                 LoadKhachHang();
-
             }
         }
-
         private void btnSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Kiểm tra xem phím nhấn có phải là Enter không
@@ -92,7 +94,6 @@ namespace MeVaBeProject
                 e.Handled = true;
             }
         }
-
         private string GetTenHangFromMaHang(string maHang)
         {
             // Giả sử bạn đã có phương thức này để lấy tên hạng từ mã hạng
@@ -153,8 +154,6 @@ namespace MeVaBeProject
 
             return true;
         }
-
-
         private bool ValidateInput_Sua(bool isUpdate = false, string oldPhoneNumber = "")
         {
             // Kiểm tra tên 
@@ -186,14 +185,24 @@ namespace MeVaBeProject
             }
             return true;
         }
-
         private void frmKhachHang_Load(object sender, EventArgs e)
         {
             LoadKhachHang();
             dgvKhachHang.ReadOnly = true;
-            
+            QuyenQLKhachHang = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0008") != null) ? true : false;
+            if (!QuyenQLKhachHang)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnLamMoi.Enabled = false;              
+            }
+            QuyenQLHangThanhVien = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0009") != null) ? true : false;
+            if (!QuyenQLHangThanhVien)
+            {
+                btnHangThanhViieen.Enabled = false;
+            }
         }
-
         private void dgvKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Kiểm tra nếu người dùng click vào một hàng hợp lệ
@@ -227,10 +236,7 @@ namespace MeVaBeProject
                 // Xử lý khi người dùng click vào tiêu đề cột hoặc ngoài hàng
                 MessageBox.Show("Vui lòng chọn một hàng hợp lệ.");
             }
-
-
         }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa khách hàng này không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -255,7 +261,6 @@ namespace MeVaBeProject
                 SetForm();
             }
         }
-
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Kiểm tra xem phím nhấn có phải là Enter không
@@ -268,7 +273,6 @@ namespace MeVaBeProject
                 e.Handled = true;
             }
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             // Lấy kết quả tìm kiếm từ BLL
@@ -289,7 +293,6 @@ namespace MeVaBeProject
                 dgvKhachHang.DataSource = null;
             }
         }
-
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             ClearForm();
@@ -299,7 +302,6 @@ namespace MeVaBeProject
             btnSua.Enabled = false;
             LoadKhachHang();
         }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thêm ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -348,7 +350,6 @@ namespace MeVaBeProject
             
             btnThem.Enabled = false;
         }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
             //// Hỏi người dùng xác nhận trước khi sửa
@@ -597,7 +598,6 @@ namespace MeVaBeProject
                 MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void txtSDT1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (txtSDT1.Text.Length >= 10 && !char.IsControl(e.KeyChar))
@@ -609,7 +609,6 @@ namespace MeVaBeProject
                 e.Handled = true;
             }
         }
-
         //private void txtHangTV_KeyPress(object sender, KeyPressEventArgs e)
         //{
         //    if (txtSDT.Text.Length >= 10 && !char.IsControl(e.KeyChar))

@@ -294,29 +294,31 @@ ADD CONSTRAINT NgaySanXuatCK CHECK( ngaySanXuat <= hanSuDung)
 GO
 INSERT INTO QuyenHeThong (maQuyen,tenQuyen) 
 VALUES 
-	('Q0001',N'Quyền quản lý khách hàng'),
-	('Q0002',N'Quyền quản lý hạng thành viên'),
-	('Q0003',N'Quyền quản lý loại nhân viên'),
-	('Q0004',N'Quyền quản lý nhân viên'),
-	('Q0005',N'Quyền quản lý nhà cung cấp'),
-	('Q0006',N'Quyền quản lý loại sản phẩm'),
-	('Q0007',N'Quyền quản lý sản phẩm'),
-	('Q0008',N'Quyền quản lý chương trình khuyến mãi'),
-	('Q0009',N'Quyền quản lý đặt hàng'),
+	('Q0001',N'Quyền thống kê'),
+	('Q0002',N'Quyền quản lý nhà cung cấp'),
+	('Q0003',N'Quyền quản lý sản phẩm'),
+	('Q0004',N'Quyền quản lý loại sản phẩm'),
+	('Q0005',N'Quyền quản lý chương trình khuyến mãi'),
+	('Q0006',N'Quyền lập phiếu thanh lý'),
+	('Q0007',N'Quyền quản lý hóa đơn'),	
+	('Q0008',N'Quyền quản lý khách hàng'),
+	('Q0009',N'Quyền quản lý hạng thành viên'),
 	('Q0010',N'Quyền quản lý nhập hàng'),
-	('Q0011',N'Quyền duyệt đơn đặt hàng'),
-	('Q0012',N'Quyền thống kê'),
-	('Q0013',N'Quyền bán hàng'),
-	('Q0014',N'Quyền lập phiếu đổi trả hàng'),
-	('Q0015',N'Quyền lập phiếu thanh lý'),
-	('Q0016',N'Quyền lập phiếu giao hàng')
+	('Q0011',N'Quyền quản lý đặt hàng'),
+	('Q0012',N'Quyền duyệt đơn đặt hàng'),
+	('Q0013',N'Quyền quản lý nhân viên'),	
+	('Q0014',N'Quyền quản lý loại nhân viên'),	
+	('Q0015',N'Quyền bán hàng')
+	
 GO
-
 INSERT INTO LoaiNhanVien (maLoaiNhanVien, tenLoaiNhanVien) 
 VALUES 
     (N'LNV001', N'Quản Lý'),
     (N'LNV002', N'Nhân Viên Bán Hàng'),
-    (N'LNV003', N'Nhân Viên Kho')
+    (N'LNV003', N'Nhân Viên Kho'),
+	(N'LNV004', N'Nhân Viên Kế toán'),
+	(N'LNV005', N'Nhân Viên Marketing'),
+	(N'LNV006', N'Nhân Viên Nhân sự')
 GO
 SET DATEFORMAT DMY
 INSERT INTO ChiTietQuyenCuaLoaiNhanVien(maLoaiNhanVien,maQuyen,ngayCapQuyen) 
@@ -334,22 +336,37 @@ VALUES
 	('LNV001','Q0011','21/11/2024'),
 	('LNV001','Q0012','21/11/2024'),
 	('LNV001','Q0013','21/11/2024'),
-	('LNV002','Q0001','21/11/2024'),
-	('LNV002','Q0013','21/11/2024'),
-	('LNV002','Q0014','21/11/2024'),
-	('LNV003','Q0009','21/11/2024'),
-	('LNV003','Q0010','21/11/2024'),
+	('LNV001','Q0014','21/11/2024'),
+	('LNV001','Q0015','21/11/2024'),
+
+	('LNV002','Q0007','21/11/2024'),
+	('LNV002','Q0008','21/11/2024'),	
+	('LNV002','Q0015','21/11/2024'),
+
 	('LNV003','Q0006','21/11/2024'),
-	('LNV003','Q0007','21/11/2024')
+	('LNV003','Q0010','21/11/2024'),
+	('LNV003','Q0011','21/11/2024'),
+	('LNV004','Q0001','21/11/2024'),
+	('LNV005','Q0005','21/11/2024'),
+
+	('LNV006','Q0013','21/11/2024'),
+	('LNV006','Q0014','21/11/2024')
+	
 GO
 INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
-VALUES ('NV001', 'LNV001', N'Phạm Minh Nhật', '2003-11-19', N'254 Đường NVC, TP.HCM', '0775945228', 'minhnhat', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01')
+VALUES ('NV0001', 'LNV001', N'Phạm Minh Nhật', '2003-11-19', N'254 Đường NVC, TP.HCM', '0775945228', 'minhnhat', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01')
 INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
-VALUES ('NV002', 'LNV001', N'Đặng Hoàng Phúc', '2003-12-06', N'123 Đường NK, TP.HCM', '0888005346', 'hoangphuc', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01')
+VALUES ('NV0002', 'LNV001', N'Đặng Hoàng Phúc', '2003-12-06', N'123 Đường NK, TP.HCM', '0888005346', 'hoangphuc', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01')
 INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
-VALUES ('NV003', 'LNV001', N'Trương Thị Quí', '2003-01-19', N'123 Đường ABC, TP.HCM', '0901234567', 'truongqui', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01');
+VALUES ('NV0003', 'LNV003', N'Trương Thị Quí', '2003-01-19', N'123 Đường ABC, TP.HCM', '0901234567', 'truongqui', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01');
 INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
-VALUES ('NV004', 'LNV002', N'Phạm Minh Nhật', '2003-11-19', N'254 Đường NVC, TP.HCM', '0775945228', 'nvbhminhnhat', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', '1911'), 2), 20000000, '2024-10-01');
+VALUES ('NV0004', 'LNV002', N'Phạm Minh Nhật', '2003-11-19', N'254 Đường NVC, TP.HCM', '0775945228', 'nvbhminhnhat', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', '1911'), 2), 20000000, '2024-10-01');
+INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
+VALUES ('NV0005', 'LNV006', N'Võ Thiên Hoàng Mỹ', '2002-12-24', N'123 Đường Trường Chinh, TP.HCM', '0776589801', 'hoangmy', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01');
+INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
+VALUES ('NV0006', 'LNV004', N'Đinh Ngọc Anh Quân', '2003-08-28', N'254 Đường Nguyễn Thái Sơn, TP.HCM', '0903163014', 'anhQuan', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', '2808'), 2), 20000000, '2024-10-01');
+INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
+VALUES ('NV0007', 'LNV005', N'Trần Gia Bảo', '2003-12-10', N'254 Đường Lê Lai, TP.HCM', '0908466062', 'giaBao', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', '1012'), 2), 20000000, '2024-10-01');
 GO
 INSERT INTO LoaiSanPham (maLoaiSanPham, tenLoaiSanPham) VALUES ('LSP001', N'Không rõ loại sản phẩm');
 INSERT INTO LoaiSanPham (maLoaiSanPham, tenLoaiSanPham) VALUES ('LSP002', N'Đồ chơi, học tập');		
