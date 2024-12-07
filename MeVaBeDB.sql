@@ -462,14 +462,6 @@ INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALU
 GO
 SELECT * FROM SanPham
 GO
-CREATE PROCEDURE Xoa_LoaiSanPham @maLoaiSP VARCHAR(10)
-AS
-	UPDATE SanPham
-	SET maLoaiSanPham = 'LSP001'
-	WHERE maLoaiSanPham = @maLoaiSP
-
-	DELETE LoaiSanPham WHERE maLoaiSanPham = @maLoaiSP
-GO
 CREATE PROCEDURE XoaPhieuDat_Proc @maPhieuDat VARCHAR(50)
 AS
 	--Xóa chi tiết phiếu đặt

@@ -64,7 +64,9 @@ namespace MeVaBeProject
             if (hoadon.ngayLap.Value.AddDays(15) <= DateTime.Now||ctPhieuDoiBLL.KiemTraPhieuDoiCuaHoaDon(mahd))
             {
                 btnTaoPhieuDoi.Enabled = false;
-            }
+                lbDaTaoPhieuDoi.Visible = true;
+                lbDaTaoPhieuDoi.Text = "Hóa đơn này đã đổi trả 1 lần";
+            }            
             lblHinhThucTra.Text = hoadon.hinhThucTra;
             
             dgvCTHD.DataSource = cthdspbll.LoadCTHDSanPham(mahd);

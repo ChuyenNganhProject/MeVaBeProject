@@ -100,7 +100,7 @@ namespace MeVaBeProject
                 }
                 else
                 {
-                    bindingSource.DataSource = null;
+                    MessageBox.Show(this, "Không tìm thấy phiếu nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }                
             }
             else

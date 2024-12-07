@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using DTO;
+using NPOI.SS.Formula.Functions;
 using Sunny.UI;
 using Sunny.UI.Win32;
 namespace MeVaBeProject
@@ -73,31 +74,56 @@ namespace MeVaBeProject
             dtgvSanPhamTrongPhieuNhap.ClearRows();
 
             danhSachSanPhamDat = chiTietPhieuDatBLL.LayChiTietPhieuDat(maPhieuDat);
-            foreach(ChiTietPhieuDat chiTietPhieuDat in danhSachSanPhamDat)
+            if (txtLanNhap.Text!="3")
             {
-                if (chiTietPhieuDat.soLuongDat!=chiTietPhieuDat.soLuongNhan)
+                txtSoLuongSanPham.Enabled = true;
+                foreach (ChiTietPhieuDat chiTietPhieuDat in danhSachSanPhamDat)
                 {
-                    object[] row = new object[dtgvSanPhamTrongPhieuNhap.ColumnCount];
-                    row[0] = chiTietPhieuDat.maSanPham;
-                    row[1] = chiTietPhieuDat.tenSanPham;
-                    row[2] = chiTietPhieuDat.soLuongDat - chiTietPhieuDat.soLuongNhan;
-                    row[3] = 0;
-                    row[4] = DateTime.Now.ToString("dd-MM-yyyy");
-                    row[5] = DateTime.Now.AddDays(1).ToString("dd-MM-yyyy");
-                    row[6] = chiTietPhieuDat.donGia;
-                    row[7] = 0;
-                    dtgvSanPhamTrongPhieuNhap.Rows.Add(row);
-                }                                             
+                    if (chiTietPhieuDat.soLuongDat != chiTietPhieuDat.soLuongNhan)
+                    {
+                        object[] row = new object[dtgvSanPhamTrongPhieuNhap.ColumnCount];
+                        row[0] = chiTietPhieuDat.maSanPham;
+                        row[1] = chiTietPhieuDat.tenSanPham;
+                        row[2] = chiTietPhieuDat.soLuongDat - chiTietPhieuDat.soLuongNhan;
+                        row[3] = 0;
+                        row[4] = DateTime.Now.ToString("dd-MM-yyyy");
+                        row[5] = DateTime.Now.AddYears(2).ToString("dd-MM-yyyy");
+                        row[6] = chiTietPhieuDat.donGia;
+                        row[7] = 0;
+                        dtgvSanPhamTrongPhieuNhap.Rows.Add(row);
+                    }
+                }
+            }
+            else
+            {
+                txtSoLuongSanPham.Enabled = false;
+                foreach (ChiTietPhieuDat chiTietPhieuDat in danhSachSanPhamDat)
+                {
+                    if (chiTietPhieuDat.soLuongDat != chiTietPhieuDat.soLuongNhan)
+                    {
+                        object[] row = new object[dtgvSanPhamTrongPhieuNhap.ColumnCount];
+                        row[0] = chiTietPhieuDat.maSanPham;
+                        row[1] = chiTietPhieuDat.tenSanPham;
+                        row[2] = chiTietPhieuDat.soLuongDat - chiTietPhieuDat.soLuongNhan;
+                        row[3] = chiTietPhieuDat.soLuongDat - chiTietPhieuDat.soLuongNhan;
+                        row[4] = DateTime.Now.ToString("dd-MM-yyyy");
+                        row[5] = DateTime.Now.AddYears(2).ToString("dd-MM-yyyy");
+                        row[6] = chiTietPhieuDat.donGia;
+                        row[7] = (chiTietPhieuDat.soLuongDat - chiTietPhieuDat.soLuongNhan) * chiTietPhieuDat.donGia;
+                        dtgvSanPhamTrongPhieuNhap.Rows.Add(row);
+                    }
+                }
+                TinhTongTien();
             }
         }
         private void dtgvSanPhamTrongPhieuDat_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0) 
             {
-                txtSoLuongSanPham.Enabled = true;
                 txtMaSanPham.Text = dtgvSanPhamTrongPhieuNhap.Rows[e.RowIndex].Cells["maSP"].Value.ToString();
-                txtTenSanPham.Text = dtgvSanPhamTrongPhieuNhap.Rows[e.RowIndex].Cells["tenSP"].Value.ToString();
-                txtDonGia.Text = dtgvSanPhamTrongPhieuNhap.Rows[e.RowIndex].Cells["donGiaSP"].Value.ToString().Split(',')[0];
+                txtTenSanPham.Text = dtgvSanPhamTrongPhieuNhap.Rows[e.RowIndex].Cells["tenSP"].Value.ToString();                
+                int price = int.Parse(dtgvSanPhamTrongPhieuNhap.Rows[e.RowIndex].Cells["donGiaSP"].Value.ToString().Split(',')[0]);
+                txtDonGia.Text = price.ToString("C0");
                 txtSoLuongSanPham.Text = dtgvSanPhamTrongPhieuNhap.Rows[e.RowIndex].Cells["soLuongDaNhan"].Value.ToString();                
             }
         }
@@ -247,7 +273,6 @@ namespace MeVaBeProject
                 MessageBox.Show(this, "Tạo phiếu nhập thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void FrmPhieuNhapHang_DongForm(bool loadData)
         {
             if (loadData)
@@ -256,7 +281,6 @@ namespace MeVaBeProject
                 this.Close();
             }
         }
-
         private bool CheckSoLuongDat()
         {
             int soLuongSanPham = dtgvSanPhamTrongPhieuNhap.RowCount;

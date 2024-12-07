@@ -10,7 +10,6 @@ namespace MeVaBeProject
     public partial class frmHangThanhVien : Form
     {
         HangThanhVienBLL htvbll = new HangThanhVienBLL();
-
         public frmHangThanhVien()
         {
             InitializeComponent();
@@ -36,22 +35,19 @@ namespace MeVaBeProject
         }
         private void ClearForm()
         {
+            txtMaHang.Text = "";
             txtTenHang.Text = "";
             txtMucTieubd.Text = "";
             txtMucTieukt.Text = "";
             txtGhichu.Text = "";
-
         }
         public void SetDisEnableText()
         {
             txtMucTieubd.Enabled = false;
             txtMucTieubd.Enabled = false;
         }
-
-
         private void LoadTextMTBD()
         {
-
             decimal mucTieuBatDauValue = 0;
             if (dgvHangThanhVien.Rows.Count > 0)
             {
@@ -62,11 +58,9 @@ namespace MeVaBeProject
                     mucTieuBatDauValue = lastMucTieuKetThuc + 1;
                 }
             }
-
             // Cập nhật giá trị vào TextBox
             txtMucTieubd.Text = mucTieuBatDauValue.ToString();
         }
-
         public void LoadHangTV()
         {
             try
@@ -81,15 +75,12 @@ namespace MeVaBeProject
                 MessageBox.Show($"Lỗi tải : {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void frmHangThanhVien_Load(object sender, EventArgs e)
         {
             LoadHangTV();
         }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
-
             try
             {
                 // Hiển thị hộp thoại xác nhận---------------
@@ -134,7 +125,6 @@ namespace MeVaBeProject
                     MessageBox.Show("Không có dữ liệu trước đó. Vui lòng nhập hàng đầu tiên thủ công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
                 //Insert-----------------------
                 var maHang = htvbll.GenerateNewHangTV();
                 txtMaHang.Text = maHang;
@@ -160,7 +150,6 @@ namespace MeVaBeProject
                     MessageBox.Show($"{validationEx.Message}", "Lỗi xác thực", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
                 // Thêm 
                 bool kq = htvbll.InsertHangTV(htv);
                 if (kq)
@@ -266,12 +255,7 @@ namespace MeVaBeProject
             //    btnThem.Enabled = true; // Đảm bảo nút được kích hoạt lại
             //}
             #endregion
-
-
         }
-
-
-
         private void txtSearch_Enter_1(object sender, EventArgs e)
         {
             if (txtSearch.Text == "Nhập mã hạng hoặc tên hạng")
@@ -281,7 +265,6 @@ namespace MeVaBeProject
                 txtSearch.Font = new Font(txtSearch.Font, FontStyle.Regular);
             }
         }
-
         private void txtSearch_Leave_1(object sender, EventArgs e)
         {
             if (txtSearch.Text == "")
@@ -290,10 +273,8 @@ namespace MeVaBeProject
                 txtSearch.ForeColor = Color.Silver;
                 txtSearch.Font = new Font(txtSearch.Font, FontStyle.Italic);
                 LoadHangTV();
-
             }
         }
-
         private void dgvHangThanhVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             #region 
@@ -332,9 +313,6 @@ namespace MeVaBeProject
             }
             #endregion
         }
-
-
-
         private void dgvHangThanhVien_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (decimal.TryParse(e.Value.ToString(), out decimal value))
@@ -345,7 +323,6 @@ namespace MeVaBeProject
                 e.FormattingApplied = true;
             }
         }
-
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             ClearForm();
@@ -355,16 +332,13 @@ namespace MeVaBeProject
             btnSua.Enabled = false;
             LoadHangTV();
         }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa hạng này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
             if (result == DialogResult.No)
             {
                 return;
             }
-
             if (dgvHangThanhVien.SelectedRows.Count > 0)
             {
                 string maH = dgvHangThanhVien.SelectedRows[0].Cells["maHang"].Value.ToString();
@@ -378,12 +352,10 @@ namespace MeVaBeProject
                     //hien thi thong bao loi
                     MessageBox.Show(hienthiloi);
                 }
-
                 LoadHangTV();
                 SetForm();
             }
         }
-
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Kiểm tra xem phím nhấn có phải là Enter không
@@ -396,7 +368,6 @@ namespace MeVaBeProject
                 e.Handled = true;
             }
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             // Lấy kết quả tìm kiếm từ BLL
@@ -412,17 +383,10 @@ namespace MeVaBeProject
             {
                 // Nếu không tìm thấy kết quả, thông báo cho người dùng
                 MessageBox.Show("Không tìm thấy hạng nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Xóa hết dữ liệu trong DataGridView nếu không có kết quả tìm kiếm
-                dgvHangThanhVien.DataSource = null;
             }
         }
-
-
-
         private void btnSua_Click(object sender, EventArgs e)
         {
-
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn sửa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.No)
             {
@@ -442,7 +406,6 @@ namespace MeVaBeProject
                 mucTieuBatDau = muctieubd,
                 mucTieuKetThuc = muctieukt,
                 ghiChu = txtGhichu.Text.Trim()
-
             };
             try
             {
@@ -463,7 +426,6 @@ namespace MeVaBeProject
                 MessageBox.Show($"Lỗi: {ex.Message}");
             }
         }
-
         private void txtMucTieubd_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (txtMucTieubd.Text.Length >= 15 && !char.IsControl(e.KeyChar))
@@ -475,7 +437,6 @@ namespace MeVaBeProject
                 e.Handled = true;
             }
         }
-
         private void txtMucTieukt_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (txtMucTieukt.Text.Length >= 15 && !char.IsControl(e.KeyChar))
@@ -512,7 +473,6 @@ namespace MeVaBeProject
                     formatted = "." + formatted;
                 }
             }
-
             return formatted;
         }
         private void txtMucTieubd_TextChanged(object sender, EventArgs e)
@@ -532,7 +492,6 @@ namespace MeVaBeProject
             // Đặt lại vị trí con trỏ vào cuối
             txtMucTieubd.SelectionStart = cursorPosition + 1;
         }
-
         private void txtMucTieukt_TextChanged(object sender, EventArgs e)
         {
             // Lưu vị trí con trỏ hiện tại
@@ -550,7 +509,6 @@ namespace MeVaBeProject
             // Đặt lại vị trí con trỏ vào cuối
             txtMucTieukt.SelectionStart = cursorPosition + 1;
         }
-
         private void uiSymbolButton1_Click(object sender, EventArgs e)
         {
             this.Close();

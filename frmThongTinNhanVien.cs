@@ -19,31 +19,30 @@ namespace MeVaBeProject
             SetEnableFalse();
             btnDoi.Enabled = false;
             btnHuy.Enabled = false;
-
             this.btnDong.Click += BtnDong_Click;
         }
         public void SetEnableTrue()
         {
-
-            txtTaiKhoan.Enabled = !txtTaiKhoan.Enabled;
-            txtMatKhauCu.Enabled = !txtMatKhauCu.Enabled;
-            txtMatKhauMoi.Enabled = !txtMatKhauMoi.Enabled;
-            btnDoi.Enabled = !btnDoi.Enabled;
-            btnHuy.Enabled = !btnHuy.Enabled;
+            txtMatKhauCu.Enabled = true;
+            txtMatKhauMoi.Enabled = true;
+            btnDoi.Enabled = true;
+            btnHuy.Enabled = true;
+            btnChon.Enabled = false;
             txtTaiKhoan.Focus();
         }
         public void SetEnableFalse()
         {
-            txtTaiKhoan.Enabled = false;
             txtMatKhauCu.Enabled = false;
             txtMatKhauMoi.Enabled = false;
+            btnDoi.Enabled = false;
+            btnHuy.Enabled = false;
+            btnChon.Enabled = true;
         }
         public void loadThongTinNhanVien()
         {
             var nv = nvbll.LayTTNhanVienTuMa(frmTrangChu.maNhanVienDangNhap);
             if (nv != null)
-            {
-                
+            {                
                 tenNV = lbTenNhanVien.Text = txtTenNV.Text = nv.tenNhanVien;
                 txtNgaySinh.Value = nv.ngaySinh.Value;
                 txtNgayVaoLam.Value = nv.ngayVaoLam.Value;
@@ -51,6 +50,7 @@ namespace MeVaBeProject
                 txtDiaChi.Text = nv.diaChi;
                 txtChucVuNV.Text = frmTrangChu.chucVuNhanVienDangNhap;
                 txtLuong.Text = (nv.luongCoBan.HasValue ? nv.luongCoBan.Value.ToString("N0").Replace(",", ".") : "0") + " VND";
+                txtTaiKhoan.Text = nv.tenDangNhap;
                 matkhauCu = nv.matKhau;
             }
             else
@@ -69,9 +69,7 @@ namespace MeVaBeProject
             txtDiaChi.Enabled = false;
             txtTenNV.Enabled = false;
             btnSua.Enabled = false;
-
         }
-
         private void BtnDong_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -80,54 +78,23 @@ namespace MeVaBeProject
                 this.Close();
             }
         }
-
-
-
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                FormDangNhap frmDangNhap = new FormDangNhap();
-                frmDangNhap.Show();
-                this.Close();
+                Application.Exit();
             }
-            this.Close();
-
         }
-
-
         private void btnChon_Click_1(object sender, EventArgs e)
         {
             SetEnableTrue();
-
         }
-
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             txtSDT.Enabled = true;
             txtDiaChi.Enabled = true;
             btnSua.Enabled = true;
-        }
-
-        private void pictureBoxDong_Click(object sender, EventArgs e)
-        {
-            txtMatKhauMoi.PasswordChar = '\0';
-            pictureBoxMo.Visible = true;
-            pictureBoxDong.Visible = false;
-
-        }
-
-        private void pictureBoxMo_Click(object sender, EventArgs e)
-        {
-            txtMatKhauMoi.PasswordChar = '*';
-            pictureBoxMo.Visible = false;
-            pictureBoxDong.Visible = true;
-        }
-
-        private void uiLabel1_Click(object sender, EventArgs e)
-        {
-
         }
         private bool ValidateInput_Sua_MK()
         {
@@ -206,8 +173,6 @@ namespace MeVaBeProject
             {
                 return;
             }
-
-
             var nv = new NhanVien
             {
                 maNhanVien = frmTrangChu.maNhanVienDangNhap,
@@ -231,12 +196,6 @@ namespace MeVaBeProject
                 MessageBox.Show($"Cập nhật không thành công cho nhân viên: {nv.tenNhanVien}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void txtSDT_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
         private void txtTaiKhoan_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (txtTaiKhoan.Text.Length >= 30 && !char.IsControl(e.KeyChar))
@@ -248,12 +207,9 @@ namespace MeVaBeProject
                 e.Handled = true;
             }
         }
-
         private void btnDoi_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đổi mật khẩu ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-
             if (result == DialogResult.No)
             {
                 return;
@@ -270,7 +226,6 @@ namespace MeVaBeProject
             Debug.WriteLine("------------------------");
             if (!nvbll.KiemTraMatKhauCu(txtTaiKhoan.Text, matKhauCuHashed))
             {
-
                 MessageBox.Show("Tài khoản hoặc mật khẩu sai! Vui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Debug.WriteLine("------------------------");
                 return;
@@ -288,20 +243,33 @@ namespace MeVaBeProject
             {
                 MessageBox.Show($"Cập nhật thành công thành công :\n {nv.tenNhanVien}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 loadThongTinNhanVien();
-                btnDoi.Enabled = false;
+                SetEnableFalse();
+                txtMatKhauCu.Text = "";
+                txtMatKhauMoi.Text = "";
             }
             else
             {
                 MessageBox.Show($"Lỗi cập nhật: {nv.tenNhanVien}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnHuy_Click(object sender, EventArgs e)
         {
             SetEnableFalse();
-            txtTaiKhoan.Text = "";
             txtMatKhauCu.Text = "";
             txtMatKhauMoi.Text = "";
+        }
+        private void btnAnMatKhau_Click(object sender, EventArgs e)
+        {
+            if (btnAnMatKhau.Symbol == 559636)
+            {
+                txtMatKhauMoi.PasswordChar = '\0';
+                btnAnMatKhau.Symbol = 559637;
+            }
+            else
+            {
+                txtMatKhauMoi.PasswordChar = '*';
+                btnAnMatKhau.Symbol = 559636;
+            }
         }
     }
 }
