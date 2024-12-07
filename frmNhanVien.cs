@@ -15,7 +15,11 @@ namespace MeVaBeProject
     {
         NhanVienBLL nvbll = new NhanVienBLL();
         LoaiNhanVienBLL lnvbll = new LoaiNhanVienBLL();
-        public frmNhanVien()
+        private ChiTietQuyenCuaLoaiNVBLL ctQuyen;
+        private NhanVien nhanVien;
+        private bool QuyenQLLoaiNV;
+        private bool QuyenQLNhanVien;
+        public frmNhanVien(NhanVien nhanVien)
         {
             InitializeComponent();
             this.Load += FrmNhanVien_Load;
@@ -23,7 +27,9 @@ namespace MeVaBeProject
             txtSearch.ForeColor = Color.Silver;
             txtTrangThaiHD.Enabled = false;
             this.txtSDT.KeyPress += txtSDT_KeyPress;
+            this.ctQuyen = new ChiTietQuyenCuaLoaiNVBLL();
             txtTenDN.Enabled = false;
+            this.nhanVien = nhanVien;
         }
         public void SetForm()
         {
@@ -318,6 +324,22 @@ namespace MeVaBeProject
             cboLoaiNV.DataSource = lnvbll.LoadLoaiNhanVien();
             cboLoaiNV.DisplayMember = "tenLoaiNhanVien";
             cboLoaiNV.ValueMember = "maLoaiNhanVien";
+            QuyenQLNhanVien = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0013") != null) ? true : false;
+            if (!QuyenQLNhanVien)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;    
+                btnLamMoi.Enabled = false;
+                btnMoTK.Enabled = false;
+                btnKhoaTK.Enabled = false;
+                btnOpen.Enabled = false;
+            }
+            QuyenQLLoaiNV = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0014") != null) ? true : false;
+            if (!QuyenQLLoaiNV)
+            {
+                btnLoaiNV.Enabled = false;
+            }
         }
         public void LoadNhanVien()
         {
@@ -833,7 +855,6 @@ namespace MeVaBeProject
 
             return formatted;
         }
-
         private void txtTenDN_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (txtTenDN.Text.Length >= 30 && !char.IsControl(e.KeyChar))
@@ -862,7 +883,6 @@ namespace MeVaBeProject
             // Đặt lại vị trí con trỏ vào cuối
             txtLuong.SelectionStart = cursorPosition + 1;
         }
-
         private void btnLoaiNV_Click(object sender, EventArgs e)
         {
             frmLoaiNV frmLoaiNV = new frmLoaiNV();

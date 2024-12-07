@@ -74,7 +74,7 @@ namespace MeVaBeProject
             LoadData();
             EnableTextBox(false);
             dtHanSuDung.MinDate = dtNgaySanXuat.Value;
-            QuyenThemXoaSua = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0007")!=null) ? true : false;
+            QuyenThemXoaSua = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0003")!=null) ? true : false;
             if (!QuyenThemXoaSua)
             {                
                 btnThem.Enabled = false;
@@ -82,17 +82,17 @@ namespace MeVaBeProject
                 btnXoa.Enabled = false;
                 btnKhoiPhuc.Enabled = false;
             }
-            QuyenQLKhuyenMai = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0008") != null) ? true : false;
+            QuyenQLKhuyenMai = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0005") != null) ? true : false;
             if (!QuyenQLKhuyenMai)
             {
                 btnKhuyenMai.Enabled = false;
             }
-            QuyenQLLoaiSanPham = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0006") != null) ? true : false;
+            QuyenQLLoaiSanPham = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0004") != null) ? true : false;
             if (!QuyenQLLoaiSanPham)
             {
                 btnLoaiSanPham.Enabled = false;
             }
-            QuyenTaoPhieuThanhLy = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0015") != null) ? true : false;
+            QuyenTaoPhieuThanhLy = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0006") != null) ? true : false;
             if (!QuyenTaoPhieuThanhLy)
             {
                 btnLapPhieuThanhLy.Enabled = false;
@@ -480,7 +480,14 @@ namespace MeVaBeProject
             {
                 if (cbTrangThai.SelectedItem!=null)
                 {
-                    bindingSource.DataSource = sanPhamBLL.LayDanhSachSanPhamTheoTrangThai(cbTrangThai.SelectedText);
+                    if (cbTrangThai.SelectedText == "Sắp hết hạn")
+                    {
+                        bindingSource.DataSource = sanPhamBLL.LayDanhSachSanPhamSapHetHan();
+                    }
+                    else
+                    {
+                        bindingSource.DataSource = sanPhamBLL.LayDanhSachSanPhamTheoTrangThai(cbTrangThai.SelectedText);
+                    }                    
                 }                
             }
             else if(comboBox == cbLocTheoLoai)  

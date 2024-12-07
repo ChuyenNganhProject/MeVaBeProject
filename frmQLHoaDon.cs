@@ -42,13 +42,11 @@ namespace MeVaBeProject
             this.btnXemDSPG.Click += BtnXemDSPG_Click;
             this.maNhanVien = maNhanVien;
         }
-
         private void BtnXemDSPG_Click(object sender, EventArgs e)
         {
             frmQLPhieuGiaoHang frm = new frmQLPhieuGiaoHang(parentfrm, maNhanVien);
             parentfrm.OpenChildForm(frm);
         }
-
         private void DtpNgayBatDau_ValueChanged(object sender, EventArgs e)
         {
             if (this.dtpNgayBatDau.Value > dtpNgayKetThuc.Value)
@@ -56,7 +54,6 @@ namespace MeVaBeProject
                 this.dtpNgayKetThuc.Value = dtpNgayBatDau.Value;
             }
         }
-
         private void DtpNgayKetThuc_ValueChanged(object sender, EventArgs e)
         {
             if(this.dtpNgayBatDau.Value > dtpNgayKetThuc.Value)
@@ -64,7 +61,6 @@ namespace MeVaBeProject
                 this.dtpNgayBatDau.Value = dtpNgayKetThuc.Value;
             }
         }
-
         private void DgvHoaDon_SelectionChanged(object sender, EventArgs e)
         {
             if(dgvHoaDon.SelectedRows.Count > 0)
@@ -74,7 +70,6 @@ namespace MeVaBeProject
                 TenKhachHang = selectedRow.Cells["tenKhachHang"].Value.ToString();
             }
         }
-
         private void BtnXemChiTiet_Click(object sender, EventArgs e)
         {
             if(!string.IsNullOrEmpty(MaHoaDon))
@@ -87,7 +82,6 @@ namespace MeVaBeProject
                 MessageBox.Show("Vui lòng chọn một hóa đơn để xem chi tiết.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private void BtnReset_Click(object sender, EventArgs e)
         {
             try
@@ -109,7 +103,6 @@ namespace MeVaBeProject
                 MessageBox.Show($"Lỗi tải hóa đơn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void BtnLocHienTai_Click(object sender, EventArgs e)
         {
             this.dtpNgayKetThuc.Value = DateTime.Now.Date;
@@ -121,7 +114,6 @@ namespace MeVaBeProject
             string loaikh = cboLoaiKH.SelectedItem.ToString();
             LoadDanhSachHoaDonTheoNgayLoc(tieuChi, tenTimKiem, ngayBatDau, ngayKetThuc, loaikh);
         }
-
         private void BtnLocTheoNgay_Click(object sender, EventArgs e)
         {
             string tieuChi = cboTieuChi.SelectedItem.ToString();
@@ -129,7 +121,6 @@ namespace MeVaBeProject
             string loaikh = cboLoaiKH.SelectedItem.ToString();
             LoadDanhSachHoaDonTheoNgayLoc(tieuChi, tenTimKiem, dtpNgayBatDau.Value, dtpNgayKetThuc.Value, loaikh);
         }
-
         private void LoadDanhSachHoaDonTheoNgayLoc(string tieuChi, string tenTimKiem, DateTime ngayBatDau, DateTime ngayKetThuc, string loaikh)
         {
             decimal tongDoanhThu = 0;
@@ -140,7 +131,6 @@ namespace MeVaBeProject
             SettingDgv(ketQuaTimKiem);
             lblTongDoanhThu.Text = "Tổng doanh thu: " + tongDoanhThu.ToString("N0").Replace(",", ".") + "đ";
         }
-
         private void BtnTimKiem_Click(object sender, EventArgs e)
         {
             string tieuChi = cboTieuChi.SelectedItem.ToString();
@@ -148,7 +138,6 @@ namespace MeVaBeProject
             string loaikh = cboLoaiKH.SelectedItem.ToString();
             LoadDanhSachHoaDonTheoNgayLoc(tieuChi, tenTimKiem, dtpNgayBatDau.Value, dtpNgayKetThuc.Value, loaikh);
         }
-
         // Dữ liệu số nằm bên phải
         private void DgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -166,7 +155,6 @@ namespace MeVaBeProject
                 e.FormattingApplied = true;
             }
         }
-
         private void FrmQLHoaDon_Load(object sender, EventArgs e)
         {
             this.dtpNgayBatDau.MaxDate = DateTime.Now.Date;
@@ -179,7 +167,6 @@ namespace MeVaBeProject
             decimal tongDoanhThu = hdbll.TinhTongDoanhThu();
             lblTongDoanhThu.Text = "Tổng doanh thu: " + tongDoanhThu.ToString("N0").Replace(",", ".") + "đ";
         }
-
         private void CboTieuChi_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboTieuChi.SelectedItem.ToString() == "Các tiêu chí")
@@ -192,7 +179,6 @@ namespace MeVaBeProject
                 txtTimKiem.Enabled = true;
             }
         }
-
         private void SettingDgv(List<HoaDon> dsHoaDon)
         {
             dgvHoaDon.DataSource = dsHoaDon;            
@@ -284,7 +270,6 @@ namespace MeVaBeProject
             
             cboTieuChi.SelectedIndex = 0;
         }
-
         private void LoadLoaiKHCombobox()
         {
             List<string> loaiKH = new List<string>

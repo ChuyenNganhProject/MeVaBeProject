@@ -300,20 +300,17 @@ VALUES
 	('Q0004',N'Quyền quản lý loại sản phẩm'),
 	('Q0005',N'Quyền quản lý chương trình khuyến mãi'),
 	('Q0006',N'Quyền lập phiếu thanh lý'),
-	('Q0007',N'Quyền quản lý hóa đơn'),
-	('Q0008',N'Quyền lập phiếu đổi trả hàng'),	
-	('Q0009',N'Quyền quản lý khách hàng'),
-	('Q0010',N'Quyền quản lý hạng thành viên'),
-	('Q0011',N'Quyền quản lý nhập hàng'),
-	('Q0012',N'Quyền quản lý đặt hàng'),
-	('Q0013',N'Quyền duyệt đơn đặt hàng'),
-	('Q0014',N'Quyền quản lý nhân viên'),	
-	('Q0015',N'Quyền quản lý loại nhân viên'),	
-	('Q0016',N'Quyền bán hàng'),
-	('Q0017',N'Quyền lập phiếu giao hàng')
+	('Q0007',N'Quyền quản lý hóa đơn'),	
+	('Q0008',N'Quyền quản lý khách hàng'),
+	('Q0009',N'Quyền quản lý hạng thành viên'),
+	('Q0010',N'Quyền quản lý nhập hàng'),
+	('Q0011',N'Quyền quản lý đặt hàng'),
+	('Q0012',N'Quyền duyệt đơn đặt hàng'),
+	('Q0013',N'Quyền quản lý nhân viên'),	
+	('Q0014',N'Quyền quản lý loại nhân viên'),	
+	('Q0015',N'Quyền bán hàng')
 	
 GO
-
 INSERT INTO LoaiNhanVien (maLoaiNhanVien, tenLoaiNhanVien) 
 VALUES 
     (N'LNV001', N'Quản Lý'),
@@ -326,24 +323,36 @@ GO
 SET DATEFORMAT DMY
 INSERT INTO ChiTietQuyenCuaLoaiNhanVien(maLoaiNhanVien,maQuyen,ngayCapQuyen) 
 VALUES
+	('LNV001','Q0001','21/11/2024'),
 	('LNV001','Q0002','21/11/2024'),
 	('LNV001','Q0003','21/11/2024'),
 	('LNV001','Q0004','21/11/2024'),
-	('LNV005','Q0005','21/11/2024'),
-	('LNV003','Q0006','21/11/2024'),
-	('LNV002','Q0007','21/11/2024'),
-	('LNV002','Q0008','21/11/2024'),
-	('LNV002','Q0009','21/11/2024'),
+	('LNV001','Q0005','21/11/2024'),
+	('LNV001','Q0006','21/11/2024'),
+	('LNV001','Q0007','21/11/2024'),
+	('LNV001','Q0008','21/11/2024'),
+	('LNV001','Q0009','21/11/2024'),
 	('LNV001','Q0010','21/11/2024'),
-	('LNV003','Q0011','21/11/2024'),
-	('LNV003','Q0012','21/11/2024'),
+	('LNV001','Q0011','21/11/2024'),
+	('LNV001','Q0012','21/11/2024'),
 	('LNV001','Q0013','21/11/2024'),
-	('LNV006','Q0014','21/11/2024'),
-	('LNV006','Q0015','21/11/2024'),
-	('LNV002','Q0016','21/11/2024'),
-	('LNV002','Q0017','21/11/2024')
+	('LNV001','Q0014','21/11/2024'),
+	('LNV001','Q0015','21/11/2024'),
+
+	('LNV002','Q0007','21/11/2024'),
+	('LNV002','Q0008','21/11/2024'),	
+	('LNV002','Q0015','21/11/2024'),
+
+	('LNV003','Q0006','21/11/2024'),
+	('LNV003','Q0010','21/11/2024'),
+	('LNV003','Q0011','21/11/2024'),
+	('LNV004','Q0001','21/11/2024'),
+	('LNV005','Q0005','21/11/2024'),
+
+	('LNV006','Q0013','21/11/2024'),
+	('LNV006','Q0014','21/11/2024')
+	
 GO
-SELECT * FROM ChiTietQuyenCuaLoaiNhanVien WHERE maLoaiNhanVien = 'LNV001'
 INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
 VALUES ('NV0001', 'LNV001', N'Phạm Minh Nhật', '2003-11-19', N'254 Đường NVC, TP.HCM', '0775945228', 'minhnhat', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01')
 INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 

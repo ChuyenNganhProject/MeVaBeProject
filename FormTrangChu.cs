@@ -62,13 +62,13 @@ namespace MeVaBeProject
 
         private void BtnKhachHang_Click(object sender, EventArgs e)
         {
-            frmKhachHang frm = new frmKhachHang();
+            frmKhachHang frm = new frmKhachHang(nhanVien);
             OpenChildForm(frm);
         }
 
         private void BtnNhanVien_Click(object sender, EventArgs e)
         {
-           frmNhanVien frm = new frmNhanVien();
+           frmNhanVien frm = new frmNhanVien(nhanVien);
            OpenChildForm(frm);
         }
 
@@ -108,37 +108,31 @@ namespace MeVaBeProject
                             break;
                         case "Q0007":
                             btnHoaDon.Visible = true;
-                            break;
+                            break;   
                         case "Q0008":
-                            btnHoaDon.Visible = true;
+                            btnKhachHang.Visible = true;
                             break;
                         case "Q0009":
                             btnKhachHang.Visible = true;
                             break;
                         case "Q0010":
-                            btnKhachHang.Visible = true;
+                            btnNhapHang.Visible = true;
                             break;
                         case "Q0011":
-                            btnNhapHang.Visible = true;
+                            btnDatHang.Visible = true;
                             break;
                         case "Q0012":
                             btnDatHang.Visible = true;
                             break;
                         case "Q0013":
-                            btnDatHang.Visible = true;
+                            btnNhanVien.Visible = true;
                             break;
                         case "Q0014":
                             btnNhanVien.Visible = true;
                             break;
                         case "Q0015":
-                            btnNhanVien.Visible = true;
-                            break;
-                        case "Q0016":
                             btnVeTrangBanHang.Visible = true;
-                            break;
-                        case "Q0017":
-                            btnVeTrangBanHang.Visible = true;
-                            break;
+                            break; 
                         default:
                             break;
                     }

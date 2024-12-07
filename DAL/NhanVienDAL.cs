@@ -233,7 +233,6 @@ namespace DAL
                 var exnv = db.NhanViens.FirstOrDefault(n => n.maNhanVien == nv.maNhanVien);
                 if (exnv != null)
                 {
-                    exnv.maNhanVien = nv.maNhanVien;
                     exnv.tenNhanVien = nv.tenNhanVien;
                     exnv.diaChi = nv.diaChi;
                     exnv.ngaySinh = nv.ngaySinh;
@@ -242,6 +241,7 @@ namespace DAL
                     exnv.ngayVaoLam = nv.ngayVaoLam;
                     exnv.tenDangNhap = nv.tenDangNhap;
                     exnv.matKhau = nv.matKhau;
+                    exnv.maLoaiNhanVien = nv.maLoaiNhanVien;
                     db.SubmitChanges();
                     return true;
                 }

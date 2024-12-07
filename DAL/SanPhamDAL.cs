@@ -99,6 +99,25 @@ namespace DAL
                 return new List<SanPham> { };
             }
         }
+        public List<SanPham> LayDanhSachSanPhamSapHetHan()
+        {
+            try
+            {
+                List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp => sp.hanSuDung <= DateTime.Now.AddMonths(5) && sp.trangThai == "Còn hàng").Select(sp => sp).ToList<SanPham>();
+                foreach (SanPham sp in danhSachSanPham)
+                {
+                    if (sp != null)
+                    {
+                        sp.tenLoaiSanPham = dataContext.LoaiSanPhams.Where(lsp => lsp.maLoaiSanPham == sp.maLoaiSanPham).Select(lsp => lsp.tenLoaiSanPham).FirstOrDefault();
+                    }
+                }
+                return danhSachSanPham;
+            }
+            catch
+            {
+                return new List<SanPham> { };
+            }
+        }
         public List<SanPham> LayDanhSachSanPhamTheoTrangThai(string trangThai)
         {
             try
