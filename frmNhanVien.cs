@@ -561,9 +561,7 @@ namespace MeVaBeProject
             }
             else
             {
-                MessageBox.Show("Không tìm thấy nhân viên nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // Xóa hết dữ liệu trong DataGridView nếu không có kết quả tìm kiếm
-                dgvNhanVien.DataSource = null;
+                MessageBox.Show("Không tìm thấy nhân viên nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);  
             }
         }
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
@@ -698,7 +696,6 @@ namespace MeVaBeProject
                 else
                 {
                     MessageBox.Show("Không tìm thấy nhân viên nào có tài khoản bị khóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dgvNhanVien.DataSource = null;
                 }
             }
             //Hoat dong
@@ -713,7 +710,6 @@ namespace MeVaBeProject
                 else
                 {
                     MessageBox.Show("Không tìm thấy nhân viên nào đang hoạt động!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dgvNhanVien.DataSource = null;
                 }
             }
             else

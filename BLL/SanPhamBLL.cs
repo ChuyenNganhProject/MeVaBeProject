@@ -34,9 +34,17 @@ namespace BLL
         {
             return spdal.TimKiemSanPham(tuKhoa);
         }
+        public List<SanPham> TimKiemSanPham(string tuKhoa, decimal giaTriSanPham)
+        {
+            return spdal.TimKiemSanPham(tuKhoa,giaTriSanPham);
+        }
         public List<SanPham> LayDanhSachSanPhamTheoMaLoai(string maLoai)
         {            
             return spdal.LayDanhSachSanPhamTheoMaLoai(maLoai);
+        }
+        public List<SanPham> LayDanhSachSanPhamTheoMaLoai(string maLoai,decimal giaTriSanPham)
+        {
+            return spdal.LayDanhSachSanPhamTheoMaLoai(maLoai, giaTriSanPham);
         }
         public List<SanPham> LayDanhSachSanPhamHetHan()
         {

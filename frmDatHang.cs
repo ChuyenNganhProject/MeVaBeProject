@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using DTO;
+using Sunny.UI;
 namespace MeVaBeProject
 {
     public partial class frmDatHang : Form
@@ -55,6 +56,14 @@ namespace MeVaBeProject
         }
         private void onlyNumericInput(object sender, KeyPressEventArgs e)
         {
+            UITextBox txtBox = sender as UITextBox;
+            if (txtBox == txtSoLuongSanPham||txtBox== txtDonGia)
+            {
+                if (txtBox.Text.Length >= 15 && !char.IsControl(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
@@ -87,7 +96,6 @@ namespace MeVaBeProject
         }
         private void frmDatHang_Load(object sender, EventArgs e)
         {
-            this.rdbtMaSP.Checked = true;
             LoadDanhSachSanPham();
             //Load dữ liệu danh sách loại sản phẩm
             cbLoaiSP.DataSource = loaiSanPhamBLL.LayDanhSachLoaiSanPham();
@@ -129,21 +137,52 @@ namespace MeVaBeProject
             List<SanPham> sanPhams = sanPhamBLL.LayTatCaSanPham();
             bindingSource.DataSource = sanPhams;
             SetHinhAnh(sanPhams);
-            txtTimKiem.Text = string.Empty;
-            rdbtMaSP.Checked = true;
+            txtTimKiem.Text = "Nhập mã hoặc tên sản phẩm để tìm kiếm";
         }
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            List<SanPham> sanPhams = new List<SanPham>();
-            if (rdbtMaSP.Checked)
+            var results = sanPhamBLL.TimKiemSanPham(txtTimKiem.Text.Trim());
+            if (results != null && results.Count > 0)
             {
-                bindingSource.DataSource = sanPhamBLL.TimKiemSanPhamTheoMaSP(txtTimKiem.Text);
+                // Cập nhật DataGridView với kết quả tìm kiếm
+                bindingSource.DataSource = results;
+                SetHinhAnh(results);
             }
             else
             {
-                sanPhams = sanPhamBLL.TimKiemSanPhamTheoTenSP(txtTimKiem.Text);
-                bindingSource.DataSource = sanPhams;
-                SetHinhAnh(sanPhams);
+                // Nếu không tìm thấy kết quả, thông báo cho người dùng
+                MessageBox.Show("Không tìm thấy sản phẩm nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }            
+        }
+        private void txtTimKiem_Leave(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text == "")
+            {
+                txtTimKiem.Text = "Nhập mã hoặc tên sản phẩm để tìm kiếm";
+                txtTimKiem.ForeColor = Color.Silver;
+                txtTimKiem.Font = new Font(txtTimKiem.Font, FontStyle.Italic);
+                LoadDanhSachSanPham();
+            }
+        }
+        private void txtTimKiem_Enter(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text == "Nhập mã hoặc tên sản phẩm để tìm kiếm")
+            {
+                txtTimKiem.Text = "";
+                txtTimKiem.ForeColor = Color.Black;
+                txtTimKiem.Font = new Font(txtTimKiem.Font, FontStyle.Regular);
+            }
+        }
+        private void txtTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra xem phím nhấn có phải là Enter không
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Tự động click vào nút tìm kiếm
+                btnTimKiem.PerformClick();
+
+                // Ngăn chặn âm thanh bíp khi nhấn Enter
+                e.Handled = true;
             }
         }
         private void btnClose_Click(object sender, EventArgs e)
@@ -316,20 +355,7 @@ namespace MeVaBeProject
                 {
                     if (!CheckChiTietPhieuDatSoLuongDat())
                     {
-                        DialogResult r = MessageBox.Show(this, "Có sản phẩm chưa có số lượng đặt. Bạn có chắc chắn vẫn muốn lưu lại ko?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (r == DialogResult.Yes)
-                        {
-                            int soLuongSanPham = 0;
-                            foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuDat.Rows)
-                            {
-                                int soLuong = int.Parse(row.Cells["soLuongDat"].Value.ToString());
-                                if (soLuong > 0)
-                                {
-                                    soLuongSanPham++;
-                                }
-                            }
-                            LuuPhieuDat(soLuongSanPham);
-                        }
+                        MessageBox.Show(this, "Có sản phẩm chưa có số lượng đặt. Vui lòng nhập số lượng đặt cho sản phẩm đấy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);                        
                     }
                     else
                     {
@@ -487,6 +513,20 @@ namespace MeVaBeProject
                 txtDonGia.Text = txtDonGia.Text.TrimStart('0');
                 txtDonGia.SelectionStart = txtDonGia.Text.Length; // Đặt con trỏ ở cuối
             }
+            // Lưu vị trí con trỏ hiện tại
+            int cursorPosition = txtDonGia.SelectionStart;
+
+            // Loại bỏ dấu chấm (nếu có) để xử lý lại
+            string input = txtDonGia.Text.Replace(".", "");
+
+            // Định dạng lại chuỗi với dấu chấm
+            string formatted = FormatLuong(input);
+
+            // Cập nhật lại giá trị vào textbox
+            txtDonGia.Text = formatted;
+
+            // Đặt lại vị trí con trỏ vào cuối
+            txtDonGia.SelectionStart = cursorPosition + 1;
             if (dtgvSanPhamTrongPhieuDat.SelectedRows.Count > 0)
             {
                 foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuDat.SelectedRows)
@@ -539,5 +579,33 @@ namespace MeVaBeProject
                 }
             }            
         }
+        private string FormatLuong(string input)
+        {
+            // Loại bỏ tất cả dấu chấm hiện có
+            input = input.Replace(".", "");
+
+            // Nếu không phải là số thì trả về input ban đầu
+            if (!long.TryParse(input, out long luong))
+                return input;
+
+            // Chia thành các nhóm ba chữ số và thêm dấu chấm vào giữa
+            string formatted = "";
+            int count = 0;
+
+            // Duyệt ngược từ cuối chuỗi và chèn dấu chấm sau mỗi 3 chữ số
+            for (int i = input.Length - 1; i >= 0; i--)
+            {
+                formatted = input[i] + formatted;
+                count++;
+
+                // Thêm dấu chấm sau mỗi ba chữ số nếu không phải là ký tự đầu tiên
+                if (count % 3 == 0 && i > 0)
+                {
+                    formatted = "." + formatted;
+                }
+            }
+            return formatted;
+        }
+
     }
 }

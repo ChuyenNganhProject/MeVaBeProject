@@ -73,7 +73,8 @@ namespace MeVaBeProject
         {
             LoadData();
             EnableTextBox(false);
-            dtHanSuDung.MinDate = dtNgaySanXuat.Value;
+            dtNgaySanXuat.MaxDate = DateTime.Now;
+            dtHanSuDung.MinDate = DateTime.Now.AddYears(2);
             QuyenThemXoaSua = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0003")!=null) ? true : false;
             if (!QuyenThemXoaSua)
             {                
@@ -283,6 +284,7 @@ namespace MeVaBeProject
                         maSanPham = maSanPham,
                         tenSanPham = tenSanPham,
                         maLoaiSanPham = cbLoaiSP.SelectedValue.ToString(),
+                        donGiaNhap = 0,
                         donGiaBan = 0,
                         hinhAnh = imagePath,
                         ngaySanXuat = dtNgaySanXuat.Value,
@@ -543,9 +545,6 @@ namespace MeVaBeProject
             {
                 // Nếu không tìm thấy kết quả, thông báo cho người dùng
                 MessageBox.Show("Không tìm thấy sản phẩm nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Xóa hết dữ liệu trong DataGridView nếu không có kết quả tìm kiếm
-                bindingSource.DataSource = null;
             }
         }
         private void btnLapPhieuThanhLy_Click(object sender, EventArgs e)

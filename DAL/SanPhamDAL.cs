@@ -80,6 +80,25 @@ namespace DAL
                 return new List<SanPham> { };
             }
         }
+        public List<SanPham> LayDanhSachSanPhamTheoMaLoai(string maLoai,decimal giaTriSanPham)
+        {
+            try
+            {
+                List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp => sp.maLoaiSanPham == maLoai && sp.donGiaBan <=giaTriSanPham && sp.trangThai == "Còn hàng").Select(sp => sp).ToList<SanPham>();
+                foreach (SanPham sp in danhSachSanPham)
+                {
+                    if (sp != null)
+                    {
+                        sp.tenLoaiSanPham = dataContext.LoaiSanPhams.Where(lsp => lsp.maLoaiSanPham == sp.maLoaiSanPham).Select(lsp => lsp.tenLoaiSanPham).FirstOrDefault();
+                    }
+                }
+                return danhSachSanPham;
+            }
+            catch
+            {
+                return new List<SanPham> { };
+            }
+        }
         public List<SanPham> LayDanhSachSanPhamHetHan()
         {
             try
@@ -177,6 +196,25 @@ namespace DAL
             try
             {
                 List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp => sp.tenSanPham.Contains(tuKhoa) || sp.maSanPham == tuKhoa).Select(sp => sp).ToList<SanPham>();
+                foreach (SanPham sp in danhSachSanPham)
+                {
+                    if (sp != null)
+                    {
+                        sp.tenLoaiSanPham = dataContext.LoaiSanPhams.Where(lsp => lsp.maLoaiSanPham == sp.maLoaiSanPham).Select(lsp => lsp.tenLoaiSanPham).FirstOrDefault();
+                    }
+                }
+                return danhSachSanPham;
+            }
+            catch
+            {
+                return new List<SanPham> { };
+            }
+        }
+        public List<SanPham> TimKiemSanPham(string tuKhoa, decimal giaTriSanPham)
+        {
+            try
+            {
+                List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp => (sp.tenSanPham.Contains(tuKhoa) || sp.maSanPham == tuKhoa) && sp.donGiaBan<=giaTriSanPham).Select(sp => sp).ToList<SanPham>();
                 foreach (SanPham sp in danhSachSanPham)
                 {
                     if (sp != null)
