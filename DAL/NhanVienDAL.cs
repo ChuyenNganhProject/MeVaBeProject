@@ -18,12 +18,39 @@ namespace DAL
         public NhanVien DangNhap(string username, string password)
         {
             var hashedPassword = MaHoaMatKhauKieuSha256Hash(password);
+            Debug.WriteLine($"Hashed input password: {hashedPassword}");
             var nhanVien = db.NhanViens.SingleOrDefault(nv => nv.tenDangNhap == username && nv.matKhau == hashedPassword);
-            if (nhanVien!=null)
+            if (nhanVien != null)
             {
-                nhanVien.tenLoaiNhanVien = db.LoaiNhanViens.Where(lnv => lnv.maLoaiNhanVien == nhanVien.maLoaiNhanVien).Select(lnv => lnv.tenLoaiNhanVien).FirstOrDefault();
-            }           
+                // Nếu đăng nhập thành công, lấy thông tin loại nhân viên
+                var loaiNhanVien = db.LoaiNhanViens.SingleOrDefault(lnv => lnv.maLoaiNhanVien == nhanVien.maLoaiNhanVien);
+
+                if (loaiNhanVien != null)
+                {
+                    // Gán tên loại nhân viên vào đối tượng nhanVien
+                    nhanVien.tenLoaiNhanVien = loaiNhanVien.tenLoaiNhanVien;
+                }
+
+                Debug.WriteLine("Đăng nhập thành công.");
+            }
+            else
+            {
+
+                var nhanVienCheck = db.NhanViens.SingleOrDefault(nv => nv.tenDangNhap == username);
+                if (nhanVienCheck == null)
+                {
+                    Debug.WriteLine("Tên đăng nhập không tồn tại.");
+                }
+                else
+                {
+                    //Debug.WriteLine($"Stored password in DB: {nhanVienCheck.matKhau}");
+                    //Debug.WriteLine($"Input password: {password}");
+                    //Debug.WriteLine("Mật khẩu không khớp.");
+                }
+            }
+
             return nhanVien;
+
         }
 
         public string MaHoaMKMoi(string mkmoi)
@@ -120,7 +147,7 @@ namespace DAL
             string normalizedTk = tk.Trim();
 
             // Kiểm tra trùng lặp tên đăng nhập, phân biệt hoa-thường
-            return LoadNhanVien().Any(nv => nv.tenDangNhap.Trim().Equals(normalizedTk, StringComparison.Ordinal));
+            return LoadNhanVien().Any(nv => nv.tenDangNhap.Equals(tk, StringComparison.Ordinal));
         }
         public bool IsSDTDuplicate(string sdt)
         {
@@ -184,9 +211,10 @@ namespace DAL
                 bool existsInPhieuDoiHang = db.PhieuDoiHangs.Any(pdh => pdh.maNhanVien == manv);
                 bool existsInPhieuDat = db.PhieuDats.Any(pd => pd.maNhanVien == manv);
                 bool existsInPhieuNhap = db.PhieuNhaps.Any(pn => pn.maNhanVien == manv);
-                bool existsInPieuThanhLy = db.PhieuThanhLies.Any(ptl => ptl.maNhanVien == manv);
+                bool existsInPhieuThanhLy = db.PhieuThanhLies.Any(ptl => ptl.maNhanVien == manv);
+                bool existsInPhieuGiaoHang = db.PhieuGiaoHangs.Any(pgh => pgh.maNhanVien == manv);
 
-                if (existsInHoaDon || existsInPhieuDoiHang || existsInPhieuDat || existsInPhieuNhap || existsInPieuThanhLy)
+                if (existsInHoaDon || existsInPhieuDoiHang || existsInPhieuDat || existsInPhieuNhap || existsInPhieuThanhLy|| existsInPhieuGiaoHang)
                 {
 
                     return false;
@@ -204,7 +232,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Xóa khách hàng thất bại: " + ex.Message);
+                Debug.WriteLine("Xóa nhân viên thất bại: " + ex.Message);
                 return false;
             }
             #region
@@ -374,9 +402,16 @@ namespace DAL
         //Lay trang thai nhan vien theo tên đăng nhập 
         public string LayTrangThaiNhanVienTheoTenDangNhap(string tenDangNhap)
         {
+
             try
             {
+                if (!IsTaiKhoanDuplicate(tenDangNhap))
+                {
+                    Debug.WriteLine("Tên đăng nhập không tồn tại.");
+                    return null;
+                }
 
+                // Nếu tài khoản tồn tại, lấy trạng thái
                 return db.NhanViens
                          .Where(nv => nv.tenDangNhap == tenDangNhap)
                          .Select(nv => nv.trangThai)
@@ -387,6 +422,20 @@ namespace DAL
                 Console.WriteLine($"Error: {ex.Message}");
                 return null;
             }
+
+            //try
+            //{
+
+            //    return db.NhanViens
+            //             .Where(nv => nv.tenDangNhap == tenDangNhap)
+            //             .Select(nv => nv.trangThai)
+            //             .FirstOrDefault();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"Error: {ex.Message}");
+            //    return null;
+            //}
         }
         public List<NhanVien> GetNhanVienBiKhoa()
         {

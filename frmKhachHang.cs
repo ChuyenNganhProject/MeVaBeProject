@@ -65,7 +65,7 @@ namespace MeVaBeProject
         }
         private void txtSearch_Enter(object sender, EventArgs e)
         {
-            if (txtSearch.Text == "Nhập tên, địa chỉ, hoặc số điện thoại để tìm kiếm")
+            if (txtSearch.Text == "Nhập tên, hạng thành viên, hoặc số điện thoại để tìm kiếm")
             {
                 txtSearch.Text = "";
                 txtSearch.ForeColor = Color.Black;
@@ -76,7 +76,7 @@ namespace MeVaBeProject
         {
             if (txtSearch.Text == "")
             {
-                txtSearch.Text = "Nhập tên, địa chỉ, hoặc số điện thoại để tìm kiếm";
+                txtSearch.Text = "Nhập tên, hạng thành viên, hoặc số điện thoại để tìm kiếm";
                 txtSearch.ForeColor = Color.Silver;
                 txtSearch.Font = new Font(txtSearch.Font, FontStyle.Italic);
                 LoadKhachHang();
@@ -154,7 +154,7 @@ namespace MeVaBeProject
 
             return true;
         }
-        private bool ValidateInput_Sua(bool isUpdate = false, string oldPhoneNumber = "")
+        private bool ValidateInput_Sua( string oldPhoneNumber = "")
         {
             // Kiểm tra tên 
             if (string.IsNullOrWhiteSpace(txtTenKH1.Text))
@@ -176,7 +176,7 @@ namespace MeVaBeProject
                 return false;
             }
 
-            // Kiểm tra số điện thoại mới có trùng với số điện thoại của nhân viên khác không
+            // Kiểm tra số điện thoại mới có trùng với số điện thoại 
             string newPhoneNumber = txtSDT1.Text.Trim();
             if (oldPhoneNumber != newPhoneNumber && khbll.IsSDTDuplicate(newPhoneNumber)) // Kiểm tra số điện thoại mới
             {
@@ -208,27 +208,26 @@ namespace MeVaBeProject
             // Kiểm tra nếu người dùng click vào một hàng hợp lệ
             if (e.RowIndex >= 0)
             {
-                // Lấy hàng được chọn
+
                 DataGridViewRow selectedRow = dgvKhachHang.Rows[e.RowIndex];
 
-                // Lấy giá trị từ các ô trong hàng đã chọn, đảm bảo không null
+
                 string maKH = selectedRow.Cells["maKhachHang"].Value.ToString();
                 string tenKH = selectedRow.Cells["tenKhachHang"].Value.ToString();
                 string soDienThoai = selectedRow.Cells["soDienThoai"].Value.ToString();
                 string tenHang = selectedRow.Cells["tenHang"].Value.ToString();
-                decimal diemTL = selectedRow.Cells["diemTichLuy"].Value != null ? Convert.ToDecimal(selectedRow.Cells["diemTichLuy"].Value) : 0;
-                DateTime ngayTLD = selectedRow.Cells["ngayCapNhatDiem"].Value != null ? DateTime.Parse(selectedRow.Cells["ngayCapNhatDiem"].Value.ToString()) : DateTime.Now;
-                //string maHang = selectedRow.Cells["maHang"].Value?.ToString() ?? string.Empty;
+                string diemTL = selectedRow.Cells["diemTichLuy"].Value.ToString();
+                DateTime ngayTLD = DateTime.Parse(selectedRow.Cells["ngayCapNhatDiem"].Value.ToString());
 
-                // Cập nhật các TextBox với giá trị tương ứng từ các cột
+
                 txtMaKH1.Text = maKH;
                 txtTenKH1.Text = tenKH;
-                txtdiemTichLuy1.Text = diemTL.ToString();
+                txtdiemTichLuy1.Text = diemTL;
                 txtHangTV1.Text = tenHang;
                 txtSDT1.Text = soDienThoai;
                 txtNgayTichLuyDiem1.Value = ngayTLD;
 
-                // Nếu cần thiết, gọi lại hàm SetDataGirdView() sau khi cập nhật TextBox
+
                 SetDataGirdView();
             }
             else
@@ -288,6 +287,9 @@ namespace MeVaBeProject
             {
                 // Nếu không tìm thấy kết quả, thông báo cho người dùng
                 MessageBox.Show("Không tìm thấy khách hàng nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Xóa hết dữ liệu trong DataGridView nếu không có kết quả tìm kiếm
+                dgvKhachHang.DataSource = null;
             }
         }
         private void btnLamMoi_Click(object sender, EventArgs e)
@@ -349,218 +351,20 @@ namespace MeVaBeProject
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
-            //// Hỏi người dùng xác nhận trước khi sửa
-            //DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn sửa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //if (result == DialogResult.No)
-            //{
-            //    return;
-            //}
-            //string maKH = txtMaKH1.Text; // Hoặc từ biến đã lưu ID
-
-            //// Lấy số điện thoại cũ từ cơ sở dữ liệu
-            ////string OldPhoneNumber = khachHang.soDienThoai;
-            ////string OldEmail = khbll.GetEmailById(maKH);
-            ////tham số , biến
-            //string OldPhoneNumber = khbll.GetPhoneNumberById(maKH);
-            //if (!ValidateInput_Sua(oldPhoneNumber: OldPhoneNumber))
-            //{
-            //    return;
-            //}
-            //// Lấy email cũ từ cơ sở dữ liệu
-
-            ////tham số , biến
-
-            //// Cập nhật thông tin khách hàng
-            //var kh = new KhachHang
-            //{
-            //    maKhachHang = txtMaKH1.Text.Trim(),
-            //    tenKhachHang = txtTenKH1.Text.Trim(),
-            //    soDienThoai = txtSDT1.Text.Trim(),
-            //    diemTichLuy = int.Parse(txtdiemTichLuy11.Text.Trim()),
-            //    //diaChi = txtDiaChi.Text.Trim(),
-            //    //email = txtEmail.Text.Trim(),
-            //    ngayCapNhatDiem= txtNgayTichLuyDiem1.Value.Date,
-            //    tenHang = txtHangTV1.Text.Trim(),
-            //};
-
-            //// Thực hiện cập nhật thông tin khách hàng
-
-            //bool kq = khbll.CapNhatKhachHang(kh);
-            //if (kq)
-            //{
-            //    MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    ClearForm();
-            //    LoadKhachHang();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Sửa thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-
-
-            //// Hỏi người dùng xác nhận trước khi sửa
-            //DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn sửa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //if (result == DialogResult.No)
-            //{
-            //    return;
-            //}
-
-            //// Lấy mã khách hàng từ TextBox
-            //string maKH = txtMaKH1.Text;
-            //Debug.WriteLine($"Mã khách hàng: {maKH}");  // Debug: In ra mã khách hàng
-
-            //// Lấy số điện thoại cũ từ cơ sở dữ liệu
-            //string OldPhoneNumber = khbll.GetPhoneNumberById(maKH);
-            //Debug.WriteLine($"Số điện thoại cũ: {OldPhoneNumber}");  // Debug: In ra số điện thoại cũ
-
-            //// Kiểm tra đầu vào sửa
-            //if (!ValidateInput_Sua(oldPhoneNumber: OldPhoneNumber))
-            //{
-            //    MessageBox.Show("Dữ liệu nhập không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-
-            //// Debug: In các thông tin đầu vào
-            //Debug.WriteLine($"Tên khách hàng: {txtTenKH1.Text.Trim()}");
-            //Debug.WriteLine($"Số điện thoại mới: {txtSDT1.Text.Trim()}");
-            //Debug.WriteLine($"Điểm tích lũy: {txtdiemTichLuy1.Text.Trim()}");
-            //Debug.WriteLine($"Ngày cập nhật điểm: {txtNgayTichLuyDiem1.Value.Date}");
-            //Debug.WriteLine($"Tên hạng: {txtHangTV1.Text.Trim()}");
-
-            //// Cập nhật thông tin khách hàng
-            //var kh = new KhachHang
-            //{
-            //    maKhachHang = txtMaKH1.Text.Trim(),
-            //    tenKhachHang = txtTenKH1.Text.Trim(),
-            //    soDienThoai = txtSDT1.Text.Trim(),
-            //    diemTichLuy = int.Parse(txtdiemTichLuy1.Text.Trim()),  // Kiểm tra việc chuyển đổi điểm tích lũy
-            //    ngayCapNhatDiem = txtNgayTichLuyDiem1.Value.Date,
-            //    tenHang = txtHangTV1.Text.Trim(),
-            //};
-
-            //// Debug: In thông tin khách hàng đã cập nhật
-            //Debug.WriteLine($"Thông tin khách hàng sau khi cập nhật: {kh.tenKhachHang}, {kh.soDienThoai}, {kh.diemTichLuy}, {kh.tenHang}");
-
-            //// Thực hiện cập nhật thông tin khách hàng
-            //try
-            //{
-            //    bool kq = khbll.CapNhatKhachHang(kh);
-            //    if (kq)
-            //    {
-            //        MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        ClearForm();
-            //        LoadKhachHang();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Sửa thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    // In lỗi ra nếu có
-            //    MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    Debug.WriteLine($"Lỗi: {ex.Message}");  // Debug: In thông báo lỗi
-            //}
-
-            // Hỏi người dùng xác nhận trước khi sửa
-            //DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn sửa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //if (result == DialogResult.No)
-            //{
-            //    return;
-            //}
-
-            //// Lấy mã khách hàng từ TextBox
-            //string maKH = txtMaKH1.Text;
-            //Debug.WriteLine($"Mã khách hàng: {maKH}");  // Debug: In ra mã khách hàng
-
-            //// Lấy số điện thoại cũ từ cơ sở dữ liệu
-            //string OldPhoneNumber = khbll.GetPhoneNumberById(maKH);
-            //Debug.WriteLine($"Số điện thoại cũ: {OldPhoneNumber}");  // Debug: In ra số điện thoại cũ
-
-            //// Kiểm tra đầu vào sửa
-            //if (!ValidateInput_Sua(oldPhoneNumber: OldPhoneNumber))
-            //{
-            //    MessageBox.Show("Dữ liệu nhập không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-
-            //// Debug: In các thông tin đầu vào
-            //Debug.WriteLine($"Tên khách hàng: {txtTenKH1.Text.Trim()}");
-            //Debug.WriteLine($"Số điện thoại mới: {txtSDT1.Text.Trim()}");
-            //Debug.WriteLine($"Điểm tích lũy: {txtdiemTichLuy1.Text.Trim()}");
-            //Debug.WriteLine($"Ngày cập nhật điểm: {txtNgayTichLuyDiem1.Value.Date}");
-            //Debug.WriteLine($"Tên hạng: {txtHangTV1.Text.Trim()}");
-
-            //// Xử lý giá trị diemTichLuy (kiểm tra xem có phải kiểu decimal không)
-            ////decimal diemTichLuy = 0m;  // Giá trị mặc định là 0m (decimal)
-            ////if (!decimal.TryParse(txtdiemTichLuy1.Text.Trim(), out diemTichLuy))
-            ////{
-            ////    MessageBox.Show("Điểm tích lũy không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            ////    return;
-            ////}
-
-            //// Cập nhật thông tin khách hàng
-            //var kh = new KhachHang
-            //{
-            //    maKhachHang = txtMaKH1.Text.Trim(),
-            //    tenKhachHang = txtTenKH1.Text.Trim(),
-            //    soDienThoai = txtSDT1.Text.Trim(),
-            //    //diemTichLuy = diemTichLuy,  // Sử dụng decimal cho diemTichLuy
-            //    //ngayCapNhatDiem = txtNgayTichLuyDiem1.Value.Date,
-            //    tenHang = txtHangTV1.Text.Trim(),
-            //};
-
-            //// Debug: In thông tin khách hàng đã cập nhật
-            //Debug.WriteLine($"Thông tin khách hàng sau khi cập nhật: {kh.tenKhachHang}, {kh.soDienThoai}, {kh.diemTichLuy}, {kh.tenHang}");
-
-            //// Thực hiện cập nhật thông tin khách hàng
-            //try
-            //{
-            //    bool kq = khbll.CapNhatKhachHang(kh);
-            //    if (kq)
-            //    {
-            //        MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        ClearForm();
-            //        LoadKhachHang();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Sửa thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    // In lỗi ra nếu có
-            //    MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    Debug.WriteLine($"Lỗi: {ex.Message}");  // Debug: In thông báo lỗi
-            //}
-
-            // Hỏi người dùng xác nhận trước khi sửa
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn sửa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.No)
             {
                 return;
             }
-
-
             string maKH = txtMaKH1.Text;
-            //Debug.WriteLine($"Mã khách hàng: {maKH}"); 
-
-            // Lấy số điện thoại cũ từ cơ sở dữ liệu
             string OldPhoneNumber = khbll.GetPhoneNumberById(maKH);
-            //Debug.WriteLine($"Số điện thoại cũ: {OldPhoneNumber}");  
-
-            // Kiểm tra đầu vào sửa
             if (!ValidateInput_Sua(oldPhoneNumber: OldPhoneNumber))
             {
                 MessageBox.Show("Dữ liệu nhập không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-
             decimal diemTichLuy = decimal.Parse(txtdiemTichLuy1.Text.Trim());
-            // Cập nhật thông tin khách hàng mà không cập nhật điểm tích lũy
+           
             var kh = new KhachHang
             {
                 maKhachHang = txtMaKH1.Text.Trim(),
@@ -570,11 +374,6 @@ namespace MeVaBeProject
                 ngayCapNhatDiem = txtNgayTichLuyDiem1.Value.Date,
                 tenHang = txtHangTV1.Text.Trim(),
             };
-
-            //// Debug: In thông tin khách hàng đã cập nhật
-            //Debug.WriteLine($"Thông tin khách hàng sau khi cập nhật: {kh.tenKhachHang}, {kh.soDienThoai}, {kh.tenHang}");
-
-
             try
             {
                 bool kq = khbll.CapNhatKhachHang(kh);
@@ -606,22 +405,14 @@ namespace MeVaBeProject
                 e.Handled = true;
             }
         }
-        //private void txtHangTV_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (txtSDT.Text.Length >= 10 && !char.IsControl(e.KeyChar))
-        //    {
-        //        e.Handled = true;
-        //    }
-        //    else if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-        //    {
-        //        e.Handled = true;
-        //    }
-        //}
         private void btnHangThanhViieen_Click(object sender, EventArgs e)
         {
             frmHangThanhVien frm = new frmHangThanhVien();
             frm.ShowDialog();
 
         }
+       
+
+
     }
 }

@@ -41,6 +41,10 @@ namespace BLL
             // Lấy mã loại nhân viên mới nhất
             return lnvdal.GetTenLoaiNVByMa(maLoaiNV);
         }
-        
+        public bool IsTenLoaiNhanVienExit(string tenLNV)
+        {
+
+            return lnvdal.IsTenLoaiNhanVienExit(tenLNV);
+        }
     }
 }
