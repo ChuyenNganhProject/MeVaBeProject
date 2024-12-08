@@ -46,12 +46,12 @@
             this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
             this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
             this.dtgvChiTietQuyen = new Sunny.UI.UIDataGridView();
-            this.btnThem = new Sunny.UI.UISymbolButton();
-            this.btnXoa = new Sunny.UI.UISymbolButton();
             this.maQuyenCuaLoaiNhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenQuyenCuaLoaiNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenLoaiNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ngayCapQuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnThem = new Sunny.UI.UISymbolButton();
+            this.btnXoa = new Sunny.UI.UISymbolButton();
             this.uiPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvQuyenHeThong)).BeginInit();
             this.uiGroupBox1.SuspendLayout();
@@ -191,7 +191,7 @@
             this.uiGroupBox2.RectColor = System.Drawing.Color.HotPink;
             this.uiGroupBox2.Size = new System.Drawing.Size(524, 411);
             this.uiGroupBox2.TabIndex = 3;
-            this.uiGroupBox2.Text = "Quyền hệ thống";
+            this.uiGroupBox2.Text = "Quyền của loại nhân viên";
             this.uiGroupBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dtgvChiTietQuyen
@@ -251,6 +251,38 @@
             this.dtgvChiTietQuyen.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.dtgvChiTietQuyen.TabIndex = 1;
             // 
+            // maQuyenCuaLoaiNhanVien
+            // 
+            this.maQuyenCuaLoaiNhanVien.DataPropertyName = "maQuyen";
+            this.maQuyenCuaLoaiNhanVien.HeaderText = "Mã quyền";
+            this.maQuyenCuaLoaiNhanVien.Name = "maQuyenCuaLoaiNhanVien";
+            this.maQuyenCuaLoaiNhanVien.ReadOnly = true;
+            this.maQuyenCuaLoaiNhanVien.Width = 102;
+            // 
+            // tenQuyenCuaLoaiNV
+            // 
+            this.tenQuyenCuaLoaiNV.DataPropertyName = "tenQuyen";
+            this.tenQuyenCuaLoaiNV.HeaderText = "Tên quyền";
+            this.tenQuyenCuaLoaiNV.Name = "tenQuyenCuaLoaiNV";
+            this.tenQuyenCuaLoaiNV.ReadOnly = true;
+            this.tenQuyenCuaLoaiNV.Width = 107;
+            // 
+            // tenLoaiNV
+            // 
+            this.tenLoaiNV.DataPropertyName = "tenLoaiNhanVien";
+            this.tenLoaiNV.HeaderText = "Loại nhân viên";
+            this.tenLoaiNV.Name = "tenLoaiNV";
+            this.tenLoaiNV.ReadOnly = true;
+            this.tenLoaiNV.Width = 135;
+            // 
+            // ngayCapQuyen
+            // 
+            this.ngayCapQuyen.DataPropertyName = "ngayCapQuyen";
+            this.ngayCapQuyen.HeaderText = "Ngày cấp quyền";
+            this.ngayCapQuyen.Name = "ngayCapQuyen";
+            this.ngayCapQuyen.ReadOnly = true;
+            this.ngayCapQuyen.Width = 146;
+            // 
             // btnThem
             // 
             this.btnThem.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -290,38 +322,6 @@
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // maQuyenCuaLoaiNhanVien
-            // 
-            this.maQuyenCuaLoaiNhanVien.DataPropertyName = "maQuyen";
-            this.maQuyenCuaLoaiNhanVien.HeaderText = "Mã quyền";
-            this.maQuyenCuaLoaiNhanVien.Name = "maQuyenCuaLoaiNhanVien";
-            this.maQuyenCuaLoaiNhanVien.ReadOnly = true;
-            this.maQuyenCuaLoaiNhanVien.Width = 102;
-            // 
-            // tenQuyenCuaLoaiNV
-            // 
-            this.tenQuyenCuaLoaiNV.DataPropertyName = "tenQuyen";
-            this.tenQuyenCuaLoaiNV.HeaderText = "Tên quyền";
-            this.tenQuyenCuaLoaiNV.Name = "tenQuyenCuaLoaiNV";
-            this.tenQuyenCuaLoaiNV.ReadOnly = true;
-            this.tenQuyenCuaLoaiNV.Width = 107;
-            // 
-            // tenLoaiNV
-            // 
-            this.tenLoaiNV.DataPropertyName = "tenLoaiNhanVien";
-            this.tenLoaiNV.HeaderText = "Loại nhân viên";
-            this.tenLoaiNV.Name = "tenLoaiNV";
-            this.tenLoaiNV.ReadOnly = true;
-            this.tenLoaiNV.Width = 135;
-            // 
-            // ngayCapQuyen
-            // 
-            this.ngayCapQuyen.DataPropertyName = "ngayCapQuyen";
-            this.ngayCapQuyen.HeaderText = "Ngày cấp quyền";
-            this.ngayCapQuyen.Name = "ngayCapQuyen";
-            this.ngayCapQuyen.ReadOnly = true;
-            this.ngayCapQuyen.Width = 146;
             // 
             // frmQLPhanQuyen
             // 

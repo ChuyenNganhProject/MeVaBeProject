@@ -288,9 +288,6 @@ namespace MeVaBeProject
             {
                 // Nếu không tìm thấy kết quả, thông báo cho người dùng
                 MessageBox.Show("Không tìm thấy khách hàng nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Xóa hết dữ liệu trong DataGridView nếu không có kết quả tìm kiếm
-                dgvKhachHang.DataSource = null;
             }
         }
         private void btnLamMoi_Click(object sender, EventArgs e)

@@ -73,10 +73,18 @@ namespace DAL
                 return false;
             }
         }
-
         public int TongSoLuongNhaCungCap()
         {
             return db.NhaCungCaps.Count();
+        }
+        public bool KiemTraNhaCungCapCoDangThuocPhieuDat(NhaCungCap ncc)
+        {
+            int dem = db.PhieuDats.Where(pd => pd.maNhaCungCap == ncc.maNhaCungCap).Count();
+            if (dem>0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

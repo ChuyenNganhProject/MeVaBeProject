@@ -38,7 +38,7 @@ namespace MeVaBeProject
                 button.RectHoverColor = System.Drawing.Color.DeepPink;
                 button.RectPressColor = System.Drawing.Color.DeepPink;
                 button.RectSelectedColor = System.Drawing.Color.FromArgb(255, 128, 255);
-                button.FillColor = System.Drawing.Color.LightPink;
+                button.FillColor = System.Drawing.Color.HotPink;
                 button.FillHoverColor = System.Drawing.Color.HotPink;
                 button.FillPressColor = System.Drawing.Color.DeepPink;
                 button.ForeColor = System.Drawing.Color.White; // Màu chữ khi nút được kích hoạt
@@ -226,15 +226,23 @@ namespace MeVaBeProject
                         email = email,
                         diaChi = diaChi
                     };
-                    bool isSuccess = nccbll.XoaNhaCungCap(nhaCungCap);
-                    if (isSuccess)
+                    bool ktr = nccbll.KiemTraNhaCungCapCoDangThuocPhieuDat(nhaCungCap);
+                    if (!ktr)
                     {
-                        MessageBox.Show(this, "Xóa nhà cung cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadNhaCungCap();
+                        bool isSuccess = nccbll.XoaNhaCungCap(nhaCungCap);
+                        if (isSuccess)
+                        {
+                            MessageBox.Show(this, "Xóa nhà cung cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadNhaCungCap();
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "Xóa nhà cung cấp thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show(this, "Xóa nhà cung cấp thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(this, "Không thể xóa nhà cung cấp do đang thuộc về 1 phiếu đặt", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
