@@ -103,7 +103,7 @@ namespace DAL
         {
             try
             {
-                List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp => sp.hanSuDung == DateTime.Now && sp.trangThai == "Còn hàng").Select(sp => sp).ToList<SanPham>();
+                List<SanPham> danhSachSanPham = dataContext.SanPhams.Where(sp => sp.hanSuDung <= DateTime.Now && sp.trangThai == "Còn hàng").Select(sp => sp).ToList<SanPham>();
                 foreach (SanPham sp in danhSachSanPham)
                 {
                     if (sp != null)
