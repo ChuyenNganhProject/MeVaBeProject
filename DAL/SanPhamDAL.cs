@@ -310,21 +310,7 @@ namespace DAL
                 return new List<SanPhamBanChay>();
             }
             return topSanPham;
-        }
-        public bool KhoiPhucSanPham(string maSanPham)
-        {
-            try
-            {
-                SanPham sanPhamEdited = dataContext.SanPhams.Where(sp => sp.maSanPham == maSanPham).FirstOrDefault();
-                sanPhamEdited.trangThai = "Còn hàng";
-                dataContext.SubmitChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
+        }        
         public bool ThemSanPham(SanPham pSanPham)
         {
             try
@@ -361,7 +347,7 @@ namespace DAL
             try
             {
                 SanPham sanPhamDeleted = dataContext.SanPhams.Where(sp => sp.maSanPham == pSanPham.maSanPham).FirstOrDefault();
-                sanPhamDeleted.trangThai = "Không tồn tại";
+                dataContext.SanPhams.DeleteOnSubmit(sanPhamDeleted);
                 dataContext.SubmitChanges();
                 return true;
             }
@@ -375,7 +361,7 @@ namespace DAL
             try
             {
                 SanPham sanPhamDeleted = dataContext.SanPhams.Where(sp => sp.maSanPham == maSanPham).FirstOrDefault();
-                sanPhamDeleted.trangThai = "Không tồn tại";
+                dataContext.SanPhams.DeleteOnSubmit(sanPhamDeleted);
                 dataContext.SubmitChanges();
                 return true;
             }
@@ -383,11 +369,25 @@ namespace DAL
             {
                 return false;
             }
-
-            
         }
-
-
+        public bool KiemTraSanPhamCoThuocHoaDon(string maSanPham)
+        {
+            int dem = dataContext.ChiTietHoaDonSanPhams.Where(sp => sp.maSanPham == maSanPham).Count();
+            if (dem>0)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool KiemTraSanPhamCoThuocPhieuDat(string maSanPham)
+        {
+            int dem = dataContext.ChiTietPhieuDats.Where(sp => sp.maSanPham == maSanPham).Count();
+            if (dem > 0)
+            {
+                return true;
+            }
+            return false;
+        }
         public List<(string TenSanPham, int? SoLuong)> ThongKeDanhSachSanPhamDuoiMucToiThieu()
         {
             var sanPhamDuoiMucToiThieu = dataContext.SanPhams

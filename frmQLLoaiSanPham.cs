@@ -249,6 +249,7 @@ namespace MeVaBeProject
                         {
                             MessageBox.Show(this, "Xóa loại sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadLoaiSanPham();
+                            ClearForm();
                         }
                         else
                         {

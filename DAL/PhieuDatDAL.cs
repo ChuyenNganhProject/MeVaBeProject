@@ -103,6 +103,7 @@ namespace DAL
             {
                 PhieuDat phieuDatEdited = MeVaBeDBDataContext.PhieuDats.Where(pd => pd.maPhieuDat == maPhieuDat).Select(pd => pd).FirstOrDefault();
                 phieuDatEdited.trangThai = trangThai;
+                phieuDatEdited.ngayCapNhat = DateTime.Now;
                 if (trangThai == "Đã duyệt")
                 {
                     phieuDatEdited.trangThaiXacNhan = null;
@@ -122,6 +123,7 @@ namespace DAL
             {
                 PhieuDat phieuDatEdited = MeVaBeDBDataContext.PhieuDats.Where(pd => pd.maPhieuDat == maPhieuDat).Select(pd => pd).FirstOrDefault();
                 phieuDatEdited.trangThaiXacNhan = trangThai;
+                phieuDatEdited.ngayCapNhat = DateTime.Now;
                 MeVaBeDBDataContext.SubmitChanges();
                 return true;
             }
