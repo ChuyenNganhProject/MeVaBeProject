@@ -51,7 +51,7 @@ namespace MeVaBeProject
 
                 MessageBox.Show($"Đăng nhập thành công! Xin chào, {nhanVien.tenNhanVien}");
 
-                if (nhanVien.maLoaiNhanVien == "LNV001")
+                if (nhanVien.maLoaiNhanVien != "LNV002")
                 {
                     frmTrangChu frm = new frmTrangChu(nhanVien);
                     frm.Show();
@@ -68,32 +68,7 @@ namespace MeVaBeProject
             {
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!",
                                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            //string tenDangNhap = txtUsername.Text.Trim();
-            //string matKhau = txtPassword.Text.Trim();
-
-            //var nhanVien = nvbll.DangNhap(tenDangNhap, matKhau);
-
-            //if(nhanVien != null)
-            //{
-            //    MessageBox.Show($"Đăng nhập thành công! Xin chào, {nhanVien.tenNhanVien}");
-            //    if(nhanVien.maLoaiNhanVien != "LNV002")
-            //    {
-            //        frmTrangChu frm = new frmTrangChu(nhanVien);
-            //        frm.Show();
-            //        this.Hide();
-            //    }
-            //    else if(nhanVien.maLoaiNhanVien == "LNV002")
-            //    {
-            //        frmBanHang frm = new frmBanHang(nhanVien.maNhanVien);
-            //        frm.Show();
-            //        this.Hide();
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
+            }            
         }
         private void chkhienmk_CheckedChanged(object sender, EventArgs e)
         {

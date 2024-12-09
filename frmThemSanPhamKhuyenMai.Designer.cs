@@ -111,11 +111,11 @@
             this.uiPanel2.FillColor = System.Drawing.SystemColors.Window;
             this.uiPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiPanel2.Location = new System.Drawing.Point(0, 0);
-            this.uiPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uiPanel2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel2.Name = "uiPanel2";
             this.uiPanel2.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel2.Size = new System.Drawing.Size(1220, 757);
+            this.uiPanel2.Size = new System.Drawing.Size(915, 630);
             this.uiPanel2.TabIndex = 3;
             this.uiPanel2.Text = null;
             this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -132,7 +132,7 @@
             this.uiPanel7.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel7.Name = "uiPanel7";
             this.uiPanel7.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel7.Size = new System.Drawing.Size(1220, 757);
+            this.uiPanel7.Size = new System.Drawing.Size(915, 630);
             this.uiPanel7.TabIndex = 8;
             this.uiPanel7.Text = null;
             this.uiPanel7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -155,7 +155,7 @@
             this.uiPanel11.Radius = 1;
             this.uiPanel11.RectColor = System.Drawing.SystemColors.Window;
             this.uiPanel11.ShowText = false;
-            this.uiPanel11.Size = new System.Drawing.Size(1220, 757);
+            this.uiPanel11.Size = new System.Drawing.Size(915, 630);
             this.uiPanel11.TabIndex = 19;
             this.uiPanel11.Text = null;
             this.uiPanel11.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -174,7 +174,7 @@
             this.uiPanel4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel4.Name = "uiPanel4";
             this.uiPanel4.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel4.Size = new System.Drawing.Size(1216, 575);
+            this.uiPanel4.Size = new System.Drawing.Size(911, 448);
             this.uiPanel4.TabIndex = 22;
             this.uiPanel4.Text = null;
             this.uiPanel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -193,7 +193,7 @@
             this.uiGroupBox2.Name = "uiGroupBox2";
             this.uiGroupBox2.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox2.RectColor = System.Drawing.Color.HotPink;
-            this.uiGroupBox2.Size = new System.Drawing.Size(469, 575);
+            this.uiGroupBox2.Size = new System.Drawing.Size(164, 448);
             this.uiGroupBox2.TabIndex = 25;
             this.uiGroupBox2.Text = "Danh sách sản phẩm";
             this.uiGroupBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -208,7 +208,7 @@
             this.dgvDSSP.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepPink;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -222,7 +222,7 @@
             this.tenSanPham});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DeepPink;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -255,7 +255,7 @@
             this.dgvDSSP.ScrollBarRectColor = System.Drawing.Color.HotPink;
             this.dgvDSSP.ScrollBarStyleInherited = false;
             this.dgvDSSP.SelectedIndex = -1;
-            this.dgvDSSP.Size = new System.Drawing.Size(469, 385);
+            this.dgvDSSP.Size = new System.Drawing.Size(164, 258);
             this.dgvDSSP.StripeOddColor = System.Drawing.SystemColors.Window;
             this.dgvDSSP.TabIndex = 44;
             // 
@@ -273,7 +273,7 @@
             this.uiPanel9.Name = "uiPanel9";
             this.uiPanel9.RectColor = System.Drawing.Color.HotPink;
             this.uiPanel9.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom;
-            this.uiPanel9.Size = new System.Drawing.Size(469, 158);
+            this.uiPanel9.Size = new System.Drawing.Size(164, 158);
             this.uiPanel9.TabIndex = 43;
             this.uiPanel9.Text = null;
             this.uiPanel9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -294,7 +294,7 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label4.Location = new System.Drawing.Point(48, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(197, 23);
+            this.label4.Size = new System.Drawing.Size(164, 19);
             this.label4.TabIndex = 50;
             this.label4.Text = ": Sản phẩm có thể chọn";
             // 
@@ -324,7 +324,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label3.Location = new System.Drawing.Point(48, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(281, 23);
+            this.label3.Size = new System.Drawing.Size(233, 19);
             this.label3.TabIndex = 50;
             this.label3.Text = ": Sản phẩm thuộc khuyến mãi này";
             // 
@@ -353,7 +353,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label1.Location = new System.Drawing.Point(48, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(360, 23);
+            this.label1.Size = new System.Drawing.Size(298, 19);
             this.label1.TabIndex = 51;
             this.label1.Text = ": Hiện tại sản phẩm thuộc khuyến mãi khác ";
             // 
@@ -370,9 +370,9 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(682, 0);
+            this.panel1.Location = new System.Drawing.Point(377, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(25, 575);
+            this.panel1.Size = new System.Drawing.Size(25, 448);
             this.panel1.TabIndex = 24;
             // 
             // uiPanel6
@@ -383,12 +383,12 @@
             this.uiPanel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.uiPanel6.FillColor = System.Drawing.SystemColors.Window;
             this.uiPanel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel6.Location = new System.Drawing.Point(707, 0);
+            this.uiPanel6.Location = new System.Drawing.Point(402, 0);
             this.uiPanel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel6.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel6.Name = "uiPanel6";
             this.uiPanel6.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel6.Size = new System.Drawing.Size(509, 575);
+            this.uiPanel6.Size = new System.Drawing.Size(509, 448);
             this.uiPanel6.TabIndex = 21;
             this.uiPanel6.Text = null;
             this.uiPanel6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -415,7 +415,7 @@
             this.uiGroupBox3.Name = "uiGroupBox3";
             this.uiGroupBox3.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox3.RectColor = System.Drawing.Color.HotPink;
-            this.uiGroupBox3.Size = new System.Drawing.Size(509, 468);
+            this.uiGroupBox3.Size = new System.Drawing.Size(509, 341);
             this.uiGroupBox3.TabIndex = 25;
             this.uiGroupBox3.Text = "Thông tin chi tiết";
             this.uiGroupBox3.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -461,7 +461,7 @@
             0,
             0});
             this.numericSoLuongToiDa.Name = "numericSoLuongToiDa";
-            this.numericSoLuongToiDa.Size = new System.Drawing.Size(61, 30);
+            this.numericSoLuongToiDa.Size = new System.Drawing.Size(61, 26);
             this.numericSoLuongToiDa.TabIndex = 9;
             this.numericSoLuongToiDa.Value = new decimal(new int[] {
             1,
@@ -612,7 +612,7 @@
             0,
             0});
             this.numericPhanTramGiam.Name = "numericPhanTramGiam";
-            this.numericPhanTramGiam.Size = new System.Drawing.Size(62, 30);
+            this.numericPhanTramGiam.Size = new System.Drawing.Size(62, 26);
             this.numericPhanTramGiam.TabIndex = 14;
             // 
             // btnHuyGiam
@@ -672,7 +672,7 @@
             this.uiPanel5.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel5.Name = "uiPanel5";
             this.uiPanel5.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel5.Size = new System.Drawing.Size(213, 575);
+            this.uiPanel5.Size = new System.Drawing.Size(213, 448);
             this.uiPanel5.TabIndex = 0;
             this.uiPanel5.Text = null;
             this.uiPanel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -694,7 +694,7 @@
             this.loaiSpPanel.ScrollBarColor = System.Drawing.Color.HotPink;
             this.loaiSpPanel.ScrollBarStyleInherited = false;
             this.loaiSpPanel.ShowText = false;
-            this.loaiSpPanel.Size = new System.Drawing.Size(213, 545);
+            this.loaiSpPanel.Size = new System.Drawing.Size(213, 418);
             this.loaiSpPanel.TabIndex = 22;
             this.loaiSpPanel.Text = null;
             this.loaiSpPanel.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -741,20 +741,21 @@
             this.uiGroupBox1.Name = "uiGroupBox1";
             this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox1.RectColor = System.Drawing.Color.HotPink;
-            this.uiGroupBox1.Size = new System.Drawing.Size(1216, 94);
+            this.uiGroupBox1.Size = new System.Drawing.Size(911, 94);
             this.uiGroupBox1.TabIndex = 20;
             this.uiGroupBox1.Text = "Nhập mã hoặc tên sản phẩm";
             this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnTimKiem
             // 
+            this.btnTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTimKiem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTimKiem.FillColor = System.Drawing.Color.HotPink;
             this.btnTimKiem.FillHoverColor = System.Drawing.Color.LightPink;
             this.btnTimKiem.FillPressColor = System.Drawing.Color.DeepPink;
             this.btnTimKiem.FillSelectedColor = System.Drawing.Color.DeepPink;
             this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnTimKiem.Location = new System.Drawing.Point(1137, 37);
+            this.btnTimKiem.Location = new System.Drawing.Point(847, 37);
             this.btnTimKiem.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Radius = 1;
@@ -780,7 +781,7 @@
             this.txtNhapMaHoacTenSP.Padding = new System.Windows.Forms.Padding(5);
             this.txtNhapMaHoacTenSP.RectColor = System.Drawing.Color.HotPink;
             this.txtNhapMaHoacTenSP.ShowText = false;
-            this.txtNhapMaHoacTenSP.Size = new System.Drawing.Size(1092, 49);
+            this.txtNhapMaHoacTenSP.Size = new System.Drawing.Size(787, 49);
             this.txtNhapMaHoacTenSP.TabIndex = 5;
             this.txtNhapMaHoacTenSP.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtNhapMaHoacTenSP.Watermark = "";
@@ -792,7 +793,7 @@
             this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel1.Location = new System.Drawing.Point(2, 38);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(1216, 48);
+            this.uiLabel1.Size = new System.Drawing.Size(911, 48);
             this.uiLabel1.TabIndex = 1;
             this.uiLabel1.Text = "Thêm sản phẩm khuyến mãi";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -808,7 +809,7 @@
             this.uiPanel3.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel3.Name = "uiPanel3";
             this.uiPanel3.RectColor = System.Drawing.SystemColors.Control;
-            this.uiPanel3.Size = new System.Drawing.Size(1216, 36);
+            this.uiPanel3.Size = new System.Drawing.Size(911, 36);
             this.uiPanel3.TabIndex = 0;
             this.uiPanel3.Text = null;
             this.uiPanel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -844,19 +845,18 @@
             this.uiPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.uiPanel1.FillColor = System.Drawing.SystemColors.Control;
             this.uiPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiPanel1.Location = new System.Drawing.Point(0, 757);
-            this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel1.Location = new System.Drawing.Point(0, 630);
+            this.uiPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel1.Name = "uiPanel1";
             this.uiPanel1.RectColor = System.Drawing.SystemColors.Window;
-            this.uiPanel1.Size = new System.Drawing.Size(1220, 96);
+            this.uiPanel1.Size = new System.Drawing.Size(915, 10);
             this.uiPanel1.TabIndex = 1;
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // duocChon
             // 
-            this.duocChon.DataPropertyName = "duocChon";
             this.duocChon.HeaderText = "Chọn sản phẩm";
             this.duocChon.MinimumWidth = 6;
             this.duocChon.Name = "duocChon";
@@ -880,13 +880,14 @@
             // 
             // frmThemSanPhamKhuyenMai
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1220, 853);
+            this.ClientSize = new System.Drawing.Size(915, 640);
             this.Controls.Add(this.uiPanel2);
             this.Controls.Add(this.uiPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmThemSanPhamKhuyenMai";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCTHD";

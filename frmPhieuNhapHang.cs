@@ -42,7 +42,7 @@ namespace MeVaBeProject
             chiTietPhieuNhaps = chiTietPhieuNhapBLL.LayDanhSachChiTietPhieuNhap(maPhieuNhap);
             phieuDat = phieuDatBLL.TimKiemPhieuDatTheoMaPhieuDat(phieuNhap.maPhieuDat);
             nhaCungCap = nhaCungCapBLL.TimNhaCungCapTheoMa(phieuDat.maNhaCungCap);
-            int tongTien = int.Parse(phieuNhap.tongTien.ToString().Split(',')[0]);
+            decimal tongTien = decimal.Parse(phieuNhap.tongTien.ToString().Split(',')[0]);
             ReportParameter[] reportParameters = new ReportParameter[] {
                 new ReportParameter("tenNhaCungCap", nhaCungCap.tenNhaCungCap),
                 new ReportParameter("diaChi", nhaCungCap.diaChi),

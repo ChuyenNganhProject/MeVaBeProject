@@ -205,24 +205,24 @@ namespace DAL
                 // Lưu thay đổi trong bảng HangThanhViens
                 db.SubmitChanges();
 
-                // Cập nhật các bảng liên quan để sử dụng mã hạng gần nhất
-                if (hangGanNhat != null)
-                {
-                    var khachHangs = db.KhachHangs.Where(k => k.maHang == maH).ToList();
-                    foreach (var kh in khachHangs)
-                    {
-                        kh.maHang = hangGanNhat.maHang; // Cập nhật mã hạng thành mã gần nhất
-                    }
+                //// Cập nhật các bảng liên quan để sử dụng mã hạng gần nhất
+                //if (hangGanNhat != null)
+                //{
+                //    var khachHangs = db.KhachHangs.Where(k => k.maHang == maH).ToList();
+                //    foreach (var kh in khachHangs)
+                //    {
+                //        kh.maHang = hangGanNhat.maHang; // Cập nhật mã hạng thành mã gần nhất
+                //    }
 
-                    var uuDaiThanhViens = db.UuDaiThanhViens.Where(u => u.maHang == maH).ToList();
-                    foreach (var uuDai in uuDaiThanhViens)
-                    {
-                        uuDai.maHang = hangGanNhat.maHang; // Cập nhật mã hạng thành mã gần nhất
-                    }
+                //    var uuDaiThanhViens = db.UuDaiThanhViens.Where(u => u.maHang == maH).ToList();
+                //    foreach (var uuDai in uuDaiThanhViens)
+                //    {
+                //        uuDai.maHang = hangGanNhat.maHang; // Cập nhật mã hạng thành mã gần nhất
+                //    }
 
-                    // Lưu thay đổi trong các bảng liên quan
-                    db.SubmitChanges();
-                }
+                //    // Lưu thay đổi trong các bảng liên quan
+                //    db.SubmitChanges();
+                //}
 
                 // Xóa hạng thành viên
                 db.HangThanhViens.DeleteOnSubmit(htv);
