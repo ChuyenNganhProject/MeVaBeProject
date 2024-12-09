@@ -419,6 +419,9 @@
     <EmbeddedResource Include="frmDatHang.resx">
       <DependentUpon>frmDatHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmHangThanhVien.resx">
+      <DependentUpon>frmHangThanhVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmKhachHang.resx">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
     </EmbeddedResource>

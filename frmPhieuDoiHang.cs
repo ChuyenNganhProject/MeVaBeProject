@@ -34,11 +34,25 @@ namespace MeVaBeProject
             PhieuDoiHang phieuDoi = phieuDoiHangBLL.TimPhieuDoi(maPhieuDoi);
             nhanVien = nhanVienBLL.LayTTNhanVienTuMa(phieuDoi.maNhanVien);
             List<ChiTietPhieuDoiHang> danhSach = ctPhieuDoiBLL.layDanhSachSanPhamDoi(maPhieuDoi);
+            decimal? tongTien = 0;
+            if (phieuDoi.hinhThucDoi=="Đổi sản phẩm khác")
+            {                
+                foreach (var item in danhSach)
+                {
+                    tongTien += item.giaTriSanPham * item.soLuong;
+                }
+            }
+            else
+            {
+                tongTien = phieuDoi.tongTien;
+            }
+            int tongTienMoi = int.Parse(tongTien.ToString().Split(',')[0]);
             ReportParameter[] reportParameters = new ReportParameter[] {
                 new ReportParameter("tenNhanVien", nhanVien.tenNhanVien),
                 new ReportParameter("tenKhachHang", phieuDoi.tenKhachHang),
                 new ReportParameter("ngayDoi", phieuDoi.ngayDoi.Value.ToString("dd-MM-yyyy")),
                 new ReportParameter("hinhThucDoi", phieuDoi.hinhThucDoi),
+                new ReportParameter("tongTien", tongTienMoi.ToString("C0")),
                 new ReportParameter("lyDo", phieuDoi.lyDoDoi)
             };
 

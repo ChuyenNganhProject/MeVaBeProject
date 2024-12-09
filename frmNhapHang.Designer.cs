@@ -172,13 +172,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.uiGroupBox2.Controls.Add(this.dtgvSanPhamTrongPhieuNhap);
             this.uiGroupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.uiGroupBox2.Location = new System.Drawing.Point(463, 0);
+            this.uiGroupBox2.Location = new System.Drawing.Point(432, 0);
             this.uiGroupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox2.Name = "uiGroupBox2";
             this.uiGroupBox2.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox2.RectColor = System.Drawing.Color.HotPink;
-            this.uiGroupBox2.Size = new System.Drawing.Size(638, 538);
+            this.uiGroupBox2.Size = new System.Drawing.Size(669, 538);
             this.uiGroupBox2.TabIndex = 1;
             this.uiGroupBox2.Text = "Sản phẩm nhận";
             this.uiGroupBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -245,7 +245,7 @@
             this.dtgvSanPhamTrongPhieuNhap.ScrollBarStyleInherited = false;
             this.dtgvSanPhamTrongPhieuNhap.SelectedIndex = -1;
             this.dtgvSanPhamTrongPhieuNhap.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvSanPhamTrongPhieuNhap.Size = new System.Drawing.Size(638, 506);
+            this.dtgvSanPhamTrongPhieuNhap.Size = new System.Drawing.Size(669, 506);
             this.dtgvSanPhamTrongPhieuNhap.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.dtgvSanPhamTrongPhieuNhap.TabIndex = 1;
             this.dtgvSanPhamTrongPhieuNhap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSanPhamTrongPhieuDat_CellClick);
@@ -351,7 +351,7 @@
             this.uiGroupBox4.Name = "uiGroupBox4";
             this.uiGroupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox4.RectColor = System.Drawing.Color.HotPink;
-            this.uiGroupBox4.Size = new System.Drawing.Size(462, 589);
+            this.uiGroupBox4.Size = new System.Drawing.Size(435, 589);
             this.uiGroupBox4.TabIndex = 13;
             this.uiGroupBox4.Text = "Thông tin phiếu nhập";
             this.uiGroupBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -365,7 +365,7 @@
             this.uiPanel4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel4.Name = "uiPanel4";
             this.uiPanel4.RectColor = System.Drawing.Color.HotPink;
-            this.uiPanel4.Size = new System.Drawing.Size(310, 32);
+            this.uiPanel4.Size = new System.Drawing.Size(278, 32);
             this.uiPanel4.TabIndex = 32;
             this.uiPanel4.Text = null;
             this.uiPanel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -376,7 +376,7 @@
             this.dtHanSuDung.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtHanSuDung.Location = new System.Drawing.Point(3, 3);
             this.dtHanSuDung.Name = "dtHanSuDung";
-            this.dtHanSuDung.Size = new System.Drawing.Size(303, 26);
+            this.dtHanSuDung.Size = new System.Drawing.Size(272, 26);
             this.dtHanSuDung.TabIndex = 30;
             this.dtHanSuDung.ValueChanged += new System.EventHandler(this.dtHanSuDung_ValueChanged);
             // 
@@ -389,7 +389,7 @@
             this.uiPanel3.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel3.Name = "uiPanel3";
             this.uiPanel3.RectColor = System.Drawing.Color.HotPink;
-            this.uiPanel3.Size = new System.Drawing.Size(310, 32);
+            this.uiPanel3.Size = new System.Drawing.Size(278, 32);
             this.uiPanel3.TabIndex = 31;
             this.uiPanel3.Text = null;
             this.uiPanel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -400,7 +400,7 @@
             this.dtNgaySanXuat.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtNgaySanXuat.Location = new System.Drawing.Point(3, 3);
             this.dtNgaySanXuat.Name = "dtNgaySanXuat";
-            this.dtNgaySanXuat.Size = new System.Drawing.Size(303, 26);
+            this.dtNgaySanXuat.Size = new System.Drawing.Size(272, 26);
             this.dtNgaySanXuat.TabIndex = 27;
             this.dtNgaySanXuat.ValueChanged += new System.EventHandler(this.dtNgaySanXuat_ValueChanged);
             // 
@@ -438,7 +438,7 @@
             this.txtLanNhap.Padding = new System.Windows.Forms.Padding(5);
             this.txtLanNhap.RectColor = System.Drawing.Color.HotPink;
             this.txtLanNhap.ShowText = false;
-            this.txtLanNhap.Size = new System.Drawing.Size(310, 29);
+            this.txtLanNhap.Size = new System.Drawing.Size(278, 29);
             this.txtLanNhap.TabIndex = 22;
             this.txtLanNhap.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.txtLanNhap.Watermark = "";
@@ -463,7 +463,7 @@
             this.btnChonPhieuDat.FillPressColor = System.Drawing.Color.DeepPink;
             this.btnChonPhieuDat.FillSelectedColor = System.Drawing.Color.HotPink;
             this.btnChonPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnChonPhieuDat.Location = new System.Drawing.Point(334, 87);
+            this.btnChonPhieuDat.Location = new System.Drawing.Point(302, 87);
             this.btnChonPhieuDat.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnChonPhieuDat.Name = "btnChonPhieuDat";
             this.btnChonPhieuDat.RectColor = System.Drawing.Color.HotPink;
@@ -488,7 +488,7 @@
             this.txtNhaCungCap.Padding = new System.Windows.Forms.Padding(5);
             this.txtNhaCungCap.RectColor = System.Drawing.Color.HotPink;
             this.txtNhaCungCap.ShowText = false;
-            this.txtNhaCungCap.Size = new System.Drawing.Size(310, 29);
+            this.txtNhaCungCap.Size = new System.Drawing.Size(278, 29);
             this.txtNhaCungCap.TabIndex = 22;
             this.txtNhaCungCap.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtNhaCungCap.Watermark = "";
@@ -502,7 +502,7 @@
             this.btnLuu.FillPressColor = System.Drawing.Color.DeepPink;
             this.btnLuu.FillSelectedColor = System.Drawing.Color.HotPink;
             this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnLuu.Location = new System.Drawing.Point(382, 547);
+            this.btnLuu.Location = new System.Drawing.Point(347, 542);
             this.btnLuu.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.RectColor = System.Drawing.Color.HotPink;
@@ -527,7 +527,7 @@
             this.txtMaPhieuNhap.Padding = new System.Windows.Forms.Padding(5);
             this.txtMaPhieuNhap.RectColor = System.Drawing.Color.HotPink;
             this.txtMaPhieuNhap.ShowText = false;
-            this.txtMaPhieuNhap.Size = new System.Drawing.Size(310, 29);
+            this.txtMaPhieuNhap.Size = new System.Drawing.Size(278, 29);
             this.txtMaPhieuNhap.TabIndex = 21;
             this.txtMaPhieuNhap.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtMaPhieuNhap.Watermark = "";
@@ -555,7 +555,7 @@
             this.txtDonGia.Padding = new System.Windows.Forms.Padding(5);
             this.txtDonGia.RectColor = System.Drawing.Color.HotPink;
             this.txtDonGia.ShowText = false;
-            this.txtDonGia.Size = new System.Drawing.Size(310, 29);
+            this.txtDonGia.Size = new System.Drawing.Size(278, 29);
             this.txtDonGia.TabIndex = 22;
             this.txtDonGia.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.txtDonGia.Watermark = "";
@@ -582,7 +582,7 @@
             this.txtSoLuongSanPham.Padding = new System.Windows.Forms.Padding(5);
             this.txtSoLuongSanPham.RectColor = System.Drawing.Color.HotPink;
             this.txtSoLuongSanPham.ShowText = false;
-            this.txtSoLuongSanPham.Size = new System.Drawing.Size(310, 29);
+            this.txtSoLuongSanPham.Size = new System.Drawing.Size(278, 29);
             this.txtSoLuongSanPham.TabIndex = 21;
             this.txtSoLuongSanPham.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.txtSoLuongSanPham.Watermark = "";
@@ -623,7 +623,7 @@
             this.txtTenSanPham.Padding = new System.Windows.Forms.Padding(5);
             this.txtTenSanPham.RectColor = System.Drawing.Color.HotPink;
             this.txtTenSanPham.ShowText = false;
-            this.txtTenSanPham.Size = new System.Drawing.Size(310, 29);
+            this.txtTenSanPham.Size = new System.Drawing.Size(278, 29);
             this.txtTenSanPham.TabIndex = 22;
             this.txtTenSanPham.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtTenSanPham.Watermark = "";
@@ -651,7 +651,7 @@
             this.txtMaSanPham.Padding = new System.Windows.Forms.Padding(5);
             this.txtMaSanPham.RectColor = System.Drawing.Color.HotPink;
             this.txtMaSanPham.ShowText = false;
-            this.txtMaSanPham.Size = new System.Drawing.Size(310, 29);
+            this.txtMaSanPham.Size = new System.Drawing.Size(278, 29);
             this.txtMaSanPham.TabIndex = 21;
             this.txtMaSanPham.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtMaSanPham.Watermark = "";
@@ -679,7 +679,7 @@
             this.txtMaPhieuDat.Padding = new System.Windows.Forms.Padding(5);
             this.txtMaPhieuDat.RectColor = System.Drawing.Color.HotPink;
             this.txtMaPhieuDat.ShowText = false;
-            this.txtMaPhieuDat.Size = new System.Drawing.Size(182, 29);
+            this.txtMaPhieuDat.Size = new System.Drawing.Size(149, 29);
             this.txtMaPhieuDat.TabIndex = 20;
             this.txtMaPhieuDat.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtMaPhieuDat.Watermark = "";

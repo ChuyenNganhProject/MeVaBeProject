@@ -15,7 +15,11 @@ namespace DAL
 
         public List<LoaiSanPham> LoadLoaiSanPham()
         {
-            return db.LoaiSanPhams.Where(loai=>loai.maLoaiSanPham != "LSP001").Select(loai => loai).ToList<LoaiSanPham>();
+            return db.LoaiSanPhams.Select(loai => loai).ToList<LoaiSanPham>();
+        }
+        public int DemSoSanPhamThuocLoai(string maLoaiSanPham)
+        {
+            return db.SanPhams.Where(sp => sp.maLoaiSanPham == maLoaiSanPham).Count();
         }
         public LoaiSanPham LayTTLoaiSpTuMaLoaiSp(string ma)
         {

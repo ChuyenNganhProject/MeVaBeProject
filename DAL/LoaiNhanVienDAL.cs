@@ -159,19 +159,31 @@ namespace DAL
         {
             try
             {
-                var lnv = db.LoaiNhanViens.FirstOrDefault(n => n.maLoaiNhanVien == malnv);
+
+                bool existsInNhanVien = db.NhanViens.Any(nv => nv.maLoaiNhanVien == malnv);
+                bool existsInChiTietQuyenCuaLoaiNhanVien = db.ChiTietQuyenCuaLoaiNhanViens.Any(ctq => ctq.maLoaiNhanVien == malnv);
+
+                if (existsInNhanVien || existsInChiTietQuyenCuaLoaiNhanVien)
+                {
+
+                    return false;
+                }
+
+
+                var lnv = db.LoaiNhanViens.FirstOrDefault(k => k.maLoaiNhanVien == malnv);
                 if (lnv != null)
                 {
                     db.LoaiNhanViens.DeleteOnSubmit(lnv);
                     db.SubmitChanges();
                     return true;
                 }
-                return false; // Không tìm thấy để xóa
+                return false;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine("Xóa loại nhân viên thất bại: " + ex.Message);
                 return false;
+
             }
         }
 

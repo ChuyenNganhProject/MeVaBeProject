@@ -237,15 +237,24 @@ namespace MeVaBeProject
                         maLoaiSanPham = maLoaiSanPham,
                         tenLoaiSanPham = tenLoaiSanPham
                     };
-                    bool isSuccess = loaiSanPhamBLL.XoaLoaiSanPham(loaiSP);
-                    if (isSuccess)
+                    int dem = loaiSanPhamBLL.DemSoSanPhamThuocLoai(loaiSP.maLoaiSanPham);
+                    if (dem>0)
                     {
-                        MessageBox.Show(this, "Xóa loại sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadLoaiSanPham();
+                        MessageBox.Show(this, $"Không thể xóa loại sản phẩm {loaiSP.tenLoaiSanPham} do còn sản phẩm thuộc loại này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show(this, "Xóa loại sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        bool isSuccess = loaiSanPhamBLL.XoaLoaiSanPham(loaiSP);
+                        if (isSuccess)
+                        {
+                            MessageBox.Show(this, "Xóa loại sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadLoaiSanPham();
+                            ClearForm();
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "Xóa loại sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
             }

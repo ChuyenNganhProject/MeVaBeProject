@@ -16,10 +16,13 @@ namespace BLL
         {
             return lspdal.LoadLoaiSanPham();
         }
-
         public LoaiSanPham LayTTLoaiSpTuMaLoaiSp(string ma)
         {
             return lspdal.LayTTLoaiSpTuMaLoaiSp(ma);
+        }
+        public int DemSoSanPhamThuocLoai(string maLoaiSanPham)
+        {
+            return lspdal.DemSoSanPhamThuocLoai(maLoaiSanPham);
         }
         public string TaoMaLoaiSanPham()
         {

@@ -177,7 +177,7 @@
       <Column Name="ngaySinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="diaChi" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="soDienThoai" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
-      <Column Name="tenDangNhap" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="tenDangNhap" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="matKhau" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="luongCoBan" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ngayVaoLam" Type="System.DateTime" DbType="Date" CanBeNull="true" />

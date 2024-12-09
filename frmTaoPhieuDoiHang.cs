@@ -157,6 +157,7 @@ namespace MeVaBeProject
                         {
                             row.DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
                             row.DefaultCellStyle.SelectionBackColor = Color.HotPink;
+                            row.DefaultCellStyle.ForeColor = Color.Black;
                             row.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Window;
                             break;
                         }

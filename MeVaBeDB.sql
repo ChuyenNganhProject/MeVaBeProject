@@ -32,7 +32,7 @@ CREATE TABLE NhanVien (
     ngaySinh DATE,
     diaChi NVARCHAR(255),
     soDienThoai VARCHAR(15),
-    tenDangNhap NVARCHAR(255) UNIQUE,
+    tenDangNhap NVARCHAR(255),
     matKhau NVARCHAR(255),
     luongCoBan INT,
     ngayVaoLam DATE,
@@ -108,6 +108,7 @@ CREATE TABLE ChiTietPhieuDoiHang (
     FOREIGN KEY (maSanPhamDoi) REFERENCES SanPham(maSanPham)
 );
 GO
+
 CREATE TABLE UuDaiThanhVien (
     maUuDai VARCHAR(10) PRIMARY KEY,
     tenUuDai NVARCHAR(100),
@@ -292,31 +293,42 @@ ADD CONSTRAINT SoLuongNhanDefault DEFAULT 0 FOR soLuongNhan
 ALTER TABLE ChiTietPhieuNhap
 ADD CONSTRAINT NgaySanXuatCK CHECK( ngaySanXuat <= hanSuDung)
 GO
+-----update 09/12----------
+ALTER TABLE NhanVien
+ADD CONSTRAINT DF_TrangThai DEFAULT N'Đang hoạt động' FOR trangThai;
+ALTER TABLE NhanVien
+
+--Phân biệt hoa thường cho tên đăng nhập 
+ALTER TABLE NhanVien
+ALTER COLUMN tenDangNhap NVARCHAR(50) COLLATE SQL_Latin1_General_CP1_CS_AS;
+
 INSERT INTO QuyenHeThong (maQuyen,tenQuyen) 
 VALUES 
-	('Q0001',N'Quyền quản lý khách hàng'),
-	('Q0002',N'Quyền quản lý hạng thành viên'),
-	('Q0003',N'Quyền quản lý loại nhân viên'),
-	('Q0004',N'Quyền quản lý nhân viên'),
-	('Q0005',N'Quyền quản lý nhà cung cấp'),
-	('Q0006',N'Quyền quản lý loại sản phẩm'),
-	('Q0007',N'Quyền quản lý sản phẩm'),
-	('Q0008',N'Quyền quản lý chương trình khuyến mãi'),
-	('Q0009',N'Quyền quản lý đặt hàng'),
+	('Q0001',N'Quyền thống kê'),
+	('Q0002',N'Quyền quản lý nhà cung cấp'),
+	('Q0003',N'Quyền quản lý sản phẩm'),
+	('Q0004',N'Quyền quản lý loại sản phẩm'),
+	('Q0005',N'Quyền quản lý chương trình khuyến mãi'),
+	('Q0006',N'Quyền lập phiếu thanh lý'),
+	('Q0007',N'Quyền quản lý hóa đơn'),	
+	('Q0008',N'Quyền quản lý khách hàng'),
+	('Q0009',N'Quyền quản lý hạng thành viên'),
 	('Q0010',N'Quyền quản lý nhập hàng'),
-	('Q0011',N'Quyền duyệt đơn đặt hàng'),
-	('Q0012',N'Quyền thống kê'),
-	('Q0013',N'Quyền bán hàng'),
-	('Q0014',N'Quyền lập phiếu đổi trả hàng'),
-	('Q0015',N'Quyền lập phiếu thanh lý'),
-	('Q0016',N'Quyền lập phiếu giao hàng')
+	('Q0011',N'Quyền quản lý đặt hàng'),
+	('Q0012',N'Quyền duyệt đơn đặt hàng'),
+	('Q0013',N'Quyền quản lý nhân viên'),	
+	('Q0014',N'Quyền quản lý loại nhân viên'),	
+	('Q0015',N'Quyền bán hàng')
+	
 GO
-
 INSERT INTO LoaiNhanVien (maLoaiNhanVien, tenLoaiNhanVien) 
 VALUES 
     (N'LNV001', N'Quản Lý'),
     (N'LNV002', N'Nhân Viên Bán Hàng'),
-    (N'LNV003', N'Nhân Viên Kho')
+    (N'LNV003', N'Nhân Viên Kho'),
+	(N'LNV004', N'Nhân Viên Kế toán'),
+	(N'LNV005', N'Nhân Viên Marketing'),
+	(N'LNV006', N'Nhân Viên Nhân sự')
 GO
 SET DATEFORMAT DMY
 INSERT INTO ChiTietQuyenCuaLoaiNhanVien(maLoaiNhanVien,maQuyen,ngayCapQuyen) 
@@ -334,23 +346,40 @@ VALUES
 	('LNV001','Q0011','21/11/2024'),
 	('LNV001','Q0012','21/11/2024'),
 	('LNV001','Q0013','21/11/2024'),
-	('LNV002','Q0001','21/11/2024'),
-	('LNV002','Q0013','21/11/2024'),
-	('LNV002','Q0014','21/11/2024'),
-	('LNV003','Q0009','21/11/2024'),
-	('LNV003','Q0010','21/11/2024'),
+	('LNV001','Q0014','21/11/2024'),
+	('LNV001','Q0015','21/11/2024'),
+
+	('LNV002','Q0007','21/11/2024'),
+	('LNV002','Q0008','21/11/2024'),	
+	('LNV002','Q0015','21/11/2024'),
+
 	('LNV003','Q0006','21/11/2024'),
-	('LNV003','Q0007','21/11/2024')
+	('LNV003','Q0010','21/11/2024'),
+	('LNV003','Q0011','21/11/2024'),
+	('LNV004','Q0001','21/11/2024'),
+	('LNV005','Q0005','21/11/2024'),
+
+	('LNV006','Q0013','21/11/2024'),
+	('LNV006','Q0014','21/11/2024')
+	
 GO
 INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
-VALUES ('NV001', 'LNV001', N'Phạm Minh Nhật', '2003-11-19', N'254 Đường NVC, TP.HCM', '0775945228', 'minhnhat', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01')
+VALUES ('NV0001', 'LNV001', N'Phạm Minh Nhật', '2003-11-19', N'254 Đường NVC, TP.HCM', '0775945228', 'minhnhat', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01')
 INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
-VALUES ('NV002', 'LNV001', N'Đặng Hoàng Phúc', '2003-12-06', N'123 Đường NK, TP.HCM', '0888005346', 'hoangphuc', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01')
+VALUES ('NV0002', 'LNV001', N'Đặng Hoàng Phúc', '2003-12-06', N'123 Đường NK, TP.HCM', '0888005346', 'hoangphuc', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01')
 INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
-VALUES ('NV003', 'LNV001', N'Trương Thị Quí', '2003-01-19', N'123 Đường ABC, TP.HCM', '0901234567', 'truongqui', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01');
+VALUES ('NV0003', 'LNV003', N'Trương Thị Quí', '2003-01-19', N'123 Đường ABC, TP.HCM', '0901234567', 'truongqui', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01');
 INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
-VALUES ('NV004', 'LNV002', N'Phạm Minh Nhật', '2003-11-19', N'254 Đường NVC, TP.HCM', '0775945228', 'nvbhminhnhat', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', '1911'), 2), 20000000, '2024-10-01');
+VALUES ('NV0004', 'LNV002', N'Phạm Minh Nhật', '2003-11-19', N'254 Đường NVC, TP.HCM', '0775945228', 'nvbhminhnhat', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', '1911'), 2), 20000000, '2024-10-01');
+INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
+VALUES ('NV0005', 'LNV006', N'Võ Thiên Hoàng Mỹ', '2002-12-24', N'123 Đường Trường Chinh, TP.HCM', '0776589801', 'hoangmy', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin123'), 2), 20000000, '2024-10-01');
+INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
+VALUES ('NV0006', 'LNV004', N'Đinh Ngọc Anh Quân', '2003-08-28', N'254 Đường Nguyễn Thái Sơn, TP.HCM', '0903163014', 'anhQuan', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', '2808'), 2), 20000000, '2024-10-01');
+INSERT INTO NhanVien (maNhanVien, maLoaiNhanVien, tenNhanVien, ngaySinh, diaChi, soDienThoai, tenDangNhap, matKhau, luongCoBan, ngayVaoLam) 
+VALUES ('NV0007', 'LNV005', N'Trần Gia Bảo', '2003-12-10', N'254 Đường Lê Lai, TP.HCM', '0908466062', 'giaBao', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', '1012'), 2), 20000000, '2024-10-01');
 GO
+
+
 INSERT INTO LoaiSanPham (maLoaiSanPham, tenLoaiSanPham) VALUES ('LSP001', N'Không rõ loại sản phẩm');
 INSERT INTO LoaiSanPham (maLoaiSanPham, tenLoaiSanPham) VALUES ('LSP002', N'Đồ chơi, học tập');		
 INSERT INTO LoaiSanPham (maLoaiSanPham, tenLoaiSanPham) VALUES ('LSP003', N'Vitamin - sức khỏe');
@@ -427,9 +456,9 @@ VALUES
 GO
 INSERT INTO HangThanhVien (maHang, tenHang, mucTieuBatDau, mucTieuKetThuc, ghiChu)
 VALUES 
-    ('HTV001', N'Hạng Thường', 10000, 200000, N'Hạng dành cho khách hàng thường'),
-    ('HTV002', N'Hạng Vàng', 200000, 500000, N'Hạng dành cho khách hàng VIP Vàng'),
-    ('HTV003', N'Hạng Kim Cương', 500000, 1000000, N'Hạng dành cho khách hàng VIP Kim Cương');
+    ('HTV001', N'Hạng Thường', 0, 200000, N'Hạng dành cho khách hàng thường'),
+    ('HTV002', N'Hạng Vàng', 200001, 500000, N'Hạng dành cho khách hàng VIP Vàng'),
+    ('HTV003', N'Hạng Kim Cương', 500001, 1000000, N'Hạng dành cho khách hàng VIP Kim Cương');
 GO
 -- Thêm dữ liệu vào bảng UuDaiThanhVien
 INSERT INTO UuDaiThanhVien (maUuDai, tenUuDai, phanTramGiam, maHang)
@@ -444,14 +473,6 @@ INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALU
 INSERT INTO NhaCungCap(maNhaCungCap,tenNhaCungCap,soDienThoai,diaChi,email) VALUES('NCC005',N'Nhà cung cấp thuốc','0888003349',N'360 Nguyễn Thái Sơn','khongBiet@gmail.com')
 GO
 SELECT * FROM SanPham
-GO
-CREATE PROCEDURE Xoa_LoaiSanPham @maLoaiSP VARCHAR(10)
-AS
-	UPDATE SanPham
-	SET maLoaiSanPham = 'LSP001'
-	WHERE maLoaiSanPham = @maLoaiSP
-
-	DELETE LoaiSanPham WHERE maLoaiSanPham = @maLoaiSP
 GO
 CREATE PROCEDURE XoaPhieuDat_Proc @maPhieuDat VARCHAR(50)
 AS
@@ -646,10 +667,32 @@ BEGIN
     WHERE YEAR(GETDATE()) <> YEAR(ngayCapNhatDiem)
 END
 GO
-ALTER PROCEDURE XoaPhieuGiao_Proc @maPhieuGiao VARCHAR(50)
+CREATE PROCEDURE XoaPhieuGiao_Proc @maPhieuGiao VARCHAR(50)
 AS
 	DELETE PhieuGiaoHang WHERE maPhieuGiao = @maPhieuGiao
 GO
+
+
+CREATE TRIGGER trg_UpdateMaHangKhachHang_dTLVuotMTKTLN
+ON KhachHang
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Cập nhật mã hạng cho khách hàng nếu điểm tích lũy vượt qua mục tiêu kết thúc lớn nhất
+    UPDATE kh
+    SET maHang = (
+        SELECT TOP 1 ht.maHang
+        FROM HangThanhVien ht
+        ORDER BY ht.mucTieuKetThuc DESC
+    )
+    FROM KhachHang kh
+    INNER JOIN inserted i ON kh.maKhachHang = i.maKhachHang
+    WHERE kh.diemTichLuy >= (SELECT MAX(mucTieuKetThuc) FROM HangThanhVien);
+END;
+GO
+
 --CREATE TRIGGER trg_UpdateHangThanhVien
 --ON HoaDon
 --AFTER INSERT, UPDATE, DELETE
@@ -713,3 +756,11 @@ GO
 --        WHERE maKhachHang = @maKhachHang AND maHang <> @maHangMoi;
 --    END
 --END;
+
+
+
+delete from hangthanhvien
+
+
+------------------------------------------------------------------
+

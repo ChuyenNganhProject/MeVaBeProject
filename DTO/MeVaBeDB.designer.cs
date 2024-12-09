@@ -4119,7 +4119,7 @@ namespace DTO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenDangNhap", DbType="NVarChar(255)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenDangNhap", DbType="NVarChar(50)")]
 		public string tenDangNhap
 		{
 			get

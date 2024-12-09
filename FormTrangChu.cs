@@ -62,13 +62,13 @@ namespace MeVaBeProject
 
         private void BtnKhachHang_Click(object sender, EventArgs e)
         {
-            frmKhachHang frm = new frmKhachHang();
+            frmKhachHang frm = new frmKhachHang(nhanVien);
             OpenChildForm(frm);
         }
 
         private void BtnNhanVien_Click(object sender, EventArgs e)
         {
-           frmNhanVien frm = new frmNhanVien();
+           frmNhanVien frm = new frmNhanVien(nhanVien);
            OpenChildForm(frm);
         }
 
@@ -89,48 +89,50 @@ namespace MeVaBeProject
                     switch (item.maQuyen)
                     {
                         case "Q0001":
-                            btnKhachHang.Enabled = true;
+                            btnDashboard.Visible = true;                            
+                            break;
+                        case "Q0002":
+                            btnQLNhaCungCap.Visible = true;
                             break;
                         case "Q0003":
-                            btnNhanVien.Enabled = true;
+                            btnSanPham.Visible = true;
                             break;
                         case "Q0004":
-                            btnNhanVien.Enabled = true;
+                            btnSanPham.Visible = true;
                             break;
                         case "Q0005":
-                            btnQLNhaCungCap.Enabled= true;
+                            btnSanPham.Visible = true;
                             break;
                         case "Q0006":
-                            btnSanPham.Enabled = true;
+                            btnSanPham.Visible = true;
                             break;
                         case "Q0007":
-                            btnSanPham.Enabled = true;
-                            break;
+                            btnHoaDon.Visible = true;
+                            break;   
                         case "Q0008":
-                            btnSanPham.Enabled = true;
+                            btnKhachHang.Visible = true;
                             break;
                         case "Q0009":
-                            btnDatHang.Enabled= true;
+                            btnKhachHang.Visible = true;
                             break;
                         case "Q0010":
-                            btnNhapHang.Enabled= true;
+                            btnNhapHang.Visible = true;
                             break;
                         case "Q0011":
-                            btnDatHang.Enabled = true;
+                            btnDatHang.Visible = true;
                             break;
                         case "Q0012":
-                            btnDashboard.Enabled= true;
-                            btnHoaDon.Enabled = true;
+                            btnDatHang.Visible = true;
                             break;
                         case "Q0013":
-                            btnVeTrangBanHang.Visible = true;
+                            btnNhanVien.Visible = true;
                             break;
                         case "Q0014":
-                            btnHoaDon.Enabled = true;
+                            btnNhanVien.Visible = true;
                             break;
                         case "Q0015":
-                            btnSanPham.Enabled = true;
-                            break;
+                            btnVeTrangBanHang.Visible = true;
+                            break; 
                         default:
                             break;
                     }
@@ -174,7 +176,6 @@ namespace MeVaBeProject
             this.btnDatHang.MouseDown += (s, e) => btnDatHang.BackColor = System.Drawing.Color.HotPink;
             this.btnDatHang.MouseLeave += (s, e) => btnDatHang.BackColor = System.Drawing.Color.FromArgb(255, 70, 158);
         }
-
         private void BtnDangXuat_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -185,19 +186,16 @@ namespace MeVaBeProject
                 this.Close();
             }
         }
-
         private void BtnSanPham_Click(object sender, EventArgs e)
         {
             frmSanPham frm = new frmSanPham(this,nhanVien);
             OpenChildForm(frm);
         }
-
         private void BtnNhapHang_Click(object sender, EventArgs e)
         {
             frmQLNhapHang frm = new frmQLNhapHang(nhanVien.maNhanVien);
             OpenChildForm(frm);
         }
-
         private void BtnClose_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Bạn có chắc chắn muốn thoát ứng dụng?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -206,7 +204,6 @@ namespace MeVaBeProject
                 Application.Exit();
             }
         }
-
         public void OpenChildForm(Form childForm)
         {
             foreach (Form form in this.MdiChildren)
@@ -218,19 +215,16 @@ namespace MeVaBeProject
             childForm.Dock = DockStyle.Fill;
             childForm.Show();
         }
-
         private void btnDatHang_Click(object sender, EventArgs e)
         {
             frmQLDatHang frmQLDatHang = new frmQLDatHang(nhanVien);
             OpenChildForm(frmQLDatHang);
         }
-
         private void btnQLNhaCungCap_Click(object sender, EventArgs e)
         {
             frmQLNhaCungCap frmQLNhaCungCap = new frmQLNhaCungCap();
             OpenChildForm(frmQLNhaCungCap);
         }
-
         private void btnThongTinNhanVien_Click(object sender, EventArgs e)
         {
             frmThongTinNhanVien nv = new frmThongTinNhanVien();

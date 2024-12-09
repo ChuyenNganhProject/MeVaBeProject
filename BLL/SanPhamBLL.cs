@@ -34,13 +34,25 @@ namespace BLL
         {
             return spdal.TimKiemSanPham(tuKhoa);
         }
+        public List<SanPham> TimKiemSanPham(string tuKhoa, decimal giaTriSanPham)
+        {
+            return spdal.TimKiemSanPham(tuKhoa,giaTriSanPham);
+        }
         public List<SanPham> LayDanhSachSanPhamTheoMaLoai(string maLoai)
         {            
             return spdal.LayDanhSachSanPhamTheoMaLoai(maLoai);
         }
+        public List<SanPham> LayDanhSachSanPhamTheoMaLoai(string maLoai,decimal giaTriSanPham)
+        {
+            return spdal.LayDanhSachSanPhamTheoMaLoai(maLoai, giaTriSanPham);
+        }
         public List<SanPham> LayDanhSachSanPhamHetHan()
         {
             return spdal.LayDanhSachSanPhamHetHan();
+        }
+        public List<SanPham> LayDanhSachSanPhamSapHetHan()
+        {
+            return spdal.LayDanhSachSanPhamSapHetHan();
         }
         public List<SanPham> LayDanhSachSanPhamTheoTrangThai(string trangThai)
         {
@@ -58,17 +70,14 @@ namespace BLL
         {
             return spdal.TimKiemSanPhamTheoTenSP(tenSP);
         }
-
         public int TongSoLuongSanPham()
         {
             return spdal.TongSoLuongSanPham();
         }
-
         public List<SanPhamBanChay> ThongKeTop5SanPhamBanChayNhat(DateTime ngayBatDau, DateTime ngayKetThuc)
         {
             return spdal.ThongKeTop5SanPhamBanChayNhat(ngayBatDau, ngayKetThuc);
         }
-
         public List<(string TenSanPham, int? SoLuong)> ThongKeDanhSachSanPhamDuoiMucToiThieu()
         {
             return spdal.ThongKeDanhSachSanPhamDuoiMucToiThieu();
@@ -77,21 +86,25 @@ namespace BLL
         {
             return spdal.ThemSanPham(pSanPham);
         }
-        public bool KhoiPhucSanPham(string maSanPham)
-        {
-            return spdal.KhoiPhucSanPham(maSanPham);
-        }
         public bool SuaSanPham(SanPham pSanPham)
         {
             return spdal.SuaSanPham(pSanPham);
         }
-        public bool XoaSanPham(SanPham pSanPham)
+        public bool XoaSanPham(SanPham SanPham)
         {
-            return spdal.XoaSanPham(pSanPham);
+            return spdal.XoaSanPham(SanPham);
         }
         public bool XoaSanPham(string maSanPham)
         {
             return spdal.XoaSanPham(maSanPham);
+        }
+        public bool KiemTraSanPhamCoThuocHoaDon(string maSanPham)
+        {
+            return spdal.KiemTraSanPhamCoThuocHoaDon(maSanPham);
+        }
+        public bool KiemTraSanPhamCoThuocPhieuDat(string maSanPham)
+        {
+            return spdal.KiemTraSanPhamCoThuocPhieuDat(maSanPham);
         }
         public List<SanPham> LayDanhSachSanPhamTheoMucGia(decimal giaTriSanPham)
         {

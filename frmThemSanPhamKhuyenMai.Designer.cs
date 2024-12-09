@@ -39,9 +39,6 @@
             this.uiPanel4 = new Sunny.UI.UIPanel();
             this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
             this.dgvDSSP = new Sunny.UI.UIDataGridView();
-            this.duocChon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.maSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiPanel9 = new Sunny.UI.UIPanel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -76,12 +73,15 @@
             this.loaiSpPanel = new Sunny.UI.UIFlowLayoutPanel();
             this.btnTatCaSanPham = new Sunny.UI.UIButton();
             this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
+            this.btnTimKiem = new Sunny.UI.UISymbolButton();
             this.txtNhapMaHoacTenSP = new Sunny.UI.UITextBox();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.uiPanel3 = new Sunny.UI.UIPanel();
             this.btnBack = new Sunny.UI.UISymbolButton();
             this.uiPanel1 = new Sunny.UI.UIPanel();
-            this.btnTimKiem = new Sunny.UI.UISymbolButton();
+            this.duocChon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.maSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiPanel2.SuspendLayout();
             this.uiPanel7.SuspendLayout();
             this.uiPanel11.SuspendLayout();
@@ -258,29 +258,6 @@
             this.dgvDSSP.Size = new System.Drawing.Size(469, 385);
             this.dgvDSSP.StripeOddColor = System.Drawing.SystemColors.Window;
             this.dgvDSSP.TabIndex = 44;
-            // 
-            // duocChon
-            // 
-            this.duocChon.HeaderText = "Chọn sản phẩm";
-            this.duocChon.MinimumWidth = 6;
-            this.duocChon.Name = "duocChon";
-            this.duocChon.ReadOnly = true;
-            // 
-            // maSanPham
-            // 
-            this.maSanPham.DataPropertyName = "maSanPham";
-            this.maSanPham.HeaderText = "Mã sản phẩm";
-            this.maSanPham.MinimumWidth = 6;
-            this.maSanPham.Name = "maSanPham";
-            this.maSanPham.ReadOnly = true;
-            // 
-            // tenSanPham
-            // 
-            this.tenSanPham.DataPropertyName = "tenSanPham";
-            this.tenSanPham.HeaderText = "Tên sản phẩm";
-            this.tenSanPham.MinimumWidth = 6;
-            this.tenSanPham.Name = "tenSanPham";
-            this.tenSanPham.ReadOnly = true;
             // 
             // uiPanel9
             // 
@@ -769,6 +746,27 @@
             this.uiGroupBox1.Text = "Nhập mã hoặc tên sản phẩm";
             this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTimKiem.FillColor = System.Drawing.Color.HotPink;
+            this.btnTimKiem.FillHoverColor = System.Drawing.Color.LightPink;
+            this.btnTimKiem.FillPressColor = System.Drawing.Color.DeepPink;
+            this.btnTimKiem.FillSelectedColor = System.Drawing.Color.DeepPink;
+            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnTimKiem.Location = new System.Drawing.Point(1137, 37);
+            this.btnTimKiem.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Radius = 1;
+            this.btnTimKiem.RectColor = System.Drawing.Color.HotPink;
+            this.btnTimKiem.RectHoverColor = System.Drawing.Color.LightPink;
+            this.btnTimKiem.RectPressColor = System.Drawing.Color.DeepPink;
+            this.btnTimKiem.RectSelectedColor = System.Drawing.Color.DeepPink;
+            this.btnTimKiem.Size = new System.Drawing.Size(50, 49);
+            this.btnTimKiem.Symbol = 61442;
+            this.btnTimKiem.TabIndex = 31;
+            this.btnTimKiem.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            // 
             // txtNhapMaHoacTenSP
             // 
             this.txtNhapMaHoacTenSP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -856,26 +854,29 @@
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnTimKiem
+            // duocChon
             // 
-            this.btnTimKiem.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTimKiem.FillColor = System.Drawing.Color.HotPink;
-            this.btnTimKiem.FillHoverColor = System.Drawing.Color.LightPink;
-            this.btnTimKiem.FillPressColor = System.Drawing.Color.DeepPink;
-            this.btnTimKiem.FillSelectedColor = System.Drawing.Color.DeepPink;
-            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnTimKiem.Location = new System.Drawing.Point(1137, 37);
-            this.btnTimKiem.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Radius = 1;
-            this.btnTimKiem.RectColor = System.Drawing.Color.HotPink;
-            this.btnTimKiem.RectHoverColor = System.Drawing.Color.LightPink;
-            this.btnTimKiem.RectPressColor = System.Drawing.Color.DeepPink;
-            this.btnTimKiem.RectSelectedColor = System.Drawing.Color.DeepPink;
-            this.btnTimKiem.Size = new System.Drawing.Size(50, 49);
-            this.btnTimKiem.Symbol = 61442;
-            this.btnTimKiem.TabIndex = 31;
-            this.btnTimKiem.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.duocChon.DataPropertyName = "duocChon";
+            this.duocChon.HeaderText = "Chọn sản phẩm";
+            this.duocChon.MinimumWidth = 6;
+            this.duocChon.Name = "duocChon";
+            this.duocChon.ReadOnly = true;
+            // 
+            // maSanPham
+            // 
+            this.maSanPham.DataPropertyName = "maSanPham";
+            this.maSanPham.HeaderText = "Mã sản phẩm";
+            this.maSanPham.MinimumWidth = 6;
+            this.maSanPham.Name = "maSanPham";
+            this.maSanPham.ReadOnly = true;
+            // 
+            // tenSanPham
+            // 
+            this.tenSanPham.DataPropertyName = "tenSanPham";
+            this.tenSanPham.HeaderText = "Tên sản phẩm";
+            this.tenSanPham.MinimumWidth = 6;
+            this.tenSanPham.Name = "tenSanPham";
+            this.tenSanPham.ReadOnly = true;
             // 
             // frmThemSanPhamKhuyenMai
             // 
@@ -953,9 +954,6 @@
         public System.Windows.Forms.Label lblPhanTramGiam;
         private Sunny.UI.UIPanel uiPanel9;
         private Sunny.UI.UIDataGridView dgvDSSP;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn duocChon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maSanPham;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenSanPham;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel10;
@@ -966,5 +964,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private Sunny.UI.UISymbolButton btnTimKiem;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn duocChon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maSanPham;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenSanPham;
     }
 }

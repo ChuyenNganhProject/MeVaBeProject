@@ -12,6 +12,7 @@ using BLL;
 using System.IO;
 using Sunny.UI;
 using Sunny.UI.Win32;
+using NPOI.SS.Formula.Functions;
 namespace MeVaBeProject
 {
     public partial class frmSanPham : Form
@@ -73,26 +74,26 @@ namespace MeVaBeProject
         {
             LoadData();
             EnableTextBox(false);
-            dtHanSuDung.MinDate = dtNgaySanXuat.Value;
-            QuyenThemXoaSua = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0007")!=null) ? true : false;
+            dtNgaySanXuat.MaxDate = DateTime.Now;
+            dtHanSuDung.MinDate = DateTime.Now.AddYears(2);
+            QuyenThemXoaSua = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0003")!=null) ? true : false;
             if (!QuyenThemXoaSua)
             {                
                 btnThem.Enabled = false;
                 btnSua.Enabled = false;
                 btnXoa.Enabled = false;
-                btnKhoiPhuc.Enabled = false;
             }
-            QuyenQLKhuyenMai = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0008") != null) ? true : false;
+            QuyenQLKhuyenMai = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0005") != null) ? true : false;
             if (!QuyenQLKhuyenMai)
             {
                 btnKhuyenMai.Enabled = false;
             }
-            QuyenQLLoaiSanPham = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0006") != null) ? true : false;
+            QuyenQLLoaiSanPham = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0004") != null) ? true : false;
             if (!QuyenQLLoaiSanPham)
             {
                 btnLoaiSanPham.Enabled = false;
             }
-            QuyenTaoPhieuThanhLy = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0015") != null) ? true : false;
+            QuyenTaoPhieuThanhLy = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0006") != null) ? true : false;
             if (!QuyenTaoPhieuThanhLy)
             {
                 btnLapPhieuThanhLy.Enabled = false;
@@ -164,17 +165,7 @@ namespace MeVaBeProject
                 cbLoaiSP.SelectedValue = dgvProducts.Rows[e.RowIndex].Cells["maLoaiSanPham"].Value.ToString();                
                 string absolutePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\PicSanPham"));
                 imagePath = Path.Combine(absolutePath, Path.GetFileName(dgvProducts.Rows[e.RowIndex].Cells["hinhAnh"].Value.ToString())).Replace("/", "\\");
-                hinhAnh.Image = Image.FromFile(imagePath);
-
-                string trangThai = dgvProducts.Rows[e.RowIndex].Cells["trangThai"].Value.ToString();
-                if (trangThai!= "Không tồn tại")
-                {
-                    btnKhoiPhuc.Enabled = false;
-                }
-                else
-                {
-                    btnKhoiPhuc.Enabled = true;
-                }
+                hinhAnh.Image = Image.FromFile(imagePath);                
             }
         }
         private void EnableDataGridView(bool enable)
@@ -257,8 +248,6 @@ namespace MeVaBeProject
                 SetButtonStyle(btnSua, false);
                 btnXoa.Enabled = false;
                 SetButtonStyle(btnXoa, false);
-                btnKhoiPhuc.Enabled= false;
-                SetButtonStyle(btnKhoiPhuc, false);
                 txtMaSanPham.Text = sanPhamBLL.TaoMaSanPham();
                 EnableTextBox(true);
             }
@@ -283,6 +272,7 @@ namespace MeVaBeProject
                         maSanPham = maSanPham,
                         tenSanPham = tenSanPham,
                         maLoaiSanPham = cbLoaiSP.SelectedValue.ToString(),
+                        donGiaNhap = 0,
                         donGiaBan = 0,
                         hinhAnh = imagePath,
                         ngaySanXuat = dtNgaySanXuat.Value,
@@ -328,20 +318,33 @@ namespace MeVaBeProject
                 DialogResult r = MessageBox.Show(this, "Bạn có chắc chắc muốn xóa sản phẩm không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (r == DialogResult.Yes)
                 {
-                    bool isSuccess = false;
-                    foreach (DataGridViewRow row in dgvProducts.SelectedRows)
+                    int soLuong = int.Parse(dgvProducts.SelectedRows[0].Cells["soLuong"].Value.ToString());
+                    if (soLuong > 0)
                     {
-                        isSuccess = sanPhamBLL.XoaSanPham(row.Cells["maSanPham"].Value.ToString());                        
+                        MessageBox.Show(this, "Không thể xóa sản phẩm do sản phầm còn hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    if (isSuccess)
+                    else if (sanPhamBLL.KiemTraSanPhamCoThuocHoaDon(dgvProducts.SelectedRows[0].Cells["maSanPham"].Value.ToString()))
                     {
-                        MessageBox.Show(this, "Xóa sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadData();
+                        MessageBox.Show(this, "Không thể xóa sản phẩm do sản phầm có trong hóa đơn bán hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (sanPhamBLL.KiemTraSanPhamCoThuocPhieuDat(dgvProducts.SelectedRows[0].Cells["maSanPham"].Value.ToString()))
+                    {
+                        MessageBox.Show(this, "Không thể xóa sản phẩm do sản phầm có trong phiếu đặt hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        MessageBox.Show(this, "Xóa sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                        bool isSuccess = sanPhamBLL.XoaSanPham(dgvProducts.SelectedRows[0].Cells["maSanPham"].Value.ToString());
+                        if (isSuccess)
+                        {
+                            MessageBox.Show(this, "Xóa sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadData();
+                            ClearForm();
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "Xóa sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }                    
                 }
             }
         }
@@ -359,8 +362,6 @@ namespace MeVaBeProject
                     SetButtonStyle(btnThem, false);
                     btnXoa.Enabled = false;
                     SetButtonStyle(btnXoa, false);
-                    btnKhoiPhuc.Enabled = false;
-                    SetButtonStyle(btnKhoiPhuc, false);
                     EnableTextBox(true);
                 }
                 else if (btnSua.Text == "Xác nhận")
@@ -446,29 +447,7 @@ namespace MeVaBeProject
             {
                 e.Handled = true;
             }
-        }
-        private void btnKhoiPhuc_Click(object sender, EventArgs e)
-        {
-            if (dgvProducts.SelectedRows.Count>0)
-            {
-                bool result = false;
-                foreach (DataGridViewRow row in dgvProducts.SelectedRows)
-                {
-                    string maSanPham = row.Cells["maSanPham"].Value.ToString();
-                    result = sanPhamBLL.KhoiPhucSanPham(maSanPham);
-                    if (!result)
-                    {
-                        MessageBox.Show(this, $"Khôi phục sản phẩm {maSanPham} bị lỗi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                    }
-                }
-                if (result)
-                {
-                    MessageBox.Show(this, "Khôi phục sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData();
-                }
-            }
-        }
+        }        
         private void dtNgaySanXuat_ValueChanged(object sender, EventArgs e)
         {
             dtHanSuDung.MinDate = dtNgaySanXuat.Value;
@@ -480,7 +459,14 @@ namespace MeVaBeProject
             {
                 if (cbTrangThai.SelectedItem!=null)
                 {
-                    bindingSource.DataSource = sanPhamBLL.LayDanhSachSanPhamTheoTrangThai(cbTrangThai.SelectedText);
+                    if (cbTrangThai.SelectedText == "Sắp hết hạn")
+                    {
+                        bindingSource.DataSource = sanPhamBLL.LayDanhSachSanPhamSapHetHan();
+                    }
+                    else
+                    {
+                        bindingSource.DataSource = sanPhamBLL.LayDanhSachSanPhamTheoTrangThai(cbTrangThai.SelectedText);
+                    }                    
                 }                
             }
             else if(comboBox == cbLocTheoLoai)  
@@ -536,9 +522,6 @@ namespace MeVaBeProject
             {
                 // Nếu không tìm thấy kết quả, thông báo cho người dùng
                 MessageBox.Show("Không tìm thấy sản phẩm nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Xóa hết dữ liệu trong DataGridView nếu không có kết quả tìm kiếm
-                bindingSource.DataSource = null;
             }
         }
         private void btnLapPhieuThanhLy_Click(object sender, EventArgs e)
