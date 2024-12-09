@@ -816,7 +816,7 @@
             <Top>2.03583in</Top>
             <Left>0.11938in</Left>
             <Height>0.96875in</Height>
-            <Width>6.24305in</Width>
+            <Width>6.24307in</Width>
             <ZIndex>10</ZIndex>
             <Style>
               <Border>
@@ -1058,18 +1058,21 @@
                       <Style />
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox8</rd:DefaultName>
               <Top>0.32167in</Top>
-              <Left>3.16799in</Left>
+              <Left>2.99091in</Left>
               <Height>0.25in</Height>
               <Width>1in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>

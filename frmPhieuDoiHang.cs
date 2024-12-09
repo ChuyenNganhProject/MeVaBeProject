@@ -46,7 +46,7 @@ namespace MeVaBeProject
             {
                 tongTien = phieuDoi.tongTien;
             }
-            int tongTienMoi = int.Parse(tongTien.ToString().Split(',')[0]);
+            decimal tongTienMoi = decimal.Parse(tongTien.ToString().Split(',')[0]);
             ReportParameter[] reportParameters = new ReportParameter[] {
                 new ReportParameter("tenNhanVien", nhanVien.tenNhanVien),
                 new ReportParameter("tenKhachHang", phieuDoi.tenKhachHang),

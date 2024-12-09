@@ -857,7 +857,6 @@
             // 
             // duocChon
             // 
-            this.duocChon.DataPropertyName = "duocChon";
             this.duocChon.HeaderText = "Chọn sản phẩm";
             this.duocChon.MinimumWidth = 6;
             this.duocChon.Name = "duocChon";
