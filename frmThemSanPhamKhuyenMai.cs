@@ -422,6 +422,23 @@ namespace MeVaBeProject
             dgvDSSP.Columns["maSanPham"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvDSSP.Columns["tenSanPham"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvDSSP.Columns["duocChon"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            if (dgvDSSP.Columns["maSanPham"] != null)
+            {
+                dgvDSSP.Columns["maSanPham"].HeaderText = "Mã sản phẩm";
+            }
+            if (dgvDSSP.Columns["tenSanPham"] != null)
+            {
+                dgvDSSP.Columns["tenSanPham"].HeaderText = "Tên sản phẩm";
+            }
+            if (dgvDSSP.Columns["duocChon"] != null)
+            {
+                dgvDSSP.Columns["duocChon"].HeaderText = "Chọn sản phẩm";
+            }
+
+            dgvDSSP.Columns["duocChon"].DisplayIndex = 0;
+            dgvDSSP.Columns["maSanPham"].DisplayIndex = 1;
+            dgvDSSP.Columns["tenSanPham"].DisplayIndex = 2;
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MeVaBeDB5" Class="MeVaBeDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-TQS1O50\SQLEXPRESS;Initial Catalog=MeVaBeDB5;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="MeVaBeDB5ConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MeVaBeDB" Class="MeVaBeDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MSI;Initial Catalog=MeVaBeDB;Integrated Security=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="MeVaBeDBConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ChiTietHoaDonSanPham" Member="ChiTietHoaDonSanPhams">
     <Type Name="ChiTietHoaDonSanPham">
       <Column Name="maHoaDon" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -290,14 +290,15 @@
       <Association Name="LoaiSanPham_SanPham" Member="LoaiSanPham" ThisKey="maLoaiSanPham" OtherKey="maLoaiSanPham" Type="LoaiSanPham" IsForeignKey="true" />
     </Type>
   </Table>
-  <Function Name="dbo.sp_ResetDiemTichLuy" Method="sp_ResetDiemTichLuy">
+  <Function Name="dbo.sp_UpdateTrangThaiKhuyenMai" Method="sp_UpdateTrangThaiKhuyenMai">
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.XoaPhieuGiao_Proc" Method="XoaPhieuGiao_Proc">
     <Parameter Name="maPhieuGiao" Type="System.String" DbType="VarChar(50)" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_UpdateTrangThaiKhuyenMai" Method="sp_UpdateTrangThaiKhuyenMai">
+  <Function Name="dbo.Xoa_LoaiSanPham" Method="Xoa_LoaiSanPham">
+    <Parameter Name="maLoaiSP" Type="System.String" DbType="VarChar(10)" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.XoaPhieuDat_Proc" Method="XoaPhieuDat_Proc">

@@ -181,7 +181,8 @@ namespace MeVaBeProject
         }
         private void SettingDgv(List<HoaDon> dsHoaDon)
         {
-            dgvHoaDon.DataSource = dsHoaDon;            
+            dgvHoaDon.DataSource = dsHoaDon;
+            dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             if (dgvHoaDon.Columns["KhachHang"] != null)
             {
