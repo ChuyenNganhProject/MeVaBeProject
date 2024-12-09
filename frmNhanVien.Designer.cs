@@ -1319,7 +1319,6 @@
             this.txtSDT.TabIndex = 108;
             this.txtSDT.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtSDT.Watermark = "";
-            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
             // uiLabel7
             // 
@@ -1792,7 +1791,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmNhanVien";
             this.Text = "frmSanPham";
-            this.Click += new System.EventHandler(this.btnLamMoi_Click);
             this.uiPanel1.ResumeLayout(false);
             this.uiGroupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

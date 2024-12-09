@@ -216,7 +216,7 @@ namespace MeVaBeProject
                 string tenKH = selectedRow.Cells["tenKhachHang"].Value.ToString();
                 string soDienThoai = selectedRow.Cells["soDienThoai"].Value.ToString();
                 string tenHang = selectedRow.Cells["tenHang"].Value.ToString();
-                string diemTL = selectedRow.Cells["diemTichLuy"].Value.ToString();
+                string diemTL = selectedRow.Cells["diemTichLuy"].Value.ToString().Split(',')[0];
                 DateTime ngayTLD = DateTime.Parse(selectedRow.Cells["ngayCapNhatDiem"].Value.ToString());
 
 
@@ -287,9 +287,6 @@ namespace MeVaBeProject
             {
                 // Nếu không tìm thấy kết quả, thông báo cho người dùng
                 MessageBox.Show("Không tìm thấy khách hàng nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Xóa hết dữ liệu trong DataGridView nếu không có kết quả tìm kiếm
-                dgvKhachHang.DataSource = null;
             }
         }
         private void btnLamMoi_Click(object sender, EventArgs e)

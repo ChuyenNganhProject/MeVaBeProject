@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MeVaBeDB5" Class="MeVaBeDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-TQS1O50\SQLEXPRESS;Initial Catalog=MeVaBeDB5;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="MeVaBeDB5ConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MeVaBeDB" Class="MeVaBeDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ADMIN-PC;Initial Catalog=MeVaBeDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="MeVaBeDBConnectionString4" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ChiTietHoaDonSanPham" Member="ChiTietHoaDonSanPhams">
     <Type Name="ChiTietHoaDonSanPham">
       <Column Name="maHoaDon" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -12,13 +12,12 @@
       <Association Name="SanPham_ChiTietHoaDonSanPham" Member="SanPham" ThisKey="maSanPham" OtherKey="maSanPham" Type="SanPham" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.UuDaiThanhVien" Member="UuDaiThanhViens">
-    <Type Name="UuDaiThanhVien">
-      <Column Name="maUuDai" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="tenUuDai" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="phanTramGiam" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="maHang" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Association Name="HangThanhVien_UuDaiThanhVien" Member="HangThanhVien" ThisKey="maHang" OtherKey="maHang" Type="HangThanhVien" IsForeignKey="true" DeleteRule="CASCADE" />
+  <Table Name="dbo.LoaiNhanVien" Member="LoaiNhanViens">
+    <Type Name="LoaiNhanVien">
+      <Column Name="maLoaiNhanVien" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenLoaiNhanVien" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="LoaiNhanVien_ChiTietQuyenCuaLoaiNhanVien" Member="ChiTietQuyenCuaLoaiNhanViens" ThisKey="maLoaiNhanVien" OtherKey="maLoaiNhanVien" Type="ChiTietQuyenCuaLoaiNhanVien" />
+      <Association Name="LoaiNhanVien_NhanVien" Member="NhanViens" ThisKey="maLoaiNhanVien" OtherKey="maLoaiNhanVien" Type="NhanVien" />
     </Type>
   </Table>
   <Table Name="dbo.ChiTietPhieuDat" Member="ChiTietPhieuDats">
@@ -89,8 +88,8 @@
       <Column Name="mucTieuBatDau" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
       <Column Name="mucTieuKetThuc" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
       <Column Name="ghiChu" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Association Name="HangThanhVien_UuDaiThanhVien" Member="UuDaiThanhViens" ThisKey="maHang" OtherKey="maHang" Type="UuDaiThanhVien" />
       <Association Name="HangThanhVien_KhachHang" Member="KhachHangs" ThisKey="maHang" OtherKey="maHang" Type="KhachHang" />
+      <Association Name="HangThanhVien_UuDaiThanhVien" Member="UuDaiThanhViens" ThisKey="maHang" OtherKey="maHang" Type="UuDaiThanhVien" />
     </Type>
   </Table>
   <Table Name="dbo.HoaDon" Member="HoaDons">
@@ -144,12 +143,13 @@
       <Association Name="SanPham_KhuyenMaiSanPham" Member="SanPham" ThisKey="maSanPham" OtherKey="maSanPham" Type="SanPham" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.LoaiNhanVien" Member="LoaiNhanViens">
-    <Type Name="LoaiNhanVien">
-      <Column Name="maLoaiNhanVien" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="tenLoaiNhanVien" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Association Name="LoaiNhanVien_ChiTietQuyenCuaLoaiNhanVien" Member="ChiTietQuyenCuaLoaiNhanViens" ThisKey="maLoaiNhanVien" OtherKey="maLoaiNhanVien" Type="ChiTietQuyenCuaLoaiNhanVien" />
-      <Association Name="LoaiNhanVien_NhanVien" Member="NhanViens" ThisKey="maLoaiNhanVien" OtherKey="maLoaiNhanVien" Type="NhanVien" />
+  <Table Name="dbo.UuDaiThanhVien" Member="UuDaiThanhViens">
+    <Type Name="UuDaiThanhVien">
+      <Column Name="maUuDai" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenUuDai" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="phanTramGiam" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="maHang" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="HangThanhVien_UuDaiThanhVien" Member="HangThanhVien" ThisKey="maHang" OtherKey="maHang" Type="HangThanhVien" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
   <Table Name="dbo.LoaiSanPham" Member="LoaiSanPhams">

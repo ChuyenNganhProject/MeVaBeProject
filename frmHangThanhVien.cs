@@ -12,6 +12,7 @@ namespace MeVaBeProject
     {
         HangThanhVienBLL htvbll = new HangThanhVienBLL();
         KhachHangBLL khbll = new KhachHangBLL();
+        UuDaiThanhVienBLL udBLL = new UuDaiThanhVienBLL();
         public frmHangThanhVien()
         {
             InitializeComponent();
@@ -38,6 +39,8 @@ namespace MeVaBeProject
         private void ClearForm()
         {
             txtTenHang.Text = "";
+            txtTenUuDai.Text = "";
+            numericPhanTramGiam.Value = 0;
             txtMucTieubd.Text = "";
             txtMucTieukt.Text = "";
             txtGhichu.Text = "";
@@ -200,6 +203,14 @@ namespace MeVaBeProject
                 bool kq = htvbll.InsertHangTV(htv);
                 if (kq)
                 {
+                    UuDaiThanhVien uuDai = new UuDaiThanhVien()
+                    {
+                        maUuDai = udBLL.TaoMaUuDai(),
+                        tenUuDai = txtTenUuDai.Text,
+                        phanTramGiam = numericPhanTramGiam.Value,
+                        maHang = htv.maHang
+                    };
+                    udBLL.TaoUuDai(uuDai);
                     MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearForm();
                     LoadHangTV();
@@ -336,7 +347,17 @@ namespace MeVaBeProject
                 decimal mtbd = decimal.TryParse(selectedRow.Cells["mucTieuBatDau"].Value?.ToString(), out var x) ? x : 0;
                 decimal mtkt = decimal.TryParse(selectedRow.Cells["mucTieuKetThuc"].Value?.ToString(), out var y) ? y : 0;
                 string ghichu = selectedRow.Cells["ghiChu"].Value?.ToString() ?? string.Empty;
-
+                if (udBLL.CoUuDaiChoHang(maH))
+                {
+                    UuDaiThanhVien uuDai = udBLL.LayUuDaiCuaHang(maH);
+                    txtTenUuDai.Text = uuDai.tenUuDai;
+                    numericPhanTramGiam.Value = (decimal)uuDai.phanTramGiam;
+                }
+                else
+                {
+                    txtTenUuDai.Text = "";
+                    numericPhanTramGiam.Value = 0;
+                }
                 txtMaHang.Text = maH;
                 txtTenHang.Text = tenH;
                 txtMucTieubd.Text = mtbd.ToString("N0").Replace(",", ".");
@@ -391,7 +412,7 @@ namespace MeVaBeProject
             if (decimal.TryParse(e.Value.ToString(), out decimal value))
             {
                 // Định dạng số với dấu chấm và thêm "VND"
-                e.Value = value.ToString("N0").Replace(",", ".") + " VND";
+                e.Value = value.ToString("N0").Replace(",", ".");
                 //e.Value = value.ToString("N0").Replace(",", ".");
                 e.FormattingApplied = true;
             }
@@ -524,7 +545,6 @@ namespace MeVaBeProject
                 mucTieuBatDau = muctieubd,
                 mucTieuKetThuc = muctieukt,
                 ghiChu = txtGhichu.Text.Trim()
-
             };
             try
             {
@@ -545,6 +565,10 @@ namespace MeVaBeProject
                 bool kq = htvbll.UpdateHangTV(htv);
                 if (kq)
                 {
+                    UuDaiThanhVien uuDai = udBLL.LayUuDaiCuaHang(maH);
+                    uuDai.tenUuDai = txtTenUuDai.Text;
+                    uuDai.phanTramGiam = numericPhanTramGiam.Value;
+                    udBLL.SuaUuDai(uuDai);
                     MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearForm();
                     LoadHangTV();
@@ -553,8 +577,6 @@ namespace MeVaBeProject
                 else
                 {
                     MessageBox.Show("Sửa thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
                 }
             }
             catch (Exception ex)
