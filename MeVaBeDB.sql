@@ -580,6 +580,20 @@ BEGIN
 	WHERE maSanPham = @maSP
 END
 GO
+CREATE TRIGGER TRG_TaoChiTietPhieuDoiTra ON ChiTietPhieuDoiHang
+AFTER INSERT
+AS
+BEGIN
+	DECLARE @maSP VARCHAR(50), @soLuong INT
+	SELECT @maSP = maSanPhamDoi, @soLuong = soLuong FROM inserted
+	IF(@maSP IS NOT NULL)
+		BEGIN
+			UPDATE SanPham
+			SET soLuong = soLuong - @soLuong
+			WHERE maSanPham = @maSP
+		END
+END
+GO
 CREATE TRIGGER TRG_TaoPhieuNhap ON PhieuNhap
 AFTER INSERT
 AS
