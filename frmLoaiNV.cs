@@ -88,6 +88,14 @@ namespace MeVaBeProject
                 return;
             }
 
+            string maLNV = txtMaLoaiNV.Text;
+            string OldTen = lnvbll.GetTenLoaiNVByMa(maLNV);
+            string NewTen = txtTenLoaiNV.Text.Trim();
+            if (OldTen != NewTen && lnvbll.IsTenLoaiNhanVienExit(NewTen))
+            {
+                MessageBox.Show("Tên loại đã tồn tại trong hệ thống. Vui lòng nhập tên loại khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             var lnv = new LoaiNhanVien
             {
                 maLoaiNhanVien = txtMaLoaiNV.Text.Trim(),
@@ -105,7 +113,7 @@ namespace MeVaBeProject
                     SetForm();
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 MessageBox.Show("Tên loại nhân viên đã tồn tại. Vui lòng nhập tên khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

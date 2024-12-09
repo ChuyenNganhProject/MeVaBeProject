@@ -38,16 +38,26 @@ namespace MeVaBeProject
 
             var nhanVien = nvbll.DangNhap(tenDangNhap, matKhau);
 
-            if(nhanVien != null)
+            if (nhanVien != null)
             {
+                string trangThai = nvbll.LayTrangThaiNhanVienTheoTenDangNhap(nhanVien.tenDangNhap);
+
+                if (trangThai == "Ngưng hoạt động")
+                {
+                    MessageBox.Show("Tài khoản này đã bị vô hiệu hóa. Vui lòng liên hệ quản trị viên.",
+                                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 MessageBox.Show($"Đăng nhập thành công! Xin chào, {nhanVien.tenNhanVien}");
-                if(nhanVien.maLoaiNhanVien != "LNV002")
+
+                if (nhanVien.maLoaiNhanVien == "LNV001")
                 {
                     frmTrangChu frm = new frmTrangChu(nhanVien);
                     frm.Show();
                     this.Hide();
                 }
-                else if(nhanVien.maLoaiNhanVien == "LNV002")
+                else if (nhanVien.maLoaiNhanVien == "LNV002")
                 {
                     frmBanHang frm = new frmBanHang(nhanVien.maNhanVien);
                     frm.Show();
@@ -56,8 +66,34 @@ namespace MeVaBeProject
             }
             else
             {
-                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!",
+                                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            //string tenDangNhap = txtUsername.Text.Trim();
+            //string matKhau = txtPassword.Text.Trim();
+
+            //var nhanVien = nvbll.DangNhap(tenDangNhap, matKhau);
+
+            //if(nhanVien != null)
+            //{
+            //    MessageBox.Show($"Đăng nhập thành công! Xin chào, {nhanVien.tenNhanVien}");
+            //    if(nhanVien.maLoaiNhanVien != "LNV002")
+            //    {
+            //        frmTrangChu frm = new frmTrangChu(nhanVien);
+            //        frm.Show();
+            //        this.Hide();
+            //    }
+            //    else if(nhanVien.maLoaiNhanVien == "LNV002")
+            //    {
+            //        frmBanHang frm = new frmBanHang(nhanVien.maNhanVien);
+            //        frm.Show();
+            //        this.Hide();
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
         private void chkhienmk_CheckedChanged(object sender, EventArgs e)
         {

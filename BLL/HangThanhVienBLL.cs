@@ -48,10 +48,18 @@ namespace BLL
             return hdal.ValidateNewHang(maHangMoi, mucTieuBatDauMoi, mucTieuKetThucMoi);
 
         }
+        public bool ValidateNewHang_Sua(string maHangMoi, decimal mucTieuBatDauMoi, decimal mucTieuKetThucMoi)
+        {
+            return hdal.ValidateNewHang_Sua(maHangMoi, mucTieuBatDauMoi, mucTieuKetThucMoi);
+        }
 
         public string GenerateNewHangTV()
         {
             return hdal.GenerateNewHangTV();
+        }
+        public bool IsTenHTVExit(string tenHang)
+        {
+            return hdal.IsTenHTVExit(tenHang);
         }
     }
 }

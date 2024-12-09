@@ -144,6 +144,29 @@ namespace DAL
                 throw new Exception($"{ex.Message}");
             }
         }
+
+        public bool ValidateNewHang_Sua(string maHangMoi, decimal mucTieuBatDauMoi, decimal mucTieuKetThucMoi)
+        {
+            try
+            {
+                // Kiểm tra hàng hiện tại
+                var hangMoi = db.HangThanhViens
+                    .FirstOrDefault(h => h.maHang == maHangMoi);
+                // Kiểm tra logic trong cùng hàng
+                if (mucTieuKetThucMoi <= mucTieuBatDauMoi)
+                {
+                    throw new Exception("Mục tiêu đầu phải < mục tiêu kết thúc.");
+                }
+
+                // Nếu vượt qua mọi kiểm tra, dữ liệu hợp lệ
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Ném lỗi chi tiết
+                throw new Exception($"{ex.Message}");
+            }
+        }
         //USE
         public bool DeleteHangTV(string maH, out string hienthiloi)
         {
@@ -278,10 +301,6 @@ namespace DAL
         {
             try
             {
-                if (IsTenHTVExit(htv.tenHang))
-                {
-                    throw new InvalidOperationException("Tên hạng đã tồn tại");
-                }
                 var exlnv = db.HangThanhViens.FirstOrDefault(n => n.maHang == htv.maHang);
                 if (exlnv != null)
                 {
@@ -324,5 +343,6 @@ namespace DAL
                      .Select(lnv => lnv.tenHang)
                      .SingleOrDefault();
         }
+       
     }
 }

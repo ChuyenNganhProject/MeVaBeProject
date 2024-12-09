@@ -151,10 +151,9 @@ namespace DAL
                 bool existsInHoaDon = db.HoaDons.Any(hd => hd.maKhachHang == maKhachHang);
                 if (existsInHoaDon)
                 {
+
                     return false;
                 }
-
-
                 var kh = db.KhachHangs.FirstOrDefault(k => k.maKhachHang == maKhachHang);
                 if (kh != null)
                 {
@@ -245,8 +244,8 @@ namespace DAL
 
             var filteredKhachHang = LoadKhachHang()
                 .Where(kh => (kh.tenKhachHang != null && kh.tenKhachHang.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                             (kh.soDienThoai != null && kh.soDienThoai.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0))
-                //||(kh.diaChi != null && kh.diaChi.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0))
+                             (kh.soDienThoai != null && kh.soDienThoai.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
+                ||(kh.tenHang != null && kh.tenHang.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0))
                 .ToList();
 
             return filteredKhachHang;
@@ -280,6 +279,11 @@ namespace DAL
         public List<string> LoadDSSoDienThoai()
         {
             return db.KhachHangs.Select(kh => kh.soDienThoai).ToList();
+        }
+        public decimal GetMaxDiemTichLuy_KhachHang()
+        {
+            var maxValue = db.KhachHangs.Max(kh => (decimal?)kh.diemTichLuy) ?? 0m;
+            return maxValue;
         }
     }
 }
