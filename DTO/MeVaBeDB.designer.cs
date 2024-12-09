@@ -315,8 +315,8 @@ namespace DTO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ResetDiemTichLuy")]
-		public int sp_ResetDiemTichLuy()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_UpdateTrangThaiKhuyenMai")]
+		public int sp_UpdateTrangThaiKhuyenMai()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((int)(result.ReturnValue));
@@ -329,10 +329,10 @@ namespace DTO
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_UpdateTrangThaiKhuyenMai")]
-		public int sp_UpdateTrangThaiKhuyenMai()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Xoa_LoaiSanPham")]
+		public int Xoa_LoaiSanPham([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string maLoaiSP)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), maLoaiSP);
 			return ((int)(result.ReturnValue));
 		}
 		

@@ -309,6 +309,19 @@ namespace DAL
                     exlnv.mucTieuKetThuc = htv.mucTieuKetThuc;
                     exlnv.ghiChu = htv.ghiChu;
                     exlnv.tenHang = htv.tenHang;
+
+                    var hangTruoc = db.HangThanhViens.FirstOrDefault(n => n.mucTieuKetThuc == exlnv.mucTieuBatDau);
+                    if (hangTruoc != null)
+                    {
+                        hangTruoc.mucTieuKetThuc = exlnv.mucTieuBatDau;
+                    }
+
+                    var hangSau = db.HangThanhViens.FirstOrDefault(n => n.mucTieuBatDau == exlnv.mucTieuKetThuc);
+                    if (hangSau != null)
+                    {
+                        hangSau.mucTieuBatDau = exlnv.mucTieuKetThuc;
+                    }
+
                     db.SubmitChanges();
                     return true;
                 }

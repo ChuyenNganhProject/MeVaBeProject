@@ -290,14 +290,15 @@
       <Association Name="LoaiSanPham_SanPham" Member="LoaiSanPham" ThisKey="maLoaiSanPham" OtherKey="maLoaiSanPham" Type="LoaiSanPham" IsForeignKey="true" />
     </Type>
   </Table>
-  <Function Name="dbo.sp_ResetDiemTichLuy" Method="sp_ResetDiemTichLuy">
+  <Function Name="dbo.sp_UpdateTrangThaiKhuyenMai" Method="sp_UpdateTrangThaiKhuyenMai">
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.XoaPhieuGiao_Proc" Method="XoaPhieuGiao_Proc">
     <Parameter Name="maPhieuGiao" Type="System.String" DbType="VarChar(50)" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_UpdateTrangThaiKhuyenMai" Method="sp_UpdateTrangThaiKhuyenMai">
+  <Function Name="dbo.Xoa_LoaiSanPham" Method="Xoa_LoaiSanPham">
+    <Parameter Name="maLoaiSP" Type="System.String" DbType="VarChar(10)" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.XoaPhieuDat_Proc" Method="XoaPhieuDat_Proc">

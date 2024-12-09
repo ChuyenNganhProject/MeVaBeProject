@@ -39,9 +39,6 @@
             this.uiPanel4 = new Sunny.UI.UIPanel();
             this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
             this.dgvDSSP = new Sunny.UI.UIDataGridView();
-            this.duocChon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.maSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiPanel9 = new Sunny.UI.UIPanel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -82,6 +79,9 @@
             this.uiPanel3 = new Sunny.UI.UIPanel();
             this.btnBack = new Sunny.UI.UISymbolButton();
             this.uiPanel1 = new Sunny.UI.UIPanel();
+            this.duocChon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.maSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiPanel2.SuspendLayout();
             this.uiPanel7.SuspendLayout();
             this.uiPanel11.SuspendLayout();
@@ -258,29 +258,6 @@
             this.dgvDSSP.Size = new System.Drawing.Size(164, 258);
             this.dgvDSSP.StripeOddColor = System.Drawing.SystemColors.Window;
             this.dgvDSSP.TabIndex = 44;
-            // 
-            // duocChon
-            // 
-            this.duocChon.HeaderText = "Chọn sản phẩm";
-            this.duocChon.MinimumWidth = 6;
-            this.duocChon.Name = "duocChon";
-            this.duocChon.ReadOnly = true;
-            // 
-            // maSanPham
-            // 
-            this.maSanPham.DataPropertyName = "maSanPham";
-            this.maSanPham.HeaderText = "Mã sản phẩm";
-            this.maSanPham.MinimumWidth = 6;
-            this.maSanPham.Name = "maSanPham";
-            this.maSanPham.ReadOnly = true;
-            // 
-            // tenSanPham
-            // 
-            this.tenSanPham.DataPropertyName = "tenSanPham";
-            this.tenSanPham.HeaderText = "Tên sản phẩm";
-            this.tenSanPham.MinimumWidth = 6;
-            this.tenSanPham.Name = "tenSanPham";
-            this.tenSanPham.ReadOnly = true;
             // 
             // uiPanel9
             // 
@@ -878,6 +855,30 @@
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // duocChon
+            // 
+            this.duocChon.DataPropertyName = "duocChon";
+            this.duocChon.HeaderText = "Chọn sản phẩm";
+            this.duocChon.MinimumWidth = 6;
+            this.duocChon.Name = "duocChon";
+            this.duocChon.ReadOnly = true;
+            // 
+            // maSanPham
+            // 
+            this.maSanPham.DataPropertyName = "maSanPham";
+            this.maSanPham.HeaderText = "Mã sản phẩm";
+            this.maSanPham.MinimumWidth = 6;
+            this.maSanPham.Name = "maSanPham";
+            this.maSanPham.ReadOnly = true;
+            // 
+            // tenSanPham
+            // 
+            this.tenSanPham.DataPropertyName = "tenSanPham";
+            this.tenSanPham.HeaderText = "Tên sản phẩm";
+            this.tenSanPham.MinimumWidth = 6;
+            this.tenSanPham.Name = "tenSanPham";
+            this.tenSanPham.ReadOnly = true;
+            // 
             // frmThemSanPhamKhuyenMai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -955,9 +956,6 @@
         public System.Windows.Forms.Label lblPhanTramGiam;
         private Sunny.UI.UIPanel uiPanel9;
         private Sunny.UI.UIDataGridView dgvDSSP;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn duocChon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maSanPham;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenSanPham;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel10;
@@ -968,5 +966,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private Sunny.UI.UISymbolButton btnTimKiem;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn duocChon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maSanPham;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenSanPham;
     }
 }
