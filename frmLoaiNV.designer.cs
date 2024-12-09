@@ -74,7 +74,7 @@
             this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel1.Location = new System.Drawing.Point(3, 92);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(155, 31);
+            this.uiLabel1.Size = new System.Drawing.Size(135, 31);
             this.uiLabel1.TabIndex = 15;
             this.uiLabel1.Text = "Tên loại nhân viên:";
             // 
@@ -84,7 +84,7 @@
             this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel2.Location = new System.Drawing.Point(3, 0);
             this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(155, 48);
+            this.uiLabel2.Size = new System.Drawing.Size(135, 48);
             this.uiLabel2.TabIndex = 12;
             this.uiLabel2.Text = "Mã loại nhân viên:";
             // 
@@ -92,8 +92,8 @@
             // 
             this.uiTableLayoutPanel1.BackColor = System.Drawing.SystemColors.HighlightText;
             this.uiTableLayoutPanel1.ColumnCount = 2;
-            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.67983F));
-            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.32017F));
+            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.uiTableLayoutPanel1.Controls.Add(this.uiLabel1, 0, 1);
             this.uiTableLayoutPanel1.Controls.Add(this.txtMaLoaiNV, 1, 0);
             this.uiTableLayoutPanel1.Controls.Add(this.txtTenLoaiNV, 1, 1);
@@ -111,7 +111,7 @@
             // 
             this.txtMaLoaiNV.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMaLoaiNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtMaLoaiNV.Location = new System.Drawing.Point(165, 5);
+            this.txtMaLoaiNV.Location = new System.Drawing.Point(148, 5);
             this.txtMaLoaiNV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMaLoaiNV.MinimumSize = new System.Drawing.Size(1, 16);
             this.txtMaLoaiNV.Name = "txtMaLoaiNV";
@@ -119,7 +119,7 @@
             this.txtMaLoaiNV.Radius = 10;
             this.txtMaLoaiNV.RectColor = System.Drawing.Color.HotPink;
             this.txtMaLoaiNV.ShowText = false;
-            this.txtMaLoaiNV.Size = new System.Drawing.Size(312, 31);
+            this.txtMaLoaiNV.Size = new System.Drawing.Size(322, 31);
             this.txtMaLoaiNV.TabIndex = 13;
             this.txtMaLoaiNV.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtMaLoaiNV.Watermark = "";
@@ -128,7 +128,7 @@
             // 
             this.txtTenLoaiNV.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTenLoaiNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtTenLoaiNV.Location = new System.Drawing.Point(165, 97);
+            this.txtTenLoaiNV.Location = new System.Drawing.Point(148, 97);
             this.txtTenLoaiNV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTenLoaiNV.MinimumSize = new System.Drawing.Size(1, 16);
             this.txtTenLoaiNV.Name = "txtTenLoaiNV";
@@ -136,7 +136,7 @@
             this.txtTenLoaiNV.Radius = 10;
             this.txtTenLoaiNV.RectColor = System.Drawing.Color.HotPink;
             this.txtTenLoaiNV.ShowText = false;
-            this.txtTenLoaiNV.Size = new System.Drawing.Size(312, 33);
+            this.txtTenLoaiNV.Size = new System.Drawing.Size(322, 33);
             this.txtTenLoaiNV.TabIndex = 14;
             this.txtTenLoaiNV.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtTenLoaiNV.Watermark = "";

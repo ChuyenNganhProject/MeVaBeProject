@@ -69,5 +69,10 @@ namespace BLL
         {
             return khdal.LoadDSSoDienThoai();
         }
+
+        public decimal GetMaxDiemTichLuy_KhachHang()
+        {
+            return khdal.GetMaxDiemTichLuy_KhachHang();
+        }
     }
 }
