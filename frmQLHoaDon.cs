@@ -182,7 +182,7 @@ namespace MeVaBeProject
         private void SettingDgv(List<HoaDon> dsHoaDon)
         {
             dgvHoaDon.DataSource = dsHoaDon;
-            dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
             if (dgvHoaDon.Columns["KhachHang"] != null)
             {
@@ -240,13 +240,6 @@ namespace MeVaBeProject
             {
                 dgvHoaDon.Columns["hinhThucTra"].HeaderText = "Hình thức trả";
             }
-
-            dgvHoaDon.Columns["maHoaDon"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvHoaDon.Columns["tongTienSauGiam"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvHoaDon.Columns["hinhThucTra"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvHoaDon.Columns["tenKhachHang"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvHoaDon.Columns["tienDuocGiam"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvHoaDon.Columns["tenNhanVien"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             dgvHoaDon.Columns["maHoaDon"].DisplayIndex = 0;
             dgvHoaDon.Columns["tenKhachHang"].DisplayIndex = 1;

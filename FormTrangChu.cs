@@ -137,9 +137,8 @@ namespace MeVaBeProject
                             break;
                     }
                 }
+                OpenChildForm(new frmDashboard(nhanVien.maNhanVien));
             }
-
-
             this.btnDangXuat.MouseHover += (s, e) => btnDangXuat.BackColor = System.Drawing.Color.LightPink;
             this.btnDangXuat.MouseDown += (s, e) => btnDangXuat.BackColor = System.Drawing.Color.HotPink;
             this.btnDangXuat.MouseLeave += (s, e) => btnDangXuat.BackColor = System.Drawing.Color.FromArgb(255, 70, 158);

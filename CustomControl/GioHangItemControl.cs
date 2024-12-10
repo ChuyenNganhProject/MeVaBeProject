@@ -59,7 +59,7 @@ namespace CustomControl
 
             if (soLuong > max)
             {
-                MessageBox.Show("Số lượng sản phẩm hiện tại: " + max, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this,"Số lượng sản phẩm hiện tại: " + max, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.numericSoLuongSp.Value = max;
                 return;
             }

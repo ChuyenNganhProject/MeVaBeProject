@@ -44,9 +44,10 @@
             this.btnXoa.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
             this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnXoa.Location = new System.Drawing.Point(390, 0);
+            this.btnXoa.Location = new System.Drawing.Point(292, 0);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(40, 89);
+            this.btnXoa.Size = new System.Drawing.Size(30, 72);
             this.btnXoa.TabIndex = 6;
             this.btnXoa.UseVisualStyleBackColor = false;
             // 
@@ -56,8 +57,9 @@
             this.panel2.Controls.Add(this.labelTenSp);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(150, 89);
+            this.panel2.Size = new System.Drawing.Size(112, 72);
             this.panel2.TabIndex = 12;
             // 
             // lblPhanTramGiamSp
@@ -65,9 +67,10 @@
             this.lblPhanTramGiamSp.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblPhanTramGiamSp.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblPhanTramGiamSp.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblPhanTramGiamSp.Location = new System.Drawing.Point(0, 61);
+            this.lblPhanTramGiamSp.Location = new System.Drawing.Point(0, 49);
+            this.lblPhanTramGiamSp.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPhanTramGiamSp.Name = "lblPhanTramGiamSp";
-            this.lblPhanTramGiamSp.Size = new System.Drawing.Size(150, 28);
+            this.lblPhanTramGiamSp.Size = new System.Drawing.Size(112, 23);
             this.lblPhanTramGiamSp.TabIndex = 12;
             this.lblPhanTramGiamSp.Text = "(-0%)";
             this.lblPhanTramGiamSp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -79,8 +82,9 @@
             this.labelTenSp.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.labelTenSp.ForeColor = System.Drawing.SystemColors.WindowText;
             this.labelTenSp.Location = new System.Drawing.Point(0, 0);
+            this.labelTenSp.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTenSp.Name = "labelTenSp";
-            this.labelTenSp.Size = new System.Drawing.Size(150, 55);
+            this.labelTenSp.Size = new System.Drawing.Size(112, 45);
             this.labelTenSp.TabIndex = 1;
             this.labelTenSp.Text = "Tên sản phẩm";
             // 
@@ -88,9 +92,10 @@
             // 
             this.labelTongGiaTri.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelTongGiaTri.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.labelTongGiaTri.Location = new System.Drawing.Point(292, 0);
+            this.labelTongGiaTri.Location = new System.Drawing.Point(219, 0);
+            this.labelTongGiaTri.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTongGiaTri.Name = "labelTongGiaTri";
-            this.labelTongGiaTri.Size = new System.Drawing.Size(99, 89);
+            this.labelTongGiaTri.Size = new System.Drawing.Size(74, 72);
             this.labelTongGiaTri.TabIndex = 15;
             this.labelTongGiaTri.Text = "Tổng tiền";
             this.labelTongGiaTri.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -99,14 +104,15 @@
             // 
             this.numericSoLuongSp.Dock = System.Windows.Forms.DockStyle.Left;
             this.numericSoLuongSp.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.numericSoLuongSp.Location = new System.Drawing.Point(231, 0);
+            this.numericSoLuongSp.Location = new System.Drawing.Point(173, 0);
+            this.numericSoLuongSp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.numericSoLuongSp.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.numericSoLuongSp.Name = "numericSoLuongSp";
-            this.numericSoLuongSp.Size = new System.Drawing.Size(61, 30);
+            this.numericSoLuongSp.Size = new System.Drawing.Size(46, 26);
             this.numericSoLuongSp.TabIndex = 14;
             this.numericSoLuongSp.ThousandsSeparator = true;
             this.numericSoLuongSp.Value = new decimal(new int[] {
@@ -120,9 +126,10 @@
             this.panel1.Controls.Add(this.lblGiaGoc);
             this.panel1.Controls.Add(this.labelGiaTinhTien);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(150, 0);
+            this.panel1.Location = new System.Drawing.Point(112, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(81, 89);
+            this.panel1.Size = new System.Drawing.Size(61, 72);
             this.panel1.TabIndex = 13;
             // 
             // lblGiaGoc
@@ -130,9 +137,10 @@
             this.lblGiaGoc.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblGiaGoc.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblGiaGoc.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblGiaGoc.Location = new System.Drawing.Point(0, 61);
+            this.lblGiaGoc.Location = new System.Drawing.Point(0, 49);
+            this.lblGiaGoc.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGiaGoc.Name = "lblGiaGoc";
-            this.lblGiaGoc.Size = new System.Drawing.Size(81, 28);
+            this.lblGiaGoc.Size = new System.Drawing.Size(61, 23);
             this.lblGiaGoc.TabIndex = 11;
             this.lblGiaGoc.Text = "Đơn giá";
             this.lblGiaGoc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -144,23 +152,25 @@
             this.labelGiaTinhTien.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.labelGiaTinhTien.ForeColor = System.Drawing.SystemColors.WindowText;
             this.labelGiaTinhTien.Location = new System.Drawing.Point(0, 0);
+            this.labelGiaTinhTien.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelGiaTinhTien.Name = "labelGiaTinhTien";
-            this.labelGiaTinhTien.Size = new System.Drawing.Size(81, 33);
+            this.labelGiaTinhTien.Size = new System.Drawing.Size(61, 27);
             this.labelGiaTinhTien.TabIndex = 10;
             this.labelGiaTinhTien.Text = "Đơn giá";
             this.labelGiaTinhTien.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // GioHangItemControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.labelTongGiaTri);
             this.Controls.Add(this.numericSoLuongSp);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnXoa);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "GioHangItemControl";
-            this.Size = new System.Drawing.Size(430, 89);
+            this.Size = new System.Drawing.Size(322, 72);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericSoLuongSp)).EndInit();
             this.panel1.ResumeLayout(false);

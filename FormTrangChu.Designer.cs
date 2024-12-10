@@ -84,7 +84,9 @@
             // 
             // btnThongTinNhanVien
             // 
+            this.btnThongTinNhanVien.FillColor = System.Drawing.Color.White;
             this.btnThongTinNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnThongTinNhanVien.ForeColor = System.Drawing.Color.HotPink;
             this.btnThongTinNhanVien.Location = new System.Drawing.Point(91, 9);
             this.btnThongTinNhanVien.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnThongTinNhanVien.Name = "btnThongTinNhanVien";
