@@ -681,11 +681,12 @@ namespace MeVaBeProject
                             if (row.Cells["maNhanVien"].Value.ToString() == manv)
                             {
                                 // Cập nhật trạng thái trong DataGridView
-                                row.Cells["trangThai"].Value = "Ngưng hoạt động";
+                                row.Cells["trangThai"].Value = "Đang hoạt động";
                                 row.Cells["trangThai"].Style.ForeColor = Color.Black;
                             }
                         }
-
+                        LoadNhanVien();
+                        dgvNhanVien.Refresh();
                     }
                     else
                     {

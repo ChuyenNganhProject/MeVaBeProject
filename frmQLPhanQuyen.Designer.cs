@@ -246,6 +246,8 @@
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightPink;
             this.dtgvChiTietQuyen.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.dtgvChiTietQuyen.ScrollBarColor = System.Drawing.Color.HotPink;
+            this.dtgvChiTietQuyen.ScrollBarStyleInherited = false;
             this.dtgvChiTietQuyen.SelectedIndex = -1;
             this.dtgvChiTietQuyen.Size = new System.Drawing.Size(524, 379);
             this.dtgvChiTietQuyen.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));

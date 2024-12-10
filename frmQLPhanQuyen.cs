@@ -61,7 +61,11 @@ namespace MeVaBeProject
                         if (!result)
                         {
                             break;
-                        }
+                        }                        
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, $"Loại nhân viên này đã có {row.Cells["tenQuyen"].Value.ToString()}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 if (result)

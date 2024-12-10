@@ -113,7 +113,7 @@ namespace MeVaBeProject
                     SetForm();
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Tên loại nhân viên đã tồn tại. Vui lòng nhập tên khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

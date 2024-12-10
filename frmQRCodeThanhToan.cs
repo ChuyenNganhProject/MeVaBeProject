@@ -99,5 +99,17 @@ namespace MeVaBeProject
                 txtSoTien.Text = tongTien.ToString("N0").Replace(",", ".");
             }
         }
+
+        private void txtSoTaiKhoan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txtSoTaiKhoan.Text.Length >= 30 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
